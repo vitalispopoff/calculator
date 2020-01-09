@@ -1,15 +1,38 @@
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
+@RunWith(Parameterized.class)
 public class AlgebraicOperationsTest {
-    
-    @Test
-    public void add() {
 
-        Assertions.assertEquals(0, AlgebraicOperations.add(/*0, 0*/));
-//        Assertions.assertEquals(1, AlgebraicOperations.add(1, 0));
-//        Assertions.assertEquals(1, AlgebraicOperations.add(0, 1));
+    @Parameterized.Parameters
+    public static Collection createDataTest(){
+        Object[][] data = new Object[][]{
+                {0, 0, 0},
+                {1, 0, 1},
+                {1, 1, 0},
+                {0, 1, -1},
+                {1, 2, -1},
+                {1, -1, 2},
+        };
+        return Arrays.asList(data);
     }
+
+    int a;
+    int b;
+    int result;
+
+    public AlgebraicOperationsTest(int result, int a, int b){
+        Assert.assertTrue(AlgebraicOperations.add(a, b)==result);
+    }
+/*    @Ignore
+    @Test
+    public void addSingleTest(){
+        Assert.assertEquals(0, AlgebraicOperations.add(0, 0));
+    }*/
 }

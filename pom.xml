@@ -17,18 +17,26 @@
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.5.2</version>
             <scope>test</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+
         </dependency>
     </dependencies>
 
-    <build>
+    <!--<build>
         <plugins>
 
-            <plugin>
+ &lt;!&ndash;           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -36,7 +44,7 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
-            </plugin>
+            </plugin>&ndash;&gt;
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -44,23 +52,23 @@
                 <version>2.22.2</version>
 
                 <dependencies>
-                    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+                    &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api &ndash;&gt;
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
                         <artifactId>junit-jupiter-api</artifactId>
                         <version>5.5.2</version>
-                        <!--<scope>compile</scope>-->
+                        &lt;!&ndash;<scope>compile</scope>&ndash;&gt;
                     </dependency>
 
-                    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+                    &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine &ndash;&gt;
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
                         <artifactId>junit-jupiter-engine</artifactId>
                         <version>5.5.2</version>
-                        <!--<scope>compile</scope>-->
+                        &lt;!&ndash;<scope>compile</scope>&ndash;&gt;
                     </dependency>
                 </dependencies>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
