@@ -27,9 +27,19 @@ public class AlgebraicOperationsTest {
     int b;
     int result;
 
-    public AlgebraicOperationsTest(int result, int a, int b){
-        Assert.assertTrue(AlgebraicOperations.add(a, b)==result);
+
+    public AlgebraicOperationsTest(int result, int a, int b) {
+        this.a = a;
+        this.b = b;
+        this.result = result;
     }
+    
+    @Test
+    public void addParameterizedTest(){
+        Assert.assertEquals(result, AlgebraicOperations.add(a, b));
+    }
+    
+    
 /*    @Ignore
     @Test
     public void addSingleTest(){
