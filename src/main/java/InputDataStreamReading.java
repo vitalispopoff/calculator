@@ -2,7 +2,7 @@
 
 // import;
 
-public class StringReader {
+public interface InputDataStreamReading {
 
     static boolean isInt(char a) {
         boolean result = a > 47 && a < 57;

@@ -19,7 +19,6 @@ public class AlgebraicOperations{
     public static int divide(int x, int y) {
         if (y == 0) throw new IllegalArgumentException();
         else return Math.round(x / y);
-
     }
 
 }

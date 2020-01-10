@@ -4,22 +4,20 @@ import org.junit.*;
 
 public class AlgebraicOperationsSingleTest {
 
-//  * add method tests
-
     @Test
     public void addTest01() {
         Assert.assertEquals(0, AlgebraicOperations.add(0, 0));
     }
+
     @Test
     public void addTest02() {
         Assert.assertEquals(1, AlgebraicOperations.add(0, 1));
     }
+
     @Test
     public void addTest03() {
         Assert.assertEquals(1, AlgebraicOperations.add(2, -1));
     }
-
-//  * subtract method tests
 
     @Test
     public void subtractTest01() {
@@ -36,8 +34,6 @@ public class AlgebraicOperationsSingleTest {
         Assert.assertEquals(2, AlgebraicOperations.subtract(1, -1));
     }
 
-//  * multiply method tests
-
     @Test
     public void multiplyTest01(){
         Assert.assertEquals(0, AlgebraicOperations.multiply(0, 1));
@@ -53,8 +49,6 @@ public class AlgebraicOperationsSingleTest {
         Assert.assertEquals(2, AlgebraicOperations.multiply(1, 2));
     }
 
-//  *   divide method tests
-
     @Test
     public void divideTest01(){
         Assert.assertEquals(0, AlgebraicOperations.divide(0,1));
@@ -69,9 +63,5 @@ public class AlgebraicOperationsSingleTest {
     public void divideTest03(){
         AlgebraicOperations.divide(1, 0);
     }
-    //    TODO rewrite to return DivideByZeroException
-
-
-
 }
 
