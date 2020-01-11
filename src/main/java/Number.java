@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Number {
 
-
     static double convertToNumber(String a) {
         double result = 0.;
         List<Character> charSeries = sliceToSeries(a);
         if (isSeriesProperNumber(charSeries)) {
-
+            result += extractIntegerPartOfCharSeries(charSeries);
+            result += extractFractionPartOfCharSeries(charSeries);
         }
         return result;
     }
@@ -24,10 +24,10 @@ public class Number {
 
     static boolean isSeriesProperNumber(List<Character> charSeries) {
         boolean result = true;
-        int radixPoints = 0;
+        int radixPointInstances = 0;
         for (char c : charSeries) {
-            if (InputDataStreamReading.isRadixPoint(c)) radixPoints++;
-            if ((!InputDataStreamReading.isInt(c) && radixPoints > 1) || charSeries.size() == radixPoints)
+            if (InputDataStreamReading.isRadixPoint(c)) radixPointInstances++;
+            if ((!InputDataStreamReading.isInt(c) && radixPointInstances > 1) || charSeries.size() == radixPointInstances)
                 result &= false;
         }
         return result;
@@ -40,6 +40,17 @@ public class Number {
         for (int i = 0; i <= numberLength; i++) {
             int digit = InputDataStreamReading.toInt(charSeries.get(i));
             result += digit * Math.pow(10, numberLength - i);
+        }
+        return result;
+    }
+
+    static double extractFractionPartOfCharSeries(List<Character> charSeries) {
+        double result = .0;
+        int numberStart = charSeries.indexOf('.') + 1;
+
+        for (int i = numberStart; i < charSeries.size(); i++) {
+            int digit = InputDataStreamReading.toInt(charSeries.get(i));
+            result += digit * Math.pow(10, numberStart - i - 1);
         }
         return result;
     }

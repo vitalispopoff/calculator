@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NumberTest {
 
-    @Ignore
+//    @Ignore
     @Test
     public void convertToNumberTest01(){
         Assert.assertEquals(1.1d, Number.convertToNumber("1.1"), 0.0);
@@ -47,11 +47,16 @@ public class NumberTest {
         Assert.assertEquals(11.d, Number.extractIntegerPartOfCharSeries(result),0.d);
     }
 
-//  TODO toggle the test, build the function.
-//    @Test
+    @Test
     public void extractFractionPartOfCharSeriesTest01(){
         List<Character> result = new ArrayList<Character>(Arrays.asList('1','.','1','1'));
-//        Assert.assertEquals(0.11d, Number.extractFractionPartOfCharSeries(result),0.d);
+        Assert.assertEquals(0.11d, Number.extractFractionPartOfCharSeries(result),0.d);
+    }
+
+    @Test
+    public void extractFractionPartOfCharSeriesTest02(){
+        List<Character> result = new ArrayList<Character>(Arrays.asList('0','.','0','7'));
+        Assert.assertEquals(0.07d, Number.extractFractionPartOfCharSeries(result), 0.d);
     }
 
 
