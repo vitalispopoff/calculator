@@ -7,7 +7,7 @@ public class AlgebraicOperations implements AlgebraicOperational {
     private int a;
     private int b;
 
-    public AlgebraicOperations(int a, int b) {
+    AlgebraicOperations(int a, int b) {
         this.a = a;
         this.b = b;
     }
@@ -30,8 +30,6 @@ public class AlgebraicOperations implements AlgebraicOperational {
     @Override
     public int divide() {
         if (b == 0) throw new IllegalArgumentException();
-        else return Math.round(a / b);
+        else return Math.round((float)a / (float)b);
     }
-
-
 }

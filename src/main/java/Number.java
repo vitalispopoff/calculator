@@ -3,29 +3,20 @@ import java.util.List;
 
 public class Number {
 
-    double value;
-    String stringRepresentation;
-    List<Character> charSeries;
+    private double value;
+    private String stringRepresentation;
+    private List<Character> charSeries;
 
-//  * to be used in NumberTest only
+//  * to be used in NumberTest.numberTest01 only
     Number(){}
 
-    public Number(String stringRepresentation){
+    Number(String stringRepresentation){
         if(!isStringProperNumber(stringRepresentation)) throw new IllegalArgumentException();
         else{
             this.stringRepresentation = stringRepresentation;
             this.charSeries = sliceToSeries(stringRepresentation);
             this.value = extractIntegerPartOfCharSeries(charSeries) + extractFractionPartOfCharSeries(charSeries);
         }
-    }
-
-    static List<Character> sliceToSeries(String a) {
-        List<Character> charSeries = new ArrayList<>();
-        for (int i = 0; i < a.length(); i++) {
-            char c = a.charAt(i);
-            charSeries.add(c);
-        }
-        return charSeries;
     }
 
     static boolean isStringProperNumber(String number){
@@ -35,9 +26,18 @@ public class Number {
             char c = number.charAt(i);
             if(InputDataStreamReading.isRadixPoint(c)) radixPointInstances++;
             if((!InputDataStreamReading.isInt(c) && radixPointInstances > 1) || number.length() == radixPointInstances)
-                result &= false;
+                result = false;
         }
         return result;
+    }
+
+    static List<Character> sliceToSeries(String a) {
+        List<Character> charSeries = new ArrayList<>();
+        for (int i = 0; i < a.length(); i++) {
+            char c = a.charAt(i);
+            charSeries.add(c);
+        }
+        return charSeries;
     }
 
     static double extractIntegerPartOfCharSeries(List<Character> charSeries) {
@@ -61,5 +61,4 @@ public class Number {
         }
         return result;
     }
-
 }
