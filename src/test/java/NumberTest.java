@@ -8,10 +8,16 @@ import java.util.List;
 
 public class NumberTest {
 
-//    @Ignore
     @Test
-    public void convertToNumberTest01(){
-        Assert.assertEquals(1.1d, Number.convertToNumber("1.1"), 0.0);
+    public void NumberTest01(){
+        Number number = new Number("1.1");
+        Number test = new Number();
+        Assert.assertTrue(test.getClass().equals(number.getClass()));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void NumberTest02(){
+        Number number = new Number("1..1");
     }
 
     @Test
@@ -27,24 +33,24 @@ public class NumberTest {
     }
 
     @Test
-    public void isSeriesProperNumberTest01(){
-        Assert.assertTrue(Number.isSeriesProperNumber(Number.sliceToSeries("1.1")));
+    public void isStringProperNumberTest01(){
+        Assert.assertTrue(Number.isStringProperNumber("1.1"));
     }
 
     @Test
-    public void isSeriesProperNumberTest02(){
-        Assert.assertFalse(Number.isSeriesProperNumber(Number.sliceToSeries("1..1")));
+    public void isStringProperNumberTest02(){
+        Assert.assertFalse(Number.isStringProperNumber("1..1"));
     }
 
     @Test
-    public void isSeriesProperNumberTest03(){
-        Assert.assertFalse(Number.isSeriesProperNumber(Number.sliceToSeries(".")));
+    public void isStringProperNumberTest03(){
+        Assert.assertFalse(Number.isStringProperNumber("."));
     }
 
-//  TODO change to assertEquals
+//  TODO standard electronic calculator behaviour - do we want it as well?
     @Test
-    public void isSeriesProperNumberTest04(){
-        Assert.assertTrue(Number.isSeriesProperNumber(Number.sliceToSeries("-1.1")));
+    public void isStringProperNumberTest04(){
+        Assert.assertTrue(Number.isStringProperNumber(".0"));
     }
 
 

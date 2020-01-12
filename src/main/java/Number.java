@@ -3,14 +3,20 @@ import java.util.List;
 
 public class Number {
 
-    static double convertToNumber(String a) {
-        double result = 0.;
-        List<Character> charSeries = sliceToSeries(a);
-        if (isSeriesProperNumber(charSeries)) {
-            result += extractIntegerPartOfCharSeries(charSeries);
-            result += extractFractionPartOfCharSeries(charSeries);
+    double value;
+    String stringRepresentation;
+    List<Character> charSeries;
+
+//  * to be used in NumberTest only
+    Number(){}
+
+    public Number(String stringRepresentation){
+        if(!isStringProperNumber(stringRepresentation)) throw new IllegalArgumentException();
+        else{
+            this.stringRepresentation = stringRepresentation;
+            this.charSeries = sliceToSeries(stringRepresentation);
+            this.value = extractIntegerPartOfCharSeries(charSeries) + extractFractionPartOfCharSeries(charSeries);
         }
-        return result;
     }
 
     static List<Character> sliceToSeries(String a) {
@@ -22,12 +28,13 @@ public class Number {
         return charSeries;
     }
 
-    static boolean isSeriesProperNumber(List<Character> charSeries) {
+    static boolean isStringProperNumber(String number){
         boolean result = true;
-        int radixPointInstances = 0;
-        for (char c : charSeries) {
-            if (InputDataStreamReading.isRadixPoint(c)) radixPointInstances++;
-            if ((!InputDataStreamReading.isInt(c) && radixPointInstances > 1) || charSeries.size() == radixPointInstances)
+        int radixPointInstances =0;
+        for(int i = 0; i<number.length(); i++){
+            char c = number.charAt(i);
+            if(InputDataStreamReading.isRadixPoint(c)) radixPointInstances++;
+            if((!InputDataStreamReading.isInt(c) && radixPointInstances > 1) || number.length() == radixPointInstances)
                 result &= false;
         }
         return result;
@@ -54,4 +61,5 @@ public class Number {
         }
         return result;
     }
+
 }
