@@ -61,4 +61,9 @@ public class Number {
         }
         return result;
     }
+
+//  * used  in OperationCacheTest only?
+    public double getValue() {
+        return value;
+    }
 }
