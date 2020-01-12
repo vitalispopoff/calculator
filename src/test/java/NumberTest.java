@@ -41,6 +41,13 @@ public class NumberTest {
         Assert.assertFalse(Number.isSeriesProperNumber(Number.sliceToSeries(".")));
     }
 
+//  TODO change to assertEquals
+    @Test
+    public void isSeriesProperNumberTest04(){
+        Assert.assertTrue(Number.isSeriesProperNumber(Number.sliceToSeries("-1.1")));
+    }
+
+
     @Test
     public void extractIntegerPartOfCharSeriesTest01(){
         List<Character> result = new ArrayList<Character>(Arrays.asList('1','1','.','1'));
