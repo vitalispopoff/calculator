@@ -8,6 +8,11 @@ Definitely not a droid You're lookin' for. Move along.
 
 # versions:
 
+0.0.3:
++ basic string-to-numeric-value conversion
++ tidying up algebraicoperations class
++ rebuilding and tidying up number class
+
 0.0.2:
 + basic algebraic operations
 + basic reading methods for the data input string
