@@ -2,23 +2,36 @@
 
 //import;
 
-public interface AlgebraicOperations{
+public class AlgebraicOperations implements AlgebraicOperational {
 
-    public static int add(int x, int y) {
-        return x + y;
+    private int a;
+    private int b;
+
+    public AlgebraicOperations(int a, int b) {
+        this.a = a;
+        this.b = b;
     }
 
-    public static int subtract(int x, int y) {
-        return x - y;
+    @Override
+    public int add() {
+        return a + b;
     }
 
-    public static int multiply(int x, int y) {
-        return x * y;
+    @Override
+    public int subtract() {
+        return a - b;
     }
 
-    public static int divide(int x, int y) {
-        if (y == 0) throw new IllegalArgumentException();
-        else return Math.round(x / y);
+    @Override
+    public int multiply() {
+        return a * b;
     }
+
+    @Override
+    public int divide() {
+        if (b == 0) throw new IllegalArgumentException();
+        else return Math.round(a / b);
+    }
+
 
 }
