@@ -66,6 +66,7 @@ public class Number {
         return value;
     }
 
-    public void setValue(double v) {
+    public void setValue(double value) {
+        this.value = value;
     }
 }

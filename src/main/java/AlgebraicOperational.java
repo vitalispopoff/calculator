@@ -18,9 +18,17 @@ public interface AlgebraicOperational {
         return result;
     }
 
-//    Number subtract(Number a);
+    static Number subtract(Number minuend, Number subtrahent) {
+        Number result = new Number();
+        result.setValue(minuend.getValue() - subtrahent.getValue());
+        return result;
+    }
 
-//    Number multiply(Number a);
+    static Number multiply(Number multiplier, Number multiplicant) {
+        Number result = new Number();
+        result.setValue(multiplier.getValue() * multiplicant.getValue());
+        return result;
+    }
 
 //    Number divide(Number a);
 }
