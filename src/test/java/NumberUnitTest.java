@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NumberTest {
+public class NumberUnitTest {
 
     @Test
     public void numberTest01(){

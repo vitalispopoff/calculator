@@ -40,6 +40,6 @@ public class AlgebraicOperationsParameterizedTest {
 
     @Test
     public void addParameterizedTest(){
-        Assert.assertEquals(result, AlgebraicOperations.add(a, b));
+        Assert.assertEquals(result, new AlgebraicOperations(a, b).addition());
     }
 }

@@ -2,7 +2,7 @@
 
 import org.junit.*;
 
-public class OperationCacheTest {
+public class OperationCacheUnitTest {
 
     String test = "1.0*0.1";
 

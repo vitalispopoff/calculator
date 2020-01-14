@@ -2,33 +2,35 @@
 
 //import;
 
-public class AlgebraicOperations implements AlgebraicOperational {
+public class AlgebraicOperations implements AlgebraicOperational{
 
     private int a;
     private int b;
+
 
     AlgebraicOperations(int a, int b) {
         this.a = a;
         this.b = b;
     }
 
+
     @Override
-    public int add() {
+    public int addition() {
         return a + b;
     }
 
     @Override
-    public int subtract() {
+    public int subtraction() {
         return a - b;
     }
 
     @Override
-    public int multiply() {
+    public int multiplication() {
         return a * b;
     }
 
     @Override
-    public int divide() {
+    public int division() {
         if (b == 0) throw new IllegalArgumentException();
         else return Math.round((float)a / (float)b);
     }

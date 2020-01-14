@@ -6,8 +6,7 @@ public class Number {
     private double value;
     private String stringRepresentation;
     private List<Character> charSeries;
-
-//  * to be used in NumberTest.numberTest01 only
+    
     Number(){}
 
     Number(String stringRepresentation){
@@ -65,5 +64,8 @@ public class Number {
 //  * used  in OperationCacheTest only?
     public double getValue() {
         return value;
+    }
+
+    public void setValue(double v) {
     }
 }

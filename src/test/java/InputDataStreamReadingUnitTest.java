@@ -2,7 +2,7 @@
 
 import org.junit.*;
 
-public class InputDataStreamReadingSingleTest {
+public class InputDataStreamReadingUnitTest {
 
     @Test
     public void isInt01(){

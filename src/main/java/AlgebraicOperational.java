@@ -4,11 +4,23 @@
 
 public interface AlgebraicOperational {
 
-    int add();
+    int addition();
 
-    int subtract();
+    int subtraction();
 
-    int multiply();
+    int multiplication();
 
-    int divide();
+    int division();
+
+    static Number add(Number augend, Number addend) {
+        Number result = new Number();
+        result.setValue(augend.getValue() + addend.getValue());
+        return result;
+    }
+
+//    Number subtract(Number a);
+
+//    Number multiply(Number a);
+
+//    Number divide(Number a);
 }

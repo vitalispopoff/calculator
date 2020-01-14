@@ -9,8 +9,8 @@ Definitely not a droid You're lookin' for. Move along.
 # versions:
 
 0.0.4
-
-+ parser for basic algebraics    of positive numbers available"
++ algebraics rebuilt to operate on Number class // TODO
++ parser for basic "algebraics" for positive numbers available
 + further tidying test classes code
 
 0.0.3:
@@ -23,6 +23,6 @@ Definitely not a droid You're lookin' for. Move along.
 + basic algebraic operations
 
 0.0.1:
-+ basic test code coverage exercise
-+ basic single test exercise
++ unit test basic code coverage exercise
++ basic unit test exercise
 + project setup
