@@ -30,5 +30,13 @@ public interface AlgebraicOperational {
         return result;
     }
 
-//    Number divide(Number a);
+    static Number divide(Number dividend, Number divisor){
+        Number result;
+        if(divisor.getValue()==0.0) throw new IllegalArgumentException();
+        else{
+        result = new Number();
+        result.setValue(dividend.getValue() / divisor.getValue());
+        }
+        return result;      // TODO test: for exception scenario the result is not initialized but returned either, is it?
+    }
 }

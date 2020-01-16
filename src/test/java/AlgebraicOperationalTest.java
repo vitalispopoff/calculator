@@ -14,7 +14,7 @@ public class AlgebraicOperationalTest {
     }
 
     @Test
-    public void subtractTest01(){
+    public void subtractTest01() {
         Number expected = new Number("1.");
         Number minuend = new Number("3.0");
         Number subtrahent = new Number("2.0");
@@ -23,7 +23,7 @@ public class AlgebraicOperationalTest {
     }
 
     @Test
-    public void multiplyTest01(){
+    public void multiplyTest01() {
         Number expected = new Number("12.");
         Number multiplier = new Number("3.0");
         Number multiplicant = new Number("4.0");
@@ -31,8 +31,24 @@ public class AlgebraicOperationalTest {
         Assert.assertEquals(expected.getValue(), result.getValue(), 0.d);
     }
 
-//    TODO divideTest
-    @Ignore
+    //    TODO divideTest
+//    @Ignore
     @Test
-    public void divideTest01(){}
+    public void divideTest01() {
+        Number expected = new Number("3.");
+        Number dividend = new Number("12.0");
+        Number divisor = new Number("4.0");
+        Number result = AlgebraicOperational.divide(dividend, divisor);
+        Assert.assertEquals(expected.getValue(), result.getValue(), 0.d);
+    }
+
+//    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void divideTest02() {
+        Number dividend = new Number("1.0");
+        Number divisor = new Number("0.0");
+        AlgebraicOperational.divide(dividend, divisor);
+    }
+
 }
+
