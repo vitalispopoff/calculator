@@ -1,0 +1,22 @@
+@startuml
+
+interface AlgebraicOperational
+interface InputDataStreamReading
+class AlgebraicOperations
+class Number
+class OperationCache
+
+AlgebraicOperational <.. AlgebraicOperations
+AlgebraicOperational o-- Number : static
+InputDataStreamReading  o..o OperationCache
+AlgebraicOperational o.. InputDataStreamReading
+
+OperationCache o-- Number
+
+/'
+class ArrayList {
+Object[] elementData
+size()
+}'/
+
+@enduml

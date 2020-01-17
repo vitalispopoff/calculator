@@ -15,4 +15,6 @@ public interface InputDataStreamReading {
     static boolean isAlgebraicOperator(char a) {return ((int) a) >> 1 == 21 || (int) a == 45 || (int) a == 47;}
 
     static boolean isEquationOperator(char a) {return (int) a == 61;}
+
+    static char fromInt(int i) {return (char) (i + 48);}
 }

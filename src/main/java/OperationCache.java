@@ -6,6 +6,7 @@ public class OperationCache {
     Number arg1;
     Number arg2;
     AlgebraicOperational operation;
+    Number operationResult;
 
 
     public static String operate(String a) {

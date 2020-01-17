@@ -73,4 +73,9 @@ public class InputDataStreamReadingUnitTest {
     public void isEquationOperatorTest02(){
         Assert.assertFalse(InputDataStreamReading.isEquationOperator('1'));
     }
+
+    @Test
+    public void fromIntTest01(){
+        Assert.assertEquals('0', InputDataStreamReading.fromInt(0));
+    }
 }

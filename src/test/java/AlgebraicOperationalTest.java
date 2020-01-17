@@ -31,8 +31,6 @@ public class AlgebraicOperationalTest {
         Assert.assertEquals(expected.getValue(), result.getValue(), 0.d);
     }
 
-    //    TODO divideTest
-//    @Ignore
     @Test
     public void divideTest01() {
         Number expected = new Number("3.");
@@ -42,7 +40,6 @@ public class AlgebraicOperationalTest {
         Assert.assertEquals(expected.getValue(), result.getValue(), 0.d);
     }
 
-//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void divideTest02() {
         Number dividend = new Number("1.0");
