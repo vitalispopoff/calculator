@@ -1,18 +1,16 @@
-//package;
+package _temporals;//package;
 
 //import;
 
-public class AlgebraicOperations implements AlgebraicOperational{
+public class AlgebraicOperation implements AlgebraicOperational {
 
     private int a;
     private int b;
 
-
-    AlgebraicOperations(int a, int b) {
+    AlgebraicOperation(int a, int b) {
         this.a = a;
         this.b = b;
     }
-
 
     @Override
     public int addition() {

@@ -2,11 +2,11 @@
 
 interface AlgebraicOperational
 interface InputDataStreamReading
-class AlgebraicOperations
+class AlgebraicOperation
 class Number
 class OperationCache
 
-AlgebraicOperational <.. AlgebraicOperations
+AlgebraicOperational <.. AlgebraicOperation
 AlgebraicOperational o-- Number : static
 InputDataStreamReading  o..o OperationCache
 AlgebraicOperational o.. InputDataStreamReading

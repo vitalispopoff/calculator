@@ -8,8 +8,13 @@ Definitely not a droid You're lookin' for. Move along.
 
 # versions:
 
+0.0.5
++ adding input stream interpreters
++ simplifying code
++ pom update
+
 0.0.4
-+ algebraics rebuilt to operate on Number class // TODO
++ new layer of "algebraics" methods added to operate exlcusively on Number class objects
 + parser for basic "algebraics" for positive numbers available
 + further tidying test classes code
 
