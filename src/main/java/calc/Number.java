@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+package calc;
 
 public class Number {
 
@@ -9,7 +8,17 @@ public class Number {
     }
 
     Number(String stringRepresentation) {
-        this.value = Double.parseDouble(stringRepresentation);
+
+        this.value = Double.parseDouble(stringRepresentation);  //parseDouble() and valueOf() loses last digit of the fraction part... WTF!
+    }
+
+    static Double stringToValue(String string){
+        double result= 0.0;
+        int opIdx = OperationCache.getOperatorIndex(string);
+
+
+
+        return result;
     }
 
     static String valueToString(double value) {
@@ -26,6 +35,10 @@ public class Number {
 
     void setValue(double value) {
         this.value = value;
+    }
+
+    void setValue(String s){
+        this.value = Double.valueOf(s);
     }
 
     /*public static void main(String[] args) {

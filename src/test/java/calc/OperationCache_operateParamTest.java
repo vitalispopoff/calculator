@@ -1,3 +1,6 @@
+package calc;
+
+import calc.OperationCache;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,25 +15,24 @@ public class OperationCache_operateParamTest {
     @Parameterized.Parameters
     public static Collection createTestData(){
         Object[][] data = new Object[][]{
-                {"0.02*5.", "0.1"},
-                {"1.2+2.1","3.0"},
-                {"1.-1.0","0.0"},
-                {"2.5/0.5","5.0"},
+                {"0.02*5.", 0.1},
+                {"1.2+2.10", 3.3},
+                {"1.-1.0", 0.0},
+                {"2.5/0.5", 5.0},
         };
         return Arrays.asList(data);
     }
 
-    String operationStream;
-    String result;
+    private String operationStream;
+    private double result;
 
-    public OperationCache_operateParamTest(String result, String operationStream){
+    public OperationCache_operateParamTest(String operationStream, double result){
         this.operationStream = operationStream;
         this.result = result;
     }
 
     @Test
     public void operateParamTest(){
-        Assert.assertEquals(result, OperationCache.operate(operationStream));
+        Assert.assertEquals(result, OperationCache.operate(operationStream),0.0);
     }
-
 }

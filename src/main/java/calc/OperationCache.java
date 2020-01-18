@@ -1,8 +1,8 @@
-//import java.util.List;
+package calc;//import java.util.List;
 
 public class OperationCache {
 
-    static String operate(String a) {
+    static double operate(String a) {
         int opIdx = getOperatorIndex(a);
         Number arg1 = extractArgument1(a, opIdx);
         Number arg2 = extractArgument2(a, opIdx);
@@ -14,7 +14,9 @@ public class OperationCache {
         else if(operator==45) result = AlgebraicOperational.subtract(arg1, arg2);
         else if(operator==47) result = AlgebraicOperational.divide(arg1, arg2);
 
-        return result.valueToString();
+//        return result.valueToString();
+        return result.getValue();
+
     }
 
     static Number extractArgument1(String input) {
@@ -24,7 +26,7 @@ public class OperationCache {
     }
 
     static Number extractArgument1(String input, int opIdx) {
-        String argRepresent = input.substring(0, opIdx - 1);
+        String argRepresent = input.substring(0, opIdx);
         return new Number(argRepresent);
     }
 

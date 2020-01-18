@@ -1,10 +1,7 @@
-// package;
+package calc;// package;
 
+import calc.Number;
 import org.junit.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class NumberUnitTest {
 

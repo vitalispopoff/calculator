@@ -1,5 +1,6 @@
-//  package;
+package calc;//  package;
 
+import calc.InputDataStreamReading;
 import org.junit.*;
 
 public class InputDataStreamReadingUnitTest {

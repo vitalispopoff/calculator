@@ -1,16 +1,8 @@
-//package;
+package calc;//package;
 
 //import;
 
 public interface AlgebraicOperational {
-
-    int addition();
-
-    int subtraction();
-
-    int multiplication();
-
-    int division();
 
     static Number add(Number augend, Number addend) {
         Number result = new Number();
