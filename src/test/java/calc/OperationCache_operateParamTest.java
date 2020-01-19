@@ -9,8 +9,9 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-@RunWith(Parameterized.class)
+//@RunWith(Parameterized.class)
 public class OperationCache_operateParamTest {
+/*
 
     @Parameterized.Parameters
     public static Collection createTestData(){
@@ -35,4 +36,6 @@ public class OperationCache_operateParamTest {
     public void operateParamTest(){
         Assert.assertEquals(result, OperationCache.operate(operationStream),0.0);
     }
+*/  // temporarily disabled - tested class to be disposable
+
 }

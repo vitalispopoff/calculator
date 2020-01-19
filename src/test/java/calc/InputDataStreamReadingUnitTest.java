@@ -4,7 +4,7 @@ import calc.InputDataStreamReading;
 import org.junit.*;
 
 public class InputDataStreamReadingUnitTest {
-
+/*
     @Test
     public void isInt01(){
         Assert.assertTrue(InputDataStreamReading.isInt('1'));
@@ -79,4 +79,5 @@ public class InputDataStreamReadingUnitTest {
     public void fromIntTest01(){
         Assert.assertEquals('0', InputDataStreamReading.fromInt(0));
     }
+    */  // temporarily disabled - tested class to be disposable
 }

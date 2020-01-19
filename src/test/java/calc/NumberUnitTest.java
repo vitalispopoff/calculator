@@ -4,7 +4,7 @@ import calc.Number;
 import org.junit.*;
 
 public class NumberUnitTest {
-
+/*
     Number number;
     Number test;
 
@@ -30,4 +30,5 @@ public class NumberUnitTest {
 
         Assert.assertEquals("271.15", new Number("271.15").valueToString());
     }
+    */  // temporarily disabled - tested class to be disposable
 }

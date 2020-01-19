@@ -5,13 +5,13 @@ import calc.OperationCache;
 import org.junit.*;
 
 public class OperationCacheUnitTest {
-
+/*
     String test = "1.0*0.1";
 
     @Ignore
     @Test
     public void operateTest01() {
-        /*Assert.assertEquals("0.1", OperationCache.operate(test));*/
+//        Assert.assertEquals("0.1", OperationCache.operate(test));
     }
 
     @Test
@@ -39,4 +39,5 @@ public class OperationCacheUnitTest {
         test = "1.0*-0.1";
         Assert.assertEquals(3, OperationCache.getOperatorIndex(test));
     }
+    */  // temporarily disabled - tested class to be disposable
 }

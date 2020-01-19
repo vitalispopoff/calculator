@@ -5,6 +5,7 @@ import calc.Number;
 import org.junit.*;
 
 public class AlgebraicOperationalTest {
+/*
 
     @Test
     public void addTest01() {
@@ -48,6 +49,7 @@ public class AlgebraicOperationalTest {
         Number divisor = new Number("0.0");
         AlgebraicOperational.divide(dividend, divisor);
     }
+*/  // temporarily disabled - tested classes to be disposable
 
 }
 
