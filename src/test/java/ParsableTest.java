@@ -3,7 +3,6 @@ import org.junit.Test;
 
 public class ParsableTest {
 
-
     @Test
     public void Test_valueToStream_00(){
         String[] result = {"0.0", "1.0", "0.012", "-0.1"};
@@ -38,8 +37,9 @@ public class ParsableTest {
         for (int i = 0; i < 6; i++) {
             Assert.assertEquals(result[i], Parsable.streamAssembler(argument.charAt(i)),0.);
         }
-
     }
+
+
 
 
 

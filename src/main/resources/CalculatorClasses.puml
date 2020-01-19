@@ -1,15 +1,15 @@
 @startuml
 
 interface AlgebraicOperational
-interface InputDataStreamReading
+interface CharIdentification
 class AlgebraicOperation
 class Number
 class OperationCache
 
 AlgebraicOperational <.. AlgebraicOperation
 AlgebraicOperational o-- Number : static
-InputDataStreamReading  o..o OperationCache
-AlgebraicOperational o.. InputDataStreamReading
+CharIdentification  o..o OperationCache
+AlgebraicOperational o.. CharIdentification
 
 OperationCache o-- Number
 

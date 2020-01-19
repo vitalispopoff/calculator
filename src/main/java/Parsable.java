@@ -1,18 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Parsable {
 
-    static String valueToStream(double argument) {
-        return Double.toString(argument);
-    }
-
-    static double streamToValue(String stream) {
-        return Double.parseDouble(stream);
-    }
-
     static String parsed = "";
+    static List<String> stack = new ArrayList<>();
 
-    static void resetParsed() {
-        parsed = "";
-    }
+
 
     static double streamAssembler(char c) {
         double result = parsed.length() > 0 ? streamToValue(parsed) : 0.;
@@ -24,15 +18,20 @@ public class Parsable {
         } catch (NumberFormatException e) {
             resetParsed();
         }
-
         return result;
     }
+
+    static double streamToValue(String stream) { return Double.parseDouble(stream); }
+
+    static void resetParsed() { parsed = ""; }
+
+    static String valueToStream(double argument) { return Double.toString(argument); }
 
     public static void main(String[] args) {
 
         resetParsed();
 
-        String stream = "0.01*1";
+        String stream = "0.01-1";
 
         for (int i = 0; i < stream.length(); i++) {
             System.out.println(i + ") " + stream.charAt(i) + " : " + streamAssembler(stream.charAt(i)));
@@ -41,3 +40,5 @@ public class Parsable {
         }
     }
 }
+
+
