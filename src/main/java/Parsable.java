@@ -4,11 +4,9 @@ import java.util.List;
 public class Parsable {
 
     static String parsed = "";
-    static List<String> stack = new ArrayList<>();
+    static List<Parsable> parsableDepot = new ArrayList<>();
 
-
-
-    static double streamAssembler(char c) {
+/*    static double streamAssembler(char c) {
         double result = parsed.length() > 0 ? streamToValue(parsed) : 0.;
         String parseCache = parsed + c;
 
@@ -16,28 +14,63 @@ public class Parsable {
             streamToValue(parseCache);
             result = streamToValue(parsed += c);
         } catch (NumberFormatException e) {
+            parsableDepot.add(new Parsable(streamToValue(parsed)));
             resetParsed();
         }
         return result;
+    }*/     // TODO disposable ?
+
+    static void streamAssembler(char c) {
+        String parseCache = parsed + c;
+        try {
+            streamToValue(parseCache);
+            parsed += c;
+        }
+        catch (NumberFormatException e) {
+            try {
+                streamToValue(parsed);
+                parsableDepot.add(new Parsable(streamToValue(parsed)));
+            }
+            catch (NumberFormatException f) {
+            }
+            resetParsed();
+        }
     }
 
-    static double streamToValue(String stream) { return Double.parseDouble(stream); }
+    static double streamToValue(String stream) {
+        return Double.parseDouble(stream);
+    }
 
-    static void resetParsed() { parsed = ""; }
+    private static void resetParsed() {
+        parsed = "";
+    }
 
-    static String valueToStream(double argument) { return Double.toString(argument); }
+    /*static String valueToStream(double argument) { return Double.toString(argument); }*/  //    ! probably disposable
+
+    private double temporalValue;
+
+    private Parsable(double temporalValue) {
+        setTemporalValue(temporalValue);
+    }
+
+    private void setTemporalValue(double temporalValue) {
+        this.temporalValue = temporalValue;
+    }
+
+    double getTemporalValue() {
+        return temporalValue;
+    }
 
     public static void main(String[] args) {
 
         resetParsed();
-
-        String stream = "0.01-1";
-
-        for (int i = 0; i < stream.length(); i++) {
-            System.out.println(i + ") " + stream.charAt(i) + " : " + streamAssembler(stream.charAt(i)));
-            System.out.println("current parsed: "+parsed);
-
+        String data = "*1.01-";
+        for (int i = 0; i < data.length(); i++) {
+            streamAssembler(data.charAt(i));
         }
+
+        System.out.println(parsableDepot.get(0).getTemporalValue());
+
     }
 }
 

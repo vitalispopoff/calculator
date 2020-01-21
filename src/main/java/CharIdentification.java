@@ -16,8 +16,6 @@ public interface CharIdentification {
 
     static boolean isRadixPoint(char a) {return (int) a == 46;}
 
-    /*static boolean isBracket(char a) {return ((int) a) >> 1 == 20;}*/ //  TODO disposable
-
     static boolean isBracketOn(char a){return((int)a == 40);}
 
     static boolean isBracketOff(char a){return((int)a == 41);}
@@ -28,15 +26,3 @@ public interface CharIdentification {
 
     static char fromInt(int i) {return (char) (i + 48);}
 }
-
-/*enum CharType{
-
-    INT,
-    BRACKET,
-    BRACKET_OFF,
-    BRACKET_ON,
-    OPERATOR,
-    RADIX_POINT,
-    UNSUPPORTED,
-
-}*/     // TODO disposable
