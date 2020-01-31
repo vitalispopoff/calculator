@@ -6,13 +6,15 @@ public class ParsableTest {
     @Test
     public void NumberFromStreamTest(){
         String[] data = {"*1.01-2.11"};
-        double[] answer = {1.01, 2.11};
+        double[] answer = {1.0, 1.01, 4.0, 2.11};
         for (int i = 0; i < data[0].length(); i++) {
             Parsable.streamAssembler(data[0].charAt(i));
         }
         int j = Parsable.parsableDepot.size()-1;
         Assert.assertEquals(answer[j], Parsable.parsableDepot.get(j).getTemporalValue(), 0.);
     }
+
+
 
 /*    @Test
     public void Test_streamAssembler_00() {

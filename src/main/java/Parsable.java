@@ -3,35 +3,27 @@ import java.util.List;
 
 public class Parsable {
 
-    static String parsed = "";
+    private static String parsed = "";
     static List<Parsable> parsableDepot = new ArrayList<>();
 
-/*    static double streamAssembler(char c) {
-        double result = parsed.length() > 0 ? streamToValue(parsed) : 0.;
-        String parseCache = parsed + c;
-
+    static void streamAssembler(char character) {
+        String parseCache = parsed + character;
         try {
             streamToValue(parseCache);
-            result = streamToValue(parsed += c);
+            parsed += character;
+
         } catch (NumberFormatException e) {
-            parsableDepot.add(new Parsable(streamToValue(parsed)));
-            resetParsed();
-        }
-        return result;
-    }*/     // TODO disposable ?
-
-    static void streamAssembler(char c) {
-        String parseCache = parsed + c;
-        try {
-            streamToValue(parseCache);
-            parsed += c;
-        }
-        catch (NumberFormatException e) {
             try {
                 streamToValue(parsed);
-                parsableDepot.add(new Parsable(streamToValue(parsed)));
-            }
-            catch (NumberFormatException f) {
+                parsableDepot.add(new Parsable(streamToValue(parsed), CharType.NUMBER));
+
+            } catch (NumberFormatException f) {
+                if (CharIdentification.whatType(character) == CharType.OPERATOR) {
+                    int temp = CharIdentification.toAlgebraicOperator(character);
+                    parsableDepot.add(new Parsable((double)temp, CharType.OPERATOR));
+
+
+                }
             }
             resetParsed();
         }
@@ -47,10 +39,12 @@ public class Parsable {
 
     /*static String valueToStream(double argument) { return Double.toString(argument); }*/  //    ! probably disposable
 
+    private CharType type;
     private double temporalValue;
 
-    private Parsable(double temporalValue) {
+    private Parsable(double temporalValue, CharType type) {
         setTemporalValue(temporalValue);
+        setType(type);
     }
 
     private void setTemporalValue(double temporalValue) {
@@ -59,6 +53,14 @@ public class Parsable {
 
     double getTemporalValue() {
         return temporalValue;
+    }
+
+    private void setType(CharType type) {
+        this.type = type;
+    }
+
+    CharType getType() {
+        return type;
     }
 
     public static void main(String[] args) {
