@@ -59,23 +59,6 @@ public class CharIdentificationTest {
         Assert.assertEquals(1, CharIdentification.toInt('1'));
     }
 
-/*
-    @Test
-    public void isBracketTest01(){
-        Assert.assertTrue(CharIdentification.isBracket('('));
-    }
-
-    @Test
-    public void isBracketTest02(){
-        Assert.assertTrue(CharIdentification.isBracket('('));
-    }
-
-    @Test
-    public void isBracketTest03(){
-        Assert.assertFalse(CharIdentification.isBracket('*'));
-    }
-*/  // TODO disposable
-
     @Test
     public void isAlgebraicOperatorTest01() {
         Assert.assertTrue(CharIdentification.isAlgebraicOperator('+'));
