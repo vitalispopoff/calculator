@@ -3,44 +3,38 @@ import java.util.List;
 
 public class Parsable {
 
-    private static String parsed = "";
+    static String parsed = "";              // access from private to default because ParsableTest
     static List<Parsable> parsableDepot = new ArrayList<>();
+    private CharType type;
+    private double temporalValue;
 
-    static void streamAssembler(char character) {
-        String parseCache = parsed + character;
-        try {
-            streamToValue(parseCache);
-            parsed += character;
-
-        } catch (NumberFormatException e) {
-            try {
-                streamToValue(parsed);
-                parsableDepot.add(new Parsable(streamToValue(parsed), CharType.NUMBER));
-
-            } catch (NumberFormatException f) {
-                if (CharIdentification.whatType(character) == CharType.OPERATOR) {
-                    int temp = CharIdentification.toAlgebraicOperator(character);
-                    parsableDepot.add(new Parsable((double)temp, CharType.OPERATOR));
-
-
-                }
-            }
-            resetParsed();
-        }
+    static void resetParsed() {
+        parsed = "";
     }
 
     static double streamToValue(String stream) {
         return Double.parseDouble(stream);
     }
 
-    private static void resetParsed() {
-        parsed = "";
+    static void streamAssembler(char number) {
+        String parseCache = parsed + number;
+
+        try {
+            streamToValue(parseCache);
+            parsed += number;
+        } catch (NumberFormatException e) {
+            try {
+                streamToValue(parsed);
+                parsableDepot.add(new Parsable(streamToValue(parsed), CharType.NUMBER));
+            } catch (NumberFormatException f) {
+                if (CharIdentification.whatType(number) == CharType.OPERATOR) {
+                    int temp = CharIdentification.toAlgebraicOperator(number);
+                    parsableDepot.add(new Parsable((double)temp, CharType.OPERATOR));
+                }
+            }
+            resetParsed();
+        }
     }
-
-    /*static String valueToStream(double argument) { return Double.toString(argument); }*/  //    ! probably disposable
-
-    private CharType type;
-    private double temporalValue;
 
     private Parsable(double temporalValue, CharType type) {
         setTemporalValue(temporalValue);
@@ -66,12 +60,14 @@ public class Parsable {
     public static void main(String[] args) {
 
         resetParsed();
-        String data = "*1.01-";
+
+        /*String data = "*1.01-";
         for (int i = 0; i < data.length(); i++) {
             streamAssembler(data.charAt(i));
         }
+        System.out.println(parsableDepot.get(0).getTemporalValue());*/
 
-        System.out.println(parsableDepot.get(0).getTemporalValue());
+
 
     }
 }
