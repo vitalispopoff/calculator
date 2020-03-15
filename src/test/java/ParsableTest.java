@@ -1,8 +1,6 @@
 import org.junit.*;
 
-
 public class ParsableTest {
-
 
     @Test
     public void resetParsed_01() {

@@ -35,7 +35,7 @@ public interface CharIdentification {
     }
 
     static int toAlgebraicOperator(char a) {
-        int result = 0;
+        /*int result = 0;
         switch (a) {
             case 42:
                 result = 1;
@@ -50,8 +50,16 @@ public interface CharIdentification {
                 result = 4;
                 break;
         }
-        return result;
+        return result;*/        // we don't like switch, do we?
+        return (a-39)>>1;
     }
+
+    /*
+    * 42 = 1 ; 3 = 1
+    * 43 = 2 ; 4 = 2
+    * 45 = 3 ; 6 = 3
+    * 47 = 4 ; 8 = 4
+    * */
 
     static boolean isEquationOperator(char a) {
         return (int) a == 61;
@@ -59,5 +67,12 @@ public interface CharIdentification {
 
     static char fromInt(int i) {
         return (char) (i + 48);
+    }
+
+    public static void main(String[] args) {
+        System.out.println((42-39)>>1);
+        System.out.println((43-39)>>1);
+        System.out.println((45-39)>>1);
+        System.out.println((47-39)>>1);
     }
 }
