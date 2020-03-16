@@ -11,7 +11,17 @@ public class ParsableTest {
     }
 
     @Test
-    public void NumberFromStreamTest() {
+    public void streamToValue_01() {
+        Assert.assertEquals(0.1, Parsable.streamToValue(".1"), .0d);
+    }
+
+    @Test
+    public void streamToValue_02() {
+        Assert.assertEquals(-1., Parsable.streamToValue("-1"), 0.d);
+    }
+
+    @Test
+    public void streamAssembler_00() {
         String[] data = {"*1.01-2.11"};
         double[] answer = {1.0, 1.01, 4.0, 2.11};
         for (int i = 0; i < data[0].length(); i++) {
@@ -19,16 +29,6 @@ public class ParsableTest {
         }
         int j = Parsable.parsableDepot.size() - 1;
         Assert.assertEquals(answer[j], Parsable.parsableDepot.get(j).getTemporalValue(), 0.);
-    }
-
-    @Test
-    public void Test_streamToValue_01() {
-        Assert.assertEquals(0.1, Parsable.streamToValue(".1"), .0d);
-    }
-
-    @Test
-    public void Test_streamToValue_02() {
-        Assert.assertEquals(-1., Parsable.streamToValue("-1"), 0.d);
     }
 
     @Test

@@ -69,7 +69,7 @@ public interface CharIdentification {
         return (char) (i + 48);
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         System.out.println((42-39)>>1);
         System.out.println((43-39)>>1);
         System.out.println((45-39)>>1);

@@ -73,6 +73,7 @@ public class CharIdentificationTest {
         Assert.assertTrue(CharIdentification.isAlgebraicOperator('-'));
     }
 
+
     @Test
     public void toAlgebraicOperator_01(){
         Assert.assertEquals(1, CharIdentification.toAlgebraicOperator('*'));
@@ -92,6 +93,7 @@ public class CharIdentificationTest {
     public void isEquationOperator_02() {
         Assert.assertFalse(CharIdentification.isEquationOperator('1'));
     }
+
 
     @Test
     public void fromInt_01() {
