@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parsable {
+public class InputDataParser {
 
     static String parsed = "";              // access from private to default because ParsableTest
-    static List<Parsable> parsableDepot = new ArrayList<>();
+    static List<InputDataParser> inputDataParserDepot = new ArrayList<>();
     private CharType type;
     private double temporalValue;
 
@@ -25,18 +25,18 @@ public class Parsable {
         } catch (NumberFormatException e) {
             try {
                 streamToValue(parsed);
-                parsableDepot.add(new Parsable(streamToValue(parsed), CharType.NUMBER));
+                inputDataParserDepot.add(new InputDataParser(streamToValue(parsed), CharType.NUMBER));
             } catch (NumberFormatException f) {
                 if (CharIdentification.whatType(number) == CharType.OPERATOR) {
                     int temp = CharIdentification.toAlgebraicOperator(number);
-                    parsableDepot.add(new Parsable((double)temp, CharType.OPERATOR));
+                    inputDataParserDepot.add(new InputDataParser((double)temp, CharType.OPERATOR));
                 }
             }
             resetParsed();
         }
     }
 
-    private Parsable(double temporalValue, CharType type) {
+    private InputDataParser(double temporalValue, CharType type) {
         setTemporalValue(temporalValue);
         setType(type);
     }
