@@ -5,26 +5,37 @@ public class OperationTree {
     OperationTree
             operand$1 = null,
             operand$2 = null;
-    Operationable operation = null;
+    Operation operation = null;
     double value = Double.NaN;
 
-    OperationTree(){
-        if (head == null) head = this;
+    static boolean isEmpty() {
+        return head == null;
     }
 
-    OperationTree(OperationTree operand$1, OperationTree operand$2){
-        if (head == null || head == operand$1 || head == operand$2) head = this;
-        this.operand$1 = operand$1;
-        this.operand$1 = operand$2;
+    OperationTree() {
+        if (isEmpty()) head = this;
     }
 
-    OperationTree(Operationable operation, OperationTree operand$1, OperationTree operand$2){
-        this(operand$1, operand$2);
-        this.operation = operation;
+    OperationTree(OperationTree op_1, OperationTree op_2){
+        if(head==null || head == op_1 || head == op_2) head = this;
+        operand$1 = op_1;
+        operand$2 = op_2;
     }
 
-    OperationTree(double value){
-        if(head==null) head = this;
-        this.value = value;
+    OperationTree(OperationTree op){
+        if(head == null || head == op) head = this;
+        if(operand$1==null)operand$1 = op;
     }
+
+    OperationTree(Operation op){
+        super();
+        operation = op;
+    }
+
+    public static void main(String[] args) {
+        OperationTree test = new OperationTree(new OperationTree(),new OperationTree());
+        System.out.println(head.equals(test));
+        System.out.println();
+    }
+
 }
