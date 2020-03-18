@@ -2,8 +2,10 @@ import org.junit.*;
 
 public class OperationTreeTest {
 
+//    @Ignore
     @Test
     public void OperationTree_01() {
+        OperationTree.head = null;
         Assert.assertNull(OperationTree.head);
         OperationTree test = new OperationTree();
         Assert.assertSame(test, OperationTree.head);
