@@ -1,3 +1,6 @@
+package _temp;
+
+import _temp.InputDataParser;
 import org.junit.*;
 
 public class InputDataParserTest {

@@ -1,4 +1,4 @@
-
+package _temp;
 
 /*public */enum CharType{
 

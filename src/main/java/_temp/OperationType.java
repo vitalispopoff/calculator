@@ -1,3 +1,5 @@
+package _temp;
+
 public enum OperationType {
 
     NULL,

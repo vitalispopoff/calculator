@@ -1,15 +1,15 @@
 @startuml
 
 interface AlgebraicOperational
-interface CharIdentification
+interface _temp.CharIdentification
 class AlgebraicOperation
 class Number
 class OperationCache
 
 AlgebraicOperational <.. AlgebraicOperation
 AlgebraicOperational o-- Number : static
-CharIdentification  o..o OperationCache
-AlgebraicOperational o.. CharIdentification
+_temp.CharIdentification  o..o OperationCache
+AlgebraicOperational o.. _temp.CharIdentification
 
 OperationCache o-- Number
 

@@ -6,7 +6,7 @@ public class OperationTree {
             operand$1 = null,
             operand$2 = null;
     Operationable operation = null;
-    double result = Double.NaN;
+    double value = Double.NaN;
 
     OperationTree(){
         if (head == null) head = this;
@@ -18,9 +18,13 @@ public class OperationTree {
         this.operand$1 = operand$2;
     }
 
-    OperationTree(double result){
-        if(head==null) head = this;
-        this.result = result;
+    OperationTree(Operationable operation, OperationTree operand$1, OperationTree operand$2){
+        this(operand$1, operand$2);
+        this.operation = operation;
     }
 
+    OperationTree(double value){
+        if(head==null) head = this;
+        this.value = value;
+    }
 }
