@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Operation;
 import org.junit.*;
 
 public class OperationTreeTest {
@@ -71,11 +70,38 @@ public class OperationTreeTest {
         Assert.assertFalse(OperationTree.isEmpty());
     }
 
+    @Ignore
     @Test
-    public void operate_01() {
+    public void operate_01(){
         OperationTree.head = null;
-
         OperationTree
+                opT03 = new OperationTree(1.),
+                opT02 = new OperationTree( -1.),
+                opT01 = new OperationTree(opT02, opT03);
+        Operational
+                op$01 = new OperationalAddition(opT01);
+
+//        * PRETEST *
+        Assert.assertSame(opT01, op$01.mother);
+        Assert.assertEquals(Double.NaN, op$01.mother.value,0. );
+        Assert.assertSame(op$01.mother.operand$1, opT02);
+        Assert.assertEquals(-1., op$01.mother.operand$1.value,0.);
+        Assert.assertSame(op$01.mother.operand$2, opT03);
+        Assert.assertEquals(1., op$01.mother.operand$2.value, 0.);
+        opT01.operation.operate();
+Assert.assertEquals(0., opT01.value,0.);
+
+//        Assert.assertEquals(0.0, op$01.operate(), 0.);
+
+
+
+    }
+
+    @Ignore
+    @Test
+    public void operate_0x() {
+        OperationTree.head = null;
+      /*  OperationTree
                 opT_B = new OperationTree(3.),
                 opT_A = new OperationTree(2.),
                 opT_9 = new OperationTree(4.),
@@ -96,9 +122,6 @@ public class OperationTreeTest {
 
         Assert.assertSame(OperationTree.head, opT_1);   //  this ai bonus: although opT_1 is last to be declared it's the root for all the tree hence should be declared head.
         opT_1.operate();
-        Assert.assertEquals( 10.5,opT_1.value, 0.);
+        Assert.assertEquals( 10.5,opT_1.value, 0.);*/
     }
-
-
-
 }

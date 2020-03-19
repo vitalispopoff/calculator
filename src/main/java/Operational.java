@@ -1,3 +1,5 @@
+import static java.lang.Double.NaN;
+
 public class Operational {
 
     OperationTree mother = null;
@@ -6,5 +8,11 @@ public class Operational {
         this.mother = mother;
     }
 
-    void operate(){}
+    double operate(){
+        return NaN;
+    }
+
+    static double operate(OperationTree op_1, OperationTree op_2){
+        return NaN;
+    }
 }
