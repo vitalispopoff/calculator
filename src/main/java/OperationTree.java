@@ -1,4 +1,4 @@
-import static sun.misc.DoubleConsts.NaN;
+import static java.lang.Double.NaN;
 
 public class OperationTree {
 
@@ -8,7 +8,7 @@ public class OperationTree {
             operand$1 = null,
             operand$2 = null;
     Operational operation = null;
-    double value = Double.NaN;
+    double value = NaN;
 
     static boolean isEmpty() {
         return head == null;
@@ -53,5 +53,4 @@ public class OperationTree {
         System.out.println(head.equals(test));
         System.out.println();
     }
-
 }

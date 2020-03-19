@@ -1,8 +1,6 @@
-import static sun.misc.DoubleConsts.NaN;
+public class OperationalRoots extends Operational {
 
-public class Addition extends Operational {
-
-    Addition(OperationTree mother) {
+    OperationalRoots(OperationTree mother) {
         super(mother);
         this.mother = mother;
         mother.setOperation(this);
@@ -11,7 +9,7 @@ public class Addition extends Operational {
     @Override
     void operate() {
         if (mother.isOperationable())
-            mother.value = mother.operand$1.value + mother.operand$2.value;
+            mother.value = Math.pow(mother.operand$1.value, 1./ mother.operand$2.value);
     }
 
     public static void main(String[] args) { }
