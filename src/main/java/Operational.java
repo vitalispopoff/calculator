@@ -5,5 +5,6 @@ public class Operational {
     Operational(OperationTree mother){
         this.mother = mother;
     }
+
     void operate(){}
 }

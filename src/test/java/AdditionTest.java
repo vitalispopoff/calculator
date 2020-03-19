@@ -8,7 +8,7 @@ public class AdditionTest {
                 op_1 = new OperationTree(-1.),
                 op_2 = new OperationTree(1.),
                 test = new OperationTree(op_1, op_2);
-        Operational add_ = new Addition(test);
+        Operational add_ = new OperationalAddition(test);
 
         Assert.assertSame(test, add_.mother);
         Assert.assertSame(add_, test.operation);
@@ -21,7 +21,7 @@ public class AdditionTest {
                 op_1 = new OperationTree(-1.),
                 op_2 = new OperationTree(1.),
                 test = new OperationTree(op_1, op_2);
-        Operational add_ = new Addition(test);
+        Operational add_ = new OperationalAddition(test);
         add_.operate();
         Assert.assertEquals(test.value,0.,0);
         Assert.assertEquals(OperationTree.head.value,0.,0);
