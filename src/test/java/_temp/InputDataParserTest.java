@@ -3,6 +3,7 @@ package _temp;
 import _temp.InputDataParser;
 import org.junit.*;
 
+@Ignore
 public class InputDataParserTest {
 
     @Test
