@@ -10,5 +10,9 @@ public class Operational {
         this.mother.setCalculation(this);
     }
 
+    Operational(double value){
+        this.value = value;
+    }
+
     void operate(){}
 }

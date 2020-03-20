@@ -17,6 +17,12 @@ public class OperationTree {
         operand$2 = op_2;
     }
 
+    OperationTree(Operational calculation){
+        this();
+        this.calculation = calculation;
+    }
+
+
     void setCalculation(Operational calculation){
         this.calculation = calculation;
     }
