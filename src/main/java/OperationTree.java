@@ -8,11 +8,6 @@ public class OperationTree {
             operand$1 = null,
             operand$2 = null;
     Operational operation = null;
-    double value = NaN;
-
-    static boolean isEmpty() {
-        return head == null;
-    }
 
     OperationTree() {
         if (isEmpty()) head = this;
@@ -24,33 +19,11 @@ public class OperationTree {
         operand$2 = op_2;
     }
 
-    OperationTree(OperationTree op) {
-        if (head == null || head == op) head = this;
-        if (operand$1 == null) operand$1 = op;
+    void setOperation(Operational operation){
+        this.operation = operation;
     }
 
-    OperationTree(Operational op) {
-        this();
-        this.operation = op;
-        op.mother = this;
-    }
-
-    OperationTree(double value){
-        this();
-        this.value = value;
-    }
-
-    boolean isOperationable() {
-        return !(operand$1 == null || operand$2 == null);
-    }
-
-    void setOperation(Operational op){
-        this.operation = op;
-    }
-
-    public static void main(String[] args) {
-        OperationTree test = new OperationTree(new OperationTree(), new OperationTree());
-        System.out.println(head.equals(test));
-        System.out.println();
+    static boolean isEmpty() {
+        return head == null;
     }
 }
