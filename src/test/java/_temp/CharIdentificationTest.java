@@ -2,6 +2,7 @@ package _temp;
 
 import org.junit.*;
 
+@Ignore
 public class CharIdentificationTest {
 
     @Test
