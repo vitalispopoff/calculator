@@ -32,8 +32,21 @@ public abstract class CalculationTree {
         this.value = value;
     }
 
+    double operate(double op_1Value, double op_2Value){
+        return NaN;
+    }
+
     double setValue() {
-        return value;
+        boolean
+                isNaN = ((Double) this.value).isNaN(),
+                op_1IsNaN = ((Double) op_1.value).isNaN(),
+                op_2IsNaN = ((Double) op_2.value).isNaN();
+        double
+                op_1Value = op_1IsNaN ? op_1.setValue() : this.op_1.value,
+                op_2Value = op_2IsNaN ? op_2.setValue() : this.op_2.value,
+                result = isNaN ? operate(op_1Value, op_2Value) : this.value;
+        this.setValue(result);
+        return result;
     }
 
     static boolean isEmpty() {

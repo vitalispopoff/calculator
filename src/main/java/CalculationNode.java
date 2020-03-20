@@ -1,3 +1,5 @@
+import static java.lang.Double.NaN;
+
 public class CalculationNode extends CalculationTree {
 
     CalculationNode(){
@@ -8,6 +10,4 @@ public class CalculationNode extends CalculationTree {
         super(value);
     }
 
-    @Override
-    double setValue(){return value;}
 }
