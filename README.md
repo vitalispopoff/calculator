@@ -1,12 +1,16 @@
 # calculator
 
 A standard calculator application developed as an exercise in TDD methodology.
-
 Definitely not a droid You're lookin' for. Move along.
 
 * * *
 
 # versions:
+
+0.0.7 (start from scratch again) :
++ parsing moved aside (_temp)
++ binary tree based calculation stack
++ two operand calculation method formula 
 
 0.0.6 (start from scratch) :
 + basic data stream parsing
