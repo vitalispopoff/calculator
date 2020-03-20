@@ -26,4 +26,6 @@ public class CalculationNodeTest {
                 node00 = new CalculationNode(1.);
         Assert.assertEquals(1., node00.getValue(), 0.);
     }
+
+
 }

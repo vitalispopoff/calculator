@@ -32,6 +32,8 @@ public abstract class CalculationTree {
         this.value = value;
     }
 
+    void setValue(){ }
+
     static boolean isEmpty() {
         return root == null;
     }

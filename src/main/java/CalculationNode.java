@@ -7,4 +7,7 @@ public class CalculationNode extends CalculationTree {
     CalculationNode(double value){
         super(value);
     }
+
+    @Override
+    void setValue(){}
 }
