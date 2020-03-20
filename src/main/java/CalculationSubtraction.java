@@ -1,6 +1,6 @@
-public class CalculationSubtraction extends CalculationTree {
+public class CalculationSubtraction extends CalculationNode {
 
-    CalculationSubtraction(CalculationTree op_1, CalculationTree op_2) {
+    CalculationSubtraction(CalculationNode op_1, CalculationNode op_2) {
         super(op_1, op_2);
     }
 

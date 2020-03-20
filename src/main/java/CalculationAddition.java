@@ -1,7 +1,7 @@
 
-public class CalculationAddition extends CalculationTree {
+public class CalculationAddition extends CalculationNode {
 
-    CalculationAddition(CalculationTree op_1, CalculationTree op_2) {
+    CalculationAddition(CalculationNode op_1, CalculationNode op_2) {
         super(op_1, op_2);
     }
 
