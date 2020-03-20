@@ -7,6 +7,8 @@ public class Operational {
 
     Operational(OperationTree mother){
         this.mother = mother;
+        this.mother.setCalculation(this);
     }
+
     void operate(){}
 }

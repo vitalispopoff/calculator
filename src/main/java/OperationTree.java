@@ -1,5 +1,3 @@
-import static java.lang.Double.NaN;
-
 public class OperationTree {
 
     static OperationTree
@@ -7,7 +5,7 @@ public class OperationTree {
     OperationTree
             operand$1 = null,
             operand$2 = null;
-    Operational operation = null;
+    Operational calculation = null;
 
     OperationTree() {
         if (isEmpty()) head = this;
@@ -19,8 +17,8 @@ public class OperationTree {
         operand$2 = op_2;
     }
 
-    void setOperation(Operational operation){
-        this.operation = operation;
+    void setCalculation(Operational calculation){
+        this.calculation = calculation;
     }
 
     static boolean isEmpty() {
