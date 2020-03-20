@@ -19,20 +19,22 @@ public abstract class CalculationTree {
         this.op_2 = op_2;
     }
 
-    CalculationTree(double value){
+    CalculationTree(double value) {
         this();
         this.value = value;
     }
 
-    double getValue(){
+    double getValue() {
         return value;
     }
 
-    void setValue(double value){
+    void setValue(double value) {
         this.value = value;
     }
 
-    void setValue(){ }
+    double setValue() {
+        return value;
+    }
 
     static boolean isEmpty() {
         return root == null;

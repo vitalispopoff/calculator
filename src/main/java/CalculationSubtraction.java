@@ -1,13 +1,6 @@
-import static java.lang.Double.*;
+public class CalculationSubtraction extends CalculationTree {
 
-
-public class CalculationAddition extends CalculationTree {
-
-    /*CalculationAddition() {
-        super();
-    }*/     // TODO blank constructor - disposable
-
-    CalculationAddition(CalculationTree op_1, CalculationTree op_2) {
+    CalculationSubtraction(CalculationTree op_1, CalculationTree op_2) {
         super(op_1, op_2);
     }
 
@@ -20,7 +13,7 @@ public class CalculationAddition extends CalculationTree {
         double
                 op_1Value = op_1IsNaN ? op_1.setValue() : this.op_1.value,
                 op_2Value = op_2IsNaN ? op_2.setValue() : this.op_2.value,
-                result = isNaN ? op_1Value + op_2Value : this.value;
+                result = isNaN ? op_1Value - op_2Value : this.value;
         this.setValue(result);
         return result;
     }

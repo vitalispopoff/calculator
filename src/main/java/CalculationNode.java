@@ -9,5 +9,5 @@ public class CalculationNode extends CalculationTree {
     }
 
     @Override
-    void setValue(){}
+    double setValue(){return value;}
 }
