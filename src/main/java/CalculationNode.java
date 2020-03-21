@@ -1,9 +1,10 @@
 import static java.lang.Double.NaN;
 
-public abstract class CalculationNode {
+public abstract class CalculationNode /*implements CalculationTree*/ {
 
     static CalculationNode
-            root = null;
+            root = null,
+            head = null;
     CalculationNode
             op_1 = null,
             op_2 = null;
@@ -11,12 +12,17 @@ public abstract class CalculationNode {
 
     CalculationNode() {
         if (isEmpty()) root = this;
+        head = this;
     }
 
     CalculationNode(CalculationNode op_1, CalculationNode op_2) {
         if (root == null || root == op_1 || root == op_2) root = this;
         this.op_1 = op_1;
         this.op_2 = op_2;
+    }
+
+    CalculationNode(String string) {
+
     }
 
     CalculationNode(double value) {
@@ -28,28 +34,35 @@ public abstract class CalculationNode {
         return value;
     }
 
-    void setValue(double value) {
-        this.value = value;
-    }
-
-    double operate(double op_1Value, double op_2Value){
-        return NaN;
+    double setValue(double value) {
+        return this.value = value;
     }
 
     double setValue() {
-        boolean
-                isNaN = ((Double) this.value).isNaN(),
-                op_1IsNaN = ((Double) op_1.value).isNaN(),
-                op_2IsNaN = ((Double) op_2.value).isNaN();
         double
-                op_1Value = op_1IsNaN ? op_1.setValue() : this.op_1.value,
-                op_2Value = op_2IsNaN ? op_2.setValue() : this.op_2.value,
-                result = isNaN ? operate(op_1Value, op_2Value) : this.value;
-        this.setValue(result);
-        return result;
+                op_1Value = op_1.valueIsNaN() ? op_1.setValue() : this.op_1.value,
+                op_2Value = op_2.valueIsNaN() ? op_2.setValue() : this.op_2.value,
+                result = this.valueIsNaN() ? operate(op_1Value, op_2Value) : this.value;
+        return this.setValue(result);
+    }
+
+    double operate(double op_1Value, double op_2Value) {
+        return NaN;
     }
 
     static boolean isEmpty() {
         return root == null;
     }
+
+    boolean valueIsNaN() {
+        return ((Double) value).isNaN();
+    }
+
+    void insertAsOperand() {
+    }
+
+    void insertAsOperator() {
+    }
+
+
 }

@@ -1,11 +1,14 @@
 public class CalculationValue extends CalculationNode {
 
-    CalculationValue(){
+    CalculationValue() {
         super();
     }
 
-    CalculationValue(double value){
+    CalculationValue(double value) {
         super(value);
     }
+
+    @Override
+    void insertAsOperand() {}
 
 }
