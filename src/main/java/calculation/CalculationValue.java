@@ -1,3 +1,5 @@
+package calculation;
+
 public class CalculationValue extends CalculationNode {
 
     CalculationValue() {

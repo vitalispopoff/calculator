@@ -1,3 +1,4 @@
+package calculation;
 
 public class CalculationAddition extends CalculationNode {
 

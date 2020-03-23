@@ -1,6 +1,8 @@
+package calculation;
+
 import static java.lang.Double.NaN;
 
-public abstract class CalculationNode /*implements CalculationTree*/ {
+public abstract class CalculationNode /*implements calculation.CalculationTree*/ {
 
     static CalculationNode
             root = null,
