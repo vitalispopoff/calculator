@@ -4,7 +4,7 @@ import static java.lang.Double.NaN;
 
 public abstract class CalculationNode /*implements calculation.CalculationTree*/ {
 
-    static CalculationNode
+    public static CalculationNode
             root = null,
             head = null;
     CalculationNode
@@ -12,7 +12,7 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
             op_2 = null;
     double value = NaN;
 
-    CalculationNode() {
+    public CalculationNode() {
         if (isEmpty()) root = this;
         head = this;
     }
@@ -40,7 +40,7 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
         return this.value = value;
     }
 
-    double setValue() {
+    public double setValue() {
         double
                 op_1Value = op_1.valueIsNaN() ? op_1.setValue() : this.op_1.value,
                 op_2Value = op_2.valueIsNaN() ? op_2.setValue() : this.op_2.value,
@@ -48,7 +48,7 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
         return this.setValue(result);
     }
 
-    double operate(double op_1Value, double op_2Value) {
+    public double operate(double op_1Value, double op_2Value) {
         return NaN;
     }
 

@@ -1,8 +1,14 @@
 package gui;
 
+import calculation.CalculationNode;
+
+import static calculation.CalculationNode.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+import static gui.Parsable.valueWriter;
 
 public class MainPanel extends JPanel {
 
@@ -22,10 +28,10 @@ public class MainPanel extends JPanel {
         add(display);
 
         String[][] buttons = {
-                {"", "", "", "", ""},
-                {"7", "8", "9", "+"},
-                {"4", "5", "6", "-"},
-                {"1", "2", "3", "*"},
+                {"", "", "", "", "*"},
+                {"7", "8", "9", "/"},
+                {"4", "5", "6", "+"},
+                {"1", "2", "3", "-"},
                 {"0", ".", "+/-", "="}
         };
 
@@ -33,9 +39,21 @@ public class MainPanel extends JPanel {
             for (int j = 0; j < 4; j++) {
                 JButton button = new JButton();
                 button.setText(buttons[i][j]);
-                button.addActionListener(e -> {
-//                    equationWriter(button.getText().charAt(0));   // TODO fix
-                });
+                if (i > 0 && j < 3)
+                    button.addActionListener(e -> {
+                        valueWriter(button.getText().charAt(0));    // TODO link to a number string assembler
+                    });
+                else if(i == 4 && j == 4)
+                    button.addActionListener(e ->{
+                        head.setValue();
+                    });
+                else{
+                    button.addActionListener(e ->{
+//                        new CalculationNode().operate(); TODO link to a calculation operations
+                    });
+                }
+
+
                 button.setBounds(j * tile, (i + 1) * tile, tile, tile);
                 button.addKeyListener(numKey);
                 add(button);
