@@ -10,7 +10,7 @@ public class CalculationValue extends CalculationNode {
         super(value);
     }
 
-    @Override
-    void insertAsOperand() {}
+//    @Override
+//    void insertAsOperand() {}
 
 }

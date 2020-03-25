@@ -1,58 +1,57 @@
 package gui;
 
-import calculation.CalculationNode;
+//import calculation.CalculationNode;
+
+import calculation.CalculationTree;
 
 import static calculation.CalculationNode.*;
+import static gui.Parsable.valueWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.Serializable;
 
-import static gui.Parsable.valueWriter;
+public class MainPanel extends JPanel implements Serializable {
 
-public class MainPanel extends JPanel {
-
-    static int tile = 0;
+    static int tile = 60;
     static JLabel display;
+    static Character[][] buttons = {
+            {'C', 'ɶ', '^', '√', '*'},
+            {'7', '8', '9', '/'},
+            {'4', '5', '6', '+'},
+            {'1', '2', '3', '-'},
+            {'0', '.', '∓', '='}
+    };
+
     private KeyListener numKey;
 
     public MainPanel(int value) {
+
         tile = tile == 0 ? value : tile;
         display = new JLabel("", SwingConstants.RIGHT);
+        display.setBounds(0, 0, (tile << 2) - (tile >> 2), tile);
 
         setLayout(null);
-
-        display = new JLabel("", SwingConstants.RIGHT);
         defineKeyListener();
-        display.setBounds(0, 0, (tile << 2) - (tile >> 2), tile);
         add(display);
-
-        String[][] buttons = {
-                {"", "", "", "", "*"},
-                {"7", "8", "9", "/"},
-                {"4", "5", "6", "+"},
-                {"1", "2", "3", "-"},
-                {"0", ".", "+/-", "="}
-        };
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
+                char c = buttons[i][j];
                 JButton button = new JButton();
-                button.setText(buttons[i][j]);
-                if (i > 0 && j < 3)
-                    button.addActionListener(e -> {
-                        valueWriter(button.getText().charAt(0));    // TODO link to a number string assembler
-                    });
-                else if(i == 4 && j == 4)
-                    button.addActionListener(e ->{
-                        head.setValue();
-                    });
-                else{
-                    button.addActionListener(e ->{
-//                        new CalculationNode().operate(); TODO link to a calculation operations
-                    });
-                }
+                button.setText("" + c);
 
+                button.addActionListener(e -> {
+                    if ((c > 47 && c < 58) || c == 8723) valueWriter(button.getText().charAt(0));
+                    else if (c == 61) head.setValue();
+                    else if (c == 94) CalculationTree.addAsRoot();  // exponentiation;
+                    else if (c == 8730) CalculationTree.addAsRoot();  // roots;
+                    else if (c == 42) CalculationTree.addAsRoot();  // multiplication;
+                    else if (c == 47) CalculationTree.addAsRoot();  // division;
+                    else if (c == 43) CalculationTree.addAsRoot();  // addition;
+                    else if (c == 45) CalculationTree.addAsRoot();  // subtraction;
+                });
 
                 button.setBounds(j * tile, (i + 1) * tile, tile, tile);
                 button.addKeyListener(numKey);
@@ -63,7 +62,7 @@ public class MainPanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(4 * tile, 5 * tile);
+        return new Dimension(4 * tile, 6 * tile);
     }
 
     private void defineKeyListener() {
@@ -82,5 +81,9 @@ public class MainPanel extends JPanel {
             public void keyReleased(KeyEvent g) {
             }
         };
+    }
+
+    public static void main(String[] args) {
+        System.out.println((char) 8730);
     }
 }

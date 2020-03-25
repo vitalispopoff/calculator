@@ -5,11 +5,13 @@ public interface CalculationTree {
     static CalculationNode
             root = null;
 
-    void addAsRoot();
+    static void addAsRoot(){};
 
-    void addAsLeaf();
+    static void addAsLeaf(){};
 
-    void addAsBranch();
+    static void addAsBranch(){};
+
+
 
 
     /*

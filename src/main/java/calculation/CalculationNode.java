@@ -23,9 +23,7 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
         this.op_2 = op_2;
     }
 
-    CalculationNode(String string) {
-
-    }
+//    CalculationNode(String string) {}
 
     CalculationNode(double value) {
         this();
@@ -60,11 +58,7 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
         return ((Double) value).isNaN();
     }
 
-    void insertAsOperand() {
-    }
+//    void insertAsOperand() {}
 
-    void insertAsOperator() {
-    }
-
-
+//    void insertAsOperator() {}
 }
