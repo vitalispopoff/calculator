@@ -3,15 +3,14 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serializable;
 
-public class MainFrame extends JFrame implements Serializable {
+public class MainFrame extends JFrame {
 
     public MainFrame(Settings settings) throws HeadlessException {
         setWindowAnchor(settings.windowAnchor);
-        setResizable(false);
+        setResizable(settings.windowResizable);
         setMainPanel(settings.tile);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(settings.windowDefaultCloseOperation);
 
         addWindowListener(new WindowAdapter() {
             @Override

@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.io.Serializable;
@@ -7,14 +8,17 @@ import java.io.Serializable;
 public class Settings implements Serializable {
 
     private static String fileAddress = "src\\main\\resources\\settings.txt";
+    public boolean windowResizable = false;
     public int
             tile = 60,
             location_x = 200,
-            location_y = 200;
+            location_y = 200,
+            windowDefaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE;
     public Point
             windowAnchor = new Point(location_x, location_y);
 
-    public Settings() {}
+    public Settings() {
+    }
 
     public static Settings readSettings() {
         Settings cache = new Settings();
@@ -28,7 +32,7 @@ public class Settings implements Serializable {
         return cache;
     }
 
-    public /*static*/ void writeSettings(Point windowNewAnchor) {
+    public void writeSettings(Point windowNewAnchor) {
         setWindowAnchor(windowNewAnchor);
         try {
             FileOutputStream fos = new FileOutputStream(fileAddress);
@@ -46,3 +50,7 @@ public class Settings implements Serializable {
         this.windowAnchor = windowNewAnchor;
     }
 }
+
+/*
+ *   FileNotFoundException
+ * */

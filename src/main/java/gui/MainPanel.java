@@ -6,11 +6,10 @@ import static calculation.CalculationNode.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serializable;
 
 import calculation.CalculationTree;
 
-public class MainPanel extends JPanel implements Serializable {
+public class MainPanel extends JPanel {
 
     static int tile = 60;
     static JLabel display;

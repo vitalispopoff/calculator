@@ -2,7 +2,7 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public abstract class CalculationNode {
+public abstract class CalculationNode implements CalculationTree {
 
     public static CalculationNode
             root = null,
