@@ -9,8 +9,4 @@ public class CalculationValue extends CalculationNode {
     CalculationValue(double value) {
         super(value);
     }
-
-//    @Override
-//    void insertAsOperand() {}
-
 }

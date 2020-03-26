@@ -21,7 +21,6 @@ public class MainPanel extends JPanel implements Serializable {
             {'1', '2', '3', '-'},
             {'0', '.', '∓', '='}
     };
-
     private KeyListener numKey;
 
     public MainPanel(int value) {
@@ -81,8 +80,4 @@ public class MainPanel extends JPanel implements Serializable {
             }
         };
     }
-
-/*    public Point getWindowAnchorLocation(){
-        return getLocationOnScreen();
-    }*/
 }

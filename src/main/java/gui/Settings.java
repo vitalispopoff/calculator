@@ -4,12 +4,7 @@ import java.awt.*;
 import java.io.*;
 import java.io.Serializable;
 
-
 public class Settings implements Serializable {
-
-//    private static Toolkit kit = Toolkit.getDefaultToolkit();
-//    private static Dimension screenSize = kit.getScreenSize();
-//    static Settings settings;
 
     private static String fileAddress = "src\\main\\resources\\settings.txt";
     public int
@@ -19,8 +14,7 @@ public class Settings implements Serializable {
     public Point
             windowAnchor = new Point(location_x, location_y);
 
-    public Settings() {
-    }
+    public Settings() {}
 
     public static Settings readSettings() {
         Settings cache = new Settings();
@@ -33,7 +27,6 @@ public class Settings implements Serializable {
         }
         return cache;
     }
-
 
     public /*static*/ void writeSettings(Point windowNewAnchor) {
         setWindowAnchor(windowNewAnchor);

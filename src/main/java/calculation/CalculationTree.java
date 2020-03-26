@@ -2,18 +2,8 @@ package calculation;
 
 public interface CalculationTree {
 
-    static CalculationNode
-            root = null;
-
-    static void addAsRoot(){};
-
-    static void addAsLeaf(){};
-
-    static void addAsBranch(){};
-
-
-
-
+    static void addAsRoot(){}
+}
     /*
      * + basic tree:
      *   write operand$1 (root)
@@ -44,6 +34,4 @@ public interface CalculationTree {
      *   addition
      *   subtraction
      *
-     * */
-
-}
+     * */   // * temporal notes

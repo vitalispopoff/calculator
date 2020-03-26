@@ -7,12 +7,8 @@ import java.io.Serializable;
 
 public class MainFrame extends JFrame implements Serializable {
 
-//    public static Settings settings = new Settings();
-
-    public MainFrame(/*int tile, int location_x, int location_y, */Settings settings) throws HeadlessException {
-
-
-        setWindowAnchor(/*new Point(location_x, location_y*/ settings.windowAnchor);
+    public MainFrame(Settings settings) throws HeadlessException {
+        setWindowAnchor(settings.windowAnchor);
         setResizable(false);
         setMainPanel(settings.tile);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -20,10 +16,7 @@ public class MainFrame extends JFrame implements Serializable {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent anEvent) {
-//                Settings settingsCache = settings;
-
                 settings.writeSettings(getWindowAnchorLocation());
-
                 System.exit(0);
             }
         });

@@ -7,6 +7,10 @@ Definitely not a droid You're lookin' for. Move along.
 
 # versions:
 
+0.0.8 (basic gui)
++ early gui for the basic mode
++ serialized settings w/ screen location params
+
 0.0.7 (start from scratch again) :
 + parsing moved aside (_temp)
 + binary tree based calculation stack

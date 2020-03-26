@@ -2,7 +2,7 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public abstract class CalculationNode /*implements calculation.CalculationTree*/ {
+public abstract class CalculationNode {
 
     public static CalculationNode
             root = null,
@@ -22,8 +22,6 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
         this.op_1 = op_1;
         this.op_2 = op_2;
     }
-
-//    CalculationNode(String string) {}
 
     CalculationNode(double value) {
         this();
@@ -57,8 +55,4 @@ public abstract class CalculationNode /*implements calculation.CalculationTree*/
     boolean valueIsNaN() {
         return ((Double) value).isNaN();
     }
-
-//    void insertAsOperand() {}
-
-//    void insertAsOperator() {}
 }
