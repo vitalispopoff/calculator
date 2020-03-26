@@ -1,23 +1,21 @@
 package gui;
 
-//import calculation.CalculationNode;
-
-import calculation.CalculationTree;
-
-import static calculation.CalculationNode.*;
 import static gui.Parsable.valueWriter;
+import static calculation.CalculationNode.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.Serializable;
 
+import calculation.CalculationTree;
+
 public class MainPanel extends JPanel implements Serializable {
 
     static int tile = 60;
     static JLabel display;
     static Character[][] buttons = {
-            {'C', 'ɶ', '^', '√', '*'},
+            {'C', /*'ɶ',*/ '^', '√', '*'},
             {'7', '8', '9', '/'},
             {'4', '5', '6', '+'},
             {'1', '2', '3', '-'},
@@ -43,14 +41,15 @@ public class MainPanel extends JPanel implements Serializable {
                 button.setText("" + c);
 
                 button.addActionListener(e -> {
-                    if ((c > 47 && c < 58) || c == 8723) valueWriter(button.getText().charAt(0));
-                    else if (c == 61) head.setValue();
-                    else if (c == 94) CalculationTree.addAsRoot();  // exponentiation;
-                    else if (c == 8730) CalculationTree.addAsRoot();  // roots;
-                    else if (c == 42) CalculationTree.addAsRoot();  // multiplication;
-                    else if (c == 47) CalculationTree.addAsRoot();  // division;
-                    else if (c == 43) CalculationTree.addAsRoot();  // addition;
-                    else if (c == 45) CalculationTree.addAsRoot();  // subtraction;
+                    if ((c > 47 && c < 58) || c == 46 || c == 8723) valueWriter(button.getText().charAt(0));
+                    else if (c == 61) head.setValue();                  // equals (exec calculation)
+                    else if (c == 94) CalculationTree.addAsRoot();      // exponentiation;
+                    else if (c == 8730) CalculationTree.addAsRoot();    // roots;
+                    else if (c == 42) CalculationTree.addAsRoot();      // multiplication;
+                    else if (c == 47) CalculationTree.addAsRoot();      // division;
+                    else if (c == 43) CalculationTree.addAsRoot();      // addition;
+                    else if (c == 45) CalculationTree.addAsRoot();      // subtraction;
+                    else if (c == 67) System.out.println(getLocationOnScreen());     // TODO clear
                 });
 
                 button.setBounds(j * tile, (i + 1) * tile, tile, tile);
@@ -83,7 +82,7 @@ public class MainPanel extends JPanel implements Serializable {
         };
     }
 
-    public static void main(String[] args) {
-        System.out.println((char) 8730);
-    }
+/*    public Point getWindowAnchorLocation(){
+        return getLocationOnScreen();
+    }*/
 }

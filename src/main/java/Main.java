@@ -1,5 +1,8 @@
-import javax.swing.*;
+//import javax.swing.*;
+
 import java.awt.*;
+//import java.awt.event.WindowAdapter;
+//import java.awt.event.WindowEvent;
 import java.io.*;
 
 import gui.MainFrame;
@@ -10,7 +13,9 @@ public class Main implements Serializable {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
 
-            Settings settings = new Settings();
+            Settings settings = Settings.readSettings();
+//            setWindowAnchor(getLocationOnScreen())
+
 
             try {
                 FileOutputStream fos = new FileOutputStream("src\\main\\resources\\settings.txt");
@@ -18,17 +23,15 @@ public class Main implements Serializable {
                 oos.writeObject(settings);
                 oos.close();
                 fos.close();
-
-                FileInputStream fis = new FileInputStream("src\\main\\resources\\settings.txt");
+/*                FileInputStream fis = new FileInputStream("src\\main\\resources\\settings.txt");
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 settings = (Settings) ois.readObject();
-
+                */
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            MainFrame mainWindow = new MainFrame(settings.tile, settings.location_x, settings.location_y);
-            mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            MainFrame mainWindow = new MainFrame(/*settings.tile, settings.location_x, settings.location_y, */settings);
             mainWindow.setVisible(true);
         });
     }
