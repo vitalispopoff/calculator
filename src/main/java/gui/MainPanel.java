@@ -14,18 +14,20 @@ public class MainPanel extends JPanel {
     static int tile = 60;
     static JLabel display;
     static Character[][] buttons = {
-            {'C', /*'ɶ',*/ '^', '√', '*'},
+            {'C', '^', '√', '*'},
             {'7', '8', '9', '/'},
             {'4', '5', '6', '+'},
             {'1', '2', '3', '-'},
             {'0', '.', '∓', '='}
     };
+    Settings settings;
     private KeyListener numKey;
 
-    public MainPanel(int value) {
+    public MainPanel(Settings value) {
+        this.settings = value;
 
-        tile = tile == 0 ? value : tile;
-        display = new JLabel("", SwingConstants.RIGHT);
+        tile = tile == 0 ? value.tile : tile;
+        display = new MainDisplay (settings,"", SwingConstants.RIGHT);
         display.setBounds(0, 0, (tile << 2) - (tile >> 2), tile);
 
         setLayout(null);
