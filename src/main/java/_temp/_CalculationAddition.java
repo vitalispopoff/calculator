@@ -1,8 +1,8 @@
-package calculation;
+package _temp;
 
-public class CalculationAddition extends CalculationNode {
+public class _CalculationAddition extends _CalculationNode {
 
-    CalculationAddition(CalculationNode op_1, CalculationNode op_2) {
+    _CalculationAddition(_CalculationNode op_1, _CalculationNode op_2) {
         super(op_1, op_2);
     }
 

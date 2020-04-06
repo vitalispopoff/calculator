@@ -1,13 +1,13 @@
 package gui;
 
 import static gui.Parsable.valueWriter;
-import static calculation.CalculationNode.*;
+import static _temp._CalculationNode.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import calculation.CalculationTree;
+import _temp._CalculationTree;
 
 public class MainPanel extends JPanel {
 
@@ -43,12 +43,12 @@ public class MainPanel extends JPanel {
                 button.addActionListener(e -> {
                     if ((c > 47 && c < 58) || c == 46 || c == 8723) valueWriter(button.getText().charAt(0));
                     else if (c == 61) head.setValue();                  // equals (exec calculation)
-                    else if (c == 94) CalculationTree.addAsRoot();      // exponentiation;
-                    else if (c == 8730) CalculationTree.addAsRoot();    // roots;
-                    else if (c == 42) CalculationTree.addAsRoot();      // multiplication;
-                    else if (c == 47) CalculationTree.addAsRoot();      // division;
-                    else if (c == 43) CalculationTree.addAsRoot();      // addition;
-                    else if (c == 45) CalculationTree.addAsRoot();      // subtraction;
+                    else if (c == 94) _CalculationTree.addAsRoot();      // exponentiation;
+                    else if (c == 8730) _CalculationTree.addAsRoot();    // roots;
+                    else if (c == 42) _CalculationTree.addAsRoot();      // multiplication;
+                    else if (c == 47) _CalculationTree.addAsRoot();      // division;
+                    else if (c == 43) _CalculationTree.addAsRoot();      // addition;
+                    else if (c == 45) _CalculationTree.addAsRoot();      // subtraction;
                     else if (c == 67) System.out.println(getLocationOnScreen());     // TODO clear
                 });
 

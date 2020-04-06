@@ -1,6 +1,6 @@
-package calculation;
+package _temp;
 
-public interface CalculationTree {
+public interface _CalculationTree {
 
     static void addAsRoot(){}
 }

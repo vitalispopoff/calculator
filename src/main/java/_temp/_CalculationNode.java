@@ -1,29 +1,29 @@
-package calculation;
+package _temp;
 
 import static java.lang.Double.NaN;
 
-public abstract class CalculationNode implements CalculationTree {
+public abstract class _CalculationNode implements _CalculationTree {
 
-    public static CalculationNode
+    public static _CalculationNode
             root = null,
             head = null;
-    CalculationNode
+    _CalculationNode
             op_1 = null,
             op_2 = null;
     double value = NaN;
 
-    public CalculationNode() {
+    public _CalculationNode() {
         if (isEmpty()) root = this;
         head = this;
     }
 
-    CalculationNode(CalculationNode op_1, CalculationNode op_2) {
+    _CalculationNode(_CalculationNode op_1, _CalculationNode op_2) {
         if (root == null || root == op_1 || root == op_2) root = this;
         this.op_1 = op_1;
         this.op_2 = op_2;
     }
 
-    CalculationNode(double value) {
+    _CalculationNode(double value) {
         this();
         this.value = value;
     }
