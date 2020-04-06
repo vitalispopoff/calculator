@@ -3,7 +3,7 @@ package _temp;
 import org.junit.*;
 
 @Ignore
-public class CharIdentificationTest {
+public class _CharIdentificationTest {
 
     @Test
     public void whatType_01() {

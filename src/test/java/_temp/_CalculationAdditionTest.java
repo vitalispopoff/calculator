@@ -1,8 +1,11 @@
-package calculation;
+package _temp;
 
+import calculation.CalculationAddition;
+import calculation.CalculationNode;
+import calculation.CalculationValue;
 import org.junit.*;
 
-public class CalculationAdditionTest {
+public class _CalculationAdditionTest {
 
     @Test   //  constructor
     public void CalculationAddition_1() {

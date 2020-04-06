@@ -1,8 +1,12 @@
-package calculation;
+package _temp;
 
+import calculation.CalculationAddition;
+import calculation.CalculationNode;
+import calculation.CalculationSubtraction;
+import calculation.CalculationValue;
 import org.junit.*;
 
-public class CalculationNodeTest {
+public class _CalculationNodeTest {
 
     @Test
     public void getValue_1() {

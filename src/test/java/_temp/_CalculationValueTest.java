@@ -1,8 +1,10 @@
-package calculation;
+package _temp;
 
+import calculation.CalculationNode;
+import calculation.CalculationValue;
 import org.junit.*;
 
-public class CalculationValueTest {
+public class _CalculationValueTest {
 
     @Test   //  constructor : root assignment
     public void CalculationNode_1() {
