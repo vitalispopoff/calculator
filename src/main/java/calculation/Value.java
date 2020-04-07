@@ -2,11 +2,25 @@ package calculation;
 
 public class Value extends Node {
 
-    Value(double value) {super(value);}
+    static final NodeType classType = NodeType.OPERATOR;
 
-    //    @formatter:off
-    Value() {super();}
-    Value(Node left, Node rite) {System.out.println("wrong constructor");}
-    //    @formatter:on
+    Value(double value) {
+        super(value);
+        this.type = classType;
+    }
+
+    Value() {
+        super();
+        this.type = classType;
+    }
+
+    Value(Node left, Node rite) {
+        System.out.println("wrong constructor");
+        this.type = classType;
+    }
+
+    public static void main(String[] args) {
+        Node val = new Value();
+    }
 
 }

@@ -25,7 +25,6 @@ public class CharIdentificationTest {
         }
     }
 
-
     @Test
     public void isInt_01() {
         Assert.assertTrue(CharIdentification.isInt('1'));
@@ -41,12 +40,10 @@ public class CharIdentificationTest {
         Assert.assertFalse(CharIdentification.isInt(':'));
     }
 
-
     @Test
     public void toIntTest_01() {
         Assert.assertEquals(0, CharIdentification.toInt('0'));
     }
-
 
     @Test
     public void isRadixPoint_01() {
@@ -58,12 +55,10 @@ public class CharIdentificationTest {
         Assert.assertFalse(CharIdentification.isRadixPoint(','));
     }
 
-
     @Test
     public void toInt_02() {
         Assert.assertEquals(1, CharIdentification.toInt('1'));
     }
-
 
     @Test
     public void isAlgebraicOperator_01() {
@@ -75,7 +70,6 @@ public class CharIdentificationTest {
         Assert.assertTrue(CharIdentification.isAlgebraicOperator('-'));
     }
 
-
     @Test
     public void toAlgebraicOperator_01(){
         Assert.assertEquals(1, CharIdentification.toAlgebraicOperator('*'));
@@ -83,8 +77,6 @@ public class CharIdentificationTest {
         Assert.assertEquals(3, CharIdentification.toAlgebraicOperator('-'));
         Assert.assertEquals(4,CharIdentification.toAlgebraicOperator('/'));
     }
-
-
 
     @Test
     public void isEquationOperator_01() {
@@ -95,7 +87,6 @@ public class CharIdentificationTest {
     public void isEquationOperator_02() {
         Assert.assertFalse(CharIdentification.isEquationOperator('1'));
     }
-
 
     @Test
     public void fromInt_01() {

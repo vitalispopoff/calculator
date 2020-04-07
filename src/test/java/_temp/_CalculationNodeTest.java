@@ -1,23 +1,24 @@
 package _temp;
 
-import calculation.CalculationAddition;
-import calculation.CalculationNode;
-import calculation.CalculationSubtraction;
-import calculation.CalculationValue;
+//import calculation.CalculationAddition;
+//import calculation.CalculationNode;
+//import calculation.CalculationSubtraction;
+//import calculation.CalculationValue;
 import org.junit.*;
 
+@Ignore
 public class _CalculationNodeTest {
 
-    @Test
-    public void getValue_1() {
+//    @Test
+/*    public void getValue_1() {
         CalculationNode.root = null;
         CalculationNode
                 node00 = new CalculationValue(1.);
         Assert.assertEquals(1., node00.getValue(), 0.);
-    }
+    }*/
 
-    @Test
-    public void recursive_setValue_1() {
+//    @Test
+/*    public void recursive_setValue_1() {
         CalculationNode.root = null;
         CalculationNode
                 node06 = new CalculationValue(1.),
@@ -31,5 +32,5 @@ public class _CalculationNodeTest {
                 node03.value + node04.value + node05.value - node06.value,
                 node00.setValue(),
                 0.);
-    }
+    }*/
 }

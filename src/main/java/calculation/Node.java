@@ -2,28 +2,39 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public abstract class Node {
+public abstract class Node /*implements _EquationTree*/ {
 
-    //    @formatter:off
     static Node
             mainRoot = null;
     Node
             localRoot = null,
             localLeft = null,
             localRite = null;
-    double value = NaN;
+    Double value = NaN;
+    NodeType type;
 
-    public Node() {}
-    public Node(double value) {setValue(value);}
+
+    public Node() {
+    }
+
+    public Node(double value) {
+        setValue(value);
+    }
+
     public Node(Node left, Node rite) {
         if (localRoot == null || localRoot == left || localRoot == rite) localRoot = this;
         localLeft = left;
         localRite = rite;
     }
 
-    void setMainRoot(){mainRoot = this;}
+    void setMainRoot() {
+        mainRoot = this;
+    }
 
-    void setValue(double value) {this.value = value;}
+    void setValue(double value) {
+        this.value = value;
+    }
+
     public double setValue() {
         double
                 LeftVal = localLeft.valueIsNaN() ? localLeft.setValue() : this.localLeft.value,
@@ -33,14 +44,18 @@ public abstract class Node {
         return result;
     }
 
-//    formatter:on
-
     boolean valueIsNaN() {
         return ((Double) value).isNaN();
     }
 
-    public double calculate(double left, double rite) {
+    public static double calculate(double left, double rite) {
         return NaN;
     }
+}
 
+enum NodeType {
+    BRACKET_IN,
+    BRACKET_OUT,
+    OPERATOR,
+    OPERAND
 }

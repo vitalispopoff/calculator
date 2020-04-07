@@ -2,8 +2,11 @@ package calculation;
 
 public abstract class Calculation extends Node {
 
+    static NodeType classType = NodeType.OPERATOR;
+
     Calculation(Node left, Node rite) {
         super(left, rite);
+        this.type = classType;
     }
 }
 
