@@ -2,7 +2,7 @@ package calculation;
 
 public class Value extends Node {
 
-    static final NodeType classType = NodeType.OPERATOR;
+    static final NodeType classType = NodeType.OPERAND;
 
     Value(double value) {
         super(value);
@@ -22,5 +22,4 @@ public class Value extends Node {
     public static void main(String[] args) {
         Node val = new Value();
     }
-
 }

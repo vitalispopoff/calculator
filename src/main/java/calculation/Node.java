@@ -13,7 +13,6 @@ public abstract class Node /*implements _EquationTree*/ {
     Double value = NaN;
     NodeType type;
 
-
     public Node() {
     }
 

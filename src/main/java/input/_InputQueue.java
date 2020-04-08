@@ -2,9 +2,9 @@ package input;
 
 import calculation.Node;
 
-public class Transmitter {
+public class _InputQueue {
 
-    static Node
+    Node
             head,
             tail;
 
