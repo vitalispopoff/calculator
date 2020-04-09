@@ -1,7 +1,5 @@
 package calculation;
 
-import static java.lang.Double.NaN;
-
 public abstract class Calculation extends Node {
 
     static NodeType classType = NodeType.OPERATOR;

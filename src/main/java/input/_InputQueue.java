@@ -1,28 +1,31 @@
 package input;
 
-public class _InputQueue extends Queuer /*implements Queueable*/ {
+public class _InputQueue extends Queuer {
 
     int length = 0;
     Queuer
             head = null,
             tail = null;
 
-    _InputQueue() {
+    _InputQueue(Queuer queuer) {
+        head = tail = queuer;
+        length++;
     }
 
-    _InputQueue(Queuer queuer) {
-        head = tail = null;
-        length++;
-    }   // ? TODO input parameter to be switched to Queueable ?
+    void setHead(Queuer node) {
+        this.head = node;
+    }
 
-    void addToQueue(Queuer queuer){
-        queuer.setPrevious(tail);
+    void addToQueue(Queuer queuer) {
+        queuer.setPrev(tail);
         tail = queuer;
         length++;
-    }   // ? TODO "joinQueue" ?
+    }                                   // ? TODO "joinQueue" ?
 
-    Queueable takeFromQueue(){
-
-    }
-
+    Queueable takeFromQueue() {
+        Queuer cache = head;
+        head = cache.next;
+        head.prev = cache.next = null;
+        return cache;
+    }                                   // ? TODO leaveQueue ?
 }

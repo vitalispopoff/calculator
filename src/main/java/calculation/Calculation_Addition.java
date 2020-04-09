@@ -1,7 +1,5 @@
 package calculation;
 
-import static java.lang.Double.NaN;
-
 public class Calculation_Addition extends Calculation {
 
     Calculation_Addition(Node left, Node rite) {
@@ -9,7 +7,7 @@ public class Calculation_Addition extends Calculation {
     }
 
     @Override
-    public /*static*/ double calculate(double left, double rite){
+    public double calculate(double left, double rite) {
         return left + rite;
     }
 }

@@ -10,12 +10,12 @@ public class ValueParser implements Parsable {
     }
 
     @Override
-    public boolean isNegative(){
+    public boolean isNegative() {
         return parserCache.charAt(0) == 45;
     }
 
     @Override
-    public boolean isFraction(){
+    public boolean isFraction() {
         return parserCache.indexOf(46) != -1;
     }
 

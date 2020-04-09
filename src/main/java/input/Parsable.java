@@ -35,4 +35,6 @@ public interface Parsable {
      * and resets the cache.
      */
     double clearCache();
+
+    static void valueWriter(char c){}
 }
