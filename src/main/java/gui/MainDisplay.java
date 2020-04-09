@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class MainDisplay extends JLabel {
 
-    Settings settings;
+    Settings settings;  // ? TODO isn't it disposable?
 
     public MainDisplay(Settings settings, String text, int horizontalAlignment) {
         super(text, horizontalAlignment);

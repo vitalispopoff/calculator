@@ -47,7 +47,7 @@ public abstract class Node /*implements _EquationTree*/ {
         return ((Double) value).isNaN();
     }
 
-    public static double calculate(double left, double rite) {
+    public double calculate(double left, double rite) {
         return NaN;
     }
 }

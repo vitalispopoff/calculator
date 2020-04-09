@@ -20,7 +20,7 @@ public class MainPanel extends JPanel {
             {'1', '2', '3', '-'},
             {'0', '.', '∓', '='}
     };
-    Settings settings;
+    Settings settings;      // ? TODO isn't it disposable ?
     private KeyListener numKey;
 
     public MainPanel(Settings value) {
@@ -28,7 +28,7 @@ public class MainPanel extends JPanel {
 
         tile = tile == 0 ? value.tile : tile;
         display = new MainDisplay (settings,"", SwingConstants.RIGHT);
-        display.setBounds(0, 0, (tile << 2) - (tile >> 2), tile);
+//        display.setBounds(0, 0, (tile << 2) - (tile >> 2), tile);     // TODO disposable
 
         setLayout(null);
         defineKeyListener();

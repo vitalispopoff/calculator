@@ -1,0 +1,73 @@
+@startuml
+
+package calculation{
+
+    +abstract _EquationTree{
+            ~{static} Node leftSlot
+            ~{static} Node rootSlot
+            ~{static} Node riteSlot
+        ..
+            ~{static} bool leftNull
+            ~{static} bool rootNull
+            ~{static} bool riteNull
+        __
+            ~{method}{static} int identifySlot()
+        ..
+            ~{method}{static} Node setLeftSlot (Node node)
+            ~{method}{static} Node setRootSlot (Node node)
+            ~{method}{static} Node setRiteSlot (Node node)
+        ..
+            ~{method}{static} bool setLeftNull ()
+            ~{method}{static} bool setRootNull ()
+            ~{method}{static} bool setRiteNull ()
+    }
+
+    +abstract Node{
+            ~{static} Node mainRoot
+        ..
+            ~{field} Node localRoot
+            ~{field} Node localLeft
+            ~{field} Node localRite
+        ..
+            ~{field} dbl value = NaN
+            ~{field} NodeType type
+        __
+            +{method}calculate (dbl 1, dbl 2)
+            ~{method} valueIsNaN ()
+        ..
+            +{method} setValue ()
+            ~{method} setValue (value)
+    }
+
+    +class Value{
+            ~{static} final NodeType classType = OPERAND
+    }
+
+    ~abstract Calculation{
+            ~{static} final NodeType classType = OPERATOR
+    }
+
+    class Calculation_Addition{
+            +{method} @Ovr calculate ()
+    }
+
+    ~enum NodeType{
+'            BRACKET_IN
+'            BRACKET_OUT
+            OPERATOR
+            OPERAND
+    }
+}
+
+    _EquationTree   o..     _EquationTree
+    _EquationTree   o--     Node
+    Node            o..     Node
+    Node            ..      NodeType
+    Node            <|--    Value                   : ext
+    Node            <|--    Calculation             : ext
+    Calculation     <--     Calculation_Addition    : impl
+    Calculation     *..     Value
+    Calculation     --      NodeType
+    Value           --      NodeType
+
+@enduml

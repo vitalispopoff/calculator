@@ -18,8 +18,4 @@ public class Value extends Node {
         System.out.println("wrong constructor");
         this.type = classType;
     }
-
-    public static void main(String[] args) {
-        Node val = new Value();
-    }
 }

@@ -11,11 +11,11 @@ public class Settings implements Serializable {
     public boolean windowResizable = false;
     public int
             tile = 60,
-            location_x = 200,
-            location_y = 200,
+            location_x = 200,   //  *   TODO to be disposable
+            location_y = 200,   //  *   TODO to be disposable
             windowDefaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE;
     public Point
-            windowAnchor = new Point(location_x, location_y);
+            windowAnchor = new Point(location_x, location_y);   // TODO needs rewriting
 
     public Settings() {
     }

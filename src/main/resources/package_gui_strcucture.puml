@@ -1,0 +1,54 @@
+@startuml
+
+package gui{
+
+    class MainFrame{
+            +{field}Settings settings
+        __
+            ~{method} void setWindowAnchor (Point)
+            ~{method} void setMainPanel (settings)
+            +{method} Point getWindowAnchorLocation ()
+    }
+
+    class MainDisplay{
+            ~{field}Settings settings
+    }
+
+    class MainPanel{
+            ~{field} {static} int tile
+            ~{field} {static} JLabel display
+            ~{field} Char[]][] buttons
+        ..
+            ~{field}Settings settings
+            -{field}KeyListener numKey
+        __
+            +{method} @Ovr Dimension getPreferredSize()
+            -{method} void defineKeyListener ()
+    }
+
+    +class Settings{
+            -{field}{static} String fileAddress
+        ..
+            +{field} bool windowResizable
+            +{field}int windowDefaultCloseOperation
+            +{field}int tile
+            +{field}Point windowAnchor
+        ..
+            +{field}int location_ext
+            +{field}int location_y
+        __
+            +{method}{static}Settings read Settings()
+            +{method}void writeSettings(Point windowNewAnchor)
+    }
+}
+
+    Serializable    ()--    Settings : impl
+    JFrame          ()--    MainFrame : ext
+    JLabel          ()--    MainDisplay : ext
+    JPanel          ()--    MainPanel : ext
+    MainFrame       *--     MainPanel
+    MainPanel       *--     MainDisplay
+    MainPanel       *--     Settings
+    MainDisplay     *--     Settings
+
+@enduml
