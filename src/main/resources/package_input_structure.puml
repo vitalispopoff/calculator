@@ -14,9 +14,9 @@ package input{
     }
 
     interface Queueable{
-            +{method} void joinQueue (Queueable)
-            +{method} void leaveQueue (Queueable)
-            +{method} int queueLength ()
+'            +{method} void joinQueue (Queueable)
+'            +{method} void leaveQueue (Queueable)
+'            +{method} int queueLength ()
     }
 
     class _InputQueue{

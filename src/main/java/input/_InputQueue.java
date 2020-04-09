@@ -1,26 +1,28 @@
 package input;
 
-import calculation.Node;
+public class _InputQueue extends Queuer /*implements Queueable*/ {
 
-public class _InputQueue implements Queueable{
+    int length = 0;
+    Queuer
+            head = null,
+            tail = null;
 
-    int length;
-    Queueable
-            head,
-            tail;
+    _InputQueue() {
+    }
 
-    @Override
-    public void joinQueue(Queueable queuer) {
+    _InputQueue(Queuer queuer) {
+        head = tail = null;
+        length++;
+    }   // ? TODO input parameter to be switched to Queueable ?
+
+    void addToQueue(Queuer queuer){
+        queuer.setPrevious(tail);
+        tail = queuer;
+        length++;
+    }   // ? TODO "joinQueue" ?
+
+    Queueable takeFromQueue(){
 
     }
 
-    @Override
-    public void leaveQueue(Queueable queuer) {
-
-    }
-
-    @Override
-    public int queueLength() {
-        return 0;
-    }
 }
