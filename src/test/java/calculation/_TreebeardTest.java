@@ -2,12 +2,11 @@ package calculation;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import static calculation._EquationTree.*;
+import static calculation.Treebeard.*;
 
-public class _EquationTreeTest {
+public class _TreebeardTest {
 
     @Before
     public void resetSlots() {

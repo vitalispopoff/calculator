@@ -1,0 +1,38 @@
+@startuml
+
+package input{
+
+    interface Parsable{
+            +{method} void addToCache (char c)
+            +{method} bool isNegative ()
+            +{method} bool isFraction ()
+            +{method} double clearCache()
+    }
+
+    class ValueParser{
+            ~{field}{static} String parserCache
+    }
+
+    interface Queueable{
+            +{method} void joinQueue (Queueable)
+            +{method} void leaveQueue (Queueable)
+            +{method} int queueLength ()
+    }
+
+    class _InputQueue{
+            ~{field} int length
+            ~{field} Queueable head
+            ~{field} Queueable tail
+    }
+
+    class Queuer{
+            +{field} Queable previous
+            ~{field} Node node
+    }
+
+    Parsable        <--     ValueParser     : impl
+    Queuer          <|--    _InputQueue     : ext
+    Queuer          --*     _InputQueue
+    Queueable       <--     Queuer          : impl
+
+@enduml

@@ -1,6 +1,6 @@
 package gui;
 
-import static gui.Parsable.valueWriter;
+import static input.Parsable.valueWriter;
 import static _temp._CalculationNode.*;
 
 import javax.swing.*;
