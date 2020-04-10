@@ -1,28 +1,43 @@
 package input;
 
-public class ValueParser implements Parsable {
+public class ValueParser {
 
     static String parserCache = null;
+    static boolean isNegative = false;
 
-    @Override
-    public void addCharToCache(char c) {
+    private ValueParser() {
+    }
+
+    public ValueParser(char c) {
+        if (c == '-') isNegative = !isNegative;
+        else if (parserCache == null) addCharToCache(c);
+        else try {
+                String localCache = parserCache + c;
+                parserCacheToStream(localCache);
+                addCharToCache(c);
+            } catch (NumberFormatException e) {
+            }
+    }
+
+    public static void switchSign() {
+        isNegative = !isNegative;
+    }
+
+    public static void addCharToCache(char c) {
         parserCache += c;
     }
 
-    @Override
-    public boolean isNegative() {
-        return parserCache.charAt(0) == 45;
+    static double parserCacheToStream(String stream) {
+        return Double.parseDouble(stream);
     }
 
-    @Override
-    public boolean isFraction() {
-        return parserCache.indexOf(46) != -1;
-    }
-
-    @Override
-    public double clearCache() {
-        double result = Double.valueOf(parserCache);
+    public static double clearCache() {
+        double result = (parserCache == null && isNegative) || parserCache == "."
+                ? 0
+                : Double.valueOf(parserCache);
+        if (isNegative) result *= -1.;
         parserCache = null;
+        isNegative = false;
         return result;
     }
 }

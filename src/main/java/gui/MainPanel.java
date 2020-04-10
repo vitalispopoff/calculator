@@ -1,13 +1,16 @@
 package gui;
 
-import static input.Parsable.valueWriter;
-import static _temp._CalculationNode.*;
+import _temp._CalculationTree;
+import input.Parsable;
+import input.ValueParser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import _temp._CalculationTree;
+import static _temp._CalculationNode.head;
+import static input.Parsable.valueWriter;
 
 public class MainPanel extends JPanel {
 
@@ -40,7 +43,7 @@ public class MainPanel extends JPanel {
                 button.setText("" + c);
 
                 button.addActionListener(e -> {
-                    if ((c > 47 && c < 58) || c == 46 || c == 8723) valueWriter(button.getText().charAt(0));
+                    if ((c > 47 && c < 58) || c == 46 || c == 8723) new ValueParser(button.getText().charAt(0));
                     else if (c == 61) head.setValue();                              // equals (exec calculation)
                     else if (c == 94) _CalculationTree.addAsRoot();                 // exponentiation;
                     else if (c == 8730) _CalculationTree.addAsRoot();               // roots;
