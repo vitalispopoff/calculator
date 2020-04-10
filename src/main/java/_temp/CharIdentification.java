@@ -61,7 +61,7 @@ public interface CharIdentification {
     * 43 = 2 ; 4 = 2
     * 45 = 3 ; 6 = 3
     * 47 = 4 ; 8 = 4
-    * */    // TODO disposable
+    * */
 
     static boolean isEquationOperator(char a) {
         return (int) a == 61;

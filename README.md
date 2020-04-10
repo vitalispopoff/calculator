@@ -7,6 +7,10 @@ Definitely not a droid You're lookin' for. Move along.
 
 # versions:
 
+0.0.9
++ rebuilt input package
++ adjusting packages to connect the GUI with interactions
+
 0.0.8 (basic gui)
 + early gui for the basic mode
 + serialized settings w/ screen location params

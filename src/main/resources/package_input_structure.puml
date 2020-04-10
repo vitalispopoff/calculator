@@ -4,8 +4,8 @@ package input{
 
     interface Parsable{
             +{method} void addToCache (char c)
-            +{method} bool isNegative ()
-            +{method} bool isFraction ()
+'            +{method} bool isNegative ()
+'            +{method} bool isFraction ()
             +{method} double clearCache()
     }
 
