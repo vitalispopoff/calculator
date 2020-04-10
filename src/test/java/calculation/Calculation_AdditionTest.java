@@ -1,7 +1,7 @@
 package calculation;
 
+import calculation.calculations.Calculation_Addition;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class Calculation_AdditionTest {

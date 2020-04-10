@@ -4,7 +4,7 @@ public abstract class Calculation extends Node {
 
     static NodeType classType = NodeType.OPERATOR;
 
-    Calculation() {
+    protected Calculation() {
         super();
     }
 
@@ -12,12 +12,8 @@ public abstract class Calculation extends Node {
         super(left, null);
     }   // ? TODO this one might be disposable
 
-    Calculation(Node left, Node rite) {
+    protected Calculation(Node left, Node rite) {
         super(left, rite);
         this.type = classType;
     }
 }
-
-/**
- * ? TODO : subclasses called by respective keys and/or GUI buttons ?
- */

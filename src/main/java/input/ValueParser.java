@@ -1,15 +1,15 @@
 package input;
 
-public class ValueParser {
+public class ValueParser implements Parsable{
 
     static String parserCache = null;
     static boolean isNegative = false;
 
-    private ValueParser() {
+    ValueParser() {
     }
 
     public ValueParser(char c) {
-        if (c == '-') isNegative = !isNegative;
+        if (c == '-') switchSign();
         else if (parserCache == null) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;
@@ -19,11 +19,11 @@ public class ValueParser {
             }
     }
 
-    public static void switchSign() {
+    /*public*/ static void switchSign() {
         isNegative = !isNegative;
     }
 
-    public static void addCharToCache(char c) {
+    public /*static*/ void addCharToCache(char c) {
         parserCache += c;
     }
 
@@ -31,7 +31,7 @@ public class ValueParser {
         return Double.parseDouble(stream);
     }
 
-    public static double clearCache() {
+    public double clearCache() {
         double result = (parserCache == null && isNegative) || parserCache == "."
                 ? 0
                 : Double.valueOf(parserCache);

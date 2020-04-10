@@ -12,7 +12,7 @@ public class Queuer implements Queueable {
     Queuer() {
     }
 
-    Queuer(Node node) {
+    public Queuer(Node node) {
         setNode(node);
     }
 

@@ -14,33 +14,22 @@ public abstract class Treebeard {
     static Node cache;
     static boolean isCacheNull;
 
-
-
-
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static boolean setLeftNull() {
         return leftNull = leftSlot == null;
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static boolean setRootNull() {
         return rootNull = rootSlot == null;
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static boolean setRiteNull() {
         return riteNull = riteSlot == null;
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static int identifySlot() {
         if (leftNull) return 0;
         else if (!leftNull && rootNull) return 1;
@@ -49,25 +38,19 @@ public abstract class Treebeard {
         else return -1;
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static void setLeftSlot(Node node) {
         leftSlot = node;
         setLeftNull();
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static void setRootSlot(Node node) {
         rootSlot = node;
         setRootNull();
     }
 
-    /**
-     *  TODO disposable
-     * */
+    // TODO disposable
     static void setRiteSlot(Node node) {
         riteSlot = node;
         setRiteNull();

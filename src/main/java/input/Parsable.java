@@ -4,7 +4,6 @@ package input;
  * the interface provides a logic of parsing,
  * and assembling a number value for the equation tree,
  * as well as wrapping it into  a tree compliant object.
- * TODO interfacce with its fellow classes to be moved
  * to communicate directly to value class
  * */
 public interface Parsable {
@@ -16,21 +15,6 @@ public interface Parsable {
      */
      void addCharToCache(char c);
 
-    /**
-     * verifies whether the number is negative,
-     * this shifts the content of the number string
-     * by one slot, the string begins with char 45
-     */
-//     boolean isNegative();
-
-    /**
-     * verifies whether the number is a fraction,
-     * this indicates, that the string contains
-     * a fraction mark (char 46, point),
-     * in that case the string cannot accept
-     * char 46 anymore
-     */
-     boolean isFraction();
 
     /**
      * returns the cache value as double,
@@ -38,8 +22,12 @@ public interface Parsable {
      */
      double clearCache();
 
+
+     /**
+      *
+      * */
      static void valueWriter(char c){
-         if (c == '&') ValueParser.clearCache();
+         if (c == '&') new ValueParser();
          else new ValueParser(c);
      }
 }

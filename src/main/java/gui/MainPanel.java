@@ -1,7 +1,11 @@
 package gui;
 
 import _temp._CalculationTree;
+import calculation.Node;
+import calculation.calculations.*;
+import input.Queuer;
 import input.ValueParser;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +19,9 @@ public class MainPanel extends JPanel {
 
     static int tile = 60;
     static JLabel display;
-    static char[] operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730};
+    static char[]
+            operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730},
+            numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};
     static char[][] buttons = {
             {'C', '^', '√', '*'},
             {'7', '8', '9', '/'},
@@ -44,51 +50,37 @@ public class MainPanel extends JPanel {
                 button.setText("" + c);
 
                 button.addActionListener(e -> {
-                    if ((c > 47 && c < 58) || c == 46 || c == 8723) new ValueParser(button.getText().charAt(0));
-                    else {
-                        switch (isOperationSign()) {
-                            case 0:
-                                _CalculationTree.addAsRoot();               // multiplication;
-                                break;
-                            case 1:
-                                _CalculationTree.addAsRoot();               // addition;
-                                break;
-                            case 2:
-                                _CalculationTree.addAsRoot();                 // subtraction;
-                                break;
-                            case 3:
-                                _CalculationTree.addAsRoot();                 // division;
-                                break;
-                            case 4:
-                                head.setValue();                              // equals (exec calculation)
-                                break;
-                            case 5:
-                                System.out.println(getLocationOnScreen());    // TODO clear
-                                break;
-                            case 6:
-                                _CalculationTree.addAsRoot();                 // exponentiation;
-                                break;
-                            case 7:
-                                _CalculationTree.addAsRoot();                 // roots;
-                                break;
+                            if (isValidSign(numberSigns, c) != -1) new ValueParser(button.getText().charAt(0));
+                            else {
+                                switch (isValidSign(operationSigns, '&')) {
+                                    case 0:
+                                        new Queuer((Node) new Calculation_Multiplication());
+                                        break;
+                                    case 1:
+                                        new Queuer((Node) new Calculation_Addition());
+                                        break;
+                                    case 2:
+                                        new Queuer((Node) new Calculation_Subtraction());
+                                        break;
+                                    case 3:
+                                        new Queuer((Node) new Calculation_Division());
+                                        break;
+                                    case 4:
+                                        head.setValue();                              // TODO equals (exec calculation)
+                                        break;
+                                    case 5:
+                                        System.out.println(getLocationOnScreen());    // TODO clear
+                                        break;
+                                    case 6:
+                                        new Queuer((Node) new Calculation_Exponentiation());
+                                        break;
+                                    case 7:
+                                        new Queuer((Node) new Calculation_Rooting());
+                                        break;
+                                }
+                            }
                         }
-                    }
-
-                      /*  if (isOperationSign() != -1) {
-                        new ValueParser('&');
-
-                        switch (isOperationSign())
-                    else if (c == 61) head.setValue();                              // equals (exec calculation)
-                        else if (c == 94) _CalculationTree.addAsRoot();                 // exponentiation;
-                        else if (c == 8730) _CalculationTree.addAsRoot();               // roots;
-                        else if (c == 42) _CalculationTree.addAsRoot();                 // multiplication;
-                        else if (c == 47) _CalculationTree.addAsRoot();                 // division;
-                        else if (c == 43) _CalculationTree.addAsRoot();                 // addition;
-                        else if (c == 45) _CalculationTree.addAsRoot();                 // subtraction;
-                        else if (c == 67) System.out.println(getLocationOnScreen());    // TODO clear
-                    }*/ // TODO disposable
-                });
-
+                );
                 button.setBounds(j * tile, (i + 1) * tile, tile, tile);
                 button.addKeyListener(numKey);
                 add(button);
@@ -96,8 +88,8 @@ public class MainPanel extends JPanel {
         }
     }
 
-    static int isOperationSign() {
-        return Arrays.toString(operationSigns).indexOf('&');
+    static int isValidSign(char[] signArray, char c) {
+        return Arrays.toString(signArray).indexOf(c);
     }
 
     @Override

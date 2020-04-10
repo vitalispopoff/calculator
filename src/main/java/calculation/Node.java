@@ -2,7 +2,7 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public abstract class Node {
+public  abstract class Node {
 
     static Node
             mainRoot = null;

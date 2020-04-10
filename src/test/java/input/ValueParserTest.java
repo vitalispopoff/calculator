@@ -47,13 +47,13 @@ public class ValueParserTest {
         parserCache = "1.0";
         Assert.assertNotNull(parserCache);
         Assert.assertFalse(isNegative);
-        Assert.assertEquals(1., clearCache(), 0.);
+        Assert.assertEquals(1., new ValueParser().clearCache(), 0.);
     }
 
     @Test
     public void clearCache_01() {
         parserCache = ".";
-        Assert.assertEquals(0., clearCache(), 0.);
+        Assert.assertEquals(0., new ValueParser().clearCache(), 0.);
     }
 
     //    @Ignore
@@ -61,6 +61,6 @@ public class ValueParserTest {
     public void clearCache_02() {
         parserCache = null;
         isNegative = true;
-        Assert.assertEquals(0., clearCache(), 0.);
+        Assert.assertEquals(0., new ValueParser().clearCache(), 0.);
     }
 }
