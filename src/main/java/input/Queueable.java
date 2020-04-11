@@ -10,9 +10,9 @@ package input;
  * */
 public interface Queueable {
 
-    void setPrev(Queueable prev);
+//    void setPrev(Queueable prev);
 
-    void setNext(Queueable next);
+//    void setNext(Queueable next);
 
     void addToQueue(Queuer queuer);
 

@@ -9,7 +9,7 @@ public class _InputQueue extends Queuer{
         length++;
     }
 
-    void setPrev(Queuer node) {
+    public void setPrev(Queuer node) {
         this.prev = node;
     }
 
