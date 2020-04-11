@@ -11,9 +11,6 @@ public abstract class Treebeard {
             rootNull = true,        // TODO disposable
             riteNull = true;        // TODO disposable
 
-    static Node cache;
-    static boolean isCacheNull;
-
     // TODO disposable
     static boolean setLeftNull() {
         return leftNull = leftSlot == null;

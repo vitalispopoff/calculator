@@ -16,21 +16,24 @@ public class ValueParser implements Parsable{
                 parserCacheToStream(localCache);
                 addCharToCache(c);
             } catch (NumberFormatException e) {
+                System.out.println(e);
             }
     }
 
-    /*public*/ static void switchSign() {
+    static void switchSign() {
         isNegative = !isNegative;
-    }
-
-    public /*static*/ void addCharToCache(char c) {
-        parserCache += c;
     }
 
     static double parserCacheToStream(String stream) {
         return Double.parseDouble(stream);
     }
 
+    @Override
+    public void addCharToCache(char c) {
+        parserCache += c;
+    }
+
+    @Override
     public double clearCache() {
         double result = (parserCache == null && isNegative) || parserCache == "."
                 ? 0

@@ -1,6 +1,6 @@
 package calculation;
 
-public abstract class Calculation extends Node {
+public abstract class Calculation extends Node{
 
     static NodeType classType = NodeType.OPERATOR;
 
@@ -10,10 +10,13 @@ public abstract class Calculation extends Node {
 
     Calculation(Node left) {
         super(left, null);
-    }   // ? TODO this one might be disposable
+    }
 
     protected Calculation(Node left, Node rite) {
         super(left, rite);
+    }
+
+    public void setType() {
         this.type = classType;
     }
 }

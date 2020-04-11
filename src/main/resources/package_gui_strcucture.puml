@@ -11,18 +11,21 @@ package gui{
     }
 
     class MainDisplay{
-            ~{field}Settings settings
     }
 
     class MainPanel{
             ~{field} {static} int tile
             ~{field} {static} JLabel display
-            ~{field} Char[]][] buttons
+            ~{field} {static} final char operationSigns
+            ~{field} {static} final char numberSigns
+            ~{field} {static} final Char[][] buttons
         ..
             ~{field}Settings settings
             -{field}KeyListener numKey
         __
-            +{method} @Ovr Dimension getPreferredSize()
+            ~{method} {static} int isValidSign (char[], char)
+        ..
+            +{method} @Ovr Dim getPreferredSize()
             -{method} void defineKeyListener ()
     }
 
@@ -42,13 +45,14 @@ package gui{
     }
 }
 
-    Serializable    ()--    Settings : impl
-    JFrame          ()--    MainFrame : ext
-    JLabel          ()--    MainDisplay : ext
-    JPanel          ()--    MainPanel : ext
-    MainFrame       *--     MainPanel
+    JFrame          ()-    MainFrame : ext
+    JLabel          ()-   MainDisplay : ext
+    JPanel          ()-    MainPanel : ext
+    Serializable    ()-    Settings : impl
+    MainFrame       *-     MainPanel
+    MainFrame       *--     Settings
     MainPanel       *--     MainDisplay
-    MainPanel       *--     Settings
+    MainPanel       *-     Settings
     MainDisplay     *--     Settings
 
 @enduml

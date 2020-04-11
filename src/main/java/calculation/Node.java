@@ -2,9 +2,9 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public  abstract class Node {
+public abstract class Node {
 
-    static Node
+    public static Node
             mainRoot = null;
     Node
             localRoot = null,
@@ -14,6 +14,7 @@ public  abstract class Node {
     NodeType type;
 
     public Node() {
+        setType();
     }
 
     public Node(double value) {
@@ -30,6 +31,8 @@ public  abstract class Node {
         mainRoot = this;
     }
 
+    void resetMainRoot(){ mainRoot = null;}
+
     void setValue(double value) {
         this.value = value;
     }
@@ -43,6 +46,11 @@ public  abstract class Node {
         return result;
     }
 
+    public void setType(){
+    }
+
+    public NodeType getType(){return type;}
+
     boolean valueIsNaN() {
         return ((Double) value).isNaN();
     }
@@ -52,9 +60,3 @@ public  abstract class Node {
     }
 }
 
-enum NodeType {
-    BRACKET_IN,
-    BRACKET_OUT,
-    OPERATOR,
-    OPERAND
-}

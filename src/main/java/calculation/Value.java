@@ -6,16 +6,18 @@ public class Value extends Node {
 
     Value(double value) {
         super(value);
-        this.type = classType;
     }
 
     Value() {
         super();
-        this.type = classType;
     }
 
     Value(Node left, Node rite) {
         System.out.println("wrong constructor");
+
+    }
+
+    public void setType() {
         this.type = classType;
     }
 }

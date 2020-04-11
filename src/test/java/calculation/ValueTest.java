@@ -2,9 +2,10 @@ package calculation;
 
 import org.junit.*;
 
+@Ignore
 public class ValueTest {
 
-//    @Ignore
+    @Ignore
     @Test
     public void type_01(){
         Node val = new Value();

@@ -9,12 +9,11 @@ package input;
 public interface Parsable {
 
     /**
-     * Adds a character to the end of the string
+     * Adds a character to the end of parsing string
      *
      * @param c the character written via keyboard
      */
      void addCharToCache(char c);
-
 
     /**
      * returns the cache value as double,
@@ -22,12 +21,4 @@ public interface Parsable {
      */
      double clearCache();
 
-
-     /**
-      *
-      * */
-     static void valueWriter(char c){
-         if (c == '&') new ValueParser();
-         else new ValueParser(c);
-     }
 }

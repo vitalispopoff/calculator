@@ -4,7 +4,7 @@ import calculation.Node;
 
 public class Queuer implements Queueable {
 
-    Queuer
+    Queueable
             prev = null,
             next = null;
     Node node = null;
@@ -16,7 +16,7 @@ public class Queuer implements Queueable {
         setNode(node);
     }
 
-    Queuer(Queuer prev, Node node) {
+    Queuer(/*Queuer*/ Queueable prev, Node node) {
         this(node);
         setPrev(prev);
         prev.setNext(this);
@@ -26,13 +26,22 @@ public class Queuer implements Queueable {
         this.node = node;
     }
 
-    void setPrev(Queuer prev) {
+    @Override
+    public void setPrev(/*Queuer*/ Queueable prev) {
         this.prev = prev;
-        prev.next = this;
+//        prev.next = this;
+        prev.setNext(this);
     }
 
-    void setNext(Queuer next) {
+    @Override
+    public void setNext(/*Queuer*/ Queueable next) {
         this.next = next;
-        next.prev = this;
+//        next.prev = this;
+        next.setPrev(this);
     }
+
+    //    @Formatter:off
+    @Override public void addToQueue(Queuer queuer) {}
+    @Override public Queueable takeFromQueue() {return null;}
+    //    @Formetter:on
 }

@@ -25,7 +25,7 @@ public class _TreebeardTest {
     @Test
     public void setRootNull_01() {
         Assert.assertTrue(setRootNull());
-        rootSlot = new Calculation_Addition(null, null);
+        rootSlot = new Calculation_Addition();
         Assert.assertFalse(setRootNull());
     }
 
@@ -49,7 +49,7 @@ public class _TreebeardTest {
         setLeftSlot(n1);
         Assert.assertEquals(1, identifySlot());
 
-        Node n2 = new Calculation_Addition(n1, null);
+        Node n2 = new Calculation_Addition();
         setRootSlot(n2);
         Assert.assertEquals(2, identifySlot());
 

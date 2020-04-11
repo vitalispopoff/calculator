@@ -1,11 +1,9 @@
 package gui;
 
-import _temp._CalculationTree;
 import calculation.Node;
 import calculation.calculations.*;
 import input.Queuer;
 import input.ValueParser;
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,30 +11,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Arrays;
 
-import static _temp._CalculationNode.head;
+import static calculation.Node.mainRoot;
 
 public class MainPanel extends JPanel {
 
     static int tile = 60;
     static JLabel display;
-    static char[]
+    static final char[]
             operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730},
             numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};
-    static char[][] buttons = {
+    static final char[][] buttons = {
             {'C', '^', '√', '*'},
             {'7', '8', '9', '/'},
             {'4', '5', '6', '+'},
             {'1', '2', '3', '-'},
             {'0', '.', '∓', '='}
     };
-
-    Settings settings;      // ? TODO isn't it disposable ?
     private KeyListener numKey;
 
-    public MainPanel(Settings value) {
-        this.settings = value;
+    public MainPanel(Settings settings) {
 
-        tile = tile == 0 ? value.tile : tile;
+        tile = tile == 0 ? settings.tile : tile;
         display = new MainDisplay(settings, "", SwingConstants.RIGHT);
 
         setLayout(null);
@@ -66,7 +61,7 @@ public class MainPanel extends JPanel {
                                         new Queuer((Node) new Calculation_Division());
                                         break;
                                     case 4:
-                                        head.setValue();                              // TODO equals (exec calculation)
+                                        mainRoot.setValue();                              // TODO equals (exec calculation)
                                         break;
                                     case 5:
                                         System.out.println(getLocationOnScreen());    // TODO clear

@@ -2,26 +2,6 @@
 
 package calculation{
 
-    +abstract _EquationTree{
-            ~{static} Node leftSlot
-            ~{static} Node rootSlot
-            ~{static} Node riteSlot
-        ..
-            ~{static} bool leftNull
-            ~{static} bool rootNull
-            ~{static} bool riteNull
-        __
-            ~{method}{static} int identifySlot()
-        ..
-            ~{method}{static} Node setLeftSlot (Node node)
-            ~{method}{static} Node setRootSlot (Node node)
-            ~{method}{static} Node setRiteSlot (Node node)
-        ..
-            ~{method}{static} bool setLeftNull ()
-            ~{method}{static} bool setRootNull ()
-            ~{method}{static} bool setRiteNull ()
-    }
-
     +abstract Node{
             ~{static} Node mainRoot
         ..
@@ -47,27 +27,24 @@ package calculation{
             ~{static} final NodeType classType = OPERATOR
     }
 
-    class Calculation_Addition{
+    package calculations <<Rectangle>> {
+        class Calculation_?{
             +{method} @Ovr calculate ()
+        }
     }
 
     ~enum NodeType{
-'            BRACKET_IN
-'            BRACKET_OUT
             OPERATOR
             OPERAND
     }
 }
 
-    _EquationTree   o..     _EquationTree
-    _EquationTree   o--     Node
     Node            o..     Node
-    Node            ..      NodeType
     Node            <|--    Value                   : ext
     Node            <|--    Calculation             : ext
-    Calculation     <--     Calculation_Addition    : impl
+    Calculation     <--     calculations    : impl
     Calculation     *..     Value
-    Calculation     --      NodeType
-    Value           --      NodeType
+    Calculation     ..|>      NodeType
+    Value           ..|>      NodeType
 
 @enduml

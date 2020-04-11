@@ -4,25 +4,29 @@ package input{
 
     interface Parsable{
             +{method} void addToCache (char c)
-'            +{method} bool isNegative ()
-'            +{method} bool isFraction ()
             +{method} double clearCache()
     }
 
     class ValueParser{
             ~{field}{static} String parserCache
+            ~{field}{static} bool isNegative
+            __
+            ~{method}{static}switchSign ()
+            ..
+            ~{method} @Ovr addCharToCache (char)
+            ~{method} @Ovr clearCache ()
     }
 
     interface Queueable{
-'            +{method} void joinQueue (Queueable)
-'            +{method} void leaveQueue (Queueable)
-'            +{method} int queueLength ()
+            +{method} void addToQueue (Queuer)
+            +{method} void take fromQueue ()
     }
 
     class _InputQueue{
             ~{field} int length
-            ~{field} Queueable head
-            ~{field} Queueable tail
+            __
+            ~{method} @Ovr void addToQueue (Queuer)
+            ~{method} @Ovr void takeFromeQueue (Queuer)
     }
 
     class Queuer{
@@ -31,8 +35,7 @@ package input{
     }
 
     Parsable        <--     ValueParser     : impl
-    Queuer          <|--    _InputQueue     : ext
-    Queuer          --*     _InputQueue
+    Queuer          <|--*    _InputQueue     : ext
     Queueable       <--     Queuer          : impl
 
 @enduml
