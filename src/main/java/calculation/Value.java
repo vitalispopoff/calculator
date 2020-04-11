@@ -1,22 +1,26 @@
 package calculation;
 
+
+
+
 public class Value extends Node {
 
-    static final NodeType classType = NodeType.OPERAND;
+    static final NodeType classType = NodeType.VAL;
 
-    Value(double value) {
+    public Value(double value) {
         super(value);
     }
 
-    Value() {
+    public Value() {
         super();
     }
 
-    Value(Node left, Node rite) {
+/*    Value(Node left, Node rite) {
         System.out.println("wrong constructor");
 
-    }
+    }*/     // disposable
 
+    @Override
     public void setType() {
         this.type = classType;
     }

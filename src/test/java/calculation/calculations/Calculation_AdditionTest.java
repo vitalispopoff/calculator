@@ -20,6 +20,6 @@ public class Calculation_AdditionTest {
     @Test
     public void getType_01() {
         Node result = new Calculation_Addition();
-        Assert.assertSame(NodeType.OPERATOR, result.getType());
+        Assert.assertSame(NodeType.ADD_SUB, result.getType());
     }
 }

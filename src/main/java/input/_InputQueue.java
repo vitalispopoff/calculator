@@ -1,30 +1,48 @@
 package input;
 
-public class _InputQueue extends Queuer{
+import calculation.Node;
+import calculation.NodeType;
+
+public class _InputQueue extends Queuer {
 
     int length = 0;
+    int[] nodePriorities;
 
     _InputQueue(Queuer queuer) {
+        this.nodePriorities = new int[NodeType.values().length];
+        nodePriorities[queuer.getNodesType()]++;
         prev = next = queuer;
         length++;
     }
 
-    public void setPrev(Queuer node) {
-        this.prev = node;
+    public int getLength() {
+        return length;
     }
 
     @Override
     public void addToQueue(Queuer queuer) {
+        nodePriorities[queuer.getNodesType()]++;
         queuer.setPrev(next);
         next = queuer;
         length++;
-    }                                   // ? TODO "joinQueue" ?
+    }
 
     @Override
     public Queueable takeFromQueue() {
-        Queuer cache = prev;
-        prev = cache.next;
-        prev.prev = cache.next = null;
-        return cache;
-    }                                   // ? TODO leaveQueue ?
+
+        if (length > 1) {
+            Queuer cache = prev;
+            prev = cache.next;
+            prev.prev = cache.next = null;
+            nodePriorities[cache.getNodesType()]--;
+            length--;
+            return cache;
+        } else if (length == 1) {
+            Queuer cache = prev;
+            prev = next = null;
+            nodePriorities[cache.getNodesType()]--;
+            length--;
+            return cache;
+        } else return null;
+    }
 }

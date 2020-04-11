@@ -9,7 +9,7 @@ public class ValueTest {
     @Test
     public void type_01(){
         Node val = new Value();
-        Assert.assertEquals(NodeType.OPERAND, val.type);
+        Assert.assertEquals(NodeType.VAL, val.type);
     }
 
     @Test       //  * empty constructor
@@ -33,6 +33,8 @@ public class ValueTest {
         Assert.assertFalse(((Double) val.value).isNaN());
     }
 
+/*
+    @Ignore
     @Test       //  * constructor w/ branches
     public void Value_04() {
         Node
@@ -42,7 +44,7 @@ public class ValueTest {
         Assert.assertNull(val.localLeft);
         Assert.assertNull(val.localRite);
         Assert.assertTrue(((Double) val.value).isNaN());
-    }
+    }*/     // disposable
 
     @Test
     public void setValue_01(){

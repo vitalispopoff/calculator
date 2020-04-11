@@ -1,15 +1,19 @@
 package calculation.calculations;
 
 import calculation.Calculation;
-import calculation.Node;
+import calculation.NodeType;
 
 public class Calculation_Subtraction extends Calculation {
 
-    public Calculation_Subtraction(){super();}
+    static NodeType classType = NodeType.ADD_SUB;
 
-/*Calculation_Subtraction(Node left, Node rite) {
-        super(left, rite);
-    }*/ // TODO dispoable
+    public Calculation_Subtraction() {
+        super();
+    }
+
+    public void setType() {
+        this.type = classType;
+    }
 
     @Override
     public double calculate(double left, double rite) {

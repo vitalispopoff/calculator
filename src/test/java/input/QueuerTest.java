@@ -1,6 +1,10 @@
 package input;
 
+import calculation.Node;
+import calculation.NodeType;
+import calculation.Value;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class QueuerTest {
@@ -47,5 +51,13 @@ public class QueuerTest {
         q0.setNext(q1);
         Assert.assertSame(q1, q0.next);
         Assert.assertSame(q0, q1.prev);
+    }
+
+    @Test
+    public void getNodesType_00(){
+        Node val = new Value(0.);
+        Queuer q1 = new Queuer(val);
+        int result = val.getType().ordinal();
+        Assert.assertEquals(result, q1.getNodesType());
     }
 }

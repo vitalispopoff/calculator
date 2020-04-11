@@ -1,6 +1,9 @@
 package input;
 
 import calculation.Node;
+import calculation.NodeType;
+import calculation.Value;
+import calculation.calculations.Calculation_Addition;
 
 public class Queuer implements Queueable {
 
@@ -34,6 +37,12 @@ public class Queuer implements Queueable {
     public void setNext(Queuer next) {
         this.next = next;
         next.prev = this;
+    }
+
+    int getNodesType() {
+        Node cacheNode = node;
+        NodeType cacheType = cacheNode.getType();
+        return cacheType.ordinal();
     }
 
     //    @Formatter:off

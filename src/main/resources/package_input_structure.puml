@@ -3,7 +3,7 @@
 package input{
 
     interface Parsable{
-            +{method} void addToCache (char c)
+            +{method} void addToCache (char)
             +{method} double clearCache()
     }
 

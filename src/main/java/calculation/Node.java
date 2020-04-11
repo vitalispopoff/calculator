@@ -11,17 +11,19 @@ public abstract class Node {
             localLeft = null,
             localRite = null;
     Double value = NaN;
-    NodeType type;
+    public NodeType type;
 
     public Node() {
         setType();
     }
 
     public Node(double value) {
+        this();
         setValue(value);
     }
 
     public Node(Node left, Node rite) {
+        this();
         if (localRoot == null || localRoot == left || localRoot == rite) localRoot = this;
         localLeft = left;
         localRite = rite;
@@ -31,7 +33,9 @@ public abstract class Node {
         mainRoot = this;
     }
 
-    void resetMainRoot(){ mainRoot = null;}
+    void resetMainRoot() {
+        mainRoot = null;
+    }
 
     void setValue(double value) {
         this.value = value;
@@ -46,10 +50,12 @@ public abstract class Node {
         return result;
     }
 
-    public void setType(){
+    public void setType() {
     }
 
-    public NodeType getType(){return type;}
+    public NodeType getType() {
+        return type;
+    }
 
     boolean valueIsNaN() {
         return ((Double) value).isNaN();

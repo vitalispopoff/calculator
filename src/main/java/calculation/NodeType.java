@@ -1,8 +1,9 @@
 package calculation;
 
 public enum NodeType {
-    BRACKET_IN,
-    BRACKET_OUT,
-    OPERATOR,
-    OPERAND
+    BRACKET_IN_OUT,
+    EXP_ROOT,
+    MULTI_DIV,
+    ADD_SUB,
+    VAL
 }
