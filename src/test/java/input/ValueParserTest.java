@@ -56,7 +56,6 @@ public class ValueParserTest {
         Assert.assertEquals(0., new ValueParser().clearCache(), 0.);
     }
 
-    //    @Ignore
     @Test
     public void clearCache_02() {
         parserCache = null;

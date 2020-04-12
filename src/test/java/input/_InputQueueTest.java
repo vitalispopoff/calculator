@@ -1,12 +1,10 @@
 package input;
 
 import calculation.Node;
-import calculation.NodeType;
 import calculation.Value;
 import calculation.calculations.Calculation_Addition;
 import calculation.calculations.Calculation_Exponentiation;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class _InputQueueTest {
@@ -45,6 +43,7 @@ public class _InputQueueTest {
                 Q1 = new _InputQueue(q1);
         Assert.assertSame(q1, Q1.prev);
         Assert.assertSame(q1, Q1.next);
+
         Q1.addToQueue(q2);
         Assert.assertSame(q1, Q1.prev);
         Assert.assertSame(q2, Q1.next);
@@ -58,6 +57,7 @@ public class _InputQueueTest {
         _InputQueue
                 Q1 = new _InputQueue(q1);
         Q1.addToQueue(q2);
+
         Assert.assertSame(q1, Q1.prev);
         Assert.assertSame(q1, Q1.takeFromQueue());
         Assert.assertSame(q2, Q1.prev);
@@ -104,11 +104,14 @@ public class _InputQueueTest {
                 Q1 = new _InputQueue(q1);
         Assert.assertEquals(1,Q1.nodePriorities[q1.getNodesType()]);
         Assert.assertEquals(0, Q1.nodePriorities[q2.getNodesType()]);
+
         Q1.addToQueue(q2);
         Assert.assertEquals(1,Q1.nodePriorities[q2.getNodesType()]);
+
         int i1 = ((Queuer)Q1.takeFromQueue()).getNodesType();
         Assert.assertEquals(0, Q1.nodePriorities[i1]);
         Assert.assertEquals(1,Q1.nodePriorities[q2.getNodesType()]);
+
         int i2 = ((Queuer)Q1.takeFromQueue()).getNodesType();
         Assert.assertEquals(0, Q1.nodePriorities[i2]);
     }

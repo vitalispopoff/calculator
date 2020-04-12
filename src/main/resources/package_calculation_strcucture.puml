@@ -2,49 +2,68 @@
 
 package calculation{
 
-    +abstract Node{
-            ~{static} Node mainRoot
+    +abstract Treebeard{
+            ~ {field} {static} Node leftSlot
+            ~ {field} {static} Node rootSlot
+            ~ {field} {static} Node riteSlot
         ..
-            ~{field} Node localRoot
-            ~{field} Node localLeft
-            ~{field} Node localRite
-        ..
-            ~{field} dbl value = NaN
-            ~{field} NodeType type
+            ~ {field} {static} bool leftNull
+            ~ {field} {static} bool rootNull
+            ~ {field} {static} bool riteNull
         __
-            +{method}calculate (dbl 1, dbl 2)
-            ~{method} valueIsNaN ()
+            ~ {method} {static} int identifySlot ()
+    }
+
+    +abstract Node{
+            ~ {static} Node mainRoot
         ..
-            +{method} setValue ()
-            ~{method} setValue (value)
+            ~ {field} Node localRoot
+            ~ {field} Node localLeft
+            ~ {field} Node localRite
+        ..
+            ~ {field} dbl value = NaN
+            ~ {field} NodeType type
+        __
+            + {method} calculate (dbl 1, dbl 2)
+            ~ {method} valueIsNaN ()
+        ..
+            + {method} setValue ()
+            ~ {method} setValue (value)
     }
 
     +class Value{
-            ~{static} final NodeType classType = OPERAND
+            ~ {static} final NodeType classType = VAL
+            __
+            + {method} @Ovr void setType ()
     }
 
     ~abstract Calculation{
-            ~{static} final NodeType classType = OPERATOR
     }
 
     package calculations <<Rectangle>> {
         class Calculation_?{
-            +{method} @Ovr calculate ()
+                ~ {field} {static} NodeType classType
+            __
+                + {method} @Ovr void setType ()
+                + {method} @Ovr calculate ()
         }
     }
 
     ~enum NodeType{
-            OPERATOR
-            OPERAND
+        BRACKET_IN_OUT
+        EXP_ROOT
+        MULTI_DIV
+        ADD_SUB
+        VAL
     }
 }
 
     Node            o..     Node
-    Node            <|--    Value                   : ext
-    Node            <|--    Calculation             : ext
+    Node            <|--    Value           : ext
+    Node            <|--    Calculation     : ext
     Calculation     <--     calculations    : impl
     Calculation     *..     Value
-    Calculation     ..|>      NodeType
-    Value           ..|>      NodeType
+    Calculation     ..|>    NodeType
+    Value           ..|>    NodeType
 
 @enduml

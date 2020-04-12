@@ -61,10 +61,10 @@ public class MainPanel extends JPanel {
                                         new Queuer((Node) new Calculation_Division());
                                         break;
                                     case 4:
-                                        mainRoot.setValue();                              // TODO equals (exec calculation)
+                                        mainRoot.setValue();                                                            // TODO equals (exec calculation)
                                         break;
                                     case 5:
-                                        System.out.println(getLocationOnScreen());    // TODO clear
+                                        System.out.println(getLocationOnScreen());                                      // TODO clear
                                         break;
                                     case 6:
                                         new Queuer((Node) new Calculation_Exponentiation());

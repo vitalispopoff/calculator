@@ -1,11 +1,10 @@
 package input;
 
-import calculation.Node;
 import calculation.NodeType;
 
 public class _InputQueue extends Queuer {
 
-    int length = 0;
+    int length = 0;                                                                                                     // TODO may be disposable ?
     int[] nodePriorities;
 
     _InputQueue(Queuer queuer) {

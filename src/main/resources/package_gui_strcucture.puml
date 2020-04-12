@@ -3,56 +3,55 @@
 package gui{
 
     class MainFrame{
-            +{field}Settings settings
+            + {field} Settings settings
         __
-            ~{method} void setWindowAnchor (Point)
-            ~{method} void setMainPanel (settings)
-            +{method} Point getWindowAnchorLocation ()
+            ~ {method} void setWindowAnchor (Point)
+            ~ {method} void setMainPanel (settings)
+            + {method} Point getWindowAnchorLocation ()
     }
 
     class MainDisplay{
     }
 
     class MainPanel{
-            ~{field} {static} int tile
-            ~{field} {static} JLabel display
-            ~{field} {static} final char operationSigns
-            ~{field} {static} final char numberSigns
-            ~{field} {static} final Char[][] buttons
+            ~ {field} {static} int tile
+            ~ {field} {static} JLabel display
+            ~ {field} {static} final char[] operationSigns
+            ~ {field} {static} final char[] numberSigns
+            ~ {field} {static} final Char[][] buttons
         ..
-            ~{field}Settings settings
-            -{field}KeyListener numKey
+            - {field}KeyListener numKey
         __
-            ~{method} {static} int isValidSign (char[], char)
+            ~ {method} {static} int isValidSign (char[] , char)
         ..
-            +{method} @Ovr Dim getPreferredSize()
-            -{method} void defineKeyListener ()
+            + {method} @Ovr Dim getPreferredSize ()
+            - {method} void defineKeyListener ()
     }
 
     +class Settings{
-            -{field}{static} String fileAddress
+            - {field} {static} String fileAddress
         ..
-            +{field} bool windowResizable
-            +{field}int windowDefaultCloseOperation
-            +{field}int tile
-            +{field}Point windowAnchor
+            + {field} bool windowResizable
+            + {field} int windowDefaultCloseOperation
+            + {field} int tile
+            + {field} Point windowAnchor
         ..
-            +{field}int location_ext
-            +{field}int location_y
+            + {field} int location_ext
+            + {field} int location_y
         __
-            +{method}{static}Settings read Settings()
-            +{method}void writeSettings(Point windowNewAnchor)
+            + {method} {static} Settings read Settings ()
+            + {method} void writeSettings (Point)
     }
 }
 
-    JFrame          ()-    MainFrame : ext
-    JLabel          ()-   MainDisplay : ext
-    JPanel          ()-    MainPanel : ext
-    Serializable    ()-    Settings : impl
-    MainFrame       *-     MainPanel
+    JFrame          ()-     MainFrame       : ext
+    JLabel          ()-     MainDisplay     : ext
+    JPanel          ()-     MainPanel       : ext
+    Serializable    ()-     Settings        : impl
+    MainFrame       *-      MainPanel
     MainFrame       *--     Settings
     MainPanel       *--     MainDisplay
-    MainPanel       *-     Settings
+    MainPanel       *-      Settings
     MainDisplay     *--     Settings
 
 @enduml

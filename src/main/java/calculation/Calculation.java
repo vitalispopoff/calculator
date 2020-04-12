@@ -1,8 +1,5 @@
 package calculation;
 
-
-
-
 public abstract class Calculation extends Node{
 
     protected Calculation() {
@@ -16,6 +13,4 @@ public abstract class Calculation extends Node{
     protected Calculation(Node left, Node rite) {
         super(left, rite);
     }
-
-
 }

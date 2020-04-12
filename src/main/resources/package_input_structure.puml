@@ -3,39 +3,47 @@
 package input{
 
     interface Parsable{
-            +{method} void addToCache (char)
-            +{method} double clearCache()
+            + {method} void addToCache (char)
+            + {method} double clearCache ()
     }
 
     class ValueParser{
-            ~{field}{static} String parserCache
-            ~{field}{static} bool isNegative
-            __
-            ~{method}{static}switchSign ()
-            ..
-            ~{method} @Ovr addCharToCache (char)
-            ~{method} @Ovr clearCache ()
+            ~ {field} {static} String parserCache
+            ~ {field} {static} bool isNegative
+        __
+            ~ {method} {static} void switchSign ()
+            ~ {method} {static} dbl parserCacheToStream (String)
+        ..
+            ~ {method} @Ovr void addCharToCache (char)
+            ~ {method} @Ovr dbl clearCache ()
     }
 
     interface Queueable{
-            +{method} void addToQueue (Queuer)
-            +{method} void take fromQueue ()
+            + {method} void addToQueue (Queuer)
+            ~ {method} Queueable takeFromQueue ()
     }
 
     class _InputQueue{
-            ~{field} int length
-            __
-            ~{method} @Ovr void addToQueue (Queuer)
-            ~{method} @Ovr void takeFromeQueue (Queuer)
+            ~ {field} int length
+            ~ {field} int[] nodePriorities
+        __
+            ~ {method} @Ovr void addToQueue (Queuer)
+            ~ {method} @Ovr void takeFromeQueue (Queuer)
     }
 
     class Queuer{
-            +{field} Queable previous
-            ~{field} Node node
+            ~ {field} Queable prev
+            ~ {field} Queable next
+            ~ {field} Node node
+        __
+            ~ {method} int getNodesType ()
+        ..
+            + {method} @Ovr void addToQueue (Queuer)
+            + {method} @Ovr Queueable takeFromeQueue ()
     }
 
     Parsable        <--     ValueParser     : impl
-    Queuer          <|--*    _InputQueue     : ext
+    Queuer          <|--*   _InputQueue     : ext
     Queueable       <--     Queuer          : impl
 
 @enduml

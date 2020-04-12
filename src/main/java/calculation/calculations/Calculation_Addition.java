@@ -20,6 +20,4 @@ public class Calculation_Addition extends Calculation {
     public double calculate(double left, double rite) {
         return left + rite;
     }
-
-
 }

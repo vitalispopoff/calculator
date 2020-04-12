@@ -2,30 +2,28 @@ package calculation;
 
 import org.junit.*;
 
-@Ignore
 public class ValueTest {
 
-    @Ignore
     @Test
-    public void type_01(){
+    public void type_01() {
         Node val = new Value();
         Assert.assertEquals(NodeType.VAL, val.type);
     }
 
-    @Test       //  * empty constructor
+    @Test
     public void Value_01() {
         Node val = new Value();
         Assert.assertNotNull(val);
     }
 
-    @Test       //  * constructor w/ value
+    @Test
     public void Value_02() {
         Node val = new Value(0.);
         Assert.assertNotNull(val);
         Assert.assertEquals(0., val.value, 0.);
     }
 
-    @Test       //  * constructor w/ value
+    @Test
     public void Value_03() {
         Node val = new Value(.0);
         Assert.assertNotNull(val);
@@ -33,23 +31,9 @@ public class ValueTest {
         Assert.assertFalse(((Double) val.value).isNaN());
     }
 
-/*
-    @Ignore
-    @Test       //  * constructor w/ branches
-    public void Value_04() {
-        Node
-                left = new Value(),
-                rite = new Value(),
-                val = new Value(left, rite);
-        Assert.assertNull(val.localLeft);
-        Assert.assertNull(val.localRite);
-        Assert.assertTrue(((Double) val.value).isNaN());
-    }*/     // disposable
-
     @Test
-    public void setValue_01(){
-        Node
-                val = new Value();
+    public void setValue_01() {
+        Node val = new Value();
         val.setValue(0.);
         Assert.assertEquals(0., val.value, 0.);
     }

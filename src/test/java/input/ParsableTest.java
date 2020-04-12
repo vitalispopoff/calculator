@@ -1,4 +1,3 @@
 package input;
 
-public class ParsableTest {
-}
+public class ParsableTest { }

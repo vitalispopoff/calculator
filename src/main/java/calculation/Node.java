@@ -65,4 +65,3 @@ public abstract class Node {
         return NaN;
     }
 }
-

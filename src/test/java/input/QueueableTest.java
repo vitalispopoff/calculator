@@ -1,4 +1,3 @@
 package input;
 
-public class QueueableTest {
-}
+public class QueueableTest { }

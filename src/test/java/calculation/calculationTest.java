@@ -3,5 +3,4 @@ package calculation;
 import org.junit.Ignore;
 
 @Ignore
-public class calculationTest {
-}
+public class calculationTest { }
