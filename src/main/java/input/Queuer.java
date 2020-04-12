@@ -23,21 +23,38 @@ public class Queuer implements Queueable {
         prev.setNext(this);
     }
 
+    Node deQueuer(){
+        Node cache = node;
+        leaveQueue();
+        node = null;
+        return cache;
+    }
+
+    @Override
+    public Queuer leaveQueue(){
+        Queuer cache = next;
+        if (next != null) next.prev = prev;
+        if (prev != null) prev.next = next;
+        prev = next = null;
+        return cache;
+    }
+
     void setNode(Node node) {
         this.node = node;
     }
 
     public void setPrev(Queuer prev) {
         this.prev = prev;
-        prev.next = this;
+        if (prev != null) prev.next = this;
     }
 
     public void setNext(Queuer next) {
         this.next = next;
-        next.prev = this;
+        if (next != null) next.prev = this;
     }
 
-    int getNodesType() {
+    @Override
+    public int getNodesType() {
         Node cacheNode = node;
         NodeType cacheType = cacheNode.getType();
         return cacheType.ordinal();

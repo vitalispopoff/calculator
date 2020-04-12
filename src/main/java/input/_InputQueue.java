@@ -1,6 +1,9 @@
 package input;
 
 import calculation.NodeType;
+import calculation.Value;
+import calculation.calculations.Calculation_Exponentiation;
+import org.junit.Assert;
 
 public class _InputQueue extends Queuer {
 
@@ -28,20 +31,23 @@ public class _InputQueue extends Queuer {
 
     @Override
     public Queueable takeFromQueue() {
+        if (length == 0) return null;
+        else {
+            Queuer cache = prev;
+            prev = prev.leaveQueue();
+            nodePriorities[cache.getNodesType()]--;
+            length--;
+            return cache;
+        }
+    }
 
-        if (length > 1) {
-            Queuer cache = prev;
-            prev = cache.next;
-            prev.prev = cache.next = null;
-            nodePriorities[cache.getNodesType()]--;
-            length--;
-            return cache;
-        } else if (length == 1) {
-            Queuer cache = prev;
-            prev = next = null;
-            nodePriorities[cache.getNodesType()]--;
-            length--;
-            return cache;
-        } else return null;
+    @Override
+    public int getNodesType() {
+        int
+                cache = 0,
+                i = -1;
+        while (cache == 0)
+            cache = nodePriorities[++i];
+        return i;
     }
 }

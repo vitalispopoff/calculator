@@ -5,5 +5,6 @@ public enum NodeType {
     EXP_ROOT,
     MULTI_DIV,
     ADD_SUB,
-    VAL
+    VAL,
+    EVAL
 }
