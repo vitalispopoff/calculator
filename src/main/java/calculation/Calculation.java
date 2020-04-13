@@ -9,8 +9,4 @@ public abstract class Calculation extends Node{
     Calculation(Node left) {
         super(left, null);
     }
-
-    protected Calculation(Node left, Node rite) {
-        super(left, rite);
-    }
 }

@@ -3,43 +3,54 @@
 package input{
 
     interface Parsable{
-            + {method} void addToCache (char)
-            + {method} double clearCache ()
+            +  {method} void addToCache (char)
+            +  {method} double clearCache ()
     }
 
     class ValueParser{
-            ~ {field} {static} String parserCache
-            ~ {field} {static} bool isNegative
+            ~   {field}  {static} String parserCache
+            ~   {field}  {static} bool isNegative
         __
-            ~ {method} {static} void switchSign ()
-            ~ {method} {static} dbl parserCacheToStream (String)
+            ~   {method} {static} void switchSign ()
+            ~   {method} {static} dbl parserCacheToStream (String)
         ..
-            ~ {method} @Ovr void addCharToCache (char)
-            ~ {method} @Ovr dbl clearCache ()
+            ~   {method} @Ovr void addCharToCache (char)
+            ~   {method} @Ovr dbl clearCache ()
     }
 
     interface Queueable{
-            + {method} void addToQueue (Queuer)
-            ~ {method} Queueable takeFromQueue ()
+            +   {method} void addToQueue (Queuer)
+            ~   {method} Queueable takeFromQueue ()
     }
 
     class _InputQueue{
-            ~ {field} int length
-            ~ {field} int[] nodePriorities
+            ~   {field}  int length
+            ~   {field}  int[] nodePriorities
         __
-            ~ {method} @Ovr void addToQueue (Queuer)
-            ~ {method} @Ovr void takeFromeQueue (Queuer)
+'            ~   {method} dbl solveEquation ()
+            ~   {method} void convertToLocalTree ()
+        ..
+            -   {method} bool isPrevANumber ()
+            -   {method} bool isLocalTreePriorityValid ()
+            -   {method} bool isPrevLastInEquation ()
+        ..
+            +   {method} @Ovr void addToQueue (Queuer)
+            +   {method} @Ovr void takeFromQueue (Queuer)
+            +   {method} @Ovr int getNodeTypeOrdinal ()
     }
 
     class Queuer{
-            ~ {field} Queable prev
-            ~ {field} Queable next
-            ~ {field} Node node
+            ~   {field}  Queable prev
+            ~   {field}  Queable next
+            ~   {field}  Node node
         __
-            ~ {method} int getNodesType ()
+                {method} ... getters/setters (...)
         ..
-            + {method} @Ovr void addToQueue (Queuer)
-            + {method} @Ovr Queueable takeFromeQueue ()
+            ~   {method} Node deQueuer ()
+        ..
+            ~   {method} @Ovr int getNodesTypeOrdinal ()
+'            +   {method} @Ovr void addToQueue (Queuer)
+'            +   {method} @Ovr Queueable takeFromeQueue ()
     }
 
     Parsable        <--     ValueParser     : impl

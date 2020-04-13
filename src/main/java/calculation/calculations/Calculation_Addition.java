@@ -18,6 +18,8 @@ public class Calculation_Addition extends Calculation {
 
     @Override
     public double calculate(double left, double rite) {
+        resetType();
         return left + rite;
+
     }
 }

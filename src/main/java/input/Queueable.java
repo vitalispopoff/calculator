@@ -18,12 +18,12 @@ public interface Queueable {
     Queueable takeFromQueue();
 
     /**
-     * returns the nodeType currently binding the default object
+     * signs off the queuer while returning its successor
      */
-    int getNodesType();
+    Queuer leaveQueue();
 
     /**
-     * signs off the queuer while returning its successor
-     * */
-    Queuer leaveQueue();
+     * returns the nodeType currently binding the default object
+     */
+    int getNodeTypeOrdinal();
 }

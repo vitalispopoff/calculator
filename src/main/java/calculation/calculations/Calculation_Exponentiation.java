@@ -7,7 +7,9 @@ public class Calculation_Exponentiation extends Calculation {
 
     static NodeType classType = NodeType.EXP_ROOT;
 
-    public Calculation_Exponentiation(){super();}
+    public Calculation_Exponentiation() {
+        super();
+    }
 
     public void setType() {
         this.type = classType;
@@ -15,6 +17,7 @@ public class Calculation_Exponentiation extends Calculation {
 
     @Override
     public double calculate(double left, double rite) {
+        resetType();
         return Math.pow(left, rite);
     }
 }

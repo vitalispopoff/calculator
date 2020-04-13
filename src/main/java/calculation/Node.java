@@ -10,7 +10,7 @@ public abstract class Node {
             localRoot = null,
             localLeft = null,
             localRite = null;
-    Double value = NaN;
+    public Double value = NaN;
     public NodeType type;
 
     public Node() {
@@ -52,9 +52,20 @@ public abstract class Node {
 
     public void setType() {
     }
+    public void resetType(){
+        this.type = NodeType.VAL;
+    }
 
     public NodeType getType() {
         return type;
+    }
+
+    public void setLocalLeft(Node node) {
+        localLeft = node;
+    }
+
+    public void setLocalRite(Node node) {
+        localRite = node;
     }
 
     boolean valueIsNaN() {

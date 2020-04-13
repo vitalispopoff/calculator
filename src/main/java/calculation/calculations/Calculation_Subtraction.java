@@ -17,6 +17,7 @@ public class Calculation_Subtraction extends Calculation {
 
     @Override
     public double calculate(double left, double rite) {
+        resetType();
         return left - rite;
     }
 }

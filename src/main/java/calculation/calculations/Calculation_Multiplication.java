@@ -7,7 +7,7 @@ public class Calculation_Multiplication extends Calculation {
 
     static NodeType classType = NodeType.MULTI_DIV;
 
-    public Calculation_Multiplication(){
+    public Calculation_Multiplication() {
         super();
     }
 
@@ -17,6 +17,7 @@ public class Calculation_Multiplication extends Calculation {
 
     @Override
     public double calculate(double left, double rite) {
+        resetType();
         return left * rite;
     }
 }

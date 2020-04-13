@@ -2,7 +2,7 @@
 
 package calculation{
 
-    +abstract Treebeard{
+/'    +abstract Treebeard{
             ~ {field} {static} Node leftSlot
             ~ {field} {static} Node rootSlot
             ~ {field} {static} Node riteSlot
@@ -12,29 +12,31 @@ package calculation{
             ~ {field} {static} bool riteNull
         __
             ~ {method} {static} int identifySlot ()
-    }
+    }'/
 
     +abstract Node{
-            ~ {static} Node mainRoot
+            ~   {static} Node mainRoot
         ..
-            ~ {field} Node localRoot
-            ~ {field} Node localLeft
-            ~ {field} Node localRite
+            ~   {field} Node localRoot
+            ~   {field} Node localLeft
+            ~   {field} Node localRite
         ..
-            ~ {field} dbl value = NaN
-            ~ {field} NodeType type
+            ~   {field} dbl value = NaN
+            ~   {field} NodeType type
         __
-            + {method} calculate (dbl 1, dbl 2)
-            ~ {method} valueIsNaN ()
+                {method} ... getter/setter
+'            +   {method} setValue ()
+'            ~   {method} setValue (value)
         ..
-            + {method} setValue ()
-            ~ {method} setValue (value)
+            +   {method} void resetType ()
+            +   {method} calculate (dbl , dbl )
+            ~   {method} valueIsNaN ()
     }
 
     +class Value{
-            ~ {static} final NodeType classType = VAL
+            ~   {static} final NodeType classType = VAL
             __
-            + {method} @Ovr void setType ()
+            +   {method} @Ovr void setType ()
     }
 
     ~abstract Calculation{
@@ -58,12 +60,12 @@ package calculation{
     }
 }
 
-    Node            o..     Node
-    Node            <|--    Value           : ext
+    Node            o.     Node
+    Node            <|-    Value           : ext
     Node            <|--    Calculation     : ext
-    Calculation     <--     calculations    : impl
-    Calculation     *..     Value
-    Calculation     ..|>    NodeType
+    Calculation     <--     calculations    : ext
+    Calculation     *.     Value
+    Calculation     .|>    NodeType
     Value           ..|>    NodeType
 
 @enduml

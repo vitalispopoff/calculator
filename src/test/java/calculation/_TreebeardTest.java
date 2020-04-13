@@ -1,12 +1,11 @@
 package calculation;
 
-import calculation.calculations.Calculation_Addition;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static calculation.Treebeard.*;
+import static _temp.Treebeard.*;
 
 @Ignore
 public class _TreebeardTest {

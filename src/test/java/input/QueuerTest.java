@@ -4,7 +4,6 @@ import calculation.Node;
 import calculation.Value;
 import calculation.calculations.Calculation_Addition;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class QueuerTest {
@@ -129,6 +128,6 @@ public class QueuerTest {
         Node val = new Value(0.);
         Queuer q1 = new Queuer(val);
         int result = val.getType().ordinal();
-        Assert.assertEquals(result, q1.getNodesType());
+        Assert.assertEquals(result, q1.getNodeTypeOrdinal());
     }
 }
