@@ -14,14 +14,15 @@ import java.awt.event.KeyListener;
 import java.util.Arrays;
 
 import static calculation.Node.mainRoot;
+import static calculation.Nodeable.*;
 
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel implements KeyListener {
 
     static int tile = 60;
     static JLabel display;
-    static final char[]
+/*    static final char[]
             operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730},
-            numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};
+            numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};*/
     static final char[][] buttons = {
             {'C', '^', '√', '*'},
             {'7', '8', '9', '/'},
@@ -45,60 +46,24 @@ public class MainPanel extends JPanel {
                 char c = buttons[i][j];
                 JButton button = new JButton();
                 button.setText("" + c);
-
-/*
-                button.addActionListener(e -> {
-                            if (isValidSign(numberSigns, c) != -1);                                     //  new ValueParser(button.getText().charAt(0));     // ! method instead of constructor ?
-                            else {
-                                switch (isValidSign(operationSigns, '&')) {
-                                    case 0:                                                             //  new Queuer((Node) new Calculation_Multiplication());System.out.println("multiplication button clicked");
-
-                                        break;
-                                    case 1:                                                             //  new Queuer((Node) new Calculation_Addition());System.out.println("addition button clicked");
-
-                                        break;
-                                    case 2:                                                             //  new Queuer((Node) new Calculation_Subtraction());System.out.println("subtraction button clicked");
-
-                                        break;
-                                    case 3:                                                             //  new Queuer((Node) new Calculation_Division());System.out.println("division button clicked");
-
-                                        break;
-                                    case 4:                                                             //  mainRoot.setValue();  // TODO equals (exec calculation)break;
-
-                                        break;
-                                    case 5:                                                             //  System.out.println(getLocationOnScreen());    // TODO clear
-
-                                        break;
-                                    case 6:                                                             //  new Queuer((Node) new Calculation_Exponentiation());System.out.println("exponentiation button clicked");
-
-                                        break;
-                                    case 7:                                                             //  new Queuer((Node) new Calculation_Rooting());System.out.println("rooting button clicked");
-
-                                        break;
-                                }
-                            }
-                        }
-                );
-*/      // addActionListener: disposable?
-
                 button.setBounds(j * tile, (i + 1) * tile, tile, tile);
                 button.addKeyListener(numKey);
+                button.addActionListener(e -> dupa(c) );    // ! to be reorganized
                 add(button);
             }
         }
     }
 
-    static int isValidSign(char[] signArray, char c) {
+/*    static int isValidSign(char[] signArray, char c) {
         return Arrays.toString(signArray).indexOf(c);
-    }
+    }*/ // ! moved to Nodeable
 
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(4 * tile, 6 * tile);
     }
 
-    /*
-    @Override
+/*    @Override
     private void defineKeyListener() {
         numKey = new KeyListener() {
 
@@ -116,14 +81,19 @@ public class MainPanel extends JPanel {
             }
         };
     }*/
-}
-
-class OperationButton implements ActionListener{
-
-    Node node;
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }

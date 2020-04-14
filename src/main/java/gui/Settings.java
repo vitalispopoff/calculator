@@ -8,6 +8,9 @@ import java.io.Serializable;
 public class Settings implements Serializable {
 
     private static String fileAddress = "src\\main\\resources\\settings.txt";
+    public static final char[]
+            operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730},
+            numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};
     public boolean windowResizable = false;
     public int
             tile = 60,

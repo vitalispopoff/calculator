@@ -3,7 +3,10 @@ package input;
 import calculation.Node;
 import calculation.NodeType;
 
-public class Queuer implements Queueable {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Queuer implements Queueable/*, ActionListener*/ {
 
     Queuer
             prev = null,
@@ -27,7 +30,9 @@ public class Queuer implements Queueable {
         this.node = node;
     }
 
-    Node getNode(){return node;}
+    Node getNode() {
+        return node;
+    }
 
     public void setPrev(Queuer prev) {
         this.prev = prev;
@@ -39,7 +44,7 @@ public class Queuer implements Queueable {
         if (next != null) next.prev = this;
     }
 
-    Node deQueuer(){
+    Node deQueuer() {
         Node cache = node;
         leaveQueue();
         node = null;
@@ -47,7 +52,7 @@ public class Queuer implements Queueable {
     }
 
     @Override
-    public Queuer leaveQueue(){
+    public Queuer leaveQueue() {
         Queuer cache = next;
         if (next != null) next.prev = prev;
         if (prev != null) prev.next = next;
@@ -61,6 +66,13 @@ public class Queuer implements Queueable {
         NodeType cacheType = cacheNode.getType();
         return cacheType.ordinal();
     }
+
+/*
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("click");
+    }
+*/
 
     //    @Formatter:off
     @Override public void addToQueue(Queuer queuer) {}

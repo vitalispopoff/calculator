@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import static java.lang.Double.NaN;
 
-public abstract class Node /*implements ActionListener */{
+public abstract class Node implements Nodeable{
 
     public static Node
             mainRoot = null;
@@ -13,8 +13,10 @@ public abstract class Node /*implements ActionListener */{
             localRoot = null,
             localLeft = null,
             localRite = null;
-    public Double value = NaN;
-    public NodeType type;
+    public Double
+            value = NaN;
+    public NodeType
+            type;
 
     public Node() {
         setType();
@@ -55,7 +57,8 @@ public abstract class Node /*implements ActionListener */{
 
     public void setType() {
     }
-    public void resetType(){
+
+    public void resetType() {
         this.type = NodeType.VAL;
     }
 
@@ -79,9 +82,4 @@ public abstract class Node /*implements ActionListener */{
         return NaN;
     }
 
-/*    @Override
-    public void actionPerformed(ActionEvent e){
-
-
-    }*/
 }
