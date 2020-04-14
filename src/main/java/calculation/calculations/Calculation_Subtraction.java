@@ -18,6 +18,7 @@ public class Calculation_Subtraction extends Calculation {
     @Override
     public double calculate(double left, double rite) {
         resetType();
+        System.out.println(classType);
         return left - rite;
     }
 }

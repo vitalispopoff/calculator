@@ -1,4 +1,4 @@
-package calculation;
+package _temp;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,22 +42,4 @@ public class _TreebeardTest {
 /*        Assert.assertEquals(0, identifySlot());*/
     }
 
-
-    @Test
-    public void identifySlot_02() {
-/*        Assert.assertEquals(0, identifySlot());
-
-        Node n1 = new Value();
-        setLeftSlot(n1);
-        Assert.assertEquals(1, identifySlot());
-
-        Node n2 = new Calculation_Addition();
-        setRootSlot(n2);
-        Assert.assertEquals(2, identifySlot());
-
-        Node n3 = new Value();
-        setRiteSlot(n3);
-        Assert.assertNotNull(riteSlot);
-        */Assert.assertFalse(riteNull);
-    }
 }
