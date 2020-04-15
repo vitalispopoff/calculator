@@ -24,7 +24,6 @@ public class _InputQueue extends Queuer {
         return 0.;
     }
 
-
     //    @Formatter:off
     void convertToLocalTree() {
 
@@ -46,7 +45,7 @@ public class _InputQueue extends Queuer {
             this.addToQueue((Queuer) this.takeFromQueue());                             // * both moved at the end of the queue
 
         if (isPrevLastInEquation()) this.addToQueue((Queuer) this.takeFromQueue());     //  ? both 1st and 2nd are numbers
-    }                                                                                   //    @Formatter:on
+    }                                                                                     //    @Formatter:on
 
     private boolean isPrevANumber() {
         return prev.getNodeTypeOrdinal() == NodeType.VAL.ordinal();
@@ -62,8 +61,6 @@ public class _InputQueue extends Queuer {
                 && prev.next.getNodeTypeOrdinal()
                 == NodeType.VAL.ordinal();
     }
-
-
 
     @Override
     public void addToQueue(Queuer queuer) {

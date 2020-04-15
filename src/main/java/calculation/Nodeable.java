@@ -12,7 +12,7 @@ public interface Nodeable {
     static void NodeSelection(char c) {
         if (isValidSign(numberSigns, c) != -1)
             ;                                     //  new ValueParser(button.getText().charAt(0));     // ! method instead of constructor ?
-        else {
+        /*else {
             switch (isValidSign(operationSigns, '&')) {
                 case 0:                                                             //  new Queuer((Node) new Calculation_Multiplication());System.out.println("multiplication button clicked");
 
@@ -39,11 +39,10 @@ public interface Nodeable {
 
                     break;
             }
-        }
+        }*/     // disposable
     }
 
     static int isValidSign(char[] signArray, char c) {
         return Arrays.toString(signArray).indexOf(c);
     }
-
 }

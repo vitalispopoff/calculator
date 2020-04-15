@@ -55,6 +55,10 @@ public abstract class Node implements Nodeable{
         return result;
     }
 
+    public double getValue(){
+        return value;
+    }
+
     public void setType() {
     }
 
