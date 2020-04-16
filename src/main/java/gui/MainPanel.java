@@ -2,14 +2,13 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class MainPanel extends JPanel implements KeyListener {
+import static gui.Settings.basicCalculator;
 
-    static int tile = 60;
+public class MainPanel extends JPanel {
+
+    private int tile = 60;
     static JLabel display;
-
 
     public MainPanel(Settings settings) {
 
@@ -18,9 +17,18 @@ public class MainPanel extends JPanel implements KeyListener {
 
         setLayout(null);
         add(display);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 4; j++)
+/*        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++)             // ! FIXME
                 add(new Button(i, j, tile));
+
+        }*/
+
+        for (int i = 0; i < basicCalculator.length; i++) {
+            Button button = basicCalculator[i];
+            button.setButtonBounds(i, tile);
+            add(button);
+
+
         }
     }
 
@@ -28,18 +36,4 @@ public class MainPanel extends JPanel implements KeyListener {
     public Dimension getPreferredSize() {
         return new Dimension(4 * tile, 6 * tile);
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-
 }
