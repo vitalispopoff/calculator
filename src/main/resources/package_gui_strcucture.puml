@@ -1,6 +1,6 @@
 @startuml
 
-package gui{
+package _temp.gui{
 
     class MainFrame{
             +   {field} Settings settings

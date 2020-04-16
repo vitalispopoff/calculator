@@ -1,6 +1,6 @@
 @startuml
 
-package input{
+package _temp.input{
 
     interface Parsable{
             +  {method} void addToCache (char)

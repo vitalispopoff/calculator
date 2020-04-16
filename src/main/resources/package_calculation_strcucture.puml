@@ -1,6 +1,6 @@
 @startuml
 
-package calculation{
+package _temp.calculation{
 
 /'    +abstract Treebeard{
             ~ {field} {static} Node leftSlot
