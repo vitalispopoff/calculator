@@ -1,4 +1,4 @@
 package calculation;
 
-public class Calculation {
+public abstract class Calculation {
 }
