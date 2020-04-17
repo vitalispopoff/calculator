@@ -1,8 +1,5 @@
 package gui;
 
-//import static gui.Settings.basicCalculator;
-//import static gui.Settings.buttons;
-
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -17,16 +14,6 @@ public class Button extends JButton implements KeyListener {
     private Words word;
     private char symbol;
 
-/*    Button(int tile, Point vector) {
-        int
-                i = vector.x,
-                j = vector.y;
-//        char c = buttons[i][j];
-        setText("" + c);
-        setBounds(j * tile, (i + 1) * tile, tile, tile);
-        addActionListener(e -> pushTheButton(c));
-    }*/
-
     Button(char symbol, Words word) {
         this.symbol = symbol;
         this.word = word;
@@ -36,14 +23,10 @@ public class Button extends JButton implements KeyListener {
 
     void setButtonBounds(int i, int tile) {
         int
-                h_1 = (i % 4),
-                v_1 = (1 + (i >> 2)),
-                hor = h_1 * tile,
-                ver = v_1 * tile;
+                hor = (i % 4) * tile,
+                ver = (1 + (i >> 2)) * tile;
         setBounds(hor, ver, tile, tile);
-        System.out.println(i +", hor: "+ h_1+ ", ver: "+v_1+", ");
     }
-
 
     private void addInteraction(Words word) {
         addActionListener(e -> Words.valueOf(word.toString()).interact());

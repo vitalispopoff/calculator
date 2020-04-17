@@ -1,12 +1,13 @@
 package calculation;
 
-public class Node implements Nodeable {
+public abstract class Node implements Nodeable {
+
+    static Node globalRoot;
+    Node
+            localLeft = null,
+            localRoot = null,
+            localRite = null;
 
     public Node() {
-        System.out.println("ano dupa");
-    }
-
-    public static void main(String[] args) {
-
     }
 }

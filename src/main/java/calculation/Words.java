@@ -1,77 +1,74 @@
 package calculation;
 
+import calculation.calculations.*;
+
 public enum Words {
 
     BRACKET_IN {
         @Override
         public void interact() {
-            new Node();
         }
     },
     BRACKET_OUT {
         @Override
         public void interact() {
-            new Node();
         }
     },
     EXPONENT {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Exponentiation();
         }
     },
     ROOT {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Rooting();
         }
     },
     MULTIPLY {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Multiplication();
         }
     },
     DIVIDE {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Division();
         }
     },
     ADD {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Addition();
         }
     },
     SUBTRACT {
         @Override
         public void interact() {
-            new Node();
+            new Calculation_Subtraction();
         }
     },
     VALUE {
         @Override
         public void interact() {
-            new Node();
+            new Value();
         }
     },
     EVALUATE {
         @Override
         public void interact() {
-            new Node();
         }
     },
     CLEAR {
         @Override
         public void interact() {
-            new Node();
         }
     },
     SIGN {
         @Override
         public void interact() {
-            new Node();
         }
     };
 

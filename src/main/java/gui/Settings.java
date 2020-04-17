@@ -11,15 +11,7 @@ public class Settings implements Serializable {
 
     private static final String
             fileAddress = "src\\main\\resources\\settings.txt";
-/*    static final char[][] buttons = {
-            {'C', '^', '√', '*'},
-            {'7', '8', '9', '/'},
-            {'4', '5', '6', '+'},
-            {'1', '2', '3', '-'},
-            {'0', '.', '∓', '='}
-    };*/
-
-    static /*final*/ Button[] basicCalculator ={
+    static Button[] basicCalculator = {
             new Button('C', Words.CLEAR),
             new Button('^', Words.EXPONENT),
             new Button('√', Words.ROOT),
@@ -41,10 +33,6 @@ public class Settings implements Serializable {
             new Button('.', Words.VALUE),
             new Button('=', Words.EVALUATE),
     };
-
-/*public static final char[]
-            operationSigns = {42, 43, 45, 47, 61, 67, 94, 8730},
-            numberSigns = {46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8723};*/     // disposable
     public Point
             windowAnchor = new Point(200, 200);
     public int
