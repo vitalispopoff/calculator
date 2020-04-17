@@ -1,6 +1,6 @@
 package gui;
 
-import calculation.Words;
+import calculation.NodeType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,26 +12,26 @@ public class Settings implements Serializable {
     private static final String
             fileAddress = "src\\main\\resources\\settings.txt";
     static Button[] basicCalculator = {
-            new Button('C', Words.CLEAR),
-            new Button('^', Words.EXPONENT),
-            new Button('√', Words.ROOT),
-            new Button('*', Words.MULTIPLY),
-            new Button('7', Words.VALUE),
-            new Button('8', Words.VALUE),
-            new Button('9', Words.VALUE),
-            new Button('/', Words.DIVIDE),
-            new Button('4', Words.VALUE),
-            new Button('5', Words.VALUE),
-            new Button('6', Words.VALUE),
-            new Button('+', Words.ADD),
-            new Button('1', Words.VALUE),
-            new Button('2', Words.VALUE),
-            new Button('3', Words.VALUE),
-            new Button('-', Words.SUBTRACT),
-            new Button('∓', Words.SIGN),
-            new Button('0', Words.VALUE),
-            new Button('.', Words.VALUE),
-            new Button('=', Words.EVALUATE),
+            new Button('C', NodeType.CLEAR),
+            new Button('^', NodeType.EXPONENT),
+            new Button('√', NodeType.ROOT),
+            new Button('*', NodeType.MULTIPLY),
+            new Button('7', NodeType.VALUE),
+            new Button('8', NodeType.VALUE),
+            new Button('9', NodeType.VALUE),
+            new Button('/', NodeType.DIVIDE),
+            new Button('4', NodeType.VALUE),
+            new Button('5', NodeType.VALUE),
+            new Button('6', NodeType.VALUE),
+            new Button('+', NodeType.ADD),
+            new Button('1', NodeType.VALUE),
+            new Button('2', NodeType.VALUE),
+            new Button('3', NodeType.VALUE),
+            new Button('-', NodeType.SUBTRACT),
+            new Button('∓', NodeType.SIGN),
+            new Button('0', NodeType.VALUE),
+            new Button('.', NodeType.VALUE),
+            new Button('=', NodeType.EVALUATE),
     };
     public Point
             windowAnchor = new Point(200, 200);

@@ -1,19 +1,35 @@
 package calculation;
 
+import static java.lang.Double.NaN;
+
 public abstract class Node implements Nodeable {
 
-    static Nodeable globalRoot;
     Nodeable
             localLeft = null,
             localRoot = null,
             localRite = null;
+    NodeType
+            type;
+    Double
+            value = NaN;
+
+    public Node(NodeType type) {
+        setType(type);
+    }
+
+
+     protected abstract Double calculate(Nodeable left, Nodeable rite);
+
+
 
     //    @formatter:off
-    void setGlobalRoot(Nodeable node){globalRoot = node;}
+    void setType(NodeType type){this.type = type;}
+    void setValue(Double value){this.value = value;}
     void setLocalLeft(Nodeable node){this.localLeft = node;}
     void setLocalRoot(Nodeable node){this.localRoot = node;}
     void setLocalRite(Nodeable node){this.localRite = node;}
-    Nodeable getGlobalRoot(){return globalRoot;}
+    NodeType getType(){return type;}
+    Double getValue(){return value;}
     Nodeable getLocalLeft(){return localLeft;}
     Nodeable getLocalRoot(){return localRoot;}
     Nodeable getLocalRite(){return localRite;}

@@ -1,13 +1,12 @@
 package calculation;
 
-import static java.lang.Double.NaN;
+public class Value extends Node {
 
-public class Value implements Nodeable {
-
-    Double value = NaN;
-
-    //    @formatter:off
-    void setValue(Double value){this.value = value;}
-    Double getValue(){return value;}
-    //    @formatter:on
+    Value(NodeType type) {
+        super(type);
+    }
+    @Override
+    protected Double calculate(Nodeable left, Nodeable rite) {
+        return value;
+    }
 }

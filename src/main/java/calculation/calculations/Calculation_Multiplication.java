@@ -1,15 +1,17 @@
 package calculation.calculations;
 
 import calculation.Calculation;
+import calculation.NodeType;
+import calculation.Nodeable;
 
 public class Calculation_Multiplication extends Calculation {
 
-    public Calculation_Multiplication(){
-        super();
-        System.out.println("multiply");
+    public Calculation_Multiplication(NodeType type){
+        super(type);
     }
 
-    public double calculate(double left, double rite) {
+    @Override
+    protected double perform(double left, double rite) {
         return left * rite;
     }
 }

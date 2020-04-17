@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import calculation.Words;
+import calculation.NodeType;
 
 public class Button extends JButton implements KeyListener {
 
     static int
             tile = 60,
             rowLength = 5;
-    private Words word;
+    private NodeType word;
     private char symbol;
 
-    Button(char symbol, Words word) {
+    Button(char symbol, NodeType word) {
         this.symbol = symbol;
         this.word = word;
         setText(Character.toString(symbol));
@@ -28,8 +28,8 @@ public class Button extends JButton implements KeyListener {
         setBounds(hor, ver, tile, tile);
     }
 
-    private void addInteraction(Words word) {
-        addActionListener(e -> Words.valueOf(word.toString()).interact());
+    private void addInteraction(NodeType word) {
+        addActionListener(e -> NodeType.valueOf(word.toString()).interact());
     }
 
     @Override

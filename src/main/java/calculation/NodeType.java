@@ -2,7 +2,7 @@ package calculation;
 
 import calculation.calculations.*;
 
-public enum Words {
+public enum NodeType {
 
     BRACKET_IN {
         @Override
@@ -41,7 +41,7 @@ public enum Words {
     ADD {
         @Override
         public void interact() {
-            new Calculation_Addition();
+            new Calculation_Addition(this);
         }
     },
     SUBTRACT {
@@ -53,7 +53,7 @@ public enum Words {
     VALUE {
         @Override
         public void interact() {
-            new Value();
+            new Value(this);
         }
     },
     EVALUATE {
