@@ -18,9 +18,6 @@ public abstract class Node implements Nodeable {
     }
 
 
-     protected abstract Double calculate(Nodeable left, Nodeable rite);
-
-
 
     //    @formatter:off
     void setType(NodeType type){this.type = type;}
@@ -29,9 +26,11 @@ public abstract class Node implements Nodeable {
     void setLocalRoot(Nodeable node){this.localRoot = node;}
     void setLocalRite(Nodeable node){this.localRite = node;}
     NodeType getType(){return type;}
-    Double getValue(){return value;}
+    public Double getValue(){return value;}
     Nodeable getLocalLeft(){return localLeft;}
     Nodeable getLocalRoot(){return localRoot;}
     Nodeable getLocalRite(){return localRite;}
     //    @formatter:on
+
+    protected abstract Double calculate(Nodeable left, Nodeable rite);
 }

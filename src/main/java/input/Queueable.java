@@ -13,12 +13,22 @@ public interface Queueable {
     void addToQueue(Queueable queuer);
 
     /**
-     * presents an entity leaving the queue
+     * presents an entity removed the queue
+     * (queue pov)
      */
     Queueable takeFromQueue();
 
     /**
+     * queuer joins the queue
+     * the method solves queuers responsibility
+     * to remember his ahead and behind
+     * queuer fellows
+     * */
+    void joinQueue(Queueable calculationQueue);
+
+    /**
      * signs off the queuer while returning its successor
+     * (queuer pov)
      */
     Queueable leaveQueue();
 
@@ -26,4 +36,14 @@ public interface Queueable {
      * returns the nodeType currently binding the default object
      */
     int getNodeTypeOrdinal();
+
+    /**
+     * returns another queuer in the line
+     * */
+    Queueable getNextOne();
+
+    /**
+     * returns previous queuer in the line
+     * */
+    Queueable getPrevOne();
 }

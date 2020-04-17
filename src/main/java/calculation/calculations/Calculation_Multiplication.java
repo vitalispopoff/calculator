@@ -2,7 +2,6 @@ package calculation.calculations;
 
 import calculation.Calculation;
 import calculation.NodeType;
-import calculation.Nodeable;
 
 public class Calculation_Multiplication extends Calculation {
 

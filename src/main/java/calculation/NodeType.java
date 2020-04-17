@@ -17,25 +17,25 @@ public enum NodeType {
     EXPONENT {
         @Override
         public void interact() {
-            new Calculation_Exponentiation();
+            new Calculation_Exponentiation(this);
         }
     },
     ROOT {
         @Override
         public void interact() {
-            new Calculation_Rooting();
+            new Calculation_Rooting(this);
         }
     },
     MULTIPLY {
         @Override
         public void interact() {
-            new Calculation_Multiplication();
+            new Calculation_Multiplication(this);
         }
     },
     DIVIDE {
         @Override
         public void interact() {
-            new Calculation_Division();
+            new Calculation_Division(this);
         }
     },
     ADD {
@@ -47,7 +47,7 @@ public enum NodeType {
     SUBTRACT {
         @Override
         public void interact() {
-            new Calculation_Subtraction();
+            new Calculation_Subtraction(this);
         }
     },
     VALUE {

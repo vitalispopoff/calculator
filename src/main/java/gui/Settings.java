@@ -35,8 +35,9 @@ public class Settings implements Serializable {
     };
     public Point
             windowAnchor = new Point(200, 200);
-    public int
+    static public int
             tile = 60,
+            buttonRowLength = 4,
             windowDefaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE;
     public boolean
             windowResizable = false;

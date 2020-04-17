@@ -5,36 +5,34 @@ import calculation.Nodeable;
 public class Queuer implements Queueable {
 
     Queueable
-            ahead = null,
-            behind = null;
-    Nodeable node = null;
-
-    //    @formatter:off
-    void setAhead(Queueable queuer){this.ahead = queuer;}
-    void setBehind(Queueable queuer){this.behind = queuer;}
-    void setNode(Nodeable node){this.node = node;}
-    Queueable getAhead(){return ahead;}
-    Queueable getBehind(){return behind;}
-    Nodeable getNode(){return node;}
-    //    @formatter:on
+            prevOne = null,
+            nextOne = null;
+    Nodeable
+            node = null;
 
     @Override
-    public void addToQueue(Queueable queuer) {
-
-    }
-
-    @Override
-    public Queueable takeFromQueue() {
-        return null;
+    public void joinQueue(Queueable calculationQueue) {
+        prevOne = calculationQueue.getNextOne();
     }
 
     @Override
     public Queueable leaveQueue() {
-        return null;
+        Queueable result = nextOne;
+        nextOne = null;
+        return result;
     }
 
-    @Override
-    public int getNodeTypeOrdinal() {
-        return 0;
-    }
+    //    @formatter:off
+    @Override public void addToQueue(Queueable queuer) { }
+    @Override public Queueable takeFromQueue() {return null;}
+    @Override public int getNodeTypeOrdinal() {return 0;}
+
+    void setPrevOne(Queueable queuer){this.prevOne = queuer;}
+    void setNextOne(Queueable queuer){this.nextOne = queuer;}
+    void setNode(Nodeable node){this.node = node;}
+
+    public Queueable getPrevOne(){return prevOne;}
+    public Queueable getNextOne(){return nextOne;}
+    Nodeable getNode(){return node;}
+    //    @formatter:on
 }

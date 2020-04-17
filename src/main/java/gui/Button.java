@@ -1,5 +1,7 @@
 package gui;
 
+import static gui.Settings.buttonRowLength;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,28 +10,27 @@ import calculation.NodeType;
 
 public class Button extends JButton implements KeyListener {
 
-    static int
-            tile = 60,
-            rowLength = 5;
-    private NodeType word;
+    private NodeType type;
     private char symbol;
 
-    Button(char symbol, NodeType word) {
-        this.symbol = symbol;
-        this.word = word;
+    Button(char symbol, NodeType type) {
+        setSymbol(symbol);
+        setType(type);
         setText(Character.toString(symbol));
-        addInteraction(word);
+        addInteraction(type);
     }
 
     void setButtonBounds(int i, int tile) {
         int
-                hor = (i % 4) * tile,
-                ver = (1 + (i >> 2)) * tile;
+                hor = (i % buttonRowLength) * tile,
+                ver = (1 + (i / buttonRowLength)) * tile;
         setBounds(hor, ver, tile, tile);
     }
 
     private void addInteraction(NodeType word) {
-        addActionListener(e -> NodeType.valueOf(word.toString()).interact());
+        addActionListener(e ->
+                NodeType.valueOf(word.toString()).interact()
+        );
     }
 
     @Override
@@ -43,4 +44,9 @@ public class Button extends JButton implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
+
+    //    @formatter:off
+    void setSymbol(char symbol){this.symbol= symbol;}
+    void setType(NodeType type){this.type = type;}
+    //    @formatter:on
 }
