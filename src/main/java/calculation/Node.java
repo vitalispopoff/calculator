@@ -19,17 +19,22 @@ public abstract class Node implements Nodeable {
 
 
 
+
+
     //    @formatter:off
     void setType(NodeType type){this.type = type;}
     void setValue(Double value){this.value = value;}
     void setLocalLeft(Nodeable node){this.localLeft = node;}
     void setLocalRoot(Nodeable node){this.localRoot = node;}
     void setLocalRite(Nodeable node){this.localRite = node;}
-    NodeType getType(){return type;}
-    public Double getValue(){return value;}
-    Nodeable getLocalLeft(){return localLeft;}
-    Nodeable getLocalRoot(){return localRoot;}
-    Nodeable getLocalRite(){return localRite;}
+
+    public NodeType getType(){return type;}
+    public int getTypePriority(){return type.ordinal()>>1;}
+
+    @Override public Double getValue(){return value;}
+    @Override public Nodeable getLocalLeft(){return localLeft;}
+    @Override public Nodeable getLocalRoot(){return localRoot;}
+    @Override public Nodeable getLocalRite(){return localRite;}
     //    @formatter:on
 
     protected abstract Double calculate(Nodeable left, Nodeable rite);

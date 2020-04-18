@@ -2,81 +2,53 @@ package calculation;
 
 import calculation.calculations.*;
 
-public enum NodeType {
+public enum NodeType implements Typical {
 
+    //    @formatter:off
     BRACKET_IN {
-        @Override
-        public void interact() {
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {
+        }},
     BRACKET_OUT {
-        @Override
-        public void interact() {
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {
+        }},
     EXPONENT {
-        @Override
-        public void interact() {
-            new Calculation_Exponentiation(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Exponentiation(this);}},
     ROOT {
-        @Override
-        public void interact() {
-            new Calculation_Rooting(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Rooting(this);}},
     MULTIPLY {
-        @Override
-        public void interact() {
-            new Calculation_Multiplication(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Multiplication(this);}},
     DIVIDE {
-        @Override
-        public void interact() {
-            new Calculation_Division(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Division(this);}},
     ADD {
-        @Override
-        public void interact() {
-            new Calculation_Addition(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Addition(this);}},
     SUBTRACT {
-        @Override
-        public void interact() {
-            new Calculation_Subtraction(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Calculation_Subtraction(this);}},
     VALUE {
-        @Override
-        public void interact() {
-            new Value(this);
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {new Value(this);}},
+    SPIN {
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {}},
     EVALUATE {
-        @Override
-        public void interact() {
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {
+        }},
     CLEAR {
-        @Override
-        public void interact() {
-        }
-    },
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact() {
+        }},
     UNDO{
-        @Override
-        public void interact(){}
-    },
-    SIGN {
-        @Override
-        public void interact() {
-        }
-    };
-
-    public abstract void interact();
+        @Override public int getPriority() {return this.ordinal()>>1;}
+        @Override public void interact(){}}
+    //        @formatter:on
 }
 
 /*

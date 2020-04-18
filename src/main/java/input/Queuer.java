@@ -33,6 +33,7 @@ public class Queuer implements Queueable {
 
     public Queueable getPrevOne(){return prevOne;}
     public Queueable getNextOne(){return nextOne;}
-    Nodeable getNode(){return node;}
+    public Nodeable getNode(){return node;}
+    public int getTypePriority(){return getNode().getTypePriority();}
     //    @formatter:on
 }

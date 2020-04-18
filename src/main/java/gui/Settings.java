@@ -28,7 +28,7 @@ public class Settings implements Serializable {
             new Button('2', NodeType.VALUE),
             new Button('3', NodeType.VALUE),
             new Button('-', NodeType.SUBTRACT),
-            new Button('∓', NodeType.SIGN),
+            new Button('∓', NodeType.SPIN),
             new Button('0', NodeType.VALUE),
             new Button('.', NodeType.VALUE),
             new Button('=', NodeType.EVALUATE),

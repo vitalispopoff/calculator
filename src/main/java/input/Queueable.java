@@ -1,5 +1,7 @@
 package input;
 
+import calculation.Nodeable;
+
 /**
  * interface enables sorting single expressions
  * and delivering them to further processing:
@@ -37,6 +39,8 @@ public interface Queueable {
      */
     int getNodeTypeOrdinal();
 
+    Nodeable getNode();
+
     /**
      * returns another queuer in the line
      * */
@@ -46,4 +50,7 @@ public interface Queueable {
      * returns previous queuer in the line
      * */
     Queueable getPrevOne();
+
+
+    int getTypePriority();
 }
