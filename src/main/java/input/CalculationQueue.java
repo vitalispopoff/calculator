@@ -24,14 +24,15 @@ public class CalculationQueue extends Queuer {
                 currentFrontQueuerType = cache.getTypePriority(),
                 nextFrontQueuerType = cache.getNextOne().getTypePriority();
         boolean
-                currentFrontIsValue = nextFrontQueuerType == NodeType.VALUE.ordinal() >> 1;
-
+                currentFrontIsValue = currentFrontQueuerType == NodeType.VALUE.getPriority(),
+                nextFrontIsCalculation
+                        = nextFrontQueuerType > NodeType.BRACKET_OUT.getPriority()
+                        && nextFrontQueuerType < NodeType.VALUE.getPriority();
         Nodeable
                 cacheNodeRoot = cache.getNode(),
                 cacheNodeLeft = cacheNodeRoot.getLocalLeft(),
                 cacheNodeRite = cacheNodeRoot.getLocalRite();
     }
-
 
     //    @formatter:off
     int getLength(){return length;}
