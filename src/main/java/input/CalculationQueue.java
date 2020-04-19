@@ -1,7 +1,6 @@
 package input;
 
 import calculation.NodeType;
-import calculation.Nodeable;
 
 public class CalculationQueue extends Queuer {
 
@@ -9,13 +8,19 @@ public class CalculationQueue extends Queuer {
     int length = 0;
 
     CalculationQueue(Queueable queuer) {
-        this.queuerNodeTypes = new int[1 + NodeType.values().length >> 1];
-        prevOne = posttOne = queuer;
-        queuerNodeTypes[queuer.getNode().getPriority()]++;
+        setQueuerNodeTypes();
+//        this.queuerNodeTypes = new int[1 + NodeType.values().length >> 1];
+        prevOne = postOne = queuer;
         length++;
+//        queuerNodeTypes[queuer.getNode().getPriority()]++;
+
     }
 
-    void constructLocalTree() {
+    public void setQueuerNodeTypes() {
+        this.queuerNodeTypes = new int[(NodeType.values().length >> 1) + 1];
+    }
+
+    /*    void constructLocalTree() {
         Queueable
                 cache = prevOne;
         int
@@ -45,11 +50,11 @@ public class CalculationQueue extends Queuer {
             cacheRootNode.setLocalRite(cacheRite.getNode());
             addToQueue(cacheRoot);
         } else
-            for (int i = 0; i <2 ; i++)
+            for (int i = 0; i < 2; i++)
                 this.addToQueue(this.takeFromQueue());
-    }
+    }*/     //  !   void constructLocalTree
 
-    public Queueable takeFromQueue() {
+    /*    public Queueable takeFromQueue() {
         if (length == 0) return null;
         else {
             Queueable cache = prevOne;
@@ -58,20 +63,14 @@ public class CalculationQueue extends Queuer {
             length--;
             return cache;
         }
-    }
+    }*/     //  !   public Queueable takeFromQueue
 
-    int currentPriority() {
+    /*    int currentPriority() {
         int
                 i = -1,
                 x = 0;
         for (; i < queuerNodeTypes.length - 1 && x == 0; )
             x = queuerNodeTypes[++i];
         return i;
-    }
-
-    //    @formatter:off
-    int getLength(){return length;}
-    //  @formatter:on
-
-
+    }*/     //  !   int currentPriority
 }

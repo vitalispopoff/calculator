@@ -31,25 +31,21 @@ public interface Queueable {
     /**
      * signs off the queuer while returning its successor
      * (queuer pov)
+     * ! takes no responsibility in breaking the queue
      */
     Queueable leaveQueue();
+
+    /**
+     * After extracting node unlinkks the object
+     * from the context for the garbage collector,
+     * eventually returns the unwrapped node object.
+     * */
+    Nodeable deQueuer();
 
     /**
      * returns the nodeType currently binding the default object
      */
     int getNodeTypeOrdinal();
-
-    Nodeable getNode();
-
-    /**
-     * returns another queuer in the line
-     * */
-    Queueable getPosttOne();
-
-    /**
-     * returns previous queuer in the line
-     * */
-    Queueable getPrevOne();
 
     /**
      * Returns a number representing
@@ -57,5 +53,25 @@ public interface Queueable {
      * */
     int getTypePriority();
 
-    Nodeable deQueuer();
+    /**
+     * ???
+     * */
+    Nodeable getNode();
+
+    /**
+     * returns previous queuer in the line
+     * */
+    Queueable getPrevOne();
+
+    void setPostOne(Queueable postOne);
+
+    /**
+     * returns another queuer in the line
+     * */
+    Queueable getPostOne();
+
+    /**
+     * ???
+     * */
+    void setPrevOne(Queueable queuer);
 }
