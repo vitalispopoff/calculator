@@ -1,9 +1,9 @@
 package input;
 
-import calculation.Node;
 import calculation.NodeType;
 import calculation.Nodeable;
-import calculation.Value;
+
+import java.util.Arrays;
 
 public class CalculationQueue extends Queuer {
 
@@ -12,7 +12,7 @@ public class CalculationQueue extends Queuer {
 
     CalculationQueue(Queueable queuer) {
         this.queuerNodeTypes = new int[1 + NodeType.values().length >> 1];
-        prevOne = nextOne = queuer;
+        prevOne = posttOne = queuer;
         queuerNodeTypes[queuer.getNode().getTypePriority()]++;
         length++;
     }
@@ -21,20 +21,59 @@ public class CalculationQueue extends Queuer {
         Queueable
                 cache = prevOne;
         int
-                currentFrontQueuerType = cache.getTypePriority(),
-                nextFrontQueuerType = cache.getNextOne().getTypePriority();
+                currentFrontQueuerPriority = cache.getTypePriority(),
+                nextFrontQueuerPriority = cache.getPosttOne().getTypePriority(),
+                valuePriority = NodeType.VALUE.getPriority(),
+                bracketPriority = NodeType.BRACKET_OUT.getPriority();
         boolean
-                currentFrontIsValue = currentFrontQueuerType == NodeType.VALUE.getPriority(),
+                currentFrontIsValue = currentFrontQueuerPriority == valuePriority,
+                nextFrontIsValue = nextFrontQueuerPriority == valuePriority,
                 nextFrontIsCalculation
-                        = nextFrontQueuerType > NodeType.BRACKET_OUT.getPriority()
-                        && nextFrontQueuerType < NodeType.VALUE.getPriority();
-        Nodeable
-                cacheNodeRoot = cache.getNode(),
-                cacheNodeLeft = cacheNodeRoot.getLocalLeft(),
-                cacheNodeRite = cacheNodeRoot.getLocalRite();
+                        = nextFrontQueuerPriority > bracketPriority
+                        && nextFrontQueuerPriority < valuePriority;
+
+        if (currentFrontQueuerPriority == NodeType.VALUE.getPriority()
+                && nextFrontQueuerPriority <= currentPriority()) {
+
+            Queueable
+                    cacheRoot = takeFromQueue(),
+                    cacheRite;
+            Nodeable
+                    cacheLeft = takeFromQueue().deQueuer(),
+                    cacheRootNode = cacheRoot.getNode();
+
+            cacheRite = nextFrontIsValue ? takeFromQueue() : null;
+            cacheRootNode.setLocalLeft(cacheLeft);
+            cacheRootNode.setLocalRite(cacheRite.getNode());
+            addToQueue(cacheRoot);
+        } else
+            for (int i = 0; i <2 ; i++)
+                this.addToQueue(this.takeFromQueue());
+    }
+
+    public Queueable takeFromQueue() {
+        if (length == 0) return null;
+        else {
+            Queueable cache = prevOne;
+            prevOne = prevOne.leaveQueue();
+            queuerNodeTypes[cache.getTypePriority()]--;
+            length--;
+            return cache;
+        }
+    }
+
+    int currentPriority() {
+        int
+                i = -1,
+                x = 0;
+        for (; i < queuerNodeTypes.length - 1 && x == 0; )
+            x = queuerNodeTypes[++i];
+        return i;
     }
 
     //    @formatter:off
     int getLength(){return length;}
     //  @formatter:on
+
+
 }

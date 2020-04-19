@@ -17,16 +17,12 @@ public abstract class Node implements Nodeable {
         setType(type);
     }
 
-
-
-
-
     //    @formatter:off
     void setType(NodeType type){this.type = type;}
     void setValue(Double value){this.value = value;}
-    void setLocalLeft(Nodeable node){this.localLeft = node;}
-    void setLocalRoot(Nodeable node){this.localRoot = node;}
-    void setLocalRite(Nodeable node){this.localRite = node;}
+    @Override public void setLocalLeft(Nodeable node){this.localLeft = node;}
+    @Override public void setLocalRoot(Nodeable node){this.localRoot = node;}
+    @Override public void setLocalRite(Nodeable node){this.localRite = node;}
 
     public NodeType getType(){return type;}
     public int getTypePriority(){return type.ordinal()>>1;}

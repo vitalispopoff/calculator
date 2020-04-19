@@ -44,13 +44,18 @@ public interface Queueable {
     /**
      * returns another queuer in the line
      * */
-    Queueable getNextOne();
+    Queueable getPosttOne();
 
     /**
      * returns previous queuer in the line
      * */
     Queueable getPrevOne();
 
-
+    /**
+     * Returns a number representing
+     * a priority of a node
+     * */
     int getTypePriority();
+
+    Nodeable deQueuer();
 }
