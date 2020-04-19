@@ -3,8 +3,6 @@ package input;
 import calculation.NodeType;
 import calculation.Nodeable;
 
-import java.util.Arrays;
-
 public class CalculationQueue extends Queuer {
 
     int[] queuerNodeTypes;
@@ -13,7 +11,7 @@ public class CalculationQueue extends Queuer {
     CalculationQueue(Queueable queuer) {
         this.queuerNodeTypes = new int[1 + NodeType.values().length >> 1];
         prevOne = posttOne = queuer;
-        queuerNodeTypes[queuer.getNode().getTypePriority()]++;
+        queuerNodeTypes[queuer.getNode().getPriority()]++;
         length++;
     }
 

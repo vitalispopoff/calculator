@@ -1,6 +1,6 @@
 @startuml
 
-package _temp.calculation{
+package java._temp_tests.calculation{
 
 /'    +abstract Treebeard{
             ~ {field} {static} Node leftSlot

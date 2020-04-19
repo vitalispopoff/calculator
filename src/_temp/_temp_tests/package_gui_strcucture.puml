@@ -1,6 +1,6 @@
 @startuml
 
-package _temp.gui{
+package java._temp_tests.gui{
 
     class MainFrame{
             +   {field} Settings settings

@@ -1,6 +1,6 @@
 @startuml
 
-package _temp.input{
+package java._temp_tests.input{
 
     interface Parsable{
             +  {method} void addToCache (char)
