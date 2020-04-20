@@ -15,7 +15,7 @@ public interface Queueable {
     void addToQueue(Queueable queuer);
 
     /**
-     * presents an entity removed the queue
+     * return an entity removed the queue
      * (queue pov)
      */
     Queueable takeFromQueue();
@@ -51,7 +51,7 @@ public interface Queueable {
      * Returns a number representing
      * a priority of a node
      * */
-    int getTypePriority();
+//    int getTypePriority();
 
     /**
      * ???

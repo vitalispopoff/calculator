@@ -6,80 +6,84 @@ public enum NodeType implements Typical {
 
     BRACKET_IN {
         @Override
-        public void interact() {
+        public Nodeable interact() {return null;
         }
     },
     BRACKET_OUT {
         @Override
-        public void interact() {
+        public Nodeable interact() {return null;
         }
     },
     EXPONENT {
         @Override
-        public void interact() {
-            new Calculation_Exponentiation(this);
+        public Nodeable interact() {
+            return new Calculation_Exponentiation(this);
         }
     },
     ROOT {
         @Override
-        public void interact() {
-            new Calculation_Rooting(this);
+        public Nodeable interact() {
+            return new Calculation_Rooting(this);
         }
     },
     MULTIPLY {
         @Override
-        public void interact() {
-            new Calculation_Multiplication(this);
+        public Nodeable interact() {
+            return new Calculation_Multiplication(this);
         }
     },
     DIVIDE {
         @Override
-        public void interact() {
-            new Calculation_Division(this);
+        public Nodeable interact() {
+            return new Calculation_Division(this);
         }
     },
     ADD {
         @Override
-        public void interact() {
-            new Calculation_Addition(this);
+        public Nodeable interact() {
+            return new Calculation_Addition(this);
         }
     },
     SUBTRACT {
         @Override
-        public void interact() {
-            new Calculation_Subtraction(this);
+        public Nodeable interact() {
+            return new Calculation_Subtraction(this);
         }
     },
     VALUE {
         @Override
-        public void interact() {
-            new Value(this);
+        public Nodeable interact() {
+            return new Value(this);
         }
     },
     SPIN {
         @Override
-        public void interact() {
+        public Nodeable interact() {
+            return null;
         }
     },
     EVALUATE {
         @Override
-        public void interact() {
+        public Nodeable interact() {
+            return null;
         }
     },
     CLEAR {
         @Override
-        public void interact() {
+        public Nodeable interact() {
+            return null;
         }
     },
     UNDO {
         @Override
-        public void interact() {
+        public Nodeable interact() {
+            return null;
         }
     };
 
     @Override
     public int getPriority() {
-        return this.ordinal() >> 1;
+        return this.ordinal() /*>> 1*/;
     }
 }
 

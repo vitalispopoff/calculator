@@ -2,7 +2,7 @@ package calculation;
 
 public class Value extends Node {
 
-    Value(NodeType type) {
+    public Value(NodeType type) {
         super(type);
     }
     @Override

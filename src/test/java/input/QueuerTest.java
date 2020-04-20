@@ -1,10 +1,17 @@
 package input;
 
+import calculation.NodeType;
+import calculation.Nodeable;
+import calculation.Value;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.Random;
 
 public class QueuerTest {
 
+    @Ignore
     @Test
     public void Queuer_01() {
         Queueable
@@ -14,6 +21,7 @@ public class QueuerTest {
         Assert.assertNull(q.getNode());
     }
 
+    @Ignore
     @Test
     public void joinQueue_01() {
         Queueable
@@ -27,6 +35,7 @@ public class QueuerTest {
         Assert.assertSame(q2, ((CalculationQueue) Q1).postOne);
     }
 
+    @Ignore
     @Test
     public void joinQueue_02() {
         Queueable
@@ -38,6 +47,7 @@ public class QueuerTest {
         Assert.assertSame(q2, ((Queuer) q1).postOne);
     }
 
+    @Ignore
     @Test
     public void leaveQueue_01() {
         Queueable
@@ -46,12 +56,58 @@ public class QueuerTest {
                 Q1 = new CalculationQueue(q1);
         q2.joinQueue(Q1);
         Assert.assertSame(q2, ((Queuer) q1).postOne);
-        Assert.assertSame(q2,q1.leaveQueue());
+        Assert.assertSame(q2, q1.leaveQueue());
         Assert.assertNull(((Queuer) q1).prevOne);
         Assert.assertNull(((Queuer) q1).postOne);
     }
-}
 
+    @Ignore
+    @Test
+    public void deQueuer_01() {
+        Nodeable n1 = new Value(NodeType.VALUE);
+        Queueable q1 = new Queuer();
+        ((Queuer) q1).setNode(n1);
+        Assert.assertSame(n1, ((Queuer) q1).node);
+        Assert.assertSame(n1, q1.deQueuer());
+        Assert.assertNull(((Queuer) q1).postOne);
+        Assert.assertNull(((Queuer) q1).prevOne);
+        Assert.assertNull(((Queuer) q1).node);
+    }
+
+    @Ignore
+    @Test
+    public void getNodeTypeOrdinal_01(){
+        NodeType t1 = NodeType.VALUE;
+        Nodeable n1 = new Value(t1);
+        Queueable q1 = new Queuer();
+        ((Queuer)q1).node = n1;
+        Assert.assertEquals(t1.ordinal(), q1.getNodeTypeOrdinal());
+    }
+
+    @Ignore
+    @Test
+    public void getNodeTypeOrdinal_02(){
+        int typePick = new Random().nextInt(NodeType.values().length);
+        NodeType t1 = NodeType.values()[typePick];
+        Nodeable n1 = new Value(t1);
+        Queueable q1 = new Queuer();
+        ((Queuer)q1).node = n1;
+        Assert.assertEquals(t1.ordinal(), q1.getNodeTypeOrdinal());
+
+    }
+
+    @Ignore
+    @Test
+    public void getNodeTypeOrdinal_03(){
+        Queueable q1 = new Queuer();
+        Assert.assertEquals(-1, q1.getNodeTypeOrdinal());
+    }
+
+
+
+
+
+}
 /*
  *   adding a queuer to the queue
  *

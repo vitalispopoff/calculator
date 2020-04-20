@@ -10,11 +10,18 @@ public class Queuer implements Queueable {
     Nodeable
             node = null;
 
+    public Queuer() {
+    }
+
+    public Queuer(Nodeable node) {
+        this.node = node;
+    }
+
     @Override
     public void joinQueue(Queueable calculationQueue) {
         prevOne = calculationQueue.getPostOne();
-        if (prevOne != null)prevOne.setPostOne(this);
-        if (postOne != null)postOne.setPrevOne(this);
+        if (prevOne != null) prevOne.setPostOne(this);
+        if (postOne != null) postOne.setPrevOne(this);
 
         if (calculationQueue.getPostOne() == calculationQueue.getPrevOne())
             calculationQueue.setPostOne(this);
@@ -24,31 +31,64 @@ public class Queuer implements Queueable {
     @Override
     public Queueable leaveQueue() {
         Queueable result = postOne;
-        postOne = null;
+        setPostOne(null);
         return result;
     }
 
     @Override
     public Nodeable deQueuer() {
         Nodeable cache = node;
-//        leaveQueue();
-        node = null;
+        setPostOne(null);
+        setNode(null);
         return cache;
     }
 
-    //    @formatter:off
-    @Override public void addToQueue(Queueable queuer) { }
-    @Override public Queueable takeFromQueue() {return null;}
-    @Override public int getNodeTypeOrdinal() {return 0;}
-    @Override public void setPostOne(Queueable postOne) {this.postOne = postOne;}
-//    public int getLength() {return length;}
+    @Override
+    public int getNodeTypeOrdinal() {
+        try {
+            return node.getType().ordinal();
+        } catch (NullPointerException ignored) {
+            return -1;
+        }
+    }
 
-    public void setPrevOne(Queueable queuer){this.prevOne = queuer;}
-    void setNode(Nodeable node){this.node = node;}
+    @Override
+    public void addToQueue(Queueable queuer) {
+    }
 
-    public Queueable getPrevOne(){return prevOne;}
-    public Queueable getPostOne(){return postOne;}
-    public Nodeable getNode(){return node;}
-    public int getTypePriority(){return getNode().getPriority();}
-    //    @formatter:on
+    @Override
+    public Queueable takeFromQueue() {
+        return null;
+    }
+
+    @Override
+    public void setPostOne(Queueable postOne) {
+        this.postOne = postOne;
+    }
+
+    public void setPrevOne(Queueable queuer) {
+        this.prevOne = queuer;
+    }
+
+    void setNode(Nodeable node) {
+        this.node = node;
+    }
+
+    public Queueable getPrevOne() {
+        return prevOne;
+    }
+
+    public Queueable getPostOne() {
+        return postOne;
+    }
+
+    public Nodeable getNode() {
+        return node;
+    }
+
+    public int getTypePriority() {
+        return -1;
+//        return node.getType().getPriority();
+//        return node.getType().ordinal() /*>> 1*/;
+    }
 }

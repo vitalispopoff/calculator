@@ -4,20 +4,27 @@ import calculation.NodeType;
 
 public class CalculationQueue extends Queuer {
 
-    int[] queuerNodeTypes;
+    public int[] queuerNodeTypes;
     int length = 0;
 
-    CalculationQueue(Queueable queuer) {
+    public CalculationQueue(Queueable queuer) {
         setQueuerNodeTypes();
-//        this.queuerNodeTypes = new int[1 + NodeType.values().length >> 1];
         prevOne = postOne = queuer;
         length++;
+        //        updatePriority(queuer);
 //        queuerNodeTypes[queuer.getNode().getPriority()]++;
-
+//                this.queuerNodeTypes = new int[1 + NodeType.values().length /*>> 1*/];
     }
 
     public void setQueuerNodeTypes() {
-        this.queuerNodeTypes = new int[(NodeType.values().length >> 1) + 1];
+        this.queuerNodeTypes = new int[/*(*/NodeType.values().length /*>> 1) + 1*/];
+    }
+
+    void updatePriority(Queueable queuer){
+        System.out.println(queuer.getNode().getPriority());
+//        queuerNodeTypes[queuer.getNode().getPriority()]++;
+//        queuer.getNode().getPriority();
+
     }
 
     /*    void constructLocalTree() {
@@ -52,7 +59,7 @@ public class CalculationQueue extends Queuer {
         } else
             for (int i = 0; i < 2; i++)
                 this.addToQueue(this.takeFromQueue());
-    }*/     //  !   void constructLocalTree
+    }*/
 
     /*    public Queueable takeFromQueue() {
         if (length == 0) return null;
@@ -63,14 +70,13 @@ public class CalculationQueue extends Queuer {
             length--;
             return cache;
         }
-    }*/     //  !   public Queueable takeFromQueue
+    }*/
 
-    /*    int currentPriority() {
-        int
-                i = -1,
+    /*int currentPriority() {
+        int i = 0,
                 x = 0;
-        for (; i < queuerNodeTypes.length - 1 && x == 0; )
-            x = queuerNodeTypes[++i];
-        return i;
-    }*/     //  !   int currentPriority
+        for (; i < queuerNodeTypes.length - 1 && x == 0; i++)
+            x = queuerNodeTypes[i];
+        return i-1;
+    }*/
 }
