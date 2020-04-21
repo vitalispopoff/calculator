@@ -6,7 +6,7 @@ import calculation.*;
 
 public class CalculationQueueTest {
 
-        @Ignore
+//    @Ignore
     @Test
     public void CalculationQueue_01() {
         Queueable
@@ -17,7 +17,7 @@ public class CalculationQueueTest {
         Assert.assertSame(q1, ((CalculationQueue) Q1).postOne);
     }
 
-        @Ignore
+//    @Ignore
     @Test
     public void CalculationQueue_02() {
         Queueable
@@ -26,7 +26,7 @@ public class CalculationQueueTest {
         Assert.assertTrue(((CalculationQueue) Q1).queuerNodeTypes.length > 0);
     }
 
-        @Ignore
+//    @Ignore
     @Test   // ? disposable - method used in the constructor
     public void setQueuerNodeTypes_01() {
         Queueable Q1 = new CalculationQueue(new Queuer());
@@ -34,7 +34,7 @@ public class CalculationQueueTest {
         Assert.assertTrue(((CalculationQueue) Q1).queuerNodeTypes.length > 0);
     }
 
-        @Ignore
+//    @Ignore
     @Test
     public void currentPriority_01() {
         NodeType type = NodeType.VALUE;
@@ -43,7 +43,7 @@ public class CalculationQueueTest {
         Assert.assertTrue(n1 instanceof Node);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void currentPriority_02() {
 //        NodeType type = NodeType.VALUE;
@@ -52,17 +52,12 @@ public class CalculationQueueTest {
         Queueable
                 q1 = new Queuer(node),
                 Q1 = new CalculationQueue(q1);
-        ((CalculationQueue) Q1).updatePriority(q1);
+//        ((CalculationQueue) Q1).updatePriority(q1);
 //        Assert.assertTrue(((CalculationQueue) Q1).queuerNodeTypes.length > 0);
 
-        int x = 0;
-        for (int i : ((CalculationQueue) Q1).queuerNodeTypes)
-            System.out.println(x++ + " : " + i);
+//        int x = 0;
+//        for (int i : ((CalculationQueue) Q1).queuerNodeTypes)
+//            System.out.println(x++ + " : " + i);
 
-//        System.out.println(((CalculationQueue)Q1).currentPriority());
-
-
-//        System.out.println(((CalculationQueue) Q1).currentPriority());
-//        System.out.println(NodeType.BRACKET_IN.getPriority());
     }
 }

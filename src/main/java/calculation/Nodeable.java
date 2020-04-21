@@ -9,7 +9,7 @@ public interface Nodeable {
      * The value is based on the index
      * of the NodeType related to the object;
      * */
-    default int getPriority(){return Typical.getTypePriority(this.getType());}
+    default int getPriority(){return Typical.getTypicalPriority(this.getType());}
 
     /*default int getPriority(){return getType().ordinal()>>1;}*/   //  old implementation of the getPriority()
 
@@ -34,7 +34,7 @@ public interface Nodeable {
     /**
      * Returns the NodeType of the object
      * */
-    NodeType getType();
+    Typical getType();
 
     /**
      * Returns the value of the object
@@ -46,7 +46,7 @@ public interface Nodeable {
     /**
      * Sets the NodeType of the object
      * */
-    void setType(NodeType type);
+    void setType(Typical type);
 
     /**
      * Sets the left branch of the local tree

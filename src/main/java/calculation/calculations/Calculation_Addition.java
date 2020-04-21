@@ -1,11 +1,10 @@
 package calculation.calculations;
 
-import calculation.Calculation;
 import calculation.*;
 
 public class Calculation_Addition extends Calculation {
 
-    public Calculation_Addition(NodeType type) {
+    public Calculation_Addition(Typical type) {
         super(type);
     }
 

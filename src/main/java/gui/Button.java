@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import calculation.NodeType;
+import calculation.*;
 
 public class Button extends JButton implements KeyListener {
 
-    private NodeType type;
+    private Typical type;
     private char symbol;
 
     Button(char symbol, NodeType type) {
@@ -47,6 +47,6 @@ public class Button extends JButton implements KeyListener {
 
     //    @formatter:off
     void setSymbol(char symbol){this.symbol= symbol;}
-    void setType(NodeType type){this.type = type;}
+    void setType(Typical type){this.type = type;}
     //    @formatter:on
 }

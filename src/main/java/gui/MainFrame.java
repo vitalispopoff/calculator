@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
         setWindowAnchor(settings.windowAnchor);
         setResizable(settings.windowResizable);
         setMainPanel(settings);
-        setDefaultCloseOperation(settings.windowDefaultCloseOperation);
+        setDefaultCloseOperation(Settings.windowDefaultCloseOperation);
 
         addWindowListener(new WindowAdapter() {
             @Override

@@ -1,11 +1,10 @@
 package calculation.calculations;
 
-import calculation.Calculation;
-import calculation.NodeType;
+import calculation.*;
 
 public class Calculation_Multiplication extends Calculation {
 
-    public Calculation_Multiplication(NodeType type){
+    public Calculation_Multiplication(Typical type) {
         super(type);
     }
 
@@ -13,4 +12,6 @@ public class Calculation_Multiplication extends Calculation {
     protected double perform(double left, double rite) {
         return left * rite;
     }
+
+
 }

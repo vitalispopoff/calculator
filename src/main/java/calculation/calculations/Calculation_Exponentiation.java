@@ -1,11 +1,10 @@
 package calculation.calculations;
 
-import calculation.Calculation;
-import calculation.NodeType;
+import calculation.*;
 
 public class Calculation_Exponentiation extends Calculation {
 
-    public Calculation_Exponentiation(NodeType type){
+    public Calculation_Exponentiation(Typical type) {
         super(type);
     }
 

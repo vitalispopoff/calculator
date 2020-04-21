@@ -2,7 +2,7 @@ package calculation;
 
 public abstract class Calculation extends Node {
 
-    public Calculation(NodeType type) {
+    public Calculation(Typical type) {
         super(type);
     }
 

@@ -1,11 +1,10 @@
 package calculation.calculations;
 
-import calculation.Calculation;
-import calculation.NodeType;
+import calculation.*;
 
 public class Calculation_Rooting extends Calculation {
 
-    public Calculation_Rooting(NodeType type){
+    public Calculation_Rooting(Typical type) {
         super(type);
     }
 

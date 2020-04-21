@@ -1,18 +1,17 @@
 package input;
 
-import calculation.Nodeable;
+import calculation.*;
 
 public class Queuer implements Queueable {
 
-    Queueable
+    public Queueable
             prevOne = null,
             postOne = null;
-    Nodeable
+    public Nodeable
             node = null;
 
     public Queuer() {
     }
-
     public Queuer(Nodeable node) {
         this.node = node;
     }
@@ -52,43 +51,39 @@ public class Queuer implements Queueable {
         }
     }
 
-    @Override
-    public void addToQueue(Queueable queuer) {
-    }
+//    @formatter:off
 
-    @Override
-    public Queueable takeFromQueue() {
+    @Override public void addToQueue(Queueable queuer) {
+    }
+    @Override public Queueable takeFromQueue() {
         return null;
     }
-
-    @Override
-    public void setPostOne(Queueable postOne) {
+    @Override public void setPostOne(Queueable postOne) {
         this.postOne = postOne;
     }
 
     public void setPrevOne(Queueable queuer) {
         this.prevOne = queuer;
     }
-
     void setNode(Nodeable node) {
         this.node = node;
     }
-
     public Queueable getPrevOne() {
         return prevOne;
     }
-
     public Queueable getPostOne() {
         return postOne;
     }
-
     public Nodeable getNode() {
         return node;
     }
 
-    public int getTypePriority() {
-        return -1;
-//        return node.getType().getPriority();
-//        return node.getType().ordinal() /*>> 1*/;
+//    @formatter:on
+
+    public static void main(String[] args) {
+
+        Typical t = NodeType.VALUE;
+        System.out.println(Typical.getTypicalPriority(t));
+
     }
 }
