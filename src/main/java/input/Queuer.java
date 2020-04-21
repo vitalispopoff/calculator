@@ -53,37 +53,42 @@ public class Queuer implements Queueable {
 
 //    @formatter:off
 
+
+
     @Override public void addToQueue(Queueable queuer) {
     }
     @Override public Queueable takeFromQueue() {
         return null;
     }
+
+    @Override public Queueable getPrevOne() {
+        return prevOne;
+    }
+    @Override public Queueable getPostOne() {
+        return postOne;
+    }
+
+    @Override public void setPrevOne(Queueable queuer) {
+        this.prevOne = queuer;
+    }
     @Override public void setPostOne(Queueable postOne) {
         this.postOne = postOne;
     }
 
-    public void setPrevOne(Queueable queuer) {
-        this.prevOne = queuer;
-    }
     void setNode(Nodeable node) {
         this.node = node;
     }
-    public Queueable getPrevOne() {
-        return prevOne;
-    }
-    public Queueable getPostOne() {
-        return postOne;
-    }
+
     public Nodeable getNode() {
         return node;
     }
 
 //    @formatter:on
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         Typical t = NodeType.VALUE;
         System.out.println(Typical.getTypicalPriority(t));
 
-    }
+    }*/ // * psvm
 }

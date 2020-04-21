@@ -1,7 +1,8 @@
 package input;
 
 /**
- * the interface provides a logic of parsing,
+ * :
+ * Provides the logic of parsing,
  * and assembling a number value for the equation tree,
  * as well as wrapping it into  a tree compliant object.
  * to communicate directly to value class
@@ -9,6 +10,7 @@ package input;
 public interface Parsable {
 
     /**
+     * :
      * Adds a character to the end of parsing string
      *
      * @param c the character written via keyboard
@@ -16,7 +18,8 @@ public interface Parsable {
      void addCharToCache(char c);
 
     /**
-     * returns the cache value as double,
+     * :
+     * Returns the cache value as double,
      * and resets the cache.
      */
      double clearCache();

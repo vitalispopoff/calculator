@@ -9,7 +9,7 @@ public class TypicalTest {
     public void getTypePriority_01(){
 
         for (NodeType type: NodeType.values()) {
-            Assert.assertEquals(type.ordinal()/*>>1*/, type.getPriority());
+            Assert.assertEquals(type.ordinal()/*>>1*/, Typical.getTypicalPriority(type));
         }
     }
 }

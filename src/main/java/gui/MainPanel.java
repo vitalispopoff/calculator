@@ -16,7 +16,7 @@ public class MainPanel extends JPanel {
                 = tile == 0
                 ? settings.tile
                 : tile;
-        display = new MainDisplay(settings, "", SwingConstants.RIGHT);
+        display = new MainDisplay(/*settings,*/ /*"",*/ /*SwingConstants.RIGHT*/);
 
         setLayout(null);
         add(display);

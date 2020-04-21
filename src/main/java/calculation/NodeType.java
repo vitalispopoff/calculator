@@ -6,12 +6,14 @@ public enum NodeType implements Typical {
 
     BRACKET_IN {
         @Override
-        public Nodeable interact() {return null;
+        public Nodeable interact() {
+            return null;
         }
     },
     BRACKET_OUT {
         @Override
-        public Nodeable interact() {return null;
+        public Nodeable interact() {
+            return null;
         }
     },
     EXPONENT {
@@ -81,10 +83,12 @@ public enum NodeType implements Typical {
         }
     };
 
-    @Override
-    public int getPriority() {
-        return this.ordinal() /*>> 1*/;
-    }
+    //    @Override
+/*    public int getPriority() {
+        return this.ordinal()
+//                >> 1
+                ;
+    }*/
 }
 
 /*
