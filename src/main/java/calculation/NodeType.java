@@ -83,8 +83,16 @@ public enum NodeType implements Typical {
         }
     };
 
-    //    @Override
-/*    public int getPriority() {
+
+//    @Override
+    static Typical valueOf(Typical type){
+        String cache = type.toString();
+        return (Typical)NodeType.valueOf(cache);
+    }
+
+
+/*     //    @Override
+   public int getPriority() {
         return this.ordinal()
 //                >> 1
                 ;

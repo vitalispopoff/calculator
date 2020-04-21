@@ -18,6 +18,8 @@ public interface Typical {
         return cache >= 0 ? cache /*>> 1*/ : cache;
     }
 
+    static Typical valueOf(Typical type) { return type;}
+
     /**
      * :
      * returns the priority of the Typical

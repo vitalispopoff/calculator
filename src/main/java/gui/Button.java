@@ -27,10 +27,8 @@ public class Button extends JButton implements KeyListener {
         setBounds(hor, ver, tile, tile);
     }
 
-    private void addInteraction(NodeType type) {
-        addActionListener(e ->
-                NodeType.valueOf(type.toString()).interact()
-        );
+    private void addInteraction(Typical type) {
+        addActionListener(e -> Typical.valueOf(type).interact());
     }
 
     @Override

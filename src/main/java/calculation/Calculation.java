@@ -4,6 +4,7 @@ public abstract class Calculation extends Node {
 
     public Calculation(Typical type) {
         super(type);
+        System.out.println("dupa");
     }
 
     @Override
