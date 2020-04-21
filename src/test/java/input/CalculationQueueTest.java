@@ -6,23 +6,29 @@ import calculation.*;
 
 public class CalculationQueueTest {
 
-//    @Ignore
-    @Test
-    public void CalculationQueue_01() {
-        Queueable
-                q1 = new Queuer(new Value(NodeType.VALUE)),
-                Q1 = new CalculationQueue(q1);
-        Assert.assertTrue(((CalculationQueue) Q1).queuerNodeTypes.length > 0);
-        Assert.assertSame(q1, ((CalculationQueue) Q1).prevOne);
-        Assert.assertSame(q1, ((CalculationQueue) Q1).postOne);
+    static Typical
+            type;
+    static Nodeable
+            node;
+    static Queueable
+            queuer,
+            Q1;
+
+    @Before
+    public void setup_01() {
+        type = NodeType.VALUE;
+        node = new Value(type);
+        queuer = new Queuer(node);
+        Q1 = new CalculationQueue(queuer);
     }
 
-//    @Ignore
     @Test
-    public void CalculationQueue_02() {
-        Queueable
-                q1 = new Queuer(),
-                Q1 = new CalculationQueue(q1);
-        Assert.assertTrue(((CalculationQueue) Q1).queuerNodeTypes.length > 0);
+    public void CalculationQueue_01(){
+        Assert.assertEquals(1, ((CalculationQueue)Q1).length);
+    }
+
+    @Test
+    public void CalculationQueue_02(){
+        Assert.assertNotNull(((CalculationQueue)Q1).queuerNodeTypes);
     }
 }

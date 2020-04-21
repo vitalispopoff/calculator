@@ -81,25 +81,10 @@ public enum NodeType implements Typical {
         public Nodeable interact() {
             return null;
         }
-    };
+    }/*;*/
 
-
-//    @Override
-    static Typical valueOf(Typical type){
+/*    static Typical valueOf(Typical type){
         String cache = type.toString();
         return (Typical)NodeType.valueOf(cache);
-    }
-
-
-/*     //    @Override
-   public int getPriority() {
-        return this.ordinal()
-//                >> 1
-                ;
     }*/
 }
-
-/*
- * https://stackoverflow.com/questions/18883646/java-enum-methods
- * https://www.developer.com/java/data/seven-ways-to-refactor-java-switch-statements.html
- * */

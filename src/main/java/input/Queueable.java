@@ -10,18 +10,6 @@ import calculation.Nodeable;
  */
 public interface Queueable {
 
-    /**
-     * :
-     * Adds an entity to the queue
-     */
-    void addToQueue(Queueable queuer);
-
-    /**
-     * :
-     * Returns an entity removed the queue
-     * (queue pov)
-     */
-    Queueable takeFromQueue();
 
     /**
      * :
@@ -83,4 +71,35 @@ public interface Queueable {
      * ???
      */
     void setPrevOne(Queueable queuer);
+
+    void setNode(Nodeable node);
+
+
+
 }
+
+/*
+ *   adding a queuer to the queue
+ *
+ *   Upon wishing to join the queue, the queuer sends request
+ *   and receives an answer with info about current last queuer inline
+ *   (CalculationQueue.postOne)
+ *   The queuer updates its prevOne.
+ *
+ *   The queue requests the current last queuer to updated its postOne
+ *   and does the same itself.
+ * */    //  ?   adding a queuer to the queue
+/*
+ *   removing a queuer from the queue
+ *
+ *   upon leaving the queue, the queuer is asked by the queue
+ *   and to updated its postOne right after informing
+ *   the postOne to do the same with its prevOne:
+ *   postOne.setPrevOne(null);
+ *   setPostOne(null);
+ *
+ *   on its side the queue receiving the link to its prevOne postOne
+ *   updates own prevOne
+ *   setPrevOne(prevOne.getPostOne());
+ *
+ * */    //  ?   removing a queuer from the queue
