@@ -25,7 +25,7 @@ public interface Typical {
         return type;
     }
 
-    /**
+    /*
      * :
      * returns the priority of the Typical
      * */

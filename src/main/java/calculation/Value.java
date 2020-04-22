@@ -7,7 +7,7 @@ public class Value extends Node {
     }
 
     @Override
-    protected Double calculate(Nodeable left, Nodeable rite) {
+    protected Double calculate(Nodeable localLeft, Nodeable localRite) {
         return value;
     }
 }

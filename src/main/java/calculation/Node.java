@@ -29,5 +29,5 @@ public abstract class Node implements Nodeable {
     @Override public void setLocalRite(Nodeable node){this.localRite = node;}
     //    @formatter:on
 
-    protected abstract Double calculate(Nodeable left, Nodeable rite);
+    protected abstract Double calculate(Nodeable localLeft, Nodeable localRite);
 }

@@ -9,7 +9,7 @@ public class Calculation_Subtraction extends Calculation {
     }
 
     @Override
-    protected double perform(double left, double rite) {
-        return left - rite;
+    protected double perform(double leftValue, double riteValue) {
+        return leftValue - riteValue;
     }
 }

@@ -2,12 +2,12 @@ package input;
 
 import calculation.*;
 
-public class CalculationQueue extends Queuer implements Queuing{
+public class NodeQueue extends Queuer implements Queuing {
 
     int[] queuerNodeTypes;
     int length = 0;
 
-    public CalculationQueue(Queueable queuer) {
+    public NodeQueue(Queueable queuer) {
         setQueuerNodeTypes();
         prevOne = postOne = queuer;
         length++;
@@ -17,9 +17,12 @@ public class CalculationQueue extends Queuer implements Queuing{
         this.queuerNodeTypes = new int[NodeType.values().length];
     }
 
-    @Override public void addToQueue(Queueable queuer) {
-    }
+//    @formatter:off
+
+    @Override public void addToQueue(Queueable queuer) { }
     @Override public Queueable takeFromQueue() {
         return null;
     }
+
+//    @formatter:on
 }

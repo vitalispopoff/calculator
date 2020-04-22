@@ -9,7 +9,7 @@ public class Calculation_Rooting extends Calculation {
     }
 
     @Override
-    protected double perform(double left, double rite) {
-        return Math.pow(left, 1. / rite);
+    protected double perform(double leftValue, double riteValue) {
+        return Math.pow(leftValue, 1. / riteValue);
     }
 }

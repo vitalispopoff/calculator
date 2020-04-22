@@ -4,7 +4,7 @@ import org.junit.*;
 
 import calculation.*;
 
-public class CalculationQueueTest {
+public class NodeQueueTest {
 
     static Typical
             type;
@@ -19,16 +19,16 @@ public class CalculationQueueTest {
         type = NodeType.VALUE;
         node = new Value(type);
         queuer = new Queuer(node);
-        Q1 = new CalculationQueue(queuer);
+        Q1 = new NodeQueue(queuer);
     }
 
     @Test
     public void CalculationQueue_01(){
-        Assert.assertEquals(1, ((CalculationQueue)Q1).length);
+        Assert.assertEquals(1, ((NodeQueue)Q1).length);
     }
 
     @Test
     public void CalculationQueue_02(){
-        Assert.assertNotNull(((CalculationQueue)Q1).queuerNodeTypes);
+        Assert.assertNotNull(((NodeQueue)Q1).queuerNodeTypes);
     }
 }

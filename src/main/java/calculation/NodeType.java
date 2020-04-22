@@ -81,10 +81,5 @@ public enum NodeType implements Typical {
         public Nodeable interact() {
             return null;
         }
-    }/*;*/
-
-/*    static Typical valueOf(Typical type){
-        String cache = type.toString();
-        return (Typical)NodeType.valueOf(cache);
-    }*/
+    }
 }

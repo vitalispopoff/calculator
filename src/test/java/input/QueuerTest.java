@@ -28,7 +28,7 @@ public class QueuerTest {
         typ1 = NodeType.VALUE;
         nod1 = new Value(typ1);
         que1 = new Queuer(nod1);
-        Q1 = new CalculationQueue(que1);
+        Q1 = new NodeQueue(que1);
     }
 
     static private void setup_02() {

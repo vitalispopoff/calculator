@@ -9,7 +9,7 @@ public class Calculation_Exponentiation extends Calculation {
     }
 
     @Override
-    protected double perform(double left, double rite) {
-        return Math.pow(left, rite);
+    protected double perform(double leftValue, double riteValue) {
+        return Math.pow(leftValue, riteValue);
     }
 }
