@@ -75,6 +75,7 @@ public class Queuer implements Queueable {
     @Override public void removeFromPriorityTypes() { }
     @Override public void addToQueue(Queueable que2) { }
     @Override public Queueable removeFromQueue() { return null; }
+    @Override public void convertToLocalTree() { }
 
     //    @formatter:on
 

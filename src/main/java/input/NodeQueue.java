@@ -19,24 +19,25 @@ public class NodeQueue extends Queuer implements Queuing {
     }
 
     @Override
-    public void addToPriorityTypes(Queueable queuer){
+    public void addToPriorityTypes(Queueable queuer) {
         int index = queuer.getNodeTypeOrdinal();
         priorityTypes[index]++;
     }
 
     @Override
-    public void removeFromPriorityTypes(){
+    public void removeFromPriorityTypes() {
         int index = prevOne.getNodeTypeOrdinal();
         priorityTypes[index]--;
     }
 
-    @Override public void addToQueue(Queueable queuer) {
+    @Override
+    public void addToQueue(Queueable queuer) {
         postOne.setPostOne(queuer);
         queuer.joinQueue(this);
         setPostOne(queuer);
         addToPriorityTypes(queuer);
+        length++;
     }
-
 
     @Override
     public Queueable removeFromQueue() {
@@ -45,22 +46,39 @@ public class NodeQueue extends Queuer implements Queuing {
         prevOne.getPostOne().setPrevOne(null);
         prevOne.setPostOne(null);
         prevOne = prevOne.getPostOne();
+        length--;
         return result;
     }
 
+    @Override
+    public void convertToLocalTree() {
+        boolean
+                truth,
+                isPrevOneValue
+                        = prevOne.getNodeTypeOrdinal()
+                        == NodeType.VALUE.ordinal(),
+                isLocalTreePriorityValid
+                        = this.getNodeTypeOrdinal()
+                        == prevOne.getPostOne().getNodeTypeOrdinal();
 
-    /*void convertToLocalTree() {
+        if (isPrevOneValue && isLocalTreePriorityValid) {
+            Nodeable
+                    cacheLeftNode = removeFromQueue().deQueuer(),
+                    cacheRootNode;
+            Queueable
+                    cacheLeft = new NodeQueue(new Queuer(cacheLeftNode)),
+                    cacheRoot = removeFromQueue(),
+                    cacheRite;
+            cacheRootNode = cacheRoot.getNode();
+            cacheRite = isPrevOneValue ? removeFromQueue() : null;
 
-        if (prevOne.getNodeTypeOrdinal() == NodeType.VALUE.ordinal()
-                && this.getNodeTypeOrdinal() == prevOne.getPostOne().getNodeTypeOrdinal()) {
-            Nodeable cacheLeft =
+            {/* . // TODO : null refers to the brackets - recursion -  . */}
 
-        }
-
-
-    }*/
-
-//    @formatter:off
-
-//    @formatter:on
+            cacheRoot.setPrevOne(cacheLeft);
+            cacheRootNode.setLocalRite(cacheRite.getNode());
+            cacheRootNode.setValue();       // TODO reimplement setValue
+            addToQueue(cacheRoot);
+        } else
+            for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());
+    }
 }

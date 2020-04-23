@@ -2,7 +2,7 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public abstract class Node implements Nodeable {
+public /*abstract*/ class Node implements Nodeable {
 
     Nodeable
             localLeft = null,
@@ -17,9 +17,20 @@ public abstract class Node implements Nodeable {
         setType(type);
     }
 
+    @Override
+    public void setValue() {
+        if (value.isNaN()) value = calculate(localLeft, localRite);
+    }
+
+    @Override
+    public Double getValue() {
+        if (value.isNaN()) setValue();
+        return value;
+    }
+
     //    @formatter:off
     @Override public Typical getType(){return type;}
-    @Override public Double getValue(){return value;}
+
     @Override public Nodeable getLocalLeft(){return localLeft;}
     @Override public Nodeable getLocalRoot(){return localRoot;}
     @Override public Nodeable getLocalRite(){return localRite;}
@@ -29,5 +40,7 @@ public abstract class Node implements Nodeable {
     @Override public void setLocalRite(Nodeable node){this.localRite = node;}
     //    @formatter:on
 
-    protected abstract Double calculate(Nodeable localLeft, Nodeable localRite);
+    protected /*abstract*/ Double calculate(Nodeable localLeft, Nodeable localRite) {
+        return 0.;
+    }
 }

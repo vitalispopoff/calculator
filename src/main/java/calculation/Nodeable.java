@@ -63,6 +63,11 @@ public interface Nodeable {
     void setType(Typical type);
 
     /**
+     * ???
+     * */
+    abstract void setValue();
+
+    /**
      * :
      * Sets the left branch of the local tree
      * of which the object is the root
@@ -83,4 +88,6 @@ public interface Nodeable {
      * of which the object is the root
      */
     void setLocalRite(Nodeable node);
+
+
 }

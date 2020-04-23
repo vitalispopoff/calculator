@@ -81,6 +81,9 @@ public interface Queueable {
     void addToQueue(Queueable que2);
 
     Queueable removeFromQueue();
+
+    void convertToLocalTree();
+
 }
 
 /*
