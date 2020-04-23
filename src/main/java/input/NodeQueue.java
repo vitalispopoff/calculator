@@ -52,16 +52,16 @@ public class NodeQueue extends Queuer implements Queuing {
 
     @Override
     public void convertToLocalTree() {
-        boolean
+        /*boolean
                 truth,
                 isPrevOneValue
                         = prevOne.getNodeTypeOrdinal()
                         == NodeType.VALUE.ordinal(),
-                isLocalTreePriorityValid
+                isCurrentLocalTreePrioritized
                         = this.getNodeTypeOrdinal()
-                        == prevOne.getPostOne().getNodeTypeOrdinal();
+                        == prevOne.getPostOne().getNodeTypeOrdinal();*/
 
-        if (isPrevOneValue && isLocalTreePriorityValid) {
+        if (isPrevOneValue() && isCurrentLocalTreePrioritized()) {
             Nodeable
                     cacheLeftNode = removeFromQueue().deQueuer(),
                     cacheRootNode;
@@ -70,7 +70,7 @@ public class NodeQueue extends Queuer implements Queuing {
                     cacheRoot = removeFromQueue(),
                     cacheRite;
             cacheRootNode = cacheRoot.getNode();
-            cacheRite = isPrevOneValue ? removeFromQueue() : null;
+            cacheRite = isPrevOneValue() ? removeFromQueue() : null;
 
             {/* . // TODO : null refers to the brackets - recursion -  . */}
 
@@ -78,7 +78,19 @@ public class NodeQueue extends Queuer implements Queuing {
             cacheRootNode.setLocalRite(cacheRite.getNode());
             cacheRootNode.setValue();       // TODO reimplement setValue
             addToQueue(cacheRoot);
-        } else
-            for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());
+        } else rebuffLocalTreeNodes();
+        {/*for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());*/}
+    }
+
+    private boolean isPrevOneValue() {
+        return prevOne.getNodeTypeOrdinal() == NodeType.VALUE.ordinal();
+    }
+
+    private boolean isCurrentLocalTreePrioritized() {
+        return this.getNodeTypeOrdinal() == prevOne.getPostOne().getNodeTypeOrdinal();
+    }
+
+    private void rebuffLocalTreeNodes(){
+        for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());
     }
 }
