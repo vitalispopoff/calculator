@@ -62,15 +62,19 @@ public class Queuer implements Queueable {
     @Override public Queueable getPostOne() {
         return postOne;
     }
-    @Override public void setNode(Nodeable node) {
-        this.node = node;
-    }
+    @Override public void setNode(Nodeable node) { this.node = node; }
+
     @Override public void setPrevOne(Queueable queuer) {
         this.prevOne = queuer;
     }
     @Override public void setPostOne(Queueable postOne) {
         this.postOne = postOne;
     }
+
+    @Override public void addToPriorityTypes(Queueable queuer) { }
+    @Override public void removeFromPriorityTypes() { }
+    @Override public void addToQueue(Queueable que2) { }
+    @Override public Queueable removeFromQueue() { return null; }
 
     //    @formatter:on
 

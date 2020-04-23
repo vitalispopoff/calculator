@@ -74,8 +74,13 @@ public interface Queueable {
 
     void setNode(Nodeable node);
 
+    void addToPriorityTypes(Queueable queuer);
 
+    void removeFromPriorityTypes();
 
+    void addToQueue(Queueable que2);
+
+    Queueable removeFromQueue();
 }
 
 /*

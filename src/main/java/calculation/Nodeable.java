@@ -62,7 +62,6 @@ public interface Nodeable {
      */
     void setType(Typical type);
 
-
     /**
      * :
      * Sets the left branch of the local tree
