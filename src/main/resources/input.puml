@@ -1,0 +1,46 @@
+@startuml
+package input_1 {
+
+    +interface Queue_1{
+        __
+            ~{method} Queue_1 deQueuer
+    }
+
+    ~class Queuer{
+    }
+
+    +interface Queue_2{
+        __
+            +{method} Queue_2 getTail
+            +{method} Queue_2 getHead
+            +{method} void setTail
+            +{method} void setHead
+    }
+
+    ~abstract class QueueCore{
+            ~{field} Queue_2 head
+            ~{field} Queue_2 tail
+    }
+
+    ~interface Queue_3{
+        __
+            ~{~method} increaseCounters
+            ~{~method} decreaseCounters
+    }
+
+    ~class Queue{
+            ~{field} int[] priorityCounter
+            ~{field} int counter
+    }
+
+    Queue_1 <|-- Queuer : impl
+    Queue_2 <|-- QueueCore :impl
+    Queue_3 <|-- Queue :impl
+
+    QueueCore <|-- Queuer : ext
+    QueueCore <|-- Queue : ext
+    Queue "2" *- Queuer
+    Queuer "2" *- Queuer
+
+}
+@enduml
