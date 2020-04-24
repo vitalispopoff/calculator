@@ -1,31 +1,29 @@
 @startuml
-package input_1 {
+package input {
 
-    +interface Queue_1{
+    +interface Enqueued{
         __
-            ~{method} Queue_1 deQueuer
+
     }
 
     ~class Queuer{
     }
 
-    +interface Queue_2{
+    +interface Queueable{
         __
-            +{method} Queue_2 getTail
-            +{method} Queue_2 getHead
-            +{method} void setTail
-            +{method} void setHead
+
     }
 
     ~abstract class QueueCore{
-            ~{field} Queue_2 head
-            ~{field} Queue_2 tail
+            ~{field} Queueable head
+            ~{field} Queueable tail
     }
 
-    ~interface Queue_3{
+    ~interface Queuing{
         __
-            ~{~method} increaseCounters
-            ~{~method} decreaseCounters
+            ~{method} void extendQueue(Queuing, Enqueued)
+            ~{method} void increaseCounters
+            ~{method} void decreaseCounters
     }
 
     ~class Queue{
@@ -33,9 +31,9 @@ package input_1 {
             ~{field} int counter
     }
 
-    Queue_1 <|-- Queuer : impl
-    Queue_2 <|-- QueueCore :impl
-    Queue_3 <|-- Queue :impl
+    Enqueued <|-- Queuer : impl
+    Queueable <|-- QueueCore :impl
+    Queuing <|-- Queue :impl
 
     QueueCore <|-- Queuer : ext
     QueueCore <|-- Queue : ext

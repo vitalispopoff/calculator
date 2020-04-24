@@ -1,7 +1,10 @@
-package input;
+package _tests_input_2;
 
 import calculation.*;
 import calculation.calculations.Calculation_Exponentiation;
+import input.NodeQueue;
+import input.Queueable;
+import input.Queuer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

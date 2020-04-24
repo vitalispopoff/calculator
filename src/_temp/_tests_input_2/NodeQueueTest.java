@@ -1,5 +1,8 @@
-package input;
+package _tests_input_2;
 
+import input.NodeQueue;
+import input.Queueable;
+import input.Queuer;
 import org.junit.*;
 
 import calculation.*;

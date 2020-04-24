@@ -4,21 +4,41 @@ public interface Queuing {
 
     /**
      * :
-     * Adds an entity to the queue
-     * Upon wishing to join the queue, the queuer sends request
-     * and receives an answer with info about current last queuer inline
-     * (CalculationQueue.postOne). The queuer updates its prevOne.
-     * The queue requests the current last queuer to updated its postOne
-     * and does the same itself.
-     */
-    void addToQueue(Queueable queuer);
+     * Adding queuer / joining queue
+     *
+     * 1. the queue returns its tail
+     * 2. the queuer overwrites its head as the queue tail
+     * 3. the queue tail overwrites its own tail as the queuer
+     * 4. the queue overwrites its tail as the queuer
+     * 5. the queue counters are decreased
+     * */
+    static void extendQueue(Queueable nodeQueue, Queueable queuer){
+        queuer.setHead(nodeQueue.getTail());
+        nodeQueue.getTail().setTail(queuer);
+        nodeQueue.setTail(queuer);
+        ((Queuing)nodeQueue).increaseQueueCounter();
+    }
 
     /**
      * :
-     * Returns an entity removed the queue
-     * (queue pov)
-     */
-    Queueable removeFromQueue();
+     * Removing queuer / leaving queue
+     *
+     * 0. queue head is the queuer.
+     * 1. queuer tail is set as the queue head
+     * 2. the queue head nulls its head
+     * 3. the queuer nulls its tail
+     * 4. the queue counters are decreased
+     * 5. the queue returns the queuer
+     * */
+    static Queueable reduceQueue(Queueable nodeQueue){
+        Queueable queuer = nodeQueue.getHead();
+        nodeQueue.setHead(queuer.getTail());
+        nodeQueue.getHead().setHead(null);
+        queuer.setTail(null);
+        ((Queuing)nodeQueue).decreaseQueueCounter();
+        return queuer;
+    }
+
+     void increaseQueueCounter();
+     void decreaseQueueCounter();
 }
-
-
