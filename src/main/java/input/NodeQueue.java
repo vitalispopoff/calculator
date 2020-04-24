@@ -10,7 +10,7 @@ public class NodeQueue extends Queuer implements Queuing {
     public NodeQueue(Queueable queuer) {
         setPriorityTypes();
         addToPriorityTypes(queuer);
-        prevOne = postOne = queuer;
+        head = tail = queuer;
         length++;
     }
 
@@ -26,15 +26,15 @@ public class NodeQueue extends Queuer implements Queuing {
 
     @Override
     public void removeFromPriorityTypes() {
-        int index = prevOne.getNodeTypeOrdinal();
+        int index = head.getNodeTypeOrdinal();
         priorityTypes[index]--;
     }
 
     @Override
     public void addToQueue(Queueable queuer) {
-        postOne.setPostOne(queuer);
+        tail.setTail(queuer);
         queuer.joinQueue(this);
-        setPostOne(queuer);
+        setTail(queuer);
         addToPriorityTypes(queuer);
         length++;
     }
@@ -42,24 +42,19 @@ public class NodeQueue extends Queuer implements Queuing {
     @Override
     public Queueable removeFromQueue() {
         removeFromPriorityTypes();
-        Queueable result = prevOne;
-        prevOne.getPostOne().setPrevOne(null);
-        prevOne.setPostOne(null);
-        prevOne = prevOne.getPostOne();
         length--;
+        Queueable
+                result = head;                   //  * local reference of the 1st queuer
+        head = head.getTail();             //  * sets 2nd as a new 1st
+        result.getTail().setHead(null);       //  * resets the the queuer connection new 1st side
+        result.setTail(null);                    //  * resets the the queuer connection on old 1st side
+
+
         return result;
     }
 
     @Override
     public void convertToLocalTree() {
-        /*boolean
-                truth,
-                isPrevOneValue
-                        = prevOne.getNodeTypeOrdinal()
-                        == NodeType.VALUE.ordinal(),
-                isCurrentLocalTreePrioritized
-                        = this.getNodeTypeOrdinal()
-                        == prevOne.getPostOne().getNodeTypeOrdinal();*/
 
         if (isPrevOneValue() && isCurrentLocalTreePrioritized()) {
             Nodeable
@@ -72,25 +67,48 @@ public class NodeQueue extends Queuer implements Queuing {
             cacheRootNode = cacheRoot.getNode();
             cacheRite = isPrevOneValue() ? removeFromQueue() : null;
 
-            {/* . // TODO : null refers to the brackets - recursion -  . */}
-
-            cacheRoot.setPrevOne(cacheLeft);
+            cacheRoot.setHead(cacheLeft);
             cacheRootNode.setLocalRite(cacheRite.getNode());
             cacheRootNode.setValue();       // TODO reimplement setValue
             addToQueue(cacheRoot);
         } else rebuffLocalTreeNodes();
-        {/*for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());*/}
     }
 
-    private boolean isPrevOneValue() {
-        return prevOne.getNodeTypeOrdinal() == NodeType.VALUE.ordinal();
+    public boolean isPrevOneValue() {
+        return head.getNodeTypeOrdinal() == NodeType.VALUE.ordinal();
     }
 
     private boolean isCurrentLocalTreePrioritized() {
-        return this.getNodeTypeOrdinal() == prevOne.getPostOne().getNodeTypeOrdinal();
+        return this.getNodeTypeOrdinal() == head.getTail().getNodeTypeOrdinal();
     }
 
-    private void rebuffLocalTreeNodes(){
+    private void rebuffLocalTreeNodes() {
         for (int i = 0; i < 2; i++) addToQueue(removeFromQueue());
     }
 }
+
+
+/**
+ * :
+ * Node Queue - queuer communication.
+ *
+ *  Adding queuer / joining queue.
+ *
+ *  1) queuer introduces to the queue           nodeQueue: public addToQueue(Queueable queuer)
+ *      2) queue returns tail
+ *      3) queuer overwrites its head
+ *  4) queue sends queuer to queue.tail
+ *      5) queue.tail overwrites its tail
+ *  6) queue overwrites its tail
+ *
+ *      * * *
+ *
+ *  Removing queuer / quiting queue.
+ *      (queue returns head)
+ *  1) queue request head.tail
+ *      3) queue request 'head'.tail to null its head
+ *      4) head nulls its tail
+ *
+ *
+ *
+ * */

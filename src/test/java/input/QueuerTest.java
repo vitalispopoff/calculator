@@ -32,7 +32,7 @@ public class QueuerTest {
     }
 
     static private void setup_02() {
-        que1.postOne = que1;
+        que1.tail = que1;
         que1.deQueuer();
     }
 
@@ -49,12 +49,12 @@ public class QueuerTest {
 
     @Test
     public void Node_01() {
-        Assert.assertNull(que1.prevOne);
+        Assert.assertNull(que1.head);
     }
 
     @Test
     public void Node_02() {
-        Assert.assertNull(que1.postOne);
+        Assert.assertNull(que1.tail);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class QueuerTest {
     @Test
     public void deQueuer_04() {
         setup_02();
-        Assert.assertNull(que1.postOne);
+        Assert.assertNull(que1.tail);
     }
 
     @Test
@@ -95,19 +95,19 @@ public class QueuerTest {
     public void joinQueue_01() {
         setup_03();
         que2.joinQueue(Q1);
-        Assert.assertSame(que1, que2.prevOne);
+        Assert.assertSame(que1, que2.head);
     }
 
     @Test
     public void joinQueue_02(){
         setup_03();
         que2.joinQueue(Q1);
-        Assert.assertSame(que1.postOne, que2);
+        Assert.assertSame(que1.tail, que2);
     }
 
     @Test
     public void  leaveQueue_01(){
         Assert.assertSame(que2, que1.leaveQueue());
-        Assert.assertNull(que1.postOne);
+        Assert.assertNull(que1.tail);
     }
 }

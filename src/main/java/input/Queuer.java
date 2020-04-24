@@ -5,8 +5,8 @@ import calculation.*;
 public class Queuer implements Queueable {
 
     public Queueable
-            prevOne = null,
-            postOne = null;
+            head = null,
+            tail = null;
     public Nodeable
             node = null;
 
@@ -20,7 +20,7 @@ public class Queuer implements Queueable {
     @Override
     public Nodeable deQueuer() {
         Nodeable cache = node;
-        setPostOne(null);
+        setTail(null);
         setNode(null);
         return cache;
     }
@@ -36,19 +36,26 @@ public class Queuer implements Queueable {
 
     @Override
     public void joinQueue(Queueable calculationQueue) {
-        prevOne = calculationQueue.getPostOne();
-        if (prevOne != null) prevOne.setPostOne(this);
-        if (postOne != null) postOne.setPrevOne(this);
+        setHead(calculationQueue.getTail());                   //  * connects the node with a queue - node side
+        if (head != null) getHead().setTail(this);        //  * connects the queue with the node - queue side
+//        if (tail != null) getTail().setHead(this);
 
 /*        if (calculationQueue.getPostOne() == calculationQueue.getPrevOne())
             calculationQueue.setPostOne(this);
         else calculationQueue.getPostOne().setPostOne(this);*/
-    }
+        }
+
+    public void joinQueue(){}
+
+
+
+
+
 
     @Override
     public Queueable leaveQueue() {
-        Queueable result = postOne;
-        setPostOne(null);
+        Queueable result = tail;
+        setTail(null);
 
         return result;
     }
@@ -56,19 +63,19 @@ public class Queuer implements Queueable {
     //    @formatter:off
 
     @Override public Nodeable getNode() {return node;}
-    @Override public Queueable getPrevOne() {
-        return prevOne;
+    @Override public Queueable getHead() {
+        return head;
     }
-    @Override public Queueable getPostOne() {
-        return postOne;
+    @Override public Queueable getTail() {
+        return tail;
     }
     @Override public void setNode(Nodeable node) { this.node = node; }
 
-    @Override public void setPrevOne(Queueable queuer) {
-        this.prevOne = queuer;
+    @Override public void setHead(Queueable queuer) {
+        this.head = queuer;
     }
-    @Override public void setPostOne(Queueable postOne) {
-        this.postOne = postOne;
+    @Override public void setTail(Queueable tail) {
+        this.tail = tail;
     }
 
     @Override public void addToPriorityTypes(Queueable queuer) { }
@@ -76,6 +83,7 @@ public class Queuer implements Queueable {
     @Override public void addToQueue(Queueable que2) { }
     @Override public Queueable removeFromQueue() { return null; }
     @Override public void convertToLocalTree() { }
+    @Override public boolean isPrevOneValue() {return false;}
 
     //    @formatter:on
 

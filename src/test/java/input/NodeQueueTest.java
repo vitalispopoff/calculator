@@ -59,19 +59,13 @@ public class NodeQueueTest {
     void convertToLocalTree_initial() {
         setup_01();
         setup_02();
-        Assert.assertSame(que1, Q1.getPrevOne());
-        Assert.assertSame(que3, Q1.getPostOne());
-        Assert.assertSame(que2, que1.getPostOne());
-        Assert.assertSame(que3, que2.getPostOne());
+        Assert.assertSame(que1, Q1.getHead());
+        Assert.assertSame(que3, Q1.getTail());
+        Assert.assertSame(que2, que1.getTail());
+        Assert.assertSame(que3, que2.getTail());
         Assert.assertEquals(2, ((NodeQueue) Q1).priorityTypes[ord1]);
         Assert.assertEquals(1, ((NodeQueue) Q1).priorityTypes[ord2]);
         Assert.assertEquals(3, ((NodeQueue) Q1).length);
-    }
-
-    @Test
-    public void convertToLocalTree_01(){
-        convertToLocalTree_initial();
-        Q1.convertToLocalTree();
     }
 
     @Test
@@ -98,13 +92,13 @@ public class NodeQueueTest {
     @Test
     public void addToQueue_01() {
         setup_01();
-        Assert.assertSame(que2, Q1.getPostOne());
+        Assert.assertSame(que2, Q1.getTail());
     }
 
     @Test
     public void addToQueue_02() {
         setup_01();
-        Assert.assertSame(que1, que2.getPrevOne());
+        Assert.assertSame(que1, que2.getHead());
     }
 
     @Test
@@ -120,30 +114,51 @@ public class NodeQueueTest {
     }
 
     @Test
-    public void removeFromQueue_02() {
-        setup_01();
-        Q1.removeFromQueue();
-        Assert.assertNull(que2.getPrevOne());
+    public void removeFromQueue_02(){
+
+
     }
 
     @Test
     public void removeFromQueue_03() {
         setup_01();
         Q1.removeFromQueue();
-        Assert.assertNull(que1.getPostOne());
+        Assert.assertNull(que2.getHead());
     }
 
     @Test
     public void removeFromQueue_04() {
         setup_01();
         Q1.removeFromQueue();
-        Assert.assertEquals(0, ((NodeQueue) Q1).priorityTypes[ord1]);
+        Assert.assertNull(que1.getTail());
     }
 
     @Test
     public void removeFromQueue_05() {
         setup_01();
         Q1.removeFromQueue();
+        Assert.assertEquals(0, ((NodeQueue) Q1).priorityTypes[ord1]);
+    }
+
+    @Test
+    public void removeFromQueue_06() {
+        setup_01();
+        Q1.removeFromQueue();
         Assert.assertEquals(1, ((NodeQueue) Q1).priorityTypes[ord2]);
+    }
+
+    @Test
+    public void isPrevOneValue_01(){
+        Assert.assertTrue(Q1.isPrevOneValue());
+    }
+    @Test
+    public void isPrevOneValue_02(){
+        Assert.assertSame(que1, Q1.getHead());
+        setup_01();
+        Assert.assertSame(que1, Q1.getHead());
+        Assert.assertSame(que2, Q1.getTail());
+        Assert.assertSame(que1,Q1.removeFromQueue());
+//        Assert.assertNull(Q1.getPrevOne());
+        Assert.assertSame(que2, ((NodeQueue)Q1).head);
     }
 }

@@ -10,7 +10,6 @@ import calculation.Nodeable;
  */
 public interface Queueable {
 
-
     /**
      * :
      * Enables queuer joining the queue
@@ -57,20 +56,20 @@ public interface Queueable {
      * :
      * Returns previous queuer in the line
      */
-    Queueable getPrevOne();
+    Queueable getHead();
 
-    void setPostOne(Queueable postOne);
+    void setTail(Queueable tail);
 
     /**
      * :
      * Returns another queuer in the line
      */
-    Queueable getPostOne();
+    Queueable getTail();
 
     /**
      * ???
      */
-    void setPrevOne(Queueable queuer);
+    void setHead(Queueable queuer);
 
     void setNode(Nodeable node);
 
@@ -84,6 +83,7 @@ public interface Queueable {
 
     void convertToLocalTree();
 
+    boolean isPrevOneValue();
 }
 
 /*
