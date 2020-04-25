@@ -2,6 +2,10 @@
 package input {
 
     +interface Queueable{
+        ..default..
+            ~{method} void revoke()
+        ..abstract..
+            ~{method} Queueable summon()
         ..
             +{method} Queueable getTail ()
             +{method} Queueable getHead ()
@@ -12,54 +16,46 @@ package input {
     ~abstract class QueueCore{
             ~{field} Queueable head
             ~{field} Queueable tail
-        --
-
-'        ..
-'            +{method} @Ovr getTail
-'            +{method} @Ovr getHead
-'            +{method} @Ovr setTail
-'            +{method} @Ovr setHead
+        ..@Override..
+            +{method} /.../
     }
 
     ~interface Queuing{
+        ..static..
             ~{method} void extendQueue (Queuing, Enqueued)
-            ~{method} void increaseCounters
-            ~{method} void decreaseCounters
-            ..
-
+            ~{method} Queueable reduceQueue (Queueable)
+        ..
+            ~{method} void updateCounters(Queueable)
+            ~{method} void updateCounters()
     }
 
     ~class NodeQueue{
             ~{field} int[] priorityCounter
             ~{field} int counter
-        --
-
-'        ..
-'            +{method} @Ovr updateCounters (Queueable)
-'            +{method} @Ovr updateCounters ()
+        ..@Override..
+            ~{method}/.../
     }
 
     +interface Enqueued {
+        ..default..
             +{method} Queueable wrap (Nodeable)
             +{method} Nodeable unWrap ()
         ..
             +{method} Typical getType ()
             +{method} Nodeable getNode ()
             +{method} void setNode (Nodeable)
+            +{method} void setType (Typical)
     }
 
     ~class Queuer{
             ~{field} Typical getType
             ~{field} Nodeable node
-            ~{field} int typeOrdinal
         --
             ~{method} int getTypeOrdinal ()
             ~{method} void setTypeOrdinal ()
             ~{method} void setType (Nodeable)
-'        ..
-'            +{method} @Ovr setNode
-'            +{method} @Ovr getType
-'            +{method} @Ovr getNode
+        ..@Override..
+            +{method} /.../
     }
 
     Enqueued    <|--    Queuer      :   impl

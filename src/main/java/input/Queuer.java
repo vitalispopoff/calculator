@@ -8,14 +8,11 @@ public class Queuer extends QueueCore implements Enqueued {
     Nodeable node = null;
     int typeOrdinal = -1;
 
-    @Override
-    public void setNode(Nodeable node) {
-        this.node = node;
-        setType(node);
-    }
-
-    int getTypeOrdinal() {
-        return typeOrdinal;
+    Queuer(Nodeable node) {
+        super(null);
+        setNode(node);
+        setType(node.getType());
+        setTypeOrdinal();
     }
 
     void setTypeOrdinal() {
@@ -23,15 +20,19 @@ public class Queuer extends QueueCore implements Enqueued {
         this.typeOrdinal = cache == null ? -1 : cache.ordinal();
     }
 
-    void setType(Nodeable node) {
-        this.type = node.getType();
-        setTypeOrdinal();
+    int getTypeOrdinal() { return typeOrdinal; }
+
+    @Override
+    public void setNode(Nodeable node) {
+        this.node = node;
+        setType(node.getType());
     }
 
     //    @formatter:off
+
     @Override public Typical getType() { return type; }
-    @Override public Nodeable getNode() {
-        return node;
-    }
-    //  @formatter:on
+    @Override public Nodeable getNode() { return node; }
+    @Override public void setType(Typical type) { this.type = type; }
+
+    //    @formatter:on
 }

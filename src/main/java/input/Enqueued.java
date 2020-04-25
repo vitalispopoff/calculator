@@ -30,8 +30,27 @@ public interface Enqueued {
         return result;
     }
 
+    /**
+     * :
+     * Returns type of wrapped Node
+     * */
     Typical getType();
+
+    /**
+     * :
+     * Returns the wrapped node
+     * */
     Nodeable getNode();
+
+    /**
+     * :
+     * wraps node
+     * */
     void setNode(Nodeable node);
-//    void setType(Typical type);
+
+    /**
+     * :
+     * sets
+     * */
+    void setType(Typical type);
 }

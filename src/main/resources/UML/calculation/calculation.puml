@@ -1,0 +1,87 @@
+@startuml
+package calculation {
+
+    +interface Nodeable {
+        ..default..
+            + {method} int getPriority()
+        ..
+            + {method} Typical getType()
+            + {method} Double getValue()
+            + {method} Nodeable getLocalLeft()
+            + {method} Nodeable getLocalRite()
+            + {method} Nodeable getLocalRoot()
+    }
+
+    +class Node {
+            ~ {field} Nodeable LocalLeft
+            ~ {field} Nodeable LocalRoot
+            ~ {field} Nodeable LocalRite
+            ~ {field} Typical type
+            ~ {field} Double value
+        --
+            # {method} Double calculate ( Nodeable, Nodeable)
+        ..@Override..
+            +{method}/.../
+    }
+
+    +class Value {
+        ..@Override..
+            #{method} calculate
+    }
+
+    +abstract class Calculation {
+        ..abstract..
+            #{method} double perform (double, double)    
+        ..@Override..
+            #{method} calculate
+    }
+
+    package calculations <<Rectangle>> {
+        class Calculation_? {
+            ..@Override..
+                #{method} perform
+        }
+    }
+
+    +interface Typical{
+        ..static..
+            +{method} int getTypicalPriority(Typical)
+            +{method} Typical valueOf(Typical)
+        ..default..
+            ~{method}  int ordinal()
+        ..
+            ~{method} Nodeable interact()
+   }
+
+    +enum NodeType{
+        ..@Override..
+             {interact()} BRACKET_IN
+             {interact()} BRACKET_OUT
+             {interact()} EXPONENT
+             {interact()} ROOT
+             {interact()} MULTIPLY
+             {interact()} DIVIDE
+             {interact()} ADD
+             {interact()} SUBTRACT
+             {interact()} VALUE
+             {interact()} SPIN
+             {interact()} EVALUATE
+             {interact()} CLEAR
+             {interact()} UNDO
+   }
+
+'    Value -|> Node
+'    calculations -|> Calculation
+    Nodeable <|-- Node
+    Node <|-- Calculation
+    Typical <|- NodeType
+    Nodeable <|- Typical
+
+'    Node -|> Nodeable
+'    Calculation -|> Node
+'    Typical -|> Nodeable
+'    NodeType -|> Typical
+    Node <|- Value
+    Calculation <|- calculations
+}
+@enduml

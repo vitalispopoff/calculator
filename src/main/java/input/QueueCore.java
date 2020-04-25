@@ -1,22 +1,25 @@
 package input;
 
-public abstract class QueueCore implements Queueable {
+import calculation.Nodeable;
+
+/*public*/ abstract class QueueCore /*implements Queueable*/ {
 
     Queueable
             head = null,
             tail = null;
 
+    QueueCore(){ }
+    QueueCore(Queueable queueable){
+        if (head== null) head = queueable;
+    }
     //  @formatter:off
 
-    QueueCore() { }
-
-    @Override public Queueable getTail() { return tail; }
-    @Override public Queueable getHead() { return head; }
-    @Override public void setTail(Queueable tail) { this.head = tail; }
-    @Override public void setHead(Queueable head) { this.tail = head; }
+    /*@Override*/ public void revoke() { }
+    /*@Override*/ public Queueable summon() { return null; }
+    /*@Override*/ public Queueable getTail() { return tail; }
+    /*@Override*/ public Queueable getHead() { return head; }
+    /*@Override*/ public void setTail(Queueable tail) { this.head = tail; }
+    /*@Override*/ public void setHead(Queueable head) { this.tail = head; }
 
     //    @formatter:on
-
-    /*    @Override
-    abstract public Queueable evoke();*/    // ? evoke
 }

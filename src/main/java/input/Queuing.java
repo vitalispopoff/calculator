@@ -1,6 +1,6 @@
 package input;
 
-public interface Queuing {
+public interface Queuing extends Queueable{
 
     /**
      * :
@@ -12,9 +12,7 @@ public interface Queuing {
      * 4. the queue overwrites its tail as the queuer
      * 5. the queue counters are decreased
      */
-    static void extendQueue(
-            Queueable nodeQueue,
-            Queueable queuer) {
+    static void extendQueue(Queueable nodeQueue, Queueable queuer) {
         queuer.setHead(nodeQueue.getTail());
         nodeQueue.getTail().setTail(queuer);
         nodeQueue.setTail(queuer);
@@ -41,7 +39,17 @@ public interface Queuing {
         return queuer;
     }
 
+    /**
+     * :
+     * Updates the counters for the queue:
+     * adds a new queuer to the counters
+     * */
     void updateCounters(Queueable queuer);
 
+    /**
+     * :
+     * Updated the counters for the queue:
+     * removes the head queuer from the counters
+     * */
     void updateCounters();
 }

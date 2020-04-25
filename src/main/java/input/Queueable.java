@@ -2,7 +2,13 @@ package input;
 
 public interface Queueable {
 
-    default void dismiss() {
+    /**
+     * :
+     * disconnects the queueable object
+     * preparing it for interception by the garbage collector
+     *
+     * */
+    default void revoke() {
         Queueable
                 head = getHead(),
                 tail = getTail();
@@ -15,6 +21,12 @@ public interface Queueable {
             setTail(null);
         }
     }
+
+    /**
+     * :
+     * creates an object and adds it to a queue
+     * */
+    abstract Queueable summon();
 
     //    @formatter:off
 
