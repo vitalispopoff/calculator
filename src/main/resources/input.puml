@@ -1,44 +1,75 @@
 @startuml
 package input {
 
-    +interface Enqueued{
-        __
-
-    }
-
-    ~class Queuer{
-    }
-
     +interface Queueable{
-        __
-
-    }
+        ..
+            +{method} Queueable getTail ()
+            +{method} Queueable getHead ()
+            +{method} void setTail ()
+            +{method} void setHead ()
+        }
 
     ~abstract class QueueCore{
             ~{field} Queueable head
             ~{field} Queueable tail
+        --
+
+'        ..
+'            +{method} @Ovr getTail
+'            +{method} @Ovr getHead
+'            +{method} @Ovr setTail
+'            +{method} @Ovr setHead
     }
 
     ~interface Queuing{
-        __
-            ~{method} void extendQueue(Queuing, Enqueued)
+            ~{method} void extendQueue (Queuing, Enqueued)
             ~{method} void increaseCounters
             ~{method} void decreaseCounters
+            ..
+
     }
 
-    ~class Queue{
+    ~class NodeQueue{
             ~{field} int[] priorityCounter
             ~{field} int counter
+        --
+
+'        ..
+'            +{method} @Ovr updateCounters (Queueable)
+'            +{method} @Ovr updateCounters ()
     }
 
-    Enqueued <|-- Queuer : impl
-    Queueable <|-- QueueCore :impl
-    Queuing <|-- Queue :impl
+    +interface Enqueued {
+            +{method} Queueable wrap (Nodeable)
+            +{method} Nodeable unWrap ()
+        ..
+            +{method} Typical getType ()
+            +{method} Nodeable getNode ()
+            +{method} void setNode (Nodeable)
+    }
 
-    QueueCore <|-- Queuer : ext
-    QueueCore <|-- Queue : ext
-    Queue "2" *- Queuer
-    Queuer "2" *- Queuer
+    ~class Queuer{
+            ~{field} Typical getType
+            ~{field} Nodeable node
+            ~{field} int typeOrdinal
+        --
+            ~{method} int getTypeOrdinal ()
+            ~{method} void setTypeOrdinal ()
+            ~{method} void setType (Nodeable)
+'        ..
+'            +{method} @Ovr setNode
+'            +{method} @Ovr getType
+'            +{method} @Ovr getNode
+    }
+
+    Enqueued    <|--    Queuer      :   impl
+    Queueable   <|--    QueueCore   :   impl
+    Queuing     <|--    NodeQueue   :   impl
+
+    QueueCore   <|-     NodeQueue   :   ext
+    Queuer      -|>     QueueCore   :   ext
+
+    Queueable   *..    Queueable    :   2
 
 }
 @enduml

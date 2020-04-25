@@ -1,7 +1,6 @@
 package input;
 
-import calculation.Nodeable;
-import calculation.Typical;
+import calculation.*;
 
 public interface Enqueued {
 
@@ -33,7 +32,6 @@ public interface Enqueued {
 
     Typical getType();
     Nodeable getNode();
-
-    void setType();
     void setNode(Nodeable node);
+//    void setType(Typical type);
 }

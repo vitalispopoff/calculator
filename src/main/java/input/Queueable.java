@@ -2,16 +2,6 @@ package input;
 
 public interface Queueable {
 
-    Queueable getTail();
-
-    Queueable getHead();
-
-    void setTail(Queueable tail);
-
-    void setHead(Queueable head);
-
-    Queueable evoke();
-
     default void dismiss() {
         Queueable
                 head = getHead(),
@@ -25,4 +15,13 @@ public interface Queueable {
             setTail(null);
         }
     }
+
+    //    @formatter:off
+
+    Queueable getTail();
+    Queueable getHead();
+    void setTail(Queueable tail);
+    void setHead(Queueable head);
+
+    //    @formatter:on
 }
