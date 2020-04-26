@@ -16,8 +16,13 @@ package input {
     ~abstract class QueueCore{
             ~{field} Queueable head
             ~{field} Queueable tail
-        ..@Override..
-            +{method} /.../
+        --
+            +{method} Queueable summon ()
+            +{method} Queueable getTail ()
+            +{method} Queueable getHead()
+            +{method} void revoke ()
+            +{method} void setTail (Queueable)
+            +{method} void setHead (Queueable)
     }
 
     ~interface Queuing{
@@ -33,7 +38,7 @@ package input {
             ~{field} int[] priorityCounter
             ~{field} int counter
         ..@Override..
-            ~{method}/.../
+            ~{method} : /.../
     }
 
     +interface Enqueued {
@@ -55,17 +60,16 @@ package input {
             ~{method} void setTypeOrdinal ()
             ~{method} void setType (Nodeable)
         ..@Override..
-            +{method} /.../
+            +{method} : /.../
     }
 
-    Enqueued    <|--    Queuer      :   impl
-    Queueable   <|--    QueueCore   :   impl
-    Queuing     <|--    NodeQueue   :   impl
+    Enqueued    -|>     Queueable   :   ext
+    Queueable   <|-     Queuing     :   ext
 
     QueueCore   <|-     NodeQueue   :   ext
     Queuer      -|>     QueueCore   :   ext
 
-    Queueable   *..    Queueable    :   2
-
+    Enqueued    <|--    Queuer      :   impl
+    Queuing     <|--    NodeQueue   :   impl
 }
 @enduml

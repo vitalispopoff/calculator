@@ -14,10 +14,11 @@ import calculation.Nodeable;
     }
     //  @formatter:off
 
-    /*@Override*/ public void revoke() { }
+
     /*@Override*/ public Queueable summon() { return null; }
     /*@Override*/ public Queueable getTail() { return tail; }
     /*@Override*/ public Queueable getHead() { return head; }
+    /*@Override*/ public void revoke() { }
     /*@Override*/ public void setTail(Queueable tail) { this.head = tail; }
     /*@Override*/ public void setHead(Queueable head) { this.tail = head; }
 

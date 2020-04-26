@@ -1,0 +1,40 @@
+@startuml
+
++interface Noga{
+    {method} a
+    {method} b
+    {method} c    
+}
+-interface Lewa{
+
+    {method} d 
+}
++class LewaNoga{
+    ..@Override..
+        {method} a
+        {method} d
+}
+
+-interface Prawa{
+    {method} e
+}
++class PrawaNoga{
+    ..@Override..
+        {method} b
+        {method} e
+}
+-class Gacie{
+    {method} c
+}
+
+
+    Lewa    -|>     Noga   :   ext
+    Noga   <|-     Prawa     :   ext
+
+    Gacie   <|-     PrawaNoga   :   ext
+    LewaNoga      -|>     Gacie   :   ext
+
+    Lewa    <|--    LewaNoga      :   impl
+    Prawa     <|--    PrawaNoga   :   impl
+
+@enduml

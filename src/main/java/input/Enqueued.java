@@ -2,7 +2,7 @@ package input;
 
 import calculation.*;
 
-public interface Enqueued {
+public interface Enqueued extends Queueable {
 
     /**
      * :
