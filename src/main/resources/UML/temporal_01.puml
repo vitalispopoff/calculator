@@ -1,35 +1,36 @@
 @startuml
 
 +interface Noga{
-    {method} a
-    {method} b
-    {method} c    
+    {method} A
+    {method} B
+    {method} C
 }
 -interface Lewa{
 
-    {method} d 
+    {method} D
 }
 +class LewaNoga{
     ..@Override..
-        {method} a
-        {method} d
+        {method} D
 }
 
 -interface Prawa{
-    {method} e
+    {method} E
 }
 +class PrawaNoga{
     ..@Override..
-        {method} b
-        {method} e
+        {method} E
 }
--class Gacie{
-    {method} c
+-abstract Gacie{
+    {method} A
+    {method} B
+    {method} C
 }
 
+    Noga <|-- Gacie
 
-    Lewa    -|>     Noga   :   ext
-    Noga   <|-     Prawa     :   ext
+'    Lewa    -|>     Noga   :   ext
+'    Noga   <|-     Prawa     :   ext
 
     Gacie   <|-     PrawaNoga   :   ext
     LewaNoga      -|>     Gacie   :   ext

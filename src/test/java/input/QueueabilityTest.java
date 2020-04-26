@@ -5,7 +5,7 @@ import org.junit.Test;
 import calculation.*;
 import calculation.calculations.Calculation_Exponentiation;
 
-public class QeuerTest {
+public class QueueabilityTest {
 
     static Typical
             typ1 = NodeType.VALUE,
@@ -27,8 +27,7 @@ public class QeuerTest {
         Assert.assertTrue(node2 instanceof Calculation_Exponentiation);
         Assert.assertTrue(node3 instanceof Value);
     }
-
-    //    @formatter:off
+//  @formatter:off
 
     @Test public void Queuer_head(){
         Assert.assertNull(Q1.getHead());
@@ -36,9 +35,8 @@ public class QeuerTest {
     @Test public void Queuer_Tail(){
         Assert.assertNull(Q1.getTail());
     }
-    @Test public void Queuer_Node() { Assert.assertNotNull(Q1.getNode());}
-    @Test public void Queuer_Type() { Assert.assertSame(typ1, Q1.getType());}
-    @Test public void Queuer_TypeOrdinal() { Assert.assertEquals(ord1, Q1.getTypeOrdinal());}
 
-//    @formatter:on
+    //  @formatter:on
+
+
 }

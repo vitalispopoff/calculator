@@ -19,7 +19,10 @@ public /*abstract*/ class Node implements Nodeable {
 
     @Override
     public void setValue() {
-        if (value.isNaN()) value = calculate(localLeft, localRite);
+        if (value.isNaN()) {
+            value = calculate(localLeft, localRite);
+            if (type != NodeType.VALUE) type = NodeType.VALUE;
+        }
     }
 
     @Override
@@ -40,7 +43,7 @@ public /*abstract*/ class Node implements Nodeable {
     @Override public void setLocalRite(Nodeable node){this.localRite = node;}
     //    @formatter:on
 
-    protected /*abstract*/ Double calculate(Nodeable localLeft, Nodeable localRite) {
+    protected/* abstract*/ Double calculate(Nodeable localLeft, Nodeable localRite) {
         return 0.;
     }
 }

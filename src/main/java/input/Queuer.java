@@ -2,7 +2,7 @@ package input;
 
 import calculation.*;
 
-public class Queuer extends QueueCore implements Enqueued {
+public class Queuer extends Queueability implements Enqueued {
 
     Typical type = null;
     Nodeable node = null;
@@ -15,12 +15,12 @@ public class Queuer extends QueueCore implements Enqueued {
         setTypeOrdinal();
     }
 
+    int getTypeOrdinal() { return typeOrdinal; }
+
     void setTypeOrdinal() {
         Typical cache = getType();
         this.typeOrdinal = cache == null ? -1 : cache.ordinal();
     }
-
-    int getTypeOrdinal() { return typeOrdinal; }
 
     @Override
     public void setNode(Nodeable node) {

@@ -88,4 +88,6 @@ public interface Nodeable {
      * of which the object is the root
      */
     void setLocalRite(Nodeable node);
+
+
 }

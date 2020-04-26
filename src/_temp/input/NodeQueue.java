@@ -91,24 +91,21 @@ public class NodeQueue extends Queuer implements Queuing {
 /**
  * :
  * Node Queue - queuer communication.
- *
- *  Adding queuer / joining queue.
- *
- *  1) queuer introduces to the queue           nodeQueue: public addToQueue(Queueable queuer)
- *      2) queue returns tail
- *      3) queuer overwrites its head
- *  4) queue sends queuer to queue.tail
- *      5) queue.tail overwrites its tail
- *  6) queue overwrites its tail
- *
- *      * * *
- *
- *  Removing queuer / quiting queue.
- *      (queue returns head)
- *  1) queue request head.tail
- *      3) queue request 'head'.tail to null its head
- *      4) head nulls its tail
- *
- *
- *
- * */
+ * <p>
+ * Adding queuer / joining queue.
+ * <p>
+ * 1) queuer introduces to the queue           nodeQueue: public addToQueue(Queueable queuer)
+ * 2) queue returns tail
+ * 3) queuer overwrites its head
+ * 4) queue sends queuer to queue.tail
+ * 5) queue.tail overwrites its tail
+ * 6) queue overwrites its tail
+ * <p>
+ * * * *
+ * <p>
+ * Removing queuer / quiting queue.
+ * (queue returns head)
+ * 1) queue request head.tail
+ * 3) queue request 'head'.tail to null its head
+ * 4) head nulls its tail
+ */

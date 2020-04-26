@@ -44,12 +44,16 @@ public interface Queuing extends Queueable{
      * Updates the counters for the queue:
      * adds a new queuer to the counters
      * */
-    void updateCounters(Queueable queuer);
+    void updateCounter(Queueable queuer);
 
     /**
      * :
      * Updated the counters for the queue:
      * removes the head queuer from the counters
      * */
-    void updateCounters();
+    void updateCounter();
+
+
+
+    void convertToLocalTree();
 }
