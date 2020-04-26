@@ -11,59 +11,56 @@ class NodeQueue extends Queueability implements Queuing {
         super();
     }
 
-    public void convertToLocalTree(){
+    public void convertToLocalTree() {
 
         /* 1.1 :    extract queue.head from queue */      // * queue.head == opLeft now
-        /* 1.2 :    analyze opLeft  */
-        /* 1.3 :    is opLeft a value ? */
         /* 2.1 :    extract queue.head from queue */      // * queue.head == opRoot now
-        /* 2.2 :    analyze opRoot */
-        /* 2.3 :    is opRoot a prioritized operation ? */
         /* 3.1 :    extract queue head from queue */      // * queue.head == opRite now
+        /* 1.2 :    analyze opLeft  */
+        /* 2.2 :    analyze opRoot */
         /* 3.2 :    analyze opRite */
+        /* 1.3 :    is opLeft a value ? */
+        /* 2.3 :    is opRoot a prioritized operation ? */
         /* 3.3 :    is oprite a value ? */
 
-        Enqueued opLeft = updateQueue();
-        Enqueued opRoot = updateQueue();
-        Enqueued opRite = updateQueue();
-
-        Nodeable opLeftNode = opLeft.getNode();
-        Nodeable opRootNode = opRoot.getNode();
-        Nodeable opRiteNode = opRite.getNode();
-
-        Typical opLeftNodeType = opLeftNode.getType();
-        Typical opRootNodeType = opRootNode.getType();
-        Typical opRiteNodeType = opRiteNode.getType();
-
-        boolean isLeftNodeValue = opLeftNodeType == NodeType.VALUE;
-        boolean isOpRootProper = isQueueNodePrioritized(opRootNodeType);
-        boolean isRiteNodeValue = opRiteNodeType == NodeType.VALUE;
+        Enqueued
+                opLeft = updateQueue(),
+                opRoot = updateQueue(),
+                opRite = updateQueue();
+        Nodeable
+                opLeftNode = opLeft.getNode(),
+                opRootNode = opRoot.getNode(),
+                opRiteNode = opRite.getNode();
+        Typical
+                opLeftNodeType = opLeftNode.getType(),
+                opRootNodeType = opRootNode.getType(),
+                opRiteNodeType = opRiteNode.getType();
+        boolean
+                isLeftNodeValue = opLeftNodeType == NodeType.VALUE,
+                isOpRootProper = isQueueNodePrioritized(opRootNodeType),
+                isRiteNodeValue = opRiteNodeType == NodeType.VALUE;
 
         /* 4. :    if 1.3 , 2.3, 3.3 are true then make them a local tree*/
 
-        if (isLeftNodeValue && isOpRootProper && isRiteNodeValue){
+        if (isLeftNodeValue && isOpRootProper && isRiteNodeValue) {
 
             /* 4.1  overwrite opRoot localLeft with opLeftNode */
+            /* 4.4  delete opLeft */
 
             opRootNode.setLocalLeft(opLeftNode);
+            opLeft.setType(null);
+            opLeft.setNode(null);
 
             /* 4.2  overwite opRoot localRite with opRiteNode */
+            /* 4.5  delete opRite */
 
             opRootNode.setLocalRite(opRiteNode);
+            opRite.setType(null);
+            opRite.setNode(null);
 
             /* 4.3  calculate opRoot */
 
             opRootNode.setValue();
-
-            /* 4.4  delete opLeft */
-
-            opLeft.setType(null);
-            opLeft.setNode(null);
-
-            /* 4.5  delete opRite */
-
-            opRite.setType(null);
-            opRite.setNode(null);
 
             /* 4.6  update opRoot type */
 
@@ -89,15 +86,15 @@ class NodeQueue extends Queueability implements Queuing {
     }
 
 
-    Enqueued updateQueue(){
-        Enqueued cache = (Enqueued)getHead();
+    Enqueued updateQueue() {
+        Enqueued cache = (Enqueued) getHead();
         cache.getTail().setHead(null);
         setHead(null);
         updateCounter();
         return cache;
     }
 
-    void updateQueue(Queueable queuer){
+    void updateQueue(Queueable queuer) {
 
         getTail().setTail(queuer);
         queuer.setHead(getTail());
