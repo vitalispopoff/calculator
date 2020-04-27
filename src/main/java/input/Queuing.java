@@ -10,7 +10,6 @@ public interface Queuing extends Queueable {
         setHead(getHead().getTail());                       //Test : updateQueue_sub02
         cache.setTail(null);                                //Test : updateQueue_sub03
         return cache;                                       //Test : updateQueue_sub00
-
     }
 
     default void updateQueue(Queueable queuer) {
@@ -30,5 +29,10 @@ public interface Queuing extends Queueable {
      */
     void updateCounter();
 
+
+    /**
+     *   TODO #1 :   <a href="https://github.com/vitalispopoff/calculator/issues/1">Subtree construction</a>
+     *   TODO #9 :   <a href="https://github.com/vitalispopoff/calculator/issues/9">Add bracketing</a>
+     * */
     void convertToLocalTree();
 }

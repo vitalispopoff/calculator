@@ -43,6 +43,8 @@ public class QueuingTest {
         Q1.setTail(que2);
     }
 
+
+
     @Test
     public void head_00() {
         Q1.setHead(que2);
@@ -55,7 +57,34 @@ public class QueuingTest {
         Assert.assertSame(que2, Q1.getTail());
     }
 
+    /*
+     * updateQueue() /extract/  desired procedure :
+     *  1.queue extracts head
+     *  2. head cached
+     *  3. cached head returens its tail
+     *  4. queue sets the tail as its new head
+     *  5. new head sets its head to null
+     *  6. cached head sets its tail to null
+     *  7. counter decreases cached head's type
+     *  8 cached head is returned
+     *
+     * proposed updateQueue tests
+     *  1. metod returns old head
+     *  2. queue reports old heads old tail as its head
+     *  3. new head reports its head as null
+     *  4. old head reports its tail as null
+     *  5. counter - tested separately
+     *
+     * for the last element
+     *  2 queue return new head == null
+     *  3. queue doesnt report new heads head
+     *  4. coutner is 0
+     *
+     * */
 
+/**
+ *    // TODO #10 : <a href="https://github.com/vitalispopoff/calculator/issues/10">verify testing for the Queuing > updateQueue()</a>
+ * */
     @Test       // method return
     public void updateQueue_sub00() {
         Assert.assertSame(que1, Q1.updateQueue());
@@ -83,9 +112,9 @@ public class QueuingTest {
     public void updateQueue_sub04() {
         setup_01();
         Assert.assertSame(que1, Q1.updateQueue());
-
-
     }
 
-
+    @Test
+    public void updateQueue_add00(){
+    }
 }
