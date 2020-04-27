@@ -4,6 +4,12 @@ public interface Queueable {
 
     /**
      * :
+     * creates an object and adds it to a queue
+     * */
+    abstract Queueable summon();
+
+    /**
+     * :
      * disconnects the queueable object
      * preparing it for interception by the garbage collector
      *
@@ -21,12 +27,6 @@ public interface Queueable {
             setTail(null);
         }
     }
-
-    /**
-     * :
-     * creates an object and adds it to a queue
-     * */
-    abstract Queueable summon();
 
     //    @formatter:off
 

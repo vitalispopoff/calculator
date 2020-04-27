@@ -13,7 +13,7 @@ package input {
             +{method} void setHead ()
         }
 
-    ~abstract class QueueCore{
+    ~abstract class Queueability{
             ~{field} Queueable head
             ~{field} Queueable tail
         --
@@ -26,9 +26,9 @@ package input {
     }
 
     ~interface Queuing{
-        ..static..
-            ~{method} void extendQueue (Queuing, Enqueued)
-            ~{method} Queueable reduceQueue (Queueable)
+        ..default..
+            ~{method} void updatedQueue (Queuing, Enqueued)
+            ~{method} Queueable updateQueue (Queueable)
         ..
             ~{method} void updateCounters(Queueable)
             ~{method} void updateCounters()
@@ -37,6 +37,8 @@ package input {
     ~class NodeQueue{
             ~{field} int[] priorityCounter
             ~{field} int counter
+        --
+            -{method} bool isQueueNodePrioritized (Typical)
         ..@Override..
             ~{method} : /.../
     }
@@ -66,8 +68,8 @@ package input {
     Enqueued    -|>     Queueable   :   ext
     Queueable   <|-     Queuing     :   ext
 
-    QueueCore   <|-     NodeQueue   :   ext
-    Queuer      -|>     QueueCore   :   ext
+    Queueability   <|-     NodeQueue   :   ext
+    Queuer      -|>     Queueability   :   ext
 
     Enqueued    <|--    Queuer      :   impl
     Queuing     <|--    NodeQueue   :   impl

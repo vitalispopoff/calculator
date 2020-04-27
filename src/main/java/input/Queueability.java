@@ -8,10 +8,8 @@ abstract class Queueability {
 
     //  @formatter:off
 
-    Queueability(){ }
-    Queueability(Queueable queueable){
-        if (head== null) head = queueable;
-    }
+    Queueability() { }
+    Queueability(Queueable queueable) { if (head == null) head = tail = queueable; }
 
     public Queueable summon() { return null; }
     public Queueable getTail() { return tail; }

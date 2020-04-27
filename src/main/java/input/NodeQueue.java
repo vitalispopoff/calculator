@@ -5,28 +5,29 @@ import calculation.*;
 class NodeQueue extends Queueability implements Queuing {
 
     int[] nodeCounter = new int[NodeType.values().length];
-//    int queuerCounter = 0;
 
-    NodeQueue() {
-        super();
+    NodeQueue(Queueable queueable) {
+        super(queueable);
     }
 
     public void convertToLocalTree() {
 
-        /* 1.1 :    extract queue.head from queue */      // * queue.head == opLeft now
-        /* 2.1 :    extract queue.head from queue */      // * queue.head == opRoot now
-        /* 3.1 :    extract queue head from queue */      // * queue.head == opRite now
-        /* 1.2 :    analyze opLeft  */
-        /* 2.2 :    analyze opRoot */
-        /* 3.2 :    analyze opRite */
-        /* 1.3 :    is opLeft a value ? */
-        /* 2.3 :    is opRoot a prioritized operation ? */
-        /* 3.3 :    is oprite a value ? */
+    /*
+         1.1 :    extract queue.head from queue       // * queue.head == opLeft now
+         2.1 :    extract queue.head from queue       // * queue.head == opRoot now
+         3.1 :    extract queue head from queue       // * queue.head == opRite now
+         1.2 :    analyze opLeft
+         2.2 :    analyze opRoot
+         3.2 :    analyze opRite
+         1.3 :    is opLeft a value ?
+         2.3 :    is opRoot a prioritized operation ?
+         3.3 :    is opRite a value ?
+*/  // * comments
 
         Enqueued
-                opLeft = updateQueue(),
-                opRoot = updateQueue(),
-                opRite = updateQueue();
+                opLeft = (Enqueued) updateQueue(),
+                opRoot = (Enqueued) updateQueue(),
+                opRite = (Enqueued) updateQueue();
         Nodeable
                 opLeftNode = opLeft.getNode(),
                 opRootNode = opRoot.getNode(),
@@ -36,71 +37,67 @@ class NodeQueue extends Queueability implements Queuing {
                 opRootNodeType = opRootNode.getType(),
                 opRiteNodeType = opRiteNode.getType();
         boolean
-                isLeftNodeValue = opLeftNodeType == NodeType.VALUE,
-                isOpRootProper = isQueueNodePrioritized(opRootNodeType),
-                isRiteNodeValue = opRiteNodeType == NodeType.VALUE;
+                isOpLeftAVal = opLeftNodeType == NodeType.VALUE,
+                isOpRootAPas = isQueueNodePrioritized(opRootNodeType),
+                isOpRiteAVal = opRiteNodeType == NodeType.VALUE;
 
         /* 4. :    if 1.3 , 2.3, 3.3 are true then make them a local tree*/
 
-        if (isLeftNodeValue && isOpRootProper && isRiteNodeValue) {
+        /*if (isOpLeftAVal && isOpRootAPas && isOpRiteAVal) {*/
 
-            /* 4.1  overwrite opRoot localLeft with opLeftNode */
-            /* 4.4  delete opLeft */
+    /*
+             4.2  overwite opRoot localRite with opRiteNode
+             4.3  calculate opRoot
+             4.6  update opRoot type
+*/  // * comments
 
-            opRootNode.setLocalLeft(opLeftNode);
-            opLeft.setType(null);
-            opLeft.setNode(null);
+        opRootNode.setLocalLeft(opLeftNode);
+        opRootNode.setLocalRite(opRiteNode);
+        opRootNode.setValue();
+        opRiteNodeType = NodeType.VALUE;
 
-            /* 4.2  overwite opRoot localRite with opRiteNode */
-            /* 4.5  delete opRite */
 
-            opRootNode.setLocalRite(opRiteNode);
-            opRite.setType(null);
-            opRite.setNode(null);
+    /*             4.4  delete opLeft
+             4.5  delete opRite
+             4.7  add opRoot to the queue*
+*/  // * comments
 
-            /* 4.3  calculate opRoot */
+        opLeft.setType(null);
+        opRite.setType(null);
+        opLeft.setNode(null);
+        opRite.setNode(null);
 
-            opRootNode.setValue();
+        updateQueue(opRoot);
 
-            /* 4.6  update opRoot type */
+//        } else {
 
-            opRiteNodeType = NodeType.VALUE;
+        /* 5.1  add opLeft back to the queue */
+        /*5.2   add opRoot back to the queue */
 
-            /* 4.7  add opRoot to the queue*/
-
-            updateQueue(opRoot);
-        } else {
-
-            /* 5.1  add opLeft back to the queue */
-
-            updateQueue(opLeft);
-
-            /*5.2   add opRoot back to the queue */
-
-            updateQueue(opRoot);
-        }
+//            updateQueue(opLeft);
+//            updateQueue(opRoot);
+//        }
     }
 
     private boolean isQueueNodePrioritized(Typical rootNodeType) {
-        return false;
+        return true;
     }
 
-
-    Enqueued updateQueue() {
+/*    Enqueued updateQueue() {
         Enqueued cache = (Enqueued) getHead();
         cache.getTail().setHead(null);
         setHead(null);
         updateCounter();
         return cache;
-    }
+    }*/
 
-    void updateQueue(Queueable queuer) {
+/*    void updateQueue(Queueable queuer) {
 
         getTail().setTail(queuer);
         queuer.setHead(getTail());
         setTail(queuer);
         updateCounter(queuer);
-    }
+    }*/
 
     @Override
     public void updateCounter(Queueable queuer) {
