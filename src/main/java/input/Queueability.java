@@ -15,8 +15,8 @@ abstract class Queueability {
     public Queueable getTail() { return tail; }
     public Queueable getHead() { return head; }
     public void revoke() { }
-    public void setTail(Queueable tail) { this.head = tail; }
-    public void setHead(Queueable head) { this.tail = head; }
+    public void setTail(Queueable tail) { this.tail = tail; }
+    public void setHead(Queueable head) { this.head = head; }
 
     //    @formatter:on
 }
