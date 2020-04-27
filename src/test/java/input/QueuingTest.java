@@ -38,8 +38,9 @@ public class QueuingTest {
     }
 
     private void setup_01() {
-        Q1.updateQueue(que2);
-        Q1.updateQueue();
+        que2.setHead(Q1.getTail());
+        Q1.getTail().setTail(que2);
+        Q1.setTail(que2);
     }
 
     @Test
@@ -72,38 +73,19 @@ public class QueuingTest {
         Assert.assertNull(Q1.getHead());
     }
 
-    @Test
+    @Test       // queue tail is empty
     public void updateQueue_sub03() {
         Q1.updateQueue();
         Assert.assertNull(que1.getTail());
     }
 
     @Test
-    public void updateQueue_sub04(){
+    public void updateQueue_sub04() {
+        setup_01();
+        Assert.assertSame(que1, Q1.updateQueue());
+
 
     }
 
-
-    @Ignore
-    @Test
-    public void updatedQueue_add0y() {
-        Q1.updateQueue(que2);
-        Assert.assertSame(que2, Q1.getTail());
-    }
-
-    @Ignore
-    @Test
-    public void updateQueue_add0x() {
-        Q1.updateQueue(que2);
-        Assert.assertSame(que1, que2.getHead());
-    }
-
-
-    @Ignore
-    @Test
-    public void updateQueue_add02() {
-        Q1.updateQueue(que2);
-        Assert.assertSame(Q1.getTail().getHead().getTail(), que2);
-    }
 
 }

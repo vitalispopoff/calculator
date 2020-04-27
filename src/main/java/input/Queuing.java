@@ -14,10 +14,6 @@ public interface Queuing extends Queueable {
     }
 
     default void updateQueue(Queueable queuer) {
-        getTail().setTail(queuer);
-        queuer.setHead(getTail());
-        setTail(queuer);
-//        updateCounter(queuer);
     }
 
     /**
