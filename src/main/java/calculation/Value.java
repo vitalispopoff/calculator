@@ -7,7 +7,8 @@ public class Value extends Node {
     }
 
     /**
-     * // TODO #4 : <a href="https://github.com/vitalispopoff/calculator/issues/4">Connect GUI with input pacakge</a>
+     * <!--!SSUE#4-->
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/4">Issue #4</a> : Connect GUI with input pacakge</p>
      * */
     @Override
     public void setValue() {

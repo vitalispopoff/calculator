@@ -3,7 +3,7 @@ package input;
 import calculation.*;
 import org.junit.*;
 
-public class QueuingTest {
+public class QueuingTest implements QueuingTestNotes {
 
     static Typical
             typ1 = NodeType.VALUE,
@@ -32,24 +32,21 @@ public class QueuingTest {
     static Queuing
             Q1;
 
-    /**
-     * // TODO #10 : <a href="https://github.com/vitalispopoff/calculator/issues/10">verify testing for the Queuing > updateQueue()</a>
-     */
-    private void updateQueue_initial() {
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void updateQueue_issue() {
     }
 
-    /**
-     * updateQueue() - extractor test:
-     * initial: queue Q1 contains: que1(head), que2(tail)<br>
-     * 1.  method returns que1
-     * 2.  queue reports que2 as its head
-     */
-    private void updateQueue_Ext_initial() {
+    @Override
+    public void updateQueue_Ext_initial() {
         Q1 = new NodeQueue(que1);
         ((Queuer) que1).tail = que2;
         ((Queuer) que2).head = que1;
         ((NodeQueue) Q1).tail = que2;
     }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
     public void updateQueue_ext_00() {
@@ -118,10 +115,17 @@ public class QueuingTest {
 
     }
 
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+
+
+
+
+
+
+
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
 
     /**
