@@ -7,7 +7,7 @@ Move along.
 
 * * *
 
-Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues opened</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues closed</a>.
+Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues closed</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues opened</a>.
 
 * * *
 
