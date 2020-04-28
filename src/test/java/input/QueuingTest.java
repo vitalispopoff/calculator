@@ -3,7 +3,7 @@ package input;
 import calculation.*;
 import org.junit.*;
 
-public class QueuingTest implements QueuingTestNotes {
+public class QueuingTest implements _QueuingTestNotes {
 
     static Typical
             typ1 = NodeType.VALUE,
@@ -38,6 +38,8 @@ public class QueuingTest implements QueuingTestNotes {
     public void updateQueue_issue() {
     }
 
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
     @Override
     public void updateQueue_Ext_initial() {
         Q1 = new NodeQueue(que1);
@@ -45,8 +47,6 @@ public class QueuingTest implements QueuingTestNotes {
         ((Queuer) que2).head = que1;
         ((NodeQueue) Q1).tail = que2;
     }
-
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
     public void updateQueue_ext_00() {
@@ -88,27 +88,27 @@ public class QueuingTest implements QueuingTestNotes {
     }
 
     @Test
-    public void updateQueue_ext_04(){
+    public void updateQueue_ext_04() {
         updateQueue_Ext_initial();
         Assert.assertNull(Q1.updateQueue().getTail());
     }
 
     @Test
-    public void updatedQueue_ext_06(){
+    public void updatedQueue_ext_06() {
         Q1 = new NodeQueue(que1);
         Q1.updateQueue();
         Assert.assertNull(Q1.getHead());
     }
 
     @Test
-    public void updateQueue_ext_07(){
+    public void updateQueue_ext_07() {
         Q1 = new NodeQueue(que1);
         Q1.updateQueue();
         Assert.assertNull(Q1.getTail());
     }
 
     @Test
-    public void updateQueue_ext_08(){
+    public void updateQueue_ext_08() {
         Q1 = new NodeQueue(que1);
         Q1.updateQueue();
         Assert.assertNull(Q1.updateQueue());
@@ -117,9 +117,10 @@ public class QueuingTest implements QueuingTestNotes {
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-
-
-
+    @Override
+    public void updateQueue_Add_initial() {
+        Q1 = new NodeQueue(que1);
+    }
 
 
 

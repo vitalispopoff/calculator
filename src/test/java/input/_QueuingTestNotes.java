@@ -1,6 +1,6 @@
 package input;
 
-public interface QueuingTestNotes {
+public interface _QueuingTestNotes {
 
 
     /**
@@ -29,4 +29,26 @@ public interface QueuingTestNotes {
      *  <ol start="9"><li>queue returns null, no additional action.</li></ol>
      */
     void updateQueue_Ext_initial();
+
+    /**
+     * <p>updateQueue() - extractor test:</p>
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a>:
+     * <a href="https://github.com/vitalispopoff/calculator/issues/10#issuecomment-620652495">subroutine</a></p>
+     * <p><b>initial: queue Q1 contains: que1</b></p>
+     *  <ol>
+     *      <li>the queuer's head is theQueue tail</li>
+     *      <li>Queue's old tail's tail is the queuer</li>
+     *      <li>Queue sets its tail to the queuer</li>
+     *      <li>the counter is updated</li>
+     *  </ol>
+     *  <p><b>adding to an empty list</b></p>
+     *  <ol start ="5>
+     *      <li>the queuer's head is empty</li>
+     *      <li>the queuer's tail is empty</li>
+     *      <li>the Queue's head is queuer</li>
+     *      <li>the Queue's tail is queuer</li>
+     *      <li>the counter is one</li>
+     *      </ol>
+     */
+    void updateQueue_Add_initial();
 }
