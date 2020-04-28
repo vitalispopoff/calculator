@@ -7,8 +7,12 @@ class NodeQueue extends Queueability implements Queuing {
     int[] nodeCounter = new int[NodeType.values().length];
 
     NodeQueue(Queueable queueable) {
-        super();
+//        super();
         head = tail = queueable;
+        try {
+            updateCounter(queueable);
+        } catch (Exception e) {
+        }
     }
 
     public void convertToLocalTree() {
@@ -56,12 +60,26 @@ class NodeQueue extends Queueability implements Queuing {
     }
 
     @Override
+    public int getCounter(Queueable queuer) {
+        if (queuer == null) return 0;
+        else {
+            int index = ((Enqueued) queuer).getPriority();
+            return nodeCounter[index];
+        }
+    }
+
+    @Override
     public void updateCounter(Queueable queuer) {
-        nodeCounter[((Queuer) queuer).getTypeOrdinal()]++;
+        int index = ((Enqueued) queuer).getPriority();
+        nodeCounter[index]++;
     }
 
     @Override
     public void updateCounter() {
-        nodeCounter[((Queuer) head).getTypeOrdinal()]--;
+        if (head != null) {
+            int index = ((Enqueued) head).getPriority();
+            if (nodeCounter[index] > 0) nodeCounter[index]--;
+        }
     }
+
 }

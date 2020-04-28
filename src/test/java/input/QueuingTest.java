@@ -24,25 +24,44 @@ public class QueuingTest implements _QueuingTestNotes {
             node4 = typ4.interact(),
             node5 = typ5.interact();
     static Enqueued
-            que1 = new Queuer(node1),
-            que2 = new Queuer(node2),
-            que3 = new Queuer(node3),
-            que4 = new Queuer(node4),
-            que5 = new Queuer(node5);
+            que1 /*= new Queuer(node1)*/,
+            que2 /*= new Queuer(node2)*/,
+            que3 /*= new Queuer(node3)*/,
+            que4 /*= new Queuer(node4)*/,
+            que5 /*= new Queuer(node5)*/;
     static Queuing
+            Q0,
             Q1;
+
+    @Before
+    public void initial() {
+        que1 = new Queuer(node1);
+        que2 = new Queuer(node2);
+        Q1 = new NodeQueue(que1);
+        Q0 = new NodeQueue(null);
+    }
+
+    @After
+    public void terminal() {
+        que1 = que2 = null;
+        Q1 = null;
+    }
+
+    private void initial_00() {
+        ((NodeQueue) Q0).head = que1;
+        ((NodeQueue) Q0).tail = que1;
+    }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
-    public void updateQueue_issue() {
+    public void _issue_10() {
     }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateQueue_Ext_initial() {
-        Q1 = new NodeQueue(que1);
         ((Queuer) que1).tail = que2;
         ((Queuer) que2).head = que1;
         ((NodeQueue) Q1).tail = que2;
@@ -84,7 +103,7 @@ public class QueuingTest implements _QueuingTestNotes {
     public void updateQueue_ext_03() {
         updateQueue_Ext_initial();
         Q1.updateQueue();
-        Assert.assertNull(Q1.getHead().getHead());  // is false - should be true
+        Assert.assertNull(Q1.getHead().getHead());
     }
 
     @Test
@@ -95,47 +114,140 @@ public class QueuingTest implements _QueuingTestNotes {
 
     @Test
     public void updatedQueue_ext_06() {
-        Q1 = new NodeQueue(que1);
         Q1.updateQueue();
         Assert.assertNull(Q1.getHead());
     }
 
     @Test
     public void updateQueue_ext_07() {
-        Q1 = new NodeQueue(que1);
         Q1.updateQueue();
         Assert.assertNull(Q1.getTail());
     }
 
     @Test
-    public void updateQueue_ext_08() {
-        Q1 = new NodeQueue(que1);
+    public void updatedQueue_ext08(){
+        Q1.updateCounter();
+        Assert.assertEquals(0, Q1.getCounter(Q1.getHead()));
+    }
+
+    @Test
+    public void updateQueue_ext_09() {
         Q1.updateQueue();
         Assert.assertNull(Q1.updateQueue());
-
     }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateQueue_Add_initial() {
-        Q1 = new NodeQueue(que1);
     }
 
+    @Test
+    public void updateQueue_Add_01() {
+        System.out.println("   Is que1 a Q1's tail : " + (Q1.getTail() == que1));
+        Queueable cache = Q1.getTail();
+        Q1.updateQueue(que2);
+        Assert.assertSame(cache, que2.getHead());
+    }
 
+    @Test
+    public void updatedQueue_Add_02() {
+        Queueable cache = Q1.getTail();
+        Q1.updateQueue(que2);
+        Assert.assertSame(que2, cache.getTail());
+    }
 
+    @Test
+    public void updateQueue_Add_03() {
+        Q1.updateQueue(que2);
+        Assert.assertSame(que2, Q1.getTail());
+    }
 
+    @Test
+    public void updateQueue_Add_05() {
+        Q0.updateQueue(que2);
+        Assert.assertNull(Q0.getHead().getTail());
+    }
 
+    @Test
+    public void updateQueue_Add_06() {
+        Q0.updateQueue(que2);
+        Assert.assertNull(Q0.getTail().getHead());
+    }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
+    @Test
+    public void updateQueue_Add_07() {
+        Q0.updateQueue(que2);
+        Assert.assertSame(que2, Q0.getHead());
+    }
 
-    /**
-     * setHead tests:<br>
-     * 0.  constructor sets head<br>
-     * 1.  setter sets head<br>
-     * 2.  setter sets null<br>
-     */
-    private void setHead_initial() {
+    @Test
+    public void updateQueue_Add_08() {
+        Q0.updateQueue(que2);
+        Assert.assertSame(que2, Q0.getTail());
+    }
+
+    @Test
+    public void updatedQueue_Add_09(){
+        Q0.updateQueue(que2);
+        Assert.assertEquals(1, Q0.getCounter(Q0.getHead()));
+
+    }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void getCounter_initial(int ord, int val) {
+        ((NodeQueue) Q1).nodeCounter[ord] = val;
+    }
+
+    @Test
+    public void getCounter_01() {
+        getCounter_initial(ord1, 1);
+        Assert.assertEquals(1, Q1.getCounter(Q1.getHead()));
+    }
+
+    @Test
+    public void getCounter_02(){
+        Assert.assertEquals(0, Q0.getCounter(null));
+    }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void updateCounter_Add_initial() {
+    }
+
+    @Test
+    public void updateCounter_Add_01() {
+        initial_00();
+        Q0.updateCounter(Q0.getHead());
+        Assert.assertEquals(1, Q1.getCounter(Q0.getHead()));
+    }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void updateCounter_Ext_initial() {
+    }
+
+    @Test
+    public void updateCounter_Ext_01() {
+        getCounter_initial(ord1, 1);
+        Q1.updateCounter();
+        Assert.assertEquals(0, Q1.getCounter(Q1.getHead()));
+    }
+
+    @Test
+    public void updateCounter_Ext_02() {
+        Q1.updateCounter();
+        Assert.assertEquals(0, Q1.getCounter(Q1.getHead()));
+    }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void setHead_initial() {
         Q1 = new NodeQueue(que1);
     }
 
@@ -159,15 +271,10 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertNull(((NodeQueue) Q1).head);
     }
 
-    /**
-     * getHead tests:<br>
-     * 1. get as default cast<br>
-     * 2. get as Queueable cast<br>
-     * 3. get as Queuing cast<br>
-     * 4. get as NodeQueue cast<br>
-     * 5. get as NodeQueue cast<br>
-     */
-    private void getHead_initial() {
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void getHead_initial() {
         setHead_initial();
     }
 
@@ -201,13 +308,8 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertSame(((NodeQueue) Q1).head, ((Queueability) Q1).getHead());
     }
 
-    /**
-     * setTail tests:<br>
-     * 0.  constructor sets tail<br>
-     * 1.  setter sets tail<br>
-     * 2.  setter sets null<br>
-     */
-    private void setTail_initial() {
+    @Test
+    public void setTail_initial() {
         Q1 = new NodeQueue(que1);
     }
 
@@ -231,15 +333,10 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertNull(((NodeQueue) Q1).tail);
     }
 
-    /**
-     * getTail tests:<br>
-     * 1. get as default cast<br>
-     * 2. get as Queueable cast<br>
-     * 3. get as Queuing cast<br>
-     * 4. get as NodeQueue cast<br>
-     * 5. get as NodeQueue cast<br>
-     */
-    private void getTail_initial() {
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void getTail_initial() {
         setTail_initial();
     }
 

@@ -36,6 +36,8 @@ public interface Enqueued extends Queueable {
      * */
     Typical getType();
 
+    int getPriority();
+
     /**
      * :
      * Returns the wrapped node

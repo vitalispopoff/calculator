@@ -2,14 +2,17 @@ package input;
 
 public interface _QueuingTestNotes {
 
-
     /**
-     * <!--!SSUE#10-->
+     * ...
+     * <!--
+     * !SSUE#10 : verify testing for Queueing
+     * -->
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a> : verify testing for the Queuing > updateQueue()</p>
      */
-    void updateQueue_issue();
+    void _issue_10();
 
     /**
+     * ...
      * <p>updateQueue() - extractor test:</p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a>:
      * <a href="https://github.com/vitalispopoff/calculator/issues/10#issuecomment-620499308">subroutine</a></p>
@@ -26,11 +29,12 @@ public interface _QueuingTestNotes {
      *      <li>queue tail is empty (null)</li>
      *      <li><i>counter is all 0 - to be tested in the context after its own tests</i></li></ol>
      * <p><b>extraction from an empty queue</b></p>
-     *  <ol start="9"><li>queue returns null, no additional action.</li></ol>
+     *  <ol start="10"><li>queue returns null, no additional action.</li></ol>
      */
     void updateQueue_Ext_initial();
 
     /**
+     * ...
      * <p>updateQueue() - extractor test:</p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a>:
      * <a href="https://github.com/vitalispopoff/calculator/issues/10#issuecomment-620652495">subroutine</a></p>
@@ -51,4 +55,83 @@ public interface _QueuingTestNotes {
      *      </ol>
      */
     void updateQueue_Add_initial();
+
+    /**
+     * ...
+     * <p>returns from the counter the value related to the priority of the node wrapped in queuer.</p>
+     * <p>Initial sets a given value (val) to a specified index (ord)<br>
+     *     <b>Initial queue with a single queuer;</b>
+     * </p>
+     *  <ol>
+     *      <li>method returns a counter value for the queue head</li>
+     *  </ol>
+     * */
+    void getCounter_initial(int ord, int val);
+
+    /**
+     * ...
+     * <p>updateCounter(...) - adder test:</p>
+     * <p><b>initial: single entity queue</b></p>
+     * <ol>
+     *     <li>after using the method, the called getCounter returns proper values: 1 for the queue head</li>
+     * </ol>
+     * */
+    void updateCounter_Add_initial();
+
+    /**
+     * ...
+     * <p>updateCounter() - extractor test:</p>
+     * <p><b>initial: single entity queue</b></p>
+     * <ol>
+     *     <li>counter set to proper values, after using the method, the called getCounter returns 0 for the queue head</li>
+     *     <li>counter is 0, after usinge the method, the called getCounter returns 0 for the queue head</li>
+     * </ol>
+     * */
+    void updateCounter_Ext_initial();
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    /**
+     * <p>setHead tests:</p>
+     * <ol start=0">
+     * <li>constructor sets head</li>
+     * <li>setter sets head</li>
+     * <li>setter sets null</li>
+     *     </ol>
+     */
+    void setHead_initial();
+
+    /**
+     * <p>getHead tests:</p>
+     * <ol>
+     * <li>get as default cast</li>
+     * <li>get as Queueable cast</li>
+     * <li>get as Queuing cast</li>
+     * <li>get as NodeQueue cast</li>
+     * <li>get as NodeQueue cast</li>
+     *     </ol>
+     */
+    void getHead_initial();
+
+    /**
+     * <p>setTail tests:</p>
+     * <ol>
+     * <li>constructor sets tail</li>
+     * <li>setter sets tail</li>
+     * <li>setter sets null</li>
+     *     </ol>
+     */
+    void setTail_initial();
+
+    /**
+     * <p>getTail tests:</p>
+     * <ol>
+     * <li>get as default cast</li>
+     * <li>get as Queueable cast</li>
+     * <li>get as Queuing cast</li>
+     * <li>get as NodeQueue cast</li>
+     * <li>get as NodeQueue cast</li>
+     *     </ol>
+     */
+    void getTail_initial();
 }

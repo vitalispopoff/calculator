@@ -38,7 +38,7 @@ public class QeuerTest {
     }
     @Test public void Queuer_Node() { Assert.assertNotNull(Q1.getNode());}
     @Test public void Queuer_Type() { Assert.assertSame(typ1, Q1.getType());}
-    @Test public void Queuer_TypeOrdinal() { Assert.assertEquals(ord1, Q1.getTypeOrdinal());}
+    @Test public void Queuer_TypeOrdinal() { Assert.assertEquals(ord1, Q1.getPriority());}
 
 //    @formatter:on
 }
