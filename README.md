@@ -5,6 +5,8 @@ Definitely not a droid You're lookin' for.
 
 Move along.
 
+* * *
+
 Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues opened</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues closed</a>.
 
 * * *
