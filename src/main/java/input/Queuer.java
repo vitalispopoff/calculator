@@ -9,7 +9,7 @@ public class Queuer extends Queueability implements Enqueued {
     int typeOrdinal = -1;
 
     Queuer(Nodeable node) {
-        super(null);
+//        super(null);
         setNode(node);
         setType(node.getType());
         setTypeOrdinal();

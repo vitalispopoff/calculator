@@ -7,7 +7,8 @@ class NodeQueue extends Queueability implements Queuing {
     int[] nodeCounter = new int[NodeType.values().length];
 
     NodeQueue(Queueable queueable) {
-        super(queueable);
+        super();
+        head = tail = queueable;
     }
 
     public void convertToLocalTree() {

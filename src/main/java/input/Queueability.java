@@ -1,6 +1,6 @@
 package input;
 
-abstract class Queueability {
+abstract class Queueability /*implements Queueable*/{
 
     Queueable
             head = null,
@@ -9,7 +9,7 @@ abstract class Queueability {
     //  @formatter:off
 
     Queueability() { }
-    Queueability(Queueable queueable) { if (head == null) head = tail = queueable; }
+//    Queueability(Queueable queueable) { /*if (head == null)*/ head = tail = queueable; }
 
     public Queueable summon() { return null; }
     public Queueable getTail() { return tail; }
