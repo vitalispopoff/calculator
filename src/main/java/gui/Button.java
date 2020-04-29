@@ -10,6 +10,7 @@ import calculation.*;
 
 public class Button extends JButton implements KeyListener {
 
+    static boolean valueSequence = true;
     private Typical type;
     private char symbol;
 

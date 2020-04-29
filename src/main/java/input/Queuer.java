@@ -6,7 +6,7 @@ public class Queuer extends Queueability implements Enqueued {
 
     Typical type = null;
     Nodeable node = null;
-    int Priority = -1;
+    int priorityIndex = -1;
 
     Queuer(Nodeable node) {
 //        super(null);
@@ -16,11 +16,11 @@ public class Queuer extends Queueability implements Enqueued {
     }
 
     @Override
-    public int getPriority() { return Priority; }
+    public int getPriorityIndex() { return priorityIndex; }
 
     void setPriority() {
         Typical cache = getType();
-        this.Priority = cache == null ? -1 : cache.ordinal();
+        this.priorityIndex = cache == null ? -1 : cache.ordinal();
     }
 
     @Override

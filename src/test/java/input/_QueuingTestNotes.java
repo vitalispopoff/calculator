@@ -4,10 +4,7 @@ public interface _QueuingTestNotes {
 
     /**
      * ...
-     * <!--
-     * !SSUE#10 : verify testing for Queueing
-     * -->
-     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a> : verify testing for the Queuing > updateQueue()</p>
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : verify testing for the Queuing > updateQueue()</p>
      */
     void _issue_10();
 

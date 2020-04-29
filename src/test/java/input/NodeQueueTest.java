@@ -48,4 +48,9 @@ public class NodeQueueTest {
         Assert.assertSame(que1, Q1.getTail());
     }
 
+    @Test
+    public void currentPriority_00(){
+        int expectation = ((Queuer)Q1.getHead()).priorityIndex;
+        Assert.assertEquals(expectation, Q1.currentPriorityIndex());
+    }
 }

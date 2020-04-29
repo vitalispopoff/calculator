@@ -1,5 +1,7 @@
 package input;
 
+import calculation.Typical;
+
 public interface Queuing extends Queueable {
 
 /*    default Queueable updateQueue() {
@@ -47,12 +49,11 @@ public interface Queuing extends Queueable {
     /**
      * ...
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/11">Issue #11</a> : simplify  counter</p>
-     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a> : verify testing for the Queuing</p>
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : verify testing for the Queuing</p>
      * <p>Updates the counters for the queue:<br>
      * adds a new queuer to the counters</p>
      * <!--
      * !SSUE#11 : simplify counter - move to the NodeType ?
-     * !SSUE#10 : update counter (add)
      * -->
      */
     void updateCounter(Queueable queuer);
@@ -60,12 +61,11 @@ public interface Queuing extends Queueable {
     /**
      * ...
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/11">Issue #11</a> : simplify  counter</p>
-     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a> : verify testing for the Queuing</p>
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : verify testing for the Queuing</p>
      * <p>Updated the counters for the queue:<br>
      * removes the head queuer from the counters</p>
      * <!--
      * !SSUE#11 : simplify counter - move to the NodeType?
-     * !SSUE#10 : update counter (sub)
      * -->
      *
      */
@@ -83,4 +83,6 @@ public interface Queuing extends Queueable {
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/9">Issue #9</a> : Add bracketing</p>
      */
     void convertToLocalTree();
+
+    int currentPriorityIndex();
 }

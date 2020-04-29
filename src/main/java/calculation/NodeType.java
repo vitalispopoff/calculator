@@ -19,7 +19,6 @@ public enum NodeType implements Typical {
     EXPONENT {
         @Override
         public Nodeable interact() {
-            int priorityVal = 0;
             return new Calculation_Exponentiation(this);
         }
     },
