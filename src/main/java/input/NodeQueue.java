@@ -2,7 +2,7 @@ package input;
 
 import calculation.*;
 
-public class NodeQueue extends Queueability implements Queuing {
+public class NodeQueue extends Queueability implements Queuing, Treeable {
 
     public int[] nodeCounter = new int[NodeType.values().length];
 

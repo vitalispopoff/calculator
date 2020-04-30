@@ -1,6 +1,7 @@
 package input;
 
 import calculation.Typical;
+import process.Treeable;
 
 public interface Queuing extends Queueable {
 
@@ -82,7 +83,7 @@ public interface Queuing extends Queueable {
      * -->
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/9">Issue #9</a> : Add bracketing</p>
      */
-    void convertToLocalTree();
+    /*void convertToLocalTree();*/
 
     int currentPriorityIndex();
 }

@@ -1,11 +1,12 @@
-package process;
+package input;
 
 import calculation.*;
 import input.*;
+import process._Treeable_Notes;
 
 public interface Treeable extends Queuing, _Treeable_Notes {
 
-    void treeable();
+    default void treeable(){}
 
     default void convertToLocalTree(Queueable operand1) {
 
