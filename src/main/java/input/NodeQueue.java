@@ -2,7 +2,7 @@ package input;
 
 import calculation.*;
 
-public class NodeQueue extends Queueability implements Queuing, Treeable {
+public class NodeQueue extends Queueability implements Queuing {
 
     public int[] nodeCounter = new int[NodeType.values().length];
 
@@ -15,7 +15,8 @@ public class NodeQueue extends Queueability implements Queuing, Treeable {
         }
     }
 
-    public void convertToLocalTree() {
+
+/*    public void convertToLocalTree() {
 
         Enqueued
                 opLeft = (Enqueued) updateQueue(),
@@ -48,12 +49,12 @@ public class NodeQueue extends Queueability implements Queuing, Treeable {
 
         updateQueue(opRoot);
 
-/*        } else {
-
-            updateQueue(opLeft);
-            updateQueue(opRoot);
-        }*/
-    }
+//        } else {
+//
+//            updateQueue(opLeft);
+//            updateQueue(opRoot);
+//        }
+    }*/
 
     private boolean isQueueNodePrioritized(Typical rootNodeType) {
         return true;
@@ -76,6 +77,15 @@ public class NodeQueue extends Queueability implements Queuing, Treeable {
             int index = ((Enqueued) queuer).getPriorityIndex();
             return nodeCounter[index];
         }
+    }
+
+    public int getCounter(){
+        int index = 0;
+        for (int slot : nodeCounter) {
+            if (slot==0)index++;
+            else return index;
+        }
+        return index;
     }
 
     @Override

@@ -1,12 +1,25 @@
-package input;
+package _notes;
 
-public interface _QueuingTestNotes {
+public interface _QueuingTest_Notes {
 
     /**
      * ...
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : verify testing for the Queuing > updateQueue()</p>
      */
     void _issue_10();
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    /**
+     * ...
+     * <!--
+     * !SSUE#1 : subtree construction
+     * -->
+     * <p>convertToLocalTree() - full method test:</p>
+     * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : subtree construction</p>
+     * ????
+     * */
+    void constructLocalSubTree_initial();
 
     /**
      * ...

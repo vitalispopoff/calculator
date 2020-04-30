@@ -1,9 +1,10 @@
 package input;
 
+import _notes._QueuingTest_Notes;
 import calculation.*;
 import org.junit.*;
 
-public class QueuingTest implements _QueuingTestNotes {
+public class QueuingTest implements _QueuingTest_Notes {
 
     static Typical
             typ1 = NodeType.VALUE,
@@ -24,33 +25,32 @@ public class QueuingTest implements _QueuingTestNotes {
             node4 = typ4.interact(),
             node5 = typ5.interact();
     static Enqueued
-            que1 /*= new Queuer(node1)*/,
-            que2 /*= new Queuer(node2)*/,
-            que3 /*= new Queuer(node3)*/,
-            que4 /*= new Queuer(node4)*/,
-            que5 /*= new Queuer(node5)*/;
+            que1, que2, que3, que4, que5;
     static Queuing
-            Q0,
-            Q1;
+            Q0, Q1;
 
     @Before
     public void initial() {
         que1 = new Queuer(node1);
         que2 = new Queuer(node2);
+        que3 = new Queuer(node3);
+        que4 = new Queuer(node4);
+        que5 = new Queuer(node5);
         Q1 = new NodeQueue(que1);
         Q0 = new NodeQueue(null);
-    }
-
-    @After
-    public void terminal() {
-        que1 = que2 = null;
-        Q1 = null;
     }
 
     private void initial_00() {
         ((NodeQueue) Q0).head = que1;
         ((NodeQueue) Q0).tail = que1;
     }
+
+    @After
+    public void terminal() {
+        que1 = que2 = que3 = que4 = que5 = null;
+        Q0 = Q1 = null;
+    }
+
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -59,6 +59,37 @@ public class QueuingTest implements _QueuingTestNotes {
     }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    @Override
+    public void constructLocalSubTree_initial() {
+        Q1.updateQueue(que2);
+        Q1.updateQueue(que3);
+        Q1.updateQueue(que4);
+        Q1.updateQueue(que5);
+    }
+
+    @Test
+    public void constructLocalSubTree_initial_00() {
+        constructLocalSubTree_initial();
+        Assert.assertSame(que1, Q1.getHead());
+        Assert.assertSame(que5, Q1.getTail());
+        Assert.assertSame(que4, Q1.getTail().getHead());
+        Assert.assertSame(que4, Q1.getHead().getTail().getTail().getTail());
+    }
+
+    //    @Ignore
+    @Test
+    public void constructLocalSubTree_01() {
+        constructLocalSubTree_initial();
+        Q1.constructLocalSubTree(Q1.updateQueue());
+        Assert.assertSame(que4, Q1.getHead());
+    }
+    @Test
+    public void constructLocalSubTree_02(){
+
+    }
+
+//\\ updateQueue() \//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateQueue_Ext_initial() {
@@ -125,7 +156,7 @@ public class QueuingTest implements _QueuingTestNotes {
     }
 
     @Test
-    public void updatedQueue_ext08(){
+    public void updatedQueue_ext08() {
         Q1.updateCounter();
         Assert.assertEquals(0, Q1.getCounter(Q1.getHead()));
     }
@@ -136,7 +167,7 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertNull(Q1.updateQueue());
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ updateQueue(Queueable) //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateQueue_Add_initial() {
@@ -188,13 +219,13 @@ public class QueuingTest implements _QueuingTestNotes {
     }
 
     @Test
-    public void updatedQueue_Add_09(){
+    public void updatedQueue_Add_09() {
         Q0.updateQueue(que2);
         Assert.assertEquals(1, Q0.getCounter(Q0.getHead()));
 
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ getCounter //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void getCounter_initial(int ord, int val) {
@@ -208,11 +239,11 @@ public class QueuingTest implements _QueuingTestNotes {
     }
 
     @Test
-    public void getCounter_02(){
+    public void getCounter_02() {
         Assert.assertEquals(0, Q0.getCounter(null));
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ updateCounter(Typical) //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateCounter_Add_initial() {
@@ -225,7 +256,7 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertEquals(1, Q1.getCounter(Q0.getHead()));
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ update Counter() \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void updateCounter_Ext_initial() {
@@ -244,7 +275,7 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertEquals(0, Q1.getCounter(Q1.getHead()));
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ setHead(Queueable) //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void setHead_initial() {
@@ -271,7 +302,7 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertNull(((NodeQueue) Q1).head);
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ getHead() \//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void getHead_initial() {
@@ -308,6 +339,8 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertSame(((NodeQueue) Q1).head, ((Queueability) Q1).getHead());
     }
 
+//\\ setTail(Queueable) //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
     @Test
     public void setTail_initial() {
         Q1 = new NodeQueue(que1);
@@ -333,7 +366,7 @@ public class QueuingTest implements _QueuingTestNotes {
         Assert.assertNull(((NodeQueue) Q1).tail);
     }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//\\ getTail() \//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
     public void getTail_initial() {

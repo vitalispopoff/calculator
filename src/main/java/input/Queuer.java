@@ -12,13 +12,22 @@ public class Queuer extends Queueability implements Enqueued {
 //        super(null);
         setNode(node);
         setType(node.getType());
-        setPriority();
+        setPriorityIndex();
+    }
+
+
+    @Override
+    public int getPriorityIndex() {
+        return priorityIndex;
     }
 
     @Override
-    public int getPriorityIndex() { return priorityIndex; }
+    public void setPriorityIndex(Typical type) {
+        this.priorityIndex = type.ordinal();
+    }
 
-    void setPriority() {
+    @Override
+    public void setPriorityIndex() {
         Typical cache = getType();
         this.priorityIndex = cache == null ? -1 : cache.ordinal();
     }
@@ -27,6 +36,12 @@ public class Queuer extends Queueability implements Enqueued {
     public void setNode(Nodeable node) {
         this.node = node;
         setType(node.getType());
+    }
+
+    @Override
+    public void setNode(){
+        this.node = null;
+        this.type = null;
     }
 
     //    @formatter:off

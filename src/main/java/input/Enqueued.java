@@ -25,19 +25,15 @@ public interface Enqueued extends Queueable {
      *  3.  result is returned
      * */
     default Nodeable unwrap(){
-        Nodeable result = getNode();
-        setNode(null);
-        return result;
-    }
-
-    default Nodeable deQueuer(){
         Nodeable node = getNode();
         setType(null);
-        setNode(null);
+//        setNode(null);
         setHead(null);
         setTail(null);
         return node;
     }
+
+
 
     /**
      * :
@@ -46,6 +42,10 @@ public interface Enqueued extends Queueable {
     Typical getType();
 
     int getPriorityIndex();
+
+    void setPriorityIndex();
+
+    void setPriorityIndex(Typical type);
 
     /**
      * :
@@ -58,6 +58,8 @@ public interface Enqueued extends Queueable {
      * wraps node
      * */
     void setNode(Nodeable node);
+
+    void setNode();
 
     /**
      * :
