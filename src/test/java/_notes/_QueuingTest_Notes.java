@@ -19,7 +19,7 @@ public interface _QueuingTest_Notes {
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : subtree construction</p>
      * ????
      * */
-    void constructLocalSubTree_initial();
+    void convertToLocalTree_initial();
 
     /**
      * ...

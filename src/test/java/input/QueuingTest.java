@@ -19,11 +19,11 @@ public class QueuingTest implements _QueuingTest_Notes {
             ord4 = typ4.ordinal(),
             ord5 = typ5.ordinal();
     static Nodeable
-            node1 = typ1.interact(),
-            node2 = typ2.interact(),
-            node3 = typ3.interact(),
-            node4 = typ4.interact(),
-            node5 = typ5.interact();
+            nod1 = typ1.interact(),
+            nod2 = typ2.interact(),
+            nod3 = typ3.interact(),
+            nod4 = typ4.interact(),
+            nod5 = typ5.interact();
     static Enqueued
             que1, que2, que3, que4, que5;
     static Queuing
@@ -31,11 +31,11 @@ public class QueuingTest implements _QueuingTest_Notes {
 
     @Before
     public void initial() {
-        que1 = new Queuer(node1);
-        que2 = new Queuer(node2);
-        que3 = new Queuer(node3);
-        que4 = new Queuer(node4);
-        que5 = new Queuer(node5);
+        que1 = new Queuer(nod1);
+        que2 = new Queuer(nod2);
+        que3 = new Queuer(nod3);
+        que4 = new Queuer(nod4);
+        que5 = new Queuer(nod5);
         Q1 = new NodeQueue(que1);
         Q0 = new NodeQueue(null);
     }
@@ -61,7 +61,7 @@ public class QueuingTest implements _QueuingTest_Notes {
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
-    public void constructLocalSubTree_initial() {
+    public void convertToLocalTree_initial() {
         Q1.updateQueue(que2);
         Q1.updateQueue(que3);
         Q1.updateQueue(que4);
@@ -70,7 +70,7 @@ public class QueuingTest implements _QueuingTest_Notes {
 
     @Test
     public void constructLocalSubTree_initial_00() {
-        constructLocalSubTree_initial();
+        convertToLocalTree_initial();
         Assert.assertSame(que1, Q1.getHead());
         Assert.assertSame(que5, Q1.getTail());
         Assert.assertSame(que4, Q1.getTail().getHead());
@@ -79,14 +79,34 @@ public class QueuingTest implements _QueuingTest_Notes {
 
     //    @Ignore
     @Test
-    public void constructLocalSubTree_01() {
-        constructLocalSubTree_initial();
-        Q1.constructLocalSubTree(Q1.updateQueue());
+    public void convertToLocalTree_01() {
+        convertToLocalTree_initial();
+        Q1.convertToLocalTree(Q1.updateQueue());
         Assert.assertSame(que4, Q1.getHead());
     }
     @Test
-    public void constructLocalSubTree_02(){
+    public void convertToLocalTree_02(){
+        convertToLocalTree_initial();
+        Q1.convertToLocalTree(Q1.updateQueue());
+        Assert.assertSame(nod2, ((Enqueued)Q1.getHead()).getNode().getLocalLeft());
+        Assert.assertSame(nod1, nod2.getLocalLeft());
+        Assert.assertSame(nod3, nod2.getLocalRite());
+        Assert.assertSame(nod5, ((Enqueued)Q1.getHead()).getNode().getLocalRite());
+    }
 
+    @Test
+    public void convertToLocalTree_03(){
+        convertToLocalTree_initial();
+        Q1.convertToLocalTree(Q1.updateQueue());
+        Assert.assertEquals(NodeType.VALUE.ordinal(), Q1.getCounter());
+    }
+
+    @Test
+    public void convertToLocalTree_04(){
+        convertToLocalTree_initial();
+        Q1.convertToLocalTree(Q1.updateQueue());
+        Assert.assertSame(Q1.getHead(), Q1.getTail());
+        Assert.assertNotNull(Q1.getHead());
     }
 
 //\\ updateQueue() \//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
