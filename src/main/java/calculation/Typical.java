@@ -23,7 +23,7 @@ public interface Typical {
     }
 
     default int getTypePriority() throws NullPointerException {
-        return (((Enum) this).ordinal())>>1;
+        return ordinal()>>1;
     }
 
     Nodeable interact();

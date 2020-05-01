@@ -89,7 +89,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertEquals(4, ord1);
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_01() {
         convertToLocalTree_initial();
@@ -97,7 +97,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertSame(que4, Q0.getHead());
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_02() {
         convertToLocalTree_initial();
@@ -108,7 +108,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertSame(nod5, ((Enqueued) Q0.getHead()).getNode().getLocalRite());
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_03() {
         convertToLocalTree_initial();
@@ -116,7 +116,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertEquals(NodeType.VALUE.getTypePriority(), Q0.getCounter());
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_04() {
         convertToLocalTree_initial();
@@ -125,7 +125,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertNotNull(Q0.getHead());
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_05() {
         convertToLocalTree_initial();
@@ -135,7 +135,7 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertEquals(2., value, 0.);
     }
 
-//    @Ignore
+
     @Test
     public void convertToLocalTree_06(){
         initial_01();
@@ -143,6 +143,18 @@ public class QueuingTest implements _QueuingTest_Notes {
         Assert.assertSame(que_, Q0.getHead());
         Assert.assertSame(que5, Q0.getTail());
         Q1.convertToLocalTree(Q1.updateQueue());
+        Nodeable result = ((Enqueued) Q0.getHead()).getNode();
+        Double value = result.getValue();
+        Assert.assertEquals(2., value, 0.);
+    }
+
+    @Test
+    public void convertToTree_01(){
+        initial_01();
+        convertToLocalTree_initial();
+        Assert.assertSame(que_, Q0.getHead());
+        Assert.assertSame(que5, Q0.getTail());
+        Q1.convertToTree();
         Nodeable result = ((Enqueued) Q0.getHead()).getNode();
         Double value = result.getValue();
         Assert.assertEquals(2., value, 0.);
@@ -291,7 +303,6 @@ public class QueuingTest implements _QueuingTest_Notes {
         ((NodeQueue) Q1).nodeCounter[ord] = val;
     }
 
-//    !SSUE#12
     @Test
     public void getCounter_01() {
         getCounter_initial(ord1, 1);
@@ -322,7 +333,6 @@ public class QueuingTest implements _QueuingTest_Notes {
     public void updateCounter_Ext_initial() {
     }
 
-//    !SSUE#12
     @Test
     public void updateCounter_Ext_01() {
         getCounter_initial(ord1, 1);

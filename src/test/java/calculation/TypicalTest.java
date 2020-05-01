@@ -22,8 +22,8 @@ public class TypicalTest {
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
-    public void ordinal_01(){
-        int result = ((NodeType)type).ordinal();
-        Assert.assertEquals(result, type.ordinal());
-    }   // !SSUE#12
+    public void getTypePriority_01(){
+        int result = ((NodeType)type).ordinal()>>1;
+        Assert.assertEquals(result, type.getTypePriority());
+    }
 }

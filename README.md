@@ -13,6 +13,15 @@ Current status of development: <a href = "https://github.com/vitalispopoff/calcu
 
 # versions:
 
+0.1.0
++ restructured input package
++ cleaned calculation package
++ cleaned gui package
++ method converting queue to tree available
++ calculating tree available
++ tree ready to implement bracketing
+ 
+
 0.0.9
 + rebuilt input package
 + adjusting packages to connect the GUI with interactions

@@ -53,7 +53,6 @@ public class NodeQueueTest {
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-// !SSUE#12
     @Test
     public void currentPriorityIndex_00() {
         Assert.assertEquals(ord1, Q1.currentPriorityIndex());

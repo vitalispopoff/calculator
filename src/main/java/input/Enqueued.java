@@ -4,11 +4,6 @@ import calculation.*;
 
 public interface Enqueued extends Queueable {
 
-    /*    default Queueable wrap(Nodeable node){
-        setNode(node);
-        return (Queueable) this;
-    }*/     // the method should be declared elsewhere
-
     /**
      * <!---->
      * <p>Unwrap node</p>

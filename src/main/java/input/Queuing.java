@@ -52,10 +52,15 @@ public interface Queuing extends Queueable {
                     boolean
                             isOperand2ABra = ((Enqueued) getHead()).getType() == NodeType.BRACKET_IN;
 
-                    if (isOperand2ABra) {   // convertToLocalQueue()
+                    if (isOperand2ABra) {
+                        System.out.println("loop for the BRACKET_IN");
+                        // convertToLocalQueue()
 //                    declare a sub-queue
 //                    move the part of the super queue up to the corresponding BRACKET_OUT node to the sub-queue
 //                    recursive call of the convertToLocalTree
+                    }else{
+                        System.out.println("completely useless loop for whatever else");
+
                     }
                 }   // !SSUE#9 : bracketing
             }
