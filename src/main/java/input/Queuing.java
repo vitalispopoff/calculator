@@ -63,9 +63,6 @@ public interface Queuing extends Queueable {
 
     /**
      * ...
-     * <!--
-     * !SSUE#1 : subtree construction
-     * -->
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : Subtree construction</p>
      * <!--
      * !SSUE#9 : bracketing
@@ -79,18 +76,16 @@ public interface Queuing extends Queueable {
 //    static void convertToLocalTree(Queueable queue) { }
 
     default void convertToTree() {
-        constructLocalSubTree(updateQueue());
+        convertToLocalTree(updateQueue());
     }
 
-    default void constructLocalSubTree(Queueable queuer) {
+    default void convertToLocalTree(Queueable queuer) {
 
         boolean
-//                isOperand1AVal = ((Enqueued) getHead()).getPriorityIndex() == NodeType.VALUE.ordinal();
                 isOperand1AVal = ((Enqueued) queuer).getPriorityIndex() == NodeType.VALUE.ordinal();
 
         if (isOperand1AVal) {
             Enqueued
-//                    operand1 = (Enqueued) updateQueue();
                     operand1 = (Enqueued) queuer;
             boolean
                     isOperatorAPas = ((Enqueued) getHead()).getPriorityIndex() == getCounter();
@@ -110,84 +105,24 @@ public interface Queuing extends Queueable {
 
                     opRoot.setLocalLeft(opLeft);
                     opRoot.setLocalRite(opRite);
-
+                    opRoot.setValue();
                     operator.setPriorityIndex(NodeType.VALUE);
-//                    updateQueue(operator);
+
+
+                    if (getHead() == null) updateQueue(operator);
+                    else convertToLocalTree(operator);
+
                 } else {
                     boolean
                             isOperand2ABra = ((Enqueued) getHead()).getType() == NodeType.BRACKET_IN;
 
-                    if (isOperand2ABra) {
+                    if (isOperand2ABra) {   // convertToLocalQueue()
 //                    declare a sub-queue
 //                    move the part of the super queue up to the corresponding BRACKET_OUT node to the sub-queue
 //                    recursive call of the convertToLocalTree
                     }
-                    boolean dupa;
-
-                }
+                }   // !SSUE#9 : bracketing
             }
-       /*
-        Enqueued
-                operand1 = (Enqueued) updateQueue(),
-                operator = (Enqueued) updateQueue(),
-                operand2 = (Enqueued) getHead();
-        boolean
-                isOperand1AVal = operand1.getPriorityIndex() == NodeType.VALUE.ordinal(),
-                isOperatorAPas = operator.getPriorityIndex() <= getCounter(),
-                isOperand2AVal = operand2.getPriorityIndex() == NodeType.VALUE.ordinal();
-
-        if (isOperand1AVal && isOperatorAPas && isOperand2AVal) {
-            operand2 = (Enqueued) updateQueue();
-
-            Nodeable
-                    op1Node = operand1.unwrap(),
-                    opRNode = operator.getNode(),
-                    op2Node = operand2.unwrap();
-            operand1 = operand2 = null;
-
-            opRNode.setLocalLeft(op1Node);
-            op2Node.setLocalRite(op2Node);
-            operator.getNode().setType(NodeType.VALUE);
-            return operator;
-        }
-        return operand2;*/
         }
     }
-
-    /*public static void main(String[] args) {
-        Typical
-                typ1 = NodeType.VALUE,
-                typ2 = NodeType.EXPONENT,
-                typ3 = NodeType.VALUE,
-                typ4 = NodeType.ADD,
-                typ5 = NodeType.VALUE;
-        int
-                ord1 = typ1.ordinal(),
-                ord2 = typ2.ordinal(),
-                ord3 = typ3.ordinal(),
-                ord4 = typ4.ordinal(),
-                ord5 = typ5.ordinal();
-        Nodeable
-                node1 = typ1.interact(),
-                node2 = typ2.interact(),
-                node3 = typ3.interact(),
-                node4 = typ4.interact(),
-                node5 = typ5.interact();
-        Enqueued
-                que1 = new Queuer(node1),
-                que2 = new Queuer(node2),
-                que3 = new Queuer(node3),
-                que4 = new Queuer(node4),
-                que5 = new Queuer(node5);
-        Queuing
-                Q1 = new NodeQueue(que1);
-        Q1.updateQueue(que2);
-        Q1.updateQueue(que3);
-        Q1.updateQueue(que4);
-        Q1.updateQueue(que5);
-
-        Q1.convertToLocalTree();
-
-    }*/ // psvm
-
 }

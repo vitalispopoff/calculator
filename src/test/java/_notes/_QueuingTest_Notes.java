@@ -12,9 +12,6 @@ public interface _QueuingTest_Notes {
 
     /**
      * ...
-     * <!--
-     * !SSUE#1 : subtree construction
-     * -->
      * <p>convertToLocalTree() - full method test:</p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : subtree construction</p>
      * ????

@@ -65,7 +65,9 @@ public interface Nodeable {
     /**
      * ???
      * */
-    abstract void setValue();
+    /*abstract*/ void setValue();
+
+    void setValue(Double value);
 
     /**
      * :

@@ -31,6 +31,9 @@ public class QueuingTest implements _QueuingTest_Notes {
 
     @Before
     public void initial() {
+        nod1.setValue(2.);
+        nod3.setValue(0.);
+        nod5.setValue(1.);
         que1 = new Queuer(nod1);
         que2 = new Queuer(nod2);
         que3 = new Queuer(nod3);
@@ -84,29 +87,39 @@ public class QueuingTest implements _QueuingTest_Notes {
         Q1.convertToLocalTree(Q1.updateQueue());
         Assert.assertSame(que4, Q1.getHead());
     }
+
     @Test
-    public void convertToLocalTree_02(){
+    public void convertToLocalTree_02() {
         convertToLocalTree_initial();
         Q1.convertToLocalTree(Q1.updateQueue());
-        Assert.assertSame(nod2, ((Enqueued)Q1.getHead()).getNode().getLocalLeft());
+        Assert.assertSame(nod2, ((Enqueued) Q1.getHead()).getNode().getLocalLeft());
         Assert.assertSame(nod1, nod2.getLocalLeft());
         Assert.assertSame(nod3, nod2.getLocalRite());
-        Assert.assertSame(nod5, ((Enqueued)Q1.getHead()).getNode().getLocalRite());
+        Assert.assertSame(nod5, ((Enqueued) Q1.getHead()).getNode().getLocalRite());
     }
 
     @Test
-    public void convertToLocalTree_03(){
+    public void convertToLocalTree_03() {
         convertToLocalTree_initial();
         Q1.convertToLocalTree(Q1.updateQueue());
         Assert.assertEquals(NodeType.VALUE.ordinal(), Q1.getCounter());
     }
 
     @Test
-    public void convertToLocalTree_04(){
+    public void convertToLocalTree_04() {
         convertToLocalTree_initial();
         Q1.convertToLocalTree(Q1.updateQueue());
         Assert.assertSame(Q1.getHead(), Q1.getTail());
         Assert.assertNotNull(Q1.getHead());
+    }
+
+    @Test
+    public void convertToLocalTree_05() {
+        convertToLocalTree_initial();
+        Q1.convertToLocalTree(Q1.updateQueue());
+        Nodeable result = ((Enqueued)Q1.getHead()).getNode();
+        Double value = result.getValue();
+        Assert.assertEquals(2., value, 0.);
     }
 
 //\\ updateQueue() \//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\

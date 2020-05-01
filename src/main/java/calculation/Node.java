@@ -21,7 +21,7 @@ public /*abstract*/ class Node implements Nodeable {
     public void setValue() {
         if (value.isNaN()) {
             value = calculate(localLeft, localRite);
-            if (type != NodeType.VALUE) type = NodeType.VALUE;
+//            if (type != NodeType.VALUE) type = NodeType.VALUE;
         }
     }
 
@@ -32,18 +32,21 @@ public /*abstract*/ class Node implements Nodeable {
     }
 
     //    @formatter:off
-    @Override public Typical getType(){return type;}
 
+    @Override public Typical getType(){return type;}
     @Override public Nodeable getLocalLeft(){return localLeft;}
     @Override public Nodeable getLocalRoot(){return localRoot;}
     @Override public Nodeable getLocalRite(){return localRite;}
+
     @Override public void setType(Typical type){this.type = type;}
+    @Override public void setValue(Double value){ this.value = value; }
     @Override public void setLocalLeft(Nodeable node){this.localLeft = node;}
     @Override public void setLocalRoot(Nodeable node){this.localRoot = node;}
     @Override public void setLocalRite(Nodeable node){this.localRite = node;}
-    //    @formatter:on
 
-    protected/* abstract*/ Double calculate(Nodeable localLeft, Nodeable localRite) {
-        return 0.;
+    protected Double calculate(Nodeable localLeft, Nodeable localRite) {
+        return NaN;
     }
+
+    //    @formatter:on
 }

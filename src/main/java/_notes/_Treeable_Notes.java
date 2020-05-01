@@ -4,10 +4,6 @@ public interface _Treeable_Notes {
 
     /**
      * ...
-     * <!--
-     * !SSUE#1 : subtree construction
-     * !SSUE#2 : connectic subtrees - to be solved in Issue #1 EOT
-     * -->
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : subtree construction /
      * <a href="https://github.com/vitalispopoff/calculator/issues/1#issue-585745244">subroutine</a></p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/2">Issue #2</a> : connecting subtrees [EOT]</p>
