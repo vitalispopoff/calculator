@@ -2,7 +2,7 @@ package calculation;
 
 import static java.lang.Double.NaN;
 
-public /*abstract*/ class Node implements Nodeable {
+public abstract class Node implements Nodeable {
 
     Nodeable
             localLeft = null,

@@ -7,11 +7,10 @@ public class NodeQueue extends Queueability implements Queuing {
     public int[] nodeCounter = new int[NodeType.values().length];
 
     NodeQueue(Queueable queueable) {
-//        super();
         head = tail = queueable;
         try {
             updateCounter(queueable);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -48,6 +47,7 @@ public class NodeQueue extends Queueability implements Queuing {
         }
     }
 
+    @Override
     public int getCounter(){
         int index = 0;
         for (int slot : nodeCounter) {

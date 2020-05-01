@@ -2,14 +2,18 @@
 package calculation {
 
     +interface Nodeable {
-        ..default..
-            + {method} int getPriority()
-        ..
+            + {method} Nodeable getLocalLeft()
+            + {method} Nodeable getLocalRoot()
+            + {method} Nodeable getLocalRite()
             + {method} Typical getType()
             + {method} Double getValue()
-            + {method} Nodeable getLocalLeft()
-            + {method} Nodeable getLocalRite()
-            + {method} Nodeable getLocalRoot()
+        ..
+            + {method} void setLocalLeft (Nodeable)
+            + {method} void setLocalRoot (Nodeable)
+            + {method} void setLocalRite (Nodeable)
+            + {method} void setType (Typical)
+            + {method} void setValue (Double)
+            + {method} void setValue ()
     }
 
     +class Node {
@@ -26,7 +30,6 @@ package calculation {
 
     +class Value {
         ..@Override..
-            #{method} calculate
     }
 
     +abstract class Calculation {
@@ -44,11 +47,8 @@ package calculation {
     }
 
     +interface Typical{
-        ..static..
-            +{method} int getTypicalPriority(Typical)
-            +{method} Typical valueOf(Typical)
         ..default..
-            ~{method}  int ordinal()
+            +{method} Typical valueOf(Typical)
         ..
             ~{method} Nodeable interact()
    }
@@ -70,18 +70,12 @@ package calculation {
              {interact()} UNDO
    }
 
-'    Value -|> Node
-'    calculations -|> Calculation
     Nodeable <|-- Node
-    Node <|-- Calculation
-    Typical <|- NodeType
+    Node <|-- Calculation : ext
+    Typical <|- NodeType : ext
     Nodeable <|- Typical
 
-'    Node -|> Nodeable
-'    Calculation -|> Node
-'    Typical -|> Nodeable
-'    NodeType -|> Typical
-    Node <|- Value
-    Calculation <|- calculations
+    Node <|- Value : ext
+    Calculation <|- calculations    : ext
 }
 @enduml

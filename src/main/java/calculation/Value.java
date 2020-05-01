@@ -7,7 +7,6 @@ public class Value extends Node {
     }
 
     /**
-     * ...
      * <!--
      * !SSUE#4 : connect GUI with input
      * -->

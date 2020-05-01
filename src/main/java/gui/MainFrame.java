@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
         this.settings = settings;
         setWindowAnchor(settings.windowAnchor);
         setResizable(settings.windowResizable);
-        setMainPanel(settings);
+        setMainPanel();
         setDefaultCloseOperation(Settings.windowDefaultCloseOperation);
 
         addWindowListener(new WindowAdapter() {
@@ -29,8 +29,8 @@ public class MainFrame extends JFrame {
         setLocation(windowAnchor);
     }
 
-    void setMainPanel(Settings settings) {
-        MainPanel panel = new MainPanel(settings);
+    void setMainPanel() {
+        MainPanel panel = new MainPanel();
         add(panel);
     }
 

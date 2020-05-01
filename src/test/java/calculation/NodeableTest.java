@@ -10,15 +10,19 @@ public class NodeableTest {
     static Nodeable
             node;
 
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
     @Before
-    public void initial(){
+    public void initial() {
         node = typ1.interact();
     }
 
     @After
-    public void terminal(){
+    public void terminal() {
         node = null;
     }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
     public void setLocalRite_NotNull() {

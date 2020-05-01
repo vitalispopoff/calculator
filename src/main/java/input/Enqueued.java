@@ -4,25 +4,19 @@ import calculation.*;
 
 public interface Enqueued extends Queueable {
 
-    /**
-     * :
-     * Wrap node
-     *
-     *  1.  node is written to the queuer
-     *  2   queuer is returned as Queueable
-     * */
-    default Queueable wrap(Nodeable node){
+    /*    default Queueable wrap(Nodeable node){
         setNode(node);
         return (Queueable) this;
-    }
+    }*/     // the method should be declared elsewhere
 
     /**
-     * :
-     * Unwrap node
-     *
-     *  1.  node is the result
-     *  2.  node is deleted
-     *  3.  result is returned
+     * <!---->
+     * <p>Unwrap node</p>
+     *<ol>
+     *  <li>node is the result</li>
+     *  <li>node is deleted</li>
+     *  <li>result is returned</li>
+     *  </ol>
      * */
     default Nodeable unwrap(){
         Nodeable node = getNode();
@@ -33,37 +27,31 @@ public interface Enqueued extends Queueable {
         return node;
     }
 
-
-
     /**
-     * :
-     * Returns type of wrapped Node
+     * <!---->
+     *     <p>Returns priority index of the queuer rather than its carried nodeable.</p>
      * */
-    Typical getType();
-
     int getPriorityIndex();
 
+    /**
+     * <!---->
+     *     <p>Sets the priority of the queuer.</p>
+     * */
     void setPriorityIndex();
 
+    /**
+     * <!---->
+     *     <p>Sets the priority index of the queuer base on the provided type</p>
+     * */
     void setPriorityIndex(Typical type);
 
-    /**
-     * :
-     * Returns the wrapped node
-     * */
+    Typical getType();
+
+    void setType(Typical type);
+
     Nodeable getNode();
 
-    /**
-     * :
-     * wraps node
-     * */
     void setNode(Nodeable node);
 
     void setNode();
-
-    /**
-     * :
-     * sets
-     * */
-    void setType(Typical type);
 }

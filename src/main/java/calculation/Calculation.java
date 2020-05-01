@@ -10,8 +10,8 @@ public abstract class Calculation extends Node {
     protected Double calculate(Nodeable localLeft, Nodeable localRite) {
         double
                 leftValue = localLeft.getValue(),
-                ritetValue = localRite.getValue();
-        return perform(leftValue, ritetValue);
+                riteValue = localRite.getValue();
+        return perform(leftValue, riteValue);
     }
 
     protected abstract double perform(double leftValue, double riteValue);

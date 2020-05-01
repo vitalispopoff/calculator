@@ -2,10 +2,6 @@
 package input {
 
     +interface Queueable{
-        ..default..
-            ~{method} void revoke()
-        ..abstract..
-            ~{method} Queueable summon()
         ..
             +{method} Queueable getTail ()
             +{method} Queueable getHead ()
@@ -17,51 +13,51 @@ package input {
             ~{field} Queueable head
             ~{field} Queueable tail
         --
-            +{method} Queueable summon ()
             +{method} Queueable getTail ()
             +{method} Queueable getHead()
-            +{method} void revoke ()
             +{method} void setTail (Queueable)
             +{method} void setHead (Queueable)
     }
 
     ~interface Queuing{
         ..default..
-            ~{method} void updatedQueue (Queuing, Enqueued)
-            ~{method} Queueable updateQueue (Queueable)
+            +{method} void convertToTree()
+            +{method} void convertToLocalTree(Queueable)
+            +{method} void updatedQueue (Queuing, Enqueued)
+            +{method} Queueable updateQueue (Queueable)
         ..
-            ~{method} void updateCounters(Queueable)
-            ~{method} void updateCounters()
+            +{method} void updateCounters(Queueable)
+            +{method} void updateCounters()
+            +{method} int getCounter(Queueable)
+            +{method} int getCounter()
+            +{method} int currentPriorityIndex()
     }
 
     ~class NodeQueue{
-            ~{field} int[] priorityCounter
-            ~{field} int counter
-        --
-            -{method} bool isQueueNodePrioritized (Typical)
-        ..@Override..
+            +{field} int[] NodeCounter
+        --@Override--
             ~{method} : /.../
     }
 
     +interface Enqueued {
         ..default..
-            +{method} Queueable wrap (Nodeable)
             +{method} Nodeable unWrap ()
         ..
+            +{method} int getPriorityIndex ()
+            +{method} void setPriorityIndex ()
+            +{method void setPriorityIndex (Typical)
             +{method} Typical getType ()
             +{method} Nodeable getNode ()
-            +{method} void setNode (Nodeable)
             +{method} void setType (Typical)
+            +{method} void setNode (Nodeable)
+            +{method} void setNode ()
     }
 
     ~class Queuer{
+            ~{field} priorityIndex
             ~{field} Typical getType
             ~{field} Nodeable node
-        --
-            ~{method} int getTypeOrdinal ()
-            ~{method} void setTypeOrdinal ()
-            ~{method} void setType (Nodeable)
-        ..@Override..
+        --@Override--
             +{method} : /.../
     }
 

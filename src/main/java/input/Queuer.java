@@ -4,17 +4,18 @@ import calculation.*;
 
 public class Queuer extends Queueability implements Enqueued {
 
-    Typical type = null;
-    Nodeable node = null;
-    int priorityIndex = -1;
+    int
+            priorityIndex = -1;
+    Typical
+            type = null;
+    Nodeable
+            node = null;
 
     Queuer(Nodeable node) {
-//        super(null);
         setNode(node);
         setType(node.getType());
         setPriorityIndex();
     }
-
 
     @Override
     public int getPriorityIndex() {
@@ -39,7 +40,7 @@ public class Queuer extends Queueability implements Enqueued {
     }
 
     @Override
-    public void setNode(){
+    public void setNode() {
         this.node = null;
         this.type = null;
     }

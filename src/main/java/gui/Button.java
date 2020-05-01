@@ -29,7 +29,7 @@ public class Button extends JButton implements KeyListener {
     }
 
     private void addInteraction(Typical type) {
-        addActionListener(e -> Typical.valueOf(type).interact());
+        addActionListener(e -> type.interact());
     }
 
     @Override

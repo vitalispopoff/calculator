@@ -10,13 +10,13 @@ public class MainPanel extends JPanel {
     private int tile = 60;
     static JLabel display;
 
-    public MainPanel(Settings settings) {
+    public MainPanel(/*Settings settings*/) {
         int i = 0;
         tile
                 = tile == 0
-                ? settings.tile
+                ? Settings.tile
                 : tile;
-        display = new MainDisplay(/*settings,*/ /*"",*/ /*SwingConstants.RIGHT*/);
+        display = new MainDisplay();
 
         setLayout(null);
         add(display);

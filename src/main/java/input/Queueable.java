@@ -8,5 +8,6 @@ public interface Queueable {
     Queueable getHead();
     void setTail(Queueable tail);
     void setHead(Queueable head);
+
     //    @formatter:on
 }
