@@ -11,9 +11,7 @@ public class QueueabilityTest {
             typ2 = NodeType.EXPONENT,
             typ3 = NodeType.VALUE;
     static int
-            ord1 = typ1.ordinal(),
-            ord2 = typ2.ordinal(),
-            ord3 = typ3.ordinal();
+            ord1, ord2, ord3;
     static Nodeable
             nod1, nod2, nod3;
     static Queuer Q1;

@@ -22,15 +22,17 @@ public class Queuer extends Queueability implements Enqueued {
         return priorityIndex;
     }
 
+//    !SSUE#!2
     @Override
     public void setPriorityIndex(Typical type) {
-        this.priorityIndex = type.ordinal();
+        this.priorityIndex = type.getTypePriority();
     }
 
+//    !SSUE#12
     @Override
     public void setPriorityIndex() {
         Typical cache = getType();
-        this.priorityIndex = cache == null ? -1 : cache.ordinal();
+        this.priorityIndex = cache == null ? -1 : cache.getTypePriority();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class NodeQueueTest {
 
     @Before
     public void initial() {
-        ord1 = typ1.ordinal();
+        ord1 = typ1.getTypePriority();
         nod1 = typ1.interact();
         nod2 = typ2.interact();
         nod3 = typ3.interact();
@@ -43,7 +43,7 @@ public class NodeQueueTest {
 
     @Test
     public void initial_test() {
-        Assert.assertEquals(8, ord1);
+        Assert.assertEquals(4, ord1);
         Assert.assertTrue(nod1 instanceof Value);
         Assert.assertTrue(nod2 instanceof Calculation_Exponentiation);
         Assert.assertTrue(nod3 instanceof Value);
@@ -53,7 +53,7 @@ public class NodeQueueTest {
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-//    @Ignore
+// !SSUE#12
     @Test
     public void currentPriorityIndex_00() {
         Assert.assertEquals(ord1, Q1.currentPriorityIndex());

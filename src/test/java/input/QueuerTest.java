@@ -1,13 +1,10 @@
 package input;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import calculation.*;
-import calculation.calculations.Calculation_Exponentiation;
+import calculation.calculations.*;
 
-public class QeuerTest {
+public class QueuerTest {
 
     static Typical
             typ1 = NodeType.VALUE,
@@ -18,15 +15,14 @@ public class QeuerTest {
             nod2 = typ2.interact(),
             nod3 = typ3.interact();
     static int
-            ord1 = typ1.ordinal(),
-            ord2 = typ2.ordinal(),
-            ord3 = typ3.ordinal();
+            ord1, ord2, ord3;
     static Queuer Q1;
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Before
     public void initial() {
+        ord1 = typ1.getTypePriority();
         Q1 = new Queuer(nod1);
     }
 
@@ -37,7 +33,7 @@ public class QeuerTest {
 
     @Test
     public void initial_test() {
-        Assert.assertEquals(8, ord1);
+//        Assert.assertEquals(4, ord1);
         Assert.assertTrue(nod1 instanceof Value);
         Assert.assertTrue(nod2 instanceof Calculation_Exponentiation);
         Assert.assertTrue(nod3 instanceof Value);

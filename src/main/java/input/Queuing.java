@@ -18,7 +18,7 @@ public interface Queuing extends Queueable {
     default void convertToLocalTree(Queueable queuer) {
 
         boolean
-                isOperand1AVal = ((Enqueued) queuer).getPriorityIndex() == NodeType.VALUE.ordinal();
+                isOperand1AVal = ((Enqueued) queuer).getPriorityIndex() == NodeType.VALUE.getTypePriority();
 
         if (isOperand1AVal) {
             Enqueued
@@ -30,7 +30,7 @@ public interface Queuing extends Queueable {
                 Enqueued
                         operator = (Enqueued) updateQueue();
                 boolean
-                        isOperand2AVal = ((Enqueued) getHead()).getPriorityIndex() == NodeType.VALUE.ordinal();
+                        isOperand2AVal = ((Enqueued) getHead()).getPriorityIndex() == NodeType.VALUE.getTypePriority();
 
                 if (isOperand2AVal) {
 

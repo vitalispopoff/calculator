@@ -13,20 +13,24 @@ package calculation;
 public interface Typical {
 
     /**
-     * <!--
-     * TODO : not necessarily required
-     * -->
+     * <!---->
      * <p>delivers an ordinal() method from the Enum class
      * to the interface<br>
      * accepts enum only.</p>
      */
     default int ordinal() throws NullPointerException {
-        return ((Enum) this).ordinal();
+        return (((Enum) this).ordinal())+1;
     }
 
-    /**
-     * <!---->
-     *     <p>enables the Typical to cooperate with GUI.</p>
-     */
+    default int getTypePriority() throws NullPointerException {
+        return (((Enum) this).ordinal())>>1;
+    }
+
     Nodeable interact();
+
+    public static void main(String[] args) {
+        NodeType dupa = NodeType.BRACKET_IN;
+        System.out.println(dupa.getTypePriority());
+
+    }
 }
