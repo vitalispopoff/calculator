@@ -1,5 +1,6 @@
 package calculation;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,11 @@ public class TypicalTest {
     @Before
     public void setup_01(){
         type = NodeType.VALUE;
+    }
+
+    @After
+    public void terminal(){
+        type = null;
     }
 
     @Test

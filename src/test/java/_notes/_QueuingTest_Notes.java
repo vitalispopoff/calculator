@@ -6,7 +6,7 @@ public interface _QueuingTest_Notes {
      * ...
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : verify testing for the Queuing > updateQueue()</p>
      */
-    void _issue_10();
+    default void _issue_10(){}
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -15,7 +15,7 @@ public interface _QueuingTest_Notes {
      * <p>convertToLocalTree() - full method test:</p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : subtree construction</p>
      * ????
-     * */
+     */
     void convertToLocalTree_initial();
 
     /**
@@ -46,20 +46,20 @@ public interface _QueuingTest_Notes {
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10</a>:
      * <a href="https://github.com/vitalispopoff/calculator/issues/10#issuecomment-620652495">subroutine</a></p>
      * <p><b>initial: queue Q1 contains: que1</b></p>
-     *  <ol>
-     *      <li>the queuer's head is theQueue tail</li>
-     *      <li>Queue's old tail's tail is the queuer</li>
-     *      <li>Queue sets its tail to the queuer</li>
-     *      <li>the counter is updated</li>
-     *  </ol>
-     *  <p><b>adding to an empty list</b></p>
-     *  <ol start ="5>
-     *      <li>the queuer's head is empty</li>
-     *      <li>the queuer's tail is empty</li>
-     *      <li>the Queue's head is queuer</li>
-     *      <li>the Queue's tail is queuer</li>
-     *      <li>the counter is one</li>
-     *      </ol>
+     * <ol>
+     *     <li>the queuer's head is theQueue tail</li>
+     *     <li>Queue's old tail's tail is the queuer</li>
+     *     <li>Queue sets its tail to the queuer</li>
+     *     <li>the counter is updated</li>
+     * </ol>
+     * <p><b>adding to an empty list</b></p>
+     * <ol start ="5>
+     *     <li>the queuer's head is empty</li>
+     *     <li>the queuer's tail is empty</li>
+     *     <li>the Queue's head is queuer</li>
+     *     <li>the Queue's tail is queuer</li>
+     *     <li>the counter is one</li>
+     *     </ol>
      */
     void updateQueue_Add_initial();
 
@@ -67,12 +67,12 @@ public interface _QueuingTest_Notes {
      * ...
      * <p>returns from the counter the value related to the priority of the node wrapped in queuer.</p>
      * <p>Initial sets a given value (val) to a specified index (ord)<br>
-     *     <b>Initial queue with a single queuer;</b>
+     * <b>Initial queue with a single queuer;</b>
      * </p>
-     *  <ol>
-     *      <li>method returns a counter value for the queue head</li>
-     *  </ol>
-     * */
+     * <ol>
+     *     <li>method returns a counter value for the queue head</li>
+     * </ol>
+     */
     void getCounter_initial(int ord, int val);
 
     /**
@@ -82,7 +82,7 @@ public interface _QueuingTest_Notes {
      * <ol>
      *     <li>after using the method, the called getCounter returns proper values: 1 for the queue head</li>
      * </ol>
-     * */
+     */
     void updateCounter_Add_initial();
 
     /**
@@ -93,7 +93,7 @@ public interface _QueuingTest_Notes {
      *     <li>counter set to proper values, after using the method, the called getCounter returns 0 for the queue head</li>
      *     <li>counter is 0, after usinge the method, the called getCounter returns 0 for the queue head</li>
      * </ol>
-     * */
+     */
     void updateCounter_Ext_initial();
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
