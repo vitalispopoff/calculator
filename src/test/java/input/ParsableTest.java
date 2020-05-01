@@ -1,4 +1,4 @@
-package _tests_input_2;
+package input;
 
 public class ParsableTest {
 }

@@ -1,37 +1,38 @@
 package gui;
 
-import calculation.NodeType;
+import static calculation.NodeType.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.io.Serializable;
 
+
 public class Settings implements Serializable {
 
     private static final String
             fileAddress = "src\\main\\resources\\settings.txt";
     static Button[] basicCalculator = {
-            new Button('C', NodeType.CLEAR),
-            new Button('^', NodeType.EXPONENT),
-            new Button('√', NodeType.ROOT),
-            new Button('*', NodeType.MULTIPLY),
-            new Button('7', NodeType.VALUE),
-            new Button('8', NodeType.VALUE),
-            new Button('9', NodeType.VALUE),
-            new Button('/', NodeType.DIVIDE),
-            new Button('4', NodeType.VALUE),
-            new Button('5', NodeType.VALUE),
-            new Button('6', NodeType.VALUE),
-            new Button('+', NodeType.ADD),
-            new Button('1', NodeType.VALUE),
-            new Button('2', NodeType.VALUE),
-            new Button('3', NodeType.VALUE),
-            new Button('-', NodeType.SUBTRACT),
-            new Button('∓', NodeType.SPIN),
-            new Button('0', NodeType.VALUE),
-            new Button('.', NodeType.VALUE),
-            new Button('=', NodeType.EVALUATE),
+            new Button('C', CLEAR),
+            new Button('^', EXPONENT),
+            new Button('√', ROOT),
+            new Button('*', MULTIPLY),
+            new Button('7', VALUE),
+            new Button('8', VALUE),
+            new Button('9', VALUE),
+            new Button('/', DIVIDE),
+            new Button('4', VALUE),
+            new Button('5', VALUE),
+            new Button('6', VALUE),
+            new Button('+', ADD),
+            new Button('1', VALUE),
+            new Button('2', VALUE),
+            new Button('3', VALUE),
+            new Button('-', SUBTRACT),
+            new Button('∓', SPIN),
+            new Button('0', VALUE),
+            new Button('.', VALUE),
+            new Button('=', EVALUATE),
     };
     public Point
             windowAnchor = new Point(200, 200);

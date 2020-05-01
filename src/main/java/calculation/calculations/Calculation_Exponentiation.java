@@ -4,6 +4,10 @@ import calculation.*;
 
 public class Calculation_Exponentiation extends Calculation {
 
+    public Calculation_Exponentiation() {
+        super();
+    }
+
     public Calculation_Exponentiation(Typical type) {
         super(type);
     }

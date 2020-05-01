@@ -19,18 +19,12 @@ public interface Typical {
      * accepts enum only.</p>
      */
     default int ordinal() throws NullPointerException {
-        return (((Enum) this).ordinal())+1;
+        return (((Enum) this).ordinal()) + 1;
     }
 
     default int getTypePriority() throws NullPointerException {
-        return ordinal()>>1;
+        return ordinal() >> 1;
     }
 
     Nodeable interact();
-
-    public static void main(String[] args) {
-        NodeType dupa = NodeType.BRACKET_IN;
-        System.out.println(dupa.getTypePriority());
-
-    }
 }

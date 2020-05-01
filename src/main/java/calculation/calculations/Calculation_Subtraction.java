@@ -4,6 +4,8 @@ import calculation.*;
 
 public class Calculation_Subtraction extends Calculation {
 
+    public Calculation_Subtraction(){super();}
+
     public Calculation_Subtraction(Typical type) {
         super(type);
     }

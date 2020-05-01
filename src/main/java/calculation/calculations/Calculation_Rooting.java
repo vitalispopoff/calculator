@@ -4,6 +4,8 @@ import calculation.*;
 
 public class Calculation_Rooting extends Calculation {
 
+    public Calculation_Rooting(){super();}
+
     public Calculation_Rooting(Typical type) {
         super(type);
     }

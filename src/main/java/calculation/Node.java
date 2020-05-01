@@ -13,6 +13,7 @@ public abstract class Node implements Nodeable {
     Double
             value = NaN;
 
+    public Node(){}
     public Node(Typical type) {
         setType(type);
     }

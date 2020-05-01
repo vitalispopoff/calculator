@@ -19,49 +19,64 @@ public enum NodeType implements Typical {
     EXPONENT {
         @Override
         public Nodeable interact() {
-            return new Calculation_Exponentiation(this);
+            Nodeable cache = new Calculation_Exponentiation();
+            cache.setType(this);
+            return cache;
         }
     },
     ROOT {
         @Override
         public Nodeable interact() {
-            return new Calculation_Rooting(this);
+            Nodeable cache = new Calculation_Rooting();
+            cache.setType(this);
+            return cache;
         }
     },
     MULTIPLY {
         @Override
         public Nodeable interact() {
-            return new Calculation_Multiplication(this);
+            Nodeable cache = new Calculation_Multiplication();
+            cache.setType(this);
+            return cache;
         }
     },
     DIVIDE {
         @Override
         public Nodeable interact() {
-            return new Calculation_Division(this);
+            Nodeable cache = new Calculation_Division();
+            cache.setType(this);
+            return cache;
         }
     },
     ADD {
         @Override
         public Nodeable interact() {
-            return new Calculation_Addition(this);
+            Nodeable cache = new Calculation_Addition();
+            cache.setType(this);
+            return cache;
         }
     },
     SUBTRACT {
         @Override
         public Nodeable interact() {
-            return new Calculation_Subtraction(this);
+            Nodeable cache = new Calculation_Subtraction();
+            cache.setType(this);
+            return cache;
         }
     },
     VALUE {
         @Override
         public Nodeable interact() {
-            return new Value(this);
+            Nodeable cache =new Value();
+            cache.setType(this);
+            return cache;
         }
     },
     SPIN {
         @Override
         public Nodeable interact() {
-            return null;
+            Value.currentValue.switchSign();
+            return Value.currentValue;
         }
     },
     EVALUATE {

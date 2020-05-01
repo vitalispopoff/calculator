@@ -1,24 +1,65 @@
 package calculation;
 
-public class Value extends Node {
+import input.Parsable;
+
+public class Value extends Node implements Parsable {
+
+    static Value
+            currentValue = null;
+    String
+            parserCache = null;
+    boolean
+            isNegative = false;
+
+
+    public Value() {
+        super();
+    }
 
     public Value(Typical type) {
         super(type);
     }
 
-    /**
-     * <!--
-     * !SSUE#4 : connect GUI with input
-     * -->
-     * <p><a href="https://github.com/vitalispopoff/calculator/issues/4">Issue #4</a> : Connect GUI with input package</p>
-     * */
-    @Override
-    public void setValue() {
-        super.setValue();
+    static void resetCurrent() {
+        currentValue = null;
     }
 
     @Override
     protected Double calculate(Nodeable localLeft, Nodeable localRite) {
         return value;
     }
+
+    public void updateValueParser(char c) {
+        if (c == '-') switchSign();
+        else if (parserCache == null) addCharToCache(c);
+        else try {
+                String localCache = parserCache + c;
+                parseCacheToStream(localCache);
+                addCharToCache(c);
+            } catch (NumberFormatException ignored) {
+            }
+    }
+
+    @Override
+    public double clearCache() {
+        double result = (parserCache == null && isNegative) || parserCache == "."
+                ? 0
+                : Double.valueOf(parserCache);
+        if (isNegative) result *= -1.;
+        parserCache = null;
+        isNegative = false;
+        return result;
+    }
+
+    @Override
+    public void addCharToCache(char c) {
+        parserCache += c;
+    }
+
+    void switchSign() { this.isNegative = !isNegative; }
+
+    static double parseCacheToStream(String stream) {
+        return Double.parseDouble(stream);
+    }
+
 }

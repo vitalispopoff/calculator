@@ -2,8 +2,11 @@ package calculation;
 
 public abstract class Calculation extends Node {
 
+    public Calculation(){super();}
+
     public Calculation(Typical type) {
         super(type);
+        Value.resetCurrent();
     }
 
     @Override

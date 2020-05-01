@@ -1,22 +1,20 @@
-package _temp.input;
+package input;
 
-public class ValueParser implements Parsable{
+public class ValueParser implements Parsable {
 
-    static String parserCache = null;
-    static boolean isNegative = false;
-
-    ValueParser() {
-    }
+    static String
+            parserCache = null;
+    static boolean
+            isNegative = false;
 
     public ValueParser(char c) {
         if (c == '-') switchSign();
         else if (parserCache == null) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;
-                parserCacheToStream(localCache);
+                parseCacheToStream(localCache);
                 addCharToCache(c);
-            } catch (NumberFormatException e) {
-                System.out.println(e);
+            } catch (NumberFormatException ignored) {
             }
     }
 
@@ -24,7 +22,7 @@ public class ValueParser implements Parsable{
         isNegative = !isNegative;
     }
 
-    static double parserCacheToStream(String stream) {
+    static double parseCacheToStream(String stream) {
         return Double.parseDouble(stream);
     }
 
