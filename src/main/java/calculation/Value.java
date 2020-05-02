@@ -1,7 +1,5 @@
 package calculation;
 
-import input.Parsable;
-
 public class Value extends Node implements Parsable {
 
     static Value
@@ -10,7 +8,6 @@ public class Value extends Node implements Parsable {
             parserCache = null;
     boolean
             isNegative = false;
-
 
     public Value() {
         super();
@@ -34,7 +31,7 @@ public class Value extends Node implements Parsable {
         else if (parserCache == null) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;
-                parseCacheToStream(localCache);
+                Double.parseDouble(localCache);
                 addCharToCache(c);
             } catch (NumberFormatException ignored) {
             }
@@ -56,10 +53,7 @@ public class Value extends Node implements Parsable {
         parserCache += c;
     }
 
-    void switchSign() { this.isNegative = !isNegative; }
-
-    static double parseCacheToStream(String stream) {
-        return Double.parseDouble(stream);
+    void switchSign() {
+        this.isNegative = !isNegative;
     }
-
 }
