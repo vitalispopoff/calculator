@@ -4,12 +4,9 @@ import calculation.*;
 
 public class NodeQueue extends Queueability implements Queuing {
 
-    public static Queuing
-            mainQueue = new NodeQueue(null);
-
     public int[] nodeCounter = new int[NodeType.values().length];
 
-    NodeQueue(Queueable queueable) {
+    public NodeQueue(Queueable queueable) {
         head = tail = queueable;
         try {
             updateCounter(queueable);

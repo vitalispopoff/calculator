@@ -23,9 +23,9 @@ public class Button extends JButton implements KeyListener {
 
     void setButtonBounds(int i, int tile) {
         int
-                hor = (i % buttonRowLength) * tile,
-                ver = (1 + (i / buttonRowLength)) * tile;
-        setBounds(hor, ver, tile, tile);
+                locX = (i % buttonRowLength) * tile,
+                locY = (1 + (i / buttonRowLength)) * tile;
+        setBounds(locX, locY, tile, tile);
     }
 
     private void addInteraction(Typical type) {

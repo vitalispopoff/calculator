@@ -6,7 +6,7 @@ public abstract class Calculation extends Node {
 
     public Calculation(Typical type) {
         super(type);
-        Value.resetCurrent();
+/*        Value.resetCurrent();*/
     }
 
     @Override

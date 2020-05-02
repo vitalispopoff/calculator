@@ -1,13 +1,13 @@
 package calculation;
 
-public class Value extends Node implements Parsable {
+import static memory.Memory.*;
 
-    static Value
-            currentValue = null;
-    String
-            parserCache = null;
-    boolean
-            isNegative = false;
+public class Value extends Node /*implements Parsable*/ {
+
+/*    static Value
+            currentValue = null;*/
+/*    boolean
+            isNegative = false;*/
 
     public Value() {
         super();
@@ -17,27 +17,27 @@ public class Value extends Node implements Parsable {
         super(type);
     }
 
-    static void resetCurrent() {
+/*    static void resetCurrent() {
         currentValue = null;
-    }
+    }*/
 
     @Override
     protected Double calculate(Nodeable localLeft, Nodeable localRite) {
         return value;
     }
 
-    public void updateValueParser(char c) {
+/*    public void updateValueParser(char c) {
         if (c == '-') switchSign();
-        else if (parserCache == null) addCharToCache(c);
+        else if (parserCacheIsNull()) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;
                 Double.parseDouble(localCache);
                 addCharToCache(c);
             } catch (NumberFormatException ignored) {
             }
-    }
+    }*/
 
-    @Override
+/*//    @Override
     public double clearCache() {
         double result = (parserCache == null && isNegative) || parserCache == "."
                 ? 0
@@ -46,14 +46,14 @@ public class Value extends Node implements Parsable {
         parserCache = null;
         isNegative = false;
         return result;
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void addCharToCache(char c) {
         parserCache += c;
-    }
+    }*/
 
-    void switchSign() {
+/*    void switchSign() {
         this.isNegative = !isNegative;
-    }
+    }*/
 }

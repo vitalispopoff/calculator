@@ -10,11 +10,11 @@ public class MainPanel extends JPanel {
     private int tile = 60;
     static JLabel display;
 
-    public MainPanel(/*Settings settings*/) {
+    public MainPanel(Settings settings) {
         int i = 0;
         tile
                 = tile == 0
-                ? Settings.tile
+                ? settings.tile
                 : tile;
         display = new MainDisplay();
 

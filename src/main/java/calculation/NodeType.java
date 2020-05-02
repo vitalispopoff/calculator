@@ -1,6 +1,7 @@
 package calculation;
 
 import calculation.calculations.*;
+import memory.Memory;
 
 public enum NodeType implements Typical {
 
@@ -75,8 +76,8 @@ public enum NodeType implements Typical {
     SPIN {
         @Override
         public Nodeable interact() {
-            Value.currentValue.switchSign();
-            return Value.currentValue;
+            Memory.switchSign();
+            return null;
         }
     },
     EVALUATE {

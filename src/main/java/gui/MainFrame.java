@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
     }
 
     void setMainPanel() {
-        MainPanel panel = new MainPanel();
+        MainPanel panel = new MainPanel(settings);
         add(panel);
     }
 

@@ -1,8 +1,11 @@
 package input;
 
+
 import calculation.*;
 import calculation.calculations.*;
 import org.junit.*;
+
+import static memory.Memory.mainQueue;
 
 public class NodeQueueTest {
     static Typical
@@ -25,8 +28,8 @@ public class NodeQueueTest {
         que2 = new Queuer(nod2);
         que3 = new Queuer(nod3);
 
-        NodeQueue.mainQueue = new NodeQueue(null);
-        NodeQueue.mainQueue.updateQueue(que1);
+        mainQueue = new NodeQueue(null);
+        mainQueue.updateQueue(que1);
     }
 
     @After
@@ -41,14 +44,14 @@ public class NodeQueueTest {
         Assert.assertTrue(nod1 instanceof Value);
         Assert.assertTrue(nod2 instanceof Calculation_Exponentiation);
         Assert.assertTrue(nod3 instanceof Value);
-        Assert.assertSame(que1, NodeQueue.mainQueue.getHead());
-        Assert.assertSame(que1, NodeQueue.mainQueue.getTail());
+        Assert.assertSame(que1, mainQueue.getHead());
+        Assert.assertSame(que1, mainQueue.getTail());
     }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
     public void currentPriorityIndex_00() {
-        Assert.assertEquals(ord1, NodeQueue.mainQueue.currentPriorityIndex());
+        Assert.assertEquals(ord1, mainQueue.currentPriorityIndex());
     }
 }

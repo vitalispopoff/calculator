@@ -58,7 +58,7 @@ public interface Queuing extends Queueable {
 //                    declare a sub-queue
 //                    move the part of the super queue up to the corresponding BRACKET_OUT node to the sub-queue
 //                    recursive call of the convertToLocalTree
-                    }else{
+                    } else {
                         System.out.println("completely useless loop for whatever else");
 
                     }
@@ -111,7 +111,6 @@ public interface Queuing extends Queueable {
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/10">Issue #10 closed</a> : testing [EOT]</p>
      * <p>Updated the counters for the queue:<br>
      * removes the head queuer from the counters</p>
-
      */
     void updateCounter();
 
@@ -120,5 +119,4 @@ public interface Queuing extends Queueable {
     int getCounter();
 
     int currentPriorityIndex();
-
 }

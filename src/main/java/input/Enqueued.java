@@ -4,6 +4,8 @@ import calculation.*;
 
 public interface Enqueued extends Queueable {
 
+
+
     /**
      * <!---->
      * <p>Unwrap node</p>
