@@ -3,8 +3,7 @@ package gui;
 import static gui.Settings.buttonRowLength;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
 import calculation.*;
 
@@ -18,7 +17,7 @@ public class Button extends JButton implements KeyListener {
         setSymbol(symbol);
         setType(type);
         setText(Character.toString(symbol));
-        addInteraction(type);
+        addInteraction(/*symbol, type*/);
     }
 
     void setButtonBounds(int i, int tile) {
@@ -28,9 +27,13 @@ public class Button extends JButton implements KeyListener {
         setBounds(locX, locY, tile, tile);
     }
 
-    private void addInteraction(Typical type) {
-        addActionListener(e -> type.interact());
+    private void addInteraction() {
+        addActionListener(e -> Typical.interact(type, symbol));
     }
+
+    /*private void addInteraction(Typical type) {
+        addActionListener(e -> type.interact());
+    }*/ // ? disposable ?
 
     @Override
     public void keyTyped(KeyEvent e) {

@@ -1,5 +1,8 @@
 package calculation;
 
+import input.Enqueued;
+import input.Queueable;
+import input.Queuer;
 import memory.Memory;
 
 /**
@@ -30,21 +33,25 @@ public interface Typical {
 
     /**
      * <!---->
-     *     <p>Links contracted interaction with calculation types defined by Nodeable</p>
-     * */
+     * <p>Links contracted interaction with calculation types defined by Nodeable</p>
+     */
     Nodeable interact();
 
     /**
      * <!---->
-     *     <p>Provides contract for the implementation of the button action.
-     *     Delivers additional logic for the action context.</p>
-     * */
-    static void interact(Typical type) {
-        if(type.getTypePriority()==NodeType.VALUE.getTypePriority()){
-//            writing down the value
-        } else if(Memory.isParserCacheAValue()){
+     * <p>Provides contract for the implementation of the button action.
+     * Delivers additional logic for the action context.</p>
+     */
+    static void interact(Typical type, char symbol) {
+        if (type/*.getTypePriority()*/ == NodeType.VALUE/*.getTypePriority()*/) {
+            Memory.addToParserCache(symbol);
+        }/* else if (type == NodeType.SPIN) Memory.switchSign();*/
 
-        }
-        type.interact();
+        else if (Memory.isParserCacheAValue()) {
+            Nodeable cache = NodeType.VALUE.interact();
+            cache.setValue(Memory.clearCache());
+            Memory.mainQueue.updateQueue(new Queuer(cache));
+            System.out.println(cache.getValue());
+        } else Memory.mainQueue.updateQueue(new Queuer(type.interact()));
     }
 }

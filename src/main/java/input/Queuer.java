@@ -11,7 +11,7 @@ public class Queuer extends Queueability implements Enqueued {
     Nodeable
             node = null;
 
-    Queuer(Nodeable node) {
+    public Queuer(Nodeable node) {
         setNode(node);
         setType(node.getType());
         setPriorityIndex();

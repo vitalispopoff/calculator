@@ -76,7 +76,6 @@ public enum NodeType implements Typical {
     SPIN {
         @Override
         public Nodeable interact() {
-            Memory.switchSign();
             return null;
         }
     },

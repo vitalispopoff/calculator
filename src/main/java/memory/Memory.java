@@ -4,15 +4,9 @@ import input.*;
 
 public abstract class Memory implements Parsable {
 
-    public static String parserCache;
-    public static Queuing mainQueue;
-    public static boolean isValueNegative;
-
-    static {
-        parserCache = "";
-        isValueNegative = false;
-        mainQueue = new NodeQueue(null);
-    }   // * initializations
+    public static boolean isValueNegative = false;
+    public static String parserCache = "";
+    public static Queuing mainQueue = new NodeQueue(null);
 
     public static boolean isParserCacheAValue() {
         return (isValueNegative || (cacheHasChars()));
@@ -44,10 +38,9 @@ public abstract class Memory implements Parsable {
     }
 
     //    @formatter:off
-    public static void switchSign() { isValueNegative = !isValueNegative; }
-    public static boolean isValueNegative() { return isValueNegative; }
 
     private static void addCharToCache(char c) { parserCache += c; }
+    public static void switchSign() { isValueNegative = !isValueNegative; }
     private static void reset(){isValueNegative = false; parserCache = "";}
 
     private static boolean isCacheNull() { return parserCache == null; }
