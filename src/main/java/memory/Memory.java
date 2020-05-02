@@ -1,22 +1,40 @@
 package memory;
 
-import calculation.*;
 import input.*;
 
 public abstract class Memory implements Parsable {
 
-    public static String parserCache = null;
-    private static boolean parserCacheValueIsNegative = false;
+    public static String parserCache;
+    public static Queuing mainQueue;
+    public static boolean isValueNegative;
 
-    public static Queuing mainQueue = new NodeQueue(null);
+    static {
+        parserCache = "";
+        isValueNegative = false;
+        mainQueue = new NodeQueue(null);
+    }   // * initializations
 
-    public static boolean parserCacheIsNull() {
-        return parserCache == null;
+    public static boolean isParserCacheAValue() {
+        return (isValueNegative || (cacheHasChars()));
     }
 
-    public void addToParserCache(char c) {
+    public static double clearCache() {
+        double result = Double.NaN;
+
+        if (isParserCacheAValue()) {
+            if (isValueNegative && cacheHasNoChars()) result = 0.;
+            else result
+                    = isValueNegative
+                    ? -1. * Double.parseDouble(parserCache)
+                    : Double.parseDouble(parserCache);
+        }
+        reset();
+        return result;
+    }
+
+    public static void addToParserCache(char c) {
         if (c == '-') switchSign();
-        else if (parserCacheIsNull()) addCharToCache(c);
+        else if (isCacheNull()) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;
                 Double.parseDouble(localCache);
@@ -25,30 +43,17 @@ public abstract class Memory implements Parsable {
             }
     }
 
-    protected Nodeable calculate(Nodeable localLeft, Nodeable localRite) {
-        Nodeable cache = NodeType.VALUE.interact();
-        cache.setValue(0.);
+    //    @formatter:off
+    public static void switchSign() { isValueNegative = !isValueNegative; }
+    public static boolean isValueNegative() { return isValueNegative; }
 
-        return cache;
-    }
+    private static void addCharToCache(char c) { parserCache += c; }
+    private static void reset(){isValueNegative = false; parserCache = "";}
 
-    @Override
-    public double clearCache() {
-        double result = (parserCache == null && parserCacheValueIsNegative) || parserCache == "."
-                ? 0
-                : Double.valueOf(parserCache);
-        if (parserCacheValueIsNegative) result *= -1.;
-        parserCache = null;
-        parserCacheValueIsNegative = false;
-        return result;
-    }
+    private static boolean isCacheNull() { return parserCache == null; }
+    private static boolean isCacheNotNull() { return !isCacheNull(); }
+    private static boolean cacheHasChars() { return isCacheNotNull() && parserCache.length() > 0; }
+    private static boolean cacheHasNoChars(){return !cacheHasChars();}
 
-    @Override
-    public void addCharToCache(char c) {
-        parserCache += c;
-    }
-
-    public static void switchSign() {
-        parserCacheValueIsNegative = !parserCacheValueIsNegative;
-    }
+    //    @formatter:on
 }

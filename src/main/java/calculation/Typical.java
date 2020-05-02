@@ -1,5 +1,7 @@
 package calculation;
 
+import memory.Memory;
+
 /**
  * <!---->
  * <p>Typical represents a type of a Nodeable
@@ -26,5 +28,23 @@ public interface Typical {
         return ordinal() >> 1;
     }
 
+    /**
+     * <!---->
+     *     <p>Links contracted interaction with calculation types defined by Nodeable</p>
+     * */
     Nodeable interact();
+
+    /**
+     * <!---->
+     *     <p>Provides contract for the implementation of the button action.
+     *     Delivers additional logic for the action context.</p>
+     * */
+    static void interact(Typical type) {
+        if(type.getTypePriority()==NodeType.VALUE.getTypePriority()){
+//            writing down the value
+        } else if(Memory.isParserCacheAValue()){
+
+        }
+        type.interact();
+    }
 }

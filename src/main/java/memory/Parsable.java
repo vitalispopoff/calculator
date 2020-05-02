@@ -16,11 +16,11 @@ public interface Parsable {
      * @param c the character written via keyboard.
      *          </p>
      */
-     void addCharToCache(char c);
+     static void addCharToCache(char c){}
 
     /**
      * <!---->
      * <p>Returns the cache value as double, and resets the cache.</p>
      */
-     double clearCache();
+     static double clearCache(){return Double.NaN;};
 }
