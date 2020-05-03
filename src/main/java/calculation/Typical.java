@@ -1,9 +1,10 @@
 package calculation;
 
-import input.Enqueued;
-import input.Queueable;
-import input.Queuer;
+import input.*;
 import memory.Memory;
+
+import static calculation.NodeType.*;
+import static memory.Memory.*;
 
 /**
  * <!---->
@@ -43,15 +44,17 @@ public interface Typical {
      * Delivers additional logic for the action context.</p>
      */
     static void interact(Typical type, char symbol) {
-        if (type/*.getTypePriority()*/ == NodeType.VALUE/*.getTypePriority()*/) {
-            Memory.addToParserCache(symbol);
-        }/* else if (type == NodeType.SPIN) Memory.switchSign();*/
+        if (type.getTypePriority() == VALUE.getTypePriority())
+            addToParserCache(symbol);
+        else {
+            if (isParserCacheAValue())
+                mainQueue.updateQueue(new Queuer(new Value(type, Memory.clearCache())));
 
-        else if (Memory.isParserCacheAValue()) {
-            Nodeable cache = NodeType.VALUE.interact();
-            cache.setValue(Memory.clearCache());
-            Memory.mainQueue.updateQueue(new Queuer(cache));
-            System.out.println(cache.getValue());
-        } else Memory.mainQueue.updateQueue(new Queuer(type.interact()));
+            mainQueue.updateQueue(new Queuer(type.interact()));
+
+        /*            Nodeable cache = type.interact();
+            cache.setType(type);
+            mainQueue.updateQueue(new Queuer(cache));*/ // ? this is for the NodeType interact() implementations w/o (this) - is it worth?
+        }
     }
 }

@@ -27,7 +27,7 @@ public abstract class Memory implements Parsable {
     }
 
     public static void addToParserCache(char c) {
-        if (c == '-') switchSign();
+        if (c == '∓') switchSign();
         else if (isCacheNull()) addCharToCache(c);
         else try {
                 String localCache = parserCache + c;

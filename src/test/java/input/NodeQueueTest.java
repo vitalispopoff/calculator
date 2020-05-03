@@ -1,6 +1,5 @@
 package input;
 
-
 import calculation.*;
 import calculation.calculations.*;
 import org.junit.*;

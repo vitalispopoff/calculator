@@ -55,6 +55,11 @@ public class QueuingTest implements _QueuingTest_Notes {
         mainQueue = new NodeQueue(null);
     }
 
+    @Test
+    public void initial_test(){
+        Assert.assertSame(typ4.getTypePriority(), NodeType.EXPONENT.getTypePriority());
+    }
+
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
