@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class MainFrame extends JFrame {
 
-    public Settings settings;
+    public static Settings settings;
 
     public MainFrame(Settings settings) throws HeadlessException {
         this.settings = settings;

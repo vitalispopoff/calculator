@@ -23,6 +23,7 @@ public class MainPanel extends JPanel {
 
         for (Button b : basicCalculator) {
             b.setButtonBounds(i++, tile);
+
             add(b);
         }
     }

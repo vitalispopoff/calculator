@@ -39,9 +39,10 @@ public abstract class Memory implements Parsable {
 
     //    @formatter:off
 
-    private static void addCharToCache(char c) { parserCache += c; }
     public static void switchSign() { isValueNegative = !isValueNegative; }
-    private static void reset(){isValueNegative = false; parserCache = "";}
+    public static void reset(){isValueNegative = false; parserCache = "";}
+
+    private static void addCharToCache(char c) { parserCache += c; }
 
     private static boolean isCacheNull() { return parserCache == null; }
     private static boolean isCacheNotNull() { return !isCacheNull(); }

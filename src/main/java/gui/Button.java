@@ -14,41 +14,37 @@ public class Button extends JButton implements KeyListener {
     private char symbol;
 
     Button(char symbol, NodeType type) {
+        setName("button_" + symbol);
         setSymbol(symbol);
         setType(type);
         setText(Character.toString(symbol));
-        addInteraction(/*symbol, type*/);
+        addInteraction();
     }
 
     void setButtonBounds(int i, int tile) {
-        int
-                locX = (i % buttonRowLength) * tile,
-                locY = (1 + (i / buttonRowLength)) * tile;
-        setBounds(locX, locY, tile, tile);
+        setBounds(
+                (i % buttonRowLength) * tile,
+                (1 + (i / buttonRowLength)) * tile,
+                tile,
+                tile
+        );
     }
 
     private void addInteraction() {
         addActionListener(e -> Typical.interact(type, symbol));
     }
 
-    /*private void addInteraction(Typical type) {
-        addActionListener(e -> type.interact());
-    }*/ // ? disposable ?
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
     //    @formatter:off
+
+    @Override public void keyTyped(KeyEvent e) {
+    }
+    @Override public void keyPressed(KeyEvent e) {
+    }
+    @Override public void keyReleased(KeyEvent e) {
+    }
+
     void setSymbol(char symbol){this.symbol= symbol;}
     void setType(Typical type){this.type = type;}
+
     //    @formatter:on
 }

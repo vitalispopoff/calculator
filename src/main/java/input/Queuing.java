@@ -44,7 +44,6 @@ public interface Queuing extends Queueable {
                     opRoot.setValue();
                     operator.setPriorityIndex(NodeType.VALUE);
 
-
                     if (getHead() == null) updateQueue(operator);
                     else convertToLocalTree(operator);
 

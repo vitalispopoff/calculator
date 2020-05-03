@@ -36,7 +36,7 @@ public interface Typical {
      * <!---->
      * <p>Links contracted interaction with calculation types defined by Nodeable</p>
      */
-    Nodeable interact();
+    /*default*/ Nodeable interact()/*{return null;}*/;
 
     /**
      * <!---->
@@ -47,10 +47,23 @@ public interface Typical {
         if (type.getTypePriority() == VALUE.getTypePriority())
             addToParserCache(symbol);
         else {
-            if (isParserCacheAValue())
-                mainQueue.updateQueue(new Queuer(new Value(type, Memory.clearCache())));
+            if (isParserCacheAValue()) {
+                Double
+                        val = Memory.clearCache();
+//                System.out.println(val);
+                Nodeable
+                        node = new Value(VALUE,val);
+                Queueable
+                        queuer = new Queuer(node);
+                mainQueue.updateQueue(queuer);
+            }
 
-            mainQueue.updateQueue(new Queuer(type.interact()));
+            if (type == EVALUATE) {
+                mainQueue.convertToTree();
+
+            } else {
+                mainQueue.updateQueue(new Queuer(type.interact()));
+            }
 
         /*            Nodeable cache = type.interact();
             cache.setType(type);

@@ -18,7 +18,7 @@ public enum NodeType implements Typical {
     SPIN {@Override public Nodeable interact() { return new Value(this); }},
     EVALUATE {@Override public Nodeable interact() { return null; }},
     CLEAR {@Override public Nodeable interact() { return null; }},
-    UNDO { @Override public Nodeable interact() { return null; }}
+    UNDO {@Override public Nodeable interact() { return null; }}
 
 //        @formatter:on
 }
