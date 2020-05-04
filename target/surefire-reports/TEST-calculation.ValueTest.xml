@@ -27,7 +27,6 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="idea.version2020.1" value="true"/>
     <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven-event-listener.jar"/>
     <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
@@ -43,14 +42,15 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="Voo"/>
-    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\lib\idea_rt.jar"/>
+    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.2\lib\idea_rt.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_241\jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2020.1 test"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2020.1.1 test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pl"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="idea.version2020.1.1" value="true"/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="1.8.0_241"/>
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>

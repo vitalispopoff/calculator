@@ -5,7 +5,6 @@ E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\gui\MainFrame.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\NodeType.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\calculations\Calculation_Rooting.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Scratch.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\_notes\_Treeable_Notes.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\calculations\Calculation_Multiplication.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\gui\Settings.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\Node.java
@@ -19,9 +18,11 @@ E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Main.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\Value.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\input\NodeQueue.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\Calculation.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\memory\Memory.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\_notes\_Parsable_Notes.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\gui\MainDisplay.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\calculation\calculations\Calculation_Addition.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\memory\Parsable.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\input\Enqueued.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\input\Queueability.java
 E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\input\Queuer.java
