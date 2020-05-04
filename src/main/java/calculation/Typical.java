@@ -1,5 +1,6 @@
 package calculation;
 
+import gui.MainPanel;
 import input.*;
 import memory.Memory;
 
@@ -36,7 +37,7 @@ public interface Typical {
      * <!---->
      * <p>Links contracted interaction with calculation types defined by Nodeable</p>
      */
-    /*default*/ Nodeable interact()/*{return null;}*/;
+    Nodeable interact();
 
     /**
      * <!---->
@@ -44,30 +45,30 @@ public interface Typical {
      * Delivers additional logic for the action context.</p>
      */
     static void interact(Typical type, char symbol) {
-        if (type.getTypePriority() == VALUE.getTypePriority())
+        Double
+                val;
+        Nodeable
+                node;
+        Enqueued
+                queuer;
+
+        if (type.getTypePriority() == VALUE.getTypePriority()) {
             addToParserCache(symbol);
-        else {
+        } else {
             if (isParserCacheAValue()) {
-                Double
-                        val = Memory.clearCache();
-//                System.out.println(val);
-                Nodeable
-                        node = new Value(VALUE,val);
-                Queueable
-                        queuer = new Queuer(node);
+                val = Memory.clearCache();
+                node = new Value(VALUE, val);
+                queuer = new Queuer(node);
+
                 mainQueue.updateQueue(queuer);
             }
+                node = type.interact();
 
-            if (type == EVALUATE) {
-                mainQueue.convertToTree();
-
-            } else {
-                mainQueue.updateQueue(new Queuer(type.interact()));
+                if (type != EVALUATE) {
+                    queuer = new Queuer(node);
+                    mainQueue.updateQueue(queuer);
+//                mainQueue.updateQueue(new Queuer(type.interact()));
+                }
             }
-
-        /*            Nodeable cache = type.interact();
-            cache.setType(type);
-            mainQueue.updateQueue(new Queuer(cache));*/ // ? this is for the NodeType interact() implementations w/o (this) - is it worth?
         }
     }
-}

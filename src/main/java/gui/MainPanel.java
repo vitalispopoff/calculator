@@ -8,7 +8,7 @@ import static gui.Settings.basicCalculator;
 public class MainPanel extends JPanel {
 
     private int tile = 60;
-    static JLabel display;
+    public static MainDisplay display= new MainDisplay();
 
     public MainPanel(Settings settings) {
         int i = 0;
@@ -16,7 +16,7 @@ public class MainPanel extends JPanel {
                 = tile == 0
                 ? settings.tile
                 : tile;
-        display = new MainDisplay();
+        /*display = new MainDisplay();*/
 
         setLayout(null);
         add(display);
