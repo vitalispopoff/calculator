@@ -4,6 +4,11 @@ import calculation.*;
 
 public interface Queuing extends Queueable {
 
+    default Double convertToTree() {
+        convertToLocalTree(updateQueue());
+        return ((Enqueued)getHead()).getNode().getValue();
+    }
+
     /**
      * <!--
      * !SSUE#9 : bracketing
@@ -11,10 +16,6 @@ public interface Queuing extends Queueable {
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/9">Issue #9</a> : Add bracketing</p>
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : Subtree construction [EOT]</p>
      */
-    default void convertToTree() {
-        convertToLocalTree(updateQueue());
-    }
-
     default void convertToLocalTree(Queueable queuer) {
 
         boolean

@@ -36,7 +36,7 @@ public class Queuer extends Queueability implements Enqueued {
     @Override
     public void setNode(Nodeable node) {
         this.node = node;
-        setType(node.getType());
+//        setType(node.getType());
     }
 
     @Override

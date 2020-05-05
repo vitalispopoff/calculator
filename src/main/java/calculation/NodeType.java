@@ -1,6 +1,8 @@
 package calculation;
 
 import calculation.calculations.*;
+import gui.MainDisplay;
+import gui.MainPanel;
 
 import static memory.Memory.mainQueue;
 
@@ -69,7 +71,12 @@ public enum NodeType implements Typical {
     },
     EVALUATE {
         @Override
-        public Nodeable interact() { return null; }
+//        public Nodeable interact() { return new Value(this/*::interact*/); } // !TODO this::interact calls for closer inspection !
+        public Nodeable interact() {
+//            Nodeable cache = new Value(this, mainQueue.convertToTree());
+            MainPanel.display.setText(mainQueue.convertToTree().toString());
+            return null;
+        }
     },
     CLEAR {
         @Override
