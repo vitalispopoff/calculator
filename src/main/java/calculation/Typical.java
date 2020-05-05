@@ -24,7 +24,6 @@ public interface Typical {
 
     void interact(Button button);
 
-
  /*   static void interact(Typical type, char symbol) {
         double
                 val;

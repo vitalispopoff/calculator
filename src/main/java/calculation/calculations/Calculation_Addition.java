@@ -14,6 +14,7 @@ public class Calculation_Addition extends Calculation {
         super(button);
     }
 
+
     @Override
     protected double perform(double leftValue, double riteValue) {
         return leftValue + riteValue;

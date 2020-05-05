@@ -6,8 +6,7 @@ import gui.Button;
 public class Value extends Node {
 
     public Value(Typical type, Double value){
-        super(type);
-        this.value = value;
+        super(type, value);
     }
     public Value(Button button){super(button);}
 

@@ -5,8 +5,17 @@ import calculation.*;
 public interface Queuing extends Queueable {
 
     default Double convertToTree() {
-        convertToLocalTree(updateQueue());
-        return ((Enqueued)getHead()).getNode().getValue();
+        if(getHead() == null) return Double.NaN;
+        else convertToLocalTree(updateQueue());
+
+        Enqueued
+                cache = (Enqueued)getHead();
+        Nodeable
+                nod /*= cache.getNode()*/;
+        double
+                result /*= nod.getValue()*/;
+
+        return /*result*/ 0.;
     }
 
     /**
@@ -14,55 +23,57 @@ public interface Queuing extends Queueable {
      * !SSUE#9 : bracketing
      * -->
      * <p><a href="https://github.com/vitalispopoff/calculator/issues/9">Issue #9</a> : Add bracketing</p>
-     * <p><a href="https://github.com/vitalispopoff/calculator/issues/1">Issue #1</a> : Subtree construction [EOT]</p>
      */
     default void convertToLocalTree(Queueable queuer) {
 
-        boolean
-                isOperand1AVal = ((Enqueued) queuer).getPriorityIndex() == NodeType.VALUE.getTypePriority();
+        if (this.getHead() != this.getTail()) {
 
-        if (isOperand1AVal) {
-            Enqueued
-                    operand1 = (Enqueued) queuer;
             boolean
-                    isOperatorAPas = ((Enqueued) getHead()).getPriorityIndex() == getCounter();
+                    isOperand1AVal = ((Enqueued) queuer).getPriorityIndex() == NodeType.VALUE.getTypePriority();
 
-            if (isOperatorAPas) {
+            if (isOperand1AVal) {
                 Enqueued
-                        operator = (Enqueued) updateQueue();
+                        operand1 = (Enqueued) queuer;
                 boolean
-                        isOperand2AVal = ((Enqueued) getHead()).getPriorityIndex() == NodeType.VALUE.getTypePriority();
+                        isOperatorAPas = ((Enqueued) getHead()).getPriorityIndex() == getCounter();
 
-                if (isOperand2AVal) {
-
-                    Nodeable
-                            opLeft = operand1.unwrap(),
-                            opRite = ((Enqueued) updateQueue()).unwrap(),
-                            opRoot = operator.getNode();
-
-                    opRoot.setLocalLeft(opLeft);
-                    opRoot.setLocalRite(opRite);
-                    opRoot.setValue();
-                    operator.setPriorityIndex(NodeType.VALUE);
-
-                    if (getHead() == null) updateQueue(operator);
-                    else convertToLocalTree(operator);
-
-                } else {
+                if (isOperatorAPas) {
+                    Enqueued
+                            operator = (Enqueued) updateQueue();
                     boolean
-                            isOperand2ABra = ((Enqueued) getHead()).getType() == NodeType.BRACKET_IN;
+                            isOperand2AVal = ((Enqueued) getHead()).getPriorityIndex() == NodeType.VALUE.getTypePriority();
 
-                    if (isOperand2ABra) {
-                        System.out.println("loop for the BRACKET_IN");
-                        // convertToLocalQueue()
+                    if (isOperand2AVal) {
+
+                        Nodeable
+                                opLeft = operand1.unwrap(),
+                                opRite = ((Enqueued) updateQueue()).unwrap(),
+                                opRoot = operator.getNode();
+
+                        opRoot.setLocalLeft(opLeft);
+                        opRoot.setLocalRite(opRite);
+                        opRoot.setValue();
+                        operator.setPriorityIndex(NodeType.VALUE);
+
+                        if (getHead() == null) updateQueue(operator);
+                        else convertToLocalTree(operator);
+
+                    } else {
+                        boolean
+                                isOperand2ABra = ((Enqueued) getHead()).getType() == NodeType.BRACKET_IN;
+
+                        if (isOperand2ABra) {
+                            System.out.println("loop for the BRACKET_IN");
+                            // convertToLocalQueue()
 //                    declare a sub-queue
 //                    move the part of the super queue up to the corresponding BRACKET_OUT node to the sub-queue
 //                    recursive call of the convertToLocalTree
-                    } else {
-                        System.out.println("completely useless loop for whatever else");
+                        } else {
+                            System.out.println("completely useless loop for whatever else");
 
-                    }
-                }   // !SSUE#9 : bracketing
+                        }
+                    }   // !SSUE#9 : bracketing
+                }
             }
         }
     }

@@ -1,6 +1,8 @@
 package calculation;
 
 import gui.Button;
+import input.Queuer;
+import memory.Memory;
 
 import static java.lang.Double.NaN;
 
@@ -20,6 +22,11 @@ public abstract class Node implements Nodeable {
         setType(type);
     }
     public Node(Button button){this(button.getType());}
+    public Node(Typical type, Double value){
+        this(type);
+        setValue(value);
+        Memory.mainQueue.updateQueue(new Queuer(this));
+    }
 
     @Override
     public void setValue() {

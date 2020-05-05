@@ -2,7 +2,10 @@ package calculation;
 
 import static memory.Memory.*;
 
+import calculation.otherExpressions.Value;
 import gui.Button;
+import input.NodeQueue;
+import input.Queuer;
 import memory.Memory;
 import calculation.calculations.*;
 
@@ -69,7 +72,6 @@ public enum NodeType implements Typical {
     },
     EVALUATE {
         @Override
-//        public void interact(Button button) { return new Value(this/*::interact*/); } // !TODO this::interact calls for closer inspection !
         public void interact(Button button) {
             Nodeable.dumpParserCache();
             mainQueue.convertToTree();
@@ -78,7 +80,8 @@ public enum NodeType implements Typical {
     CLEAR {
         @Override
         public void interact(Button button) {
-//            return null;
+            mainQueue = new NodeQueue(null);
+            Memory.reset();
         }
     },
     UNDO {
@@ -86,6 +89,13 @@ public enum NodeType implements Typical {
         public void interact(Button button) {
 //            return null;
         }
+    };
+
+    public static void main(String[] args) {
+
+        mainQueue.updateQueue(new Queuer(new Value(VALUE, 0.)));
+
+        EVALUATE.interact(new Button(EVALUATE, '='));
     }
 
 }

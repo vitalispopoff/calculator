@@ -77,33 +77,68 @@ public class TypicalTest {
         Assert.assertEquals(ADD, ((Enqueued) Memory.mainQueue.getTail()).getType());
     }
 
+    @Ignore
     @Test
     public void static_interact_04() {
         buttonCombo(seq0);
         pushTheButton(15);
         buttonCombo(seq0);
         pushTheButton(19);
-        Assert.assertEquals(SUBTRACT, ((Enqueued) Memory.mainQueue.getHead()).getType());
+        Assert.assertEquals(SUBTRACT, ((Enqueued) Memory.mainQueue.getHead()).getType());   // !
         Assert.assertEquals(
                 ((Enqueued) Memory.mainQueue.getHead()).getType(),
                 ((Enqueued) Memory.mainQueue.getTail()).getType()
         );
     }
 
+    @Ignore
     @Test
     public void static_interact_05() {
         buttonCombo(seq1);
         Assert.assertTrue(Memory.parserCache.length() > 0);
+
         pushTheButton(15);
         Assert.assertEquals(0, Memory.parserCache.length());
         Assert.assertEquals(VALUE, ((Enqueued) Memory.mainQueue.getHead()).getType());
         Assert.assertEquals(seqVal[1], ((Enqueued) Memory.mainQueue.getHead()).getNode().getValue(), 0.);
+
         buttonCombo(seq1);
         pushTheButton(19);
-        Nodeable cache = ((Enqueued) Memory.mainQueue.getHead()).getNode();
-        Assert.assertEquals(seqVal[1], cache.getLocalLeft().getValue(), 0.);
-        Assert.assertEquals(seqVal[1], cache.getLocalRite().getValue(), 0.);
-        Assert.assertEquals(0., cache.getValue(), 0.);
+
+        Nodeable
+                cache = ((Enqueued) Memory.mainQueue.getHead()).getNode();
+
+        Assert.assertEquals(seqVal[1], cache.getLocalLeft().getValue(), 0.);    // !
+        Assert.assertEquals(seqVal[1], cache.getLocalRite().getValue(), 0.);    // !
+        Assert.assertEquals(0., cache.getValue(), 0.);                 // !
     }
+
+    @Test   // * 1.01 - -1.01 *2
+    public void static_interact_06() {
+        buttonCombo(seq1);
+        pushTheButton(15);
+        buttonCombo(seq0);
+        pushTheButton(7);
+        pushTheButton(13);
+
+        {
+            Nodeable.dumpParserCache();
+            Assert.assertEquals(seqVal[1], ((Enqueued) mainQueue.getHead()).getNode().getValue(), 0.);
+            Assert.assertEquals(2., ((Enqueued) mainQueue.getTail()).getNode().getValue(), 0.);
+        }   // checks the order fo the hitherto steps  - disposable
+
+
+//        pushTheButton(19);
+//        Assert.assertEquals(seqVal[1], ((Enqueued)mainQueue.getHead()).getNode().getValue(),0. );
+    }
+
+    @Test
+    public void temporal_01() {
+        int index = 19;
+        Typical expectation = EVALUATE;
+        Assert.assertEquals(expectation, basicCalculator[index].getType());
+
+    }
+
 
 }
