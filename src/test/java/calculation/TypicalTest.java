@@ -3,7 +3,6 @@ package calculation;
 import static gui.Settings.basicCalculator;
 import static memory.Memory.*;
 import static calculation.NodeType.*;
-import static calculation.Typical.interact;
 
 import input.*;
 import memory.Memory;

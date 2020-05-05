@@ -1,12 +1,6 @@
 package calculation;
 
-import static memory.Memory.*;
-import static calculation.NodeType.*;
-
-import input.*;
 import gui.Button;
-import memory.Memory;
-import calculation.otherExpressions.*;
 
 /**
  * <!---->
@@ -21,7 +15,7 @@ import calculation.otherExpressions.*;
 public interface Typical {
 
     default int ordinal() throws NullPointerException {
-        return (((Enum) this).ordinal())/* + 1*/;
+        return (((Enum) this).ordinal());
     }
 
     default int getTypePriority() throws NullPointerException {
@@ -31,7 +25,7 @@ public interface Typical {
     void interact(Button button);
 
 
-    static void interact(Typical type, char symbol) {
+ /*   static void interact(Typical type, char symbol) {
         double
                 val;
         Nodeable
@@ -57,5 +51,5 @@ public interface Typical {
 //                mainQueue.updateQueue(new Queuer(type.interact()));
             }
         }
-    }
+    }*/
 }
