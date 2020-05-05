@@ -72,9 +72,9 @@ public class TypicalTest {
     public void static_interact_03() {
         buttonCombo(seq0);
         pushTheButton(11);
-        Assert.assertEquals(VALUE, ((Enqueued) Memory.mainQueue.getHead()).getType());
-        Assert.assertEquals(seqVal[0], ((Enqueued) Memory.mainQueue.getHead()).getNode().getValue(), 0.);
-        Assert.assertEquals(ADD, ((Enqueued) Memory.mainQueue.getTail()).getType());
+        Assert.assertEquals(VALUE, ((Enqueued) mainQueue.getHead()).getType());
+        Assert.assertEquals(seqVal[0], ((Enqueued) mainQueue.getHead()).getNode().getValue(), 0.);
+        Assert.assertEquals(ADD, ((Enqueued) mainQueue.getTail()).getType());
     }
 
     @Ignore
@@ -84,11 +84,27 @@ public class TypicalTest {
         pushTheButton(15);
         buttonCombo(seq0);
         pushTheButton(19);
-        Assert.assertEquals(SUBTRACT, ((Enqueued) Memory.mainQueue.getHead()).getType());   // !
+        Assert.assertEquals(VALUE, ((Enqueued) mainQueue.getHead()).getType());   // !
         Assert.assertEquals(
-                ((Enqueued) Memory.mainQueue.getHead()).getType(),
-                ((Enqueued) Memory.mainQueue.getTail()).getType()
+                ((Enqueued) mainQueue.getHead()).getType(),
+                ((Enqueued) mainQueue.getTail()).getType()
         );
+        double result = ((Enqueued) mainQueue .getHead()).getNode().getValue();
+        Assert.assertEquals(0., result, 0.);
+    }
+
+    @Test
+    public void interact_04_temp(){
+        buttonCombo(seq0);
+        pushTheButton(15);
+        buttonCombo(seq0);
+        Memory.dumpParserCache();
+        mainQueue.convertToLocalTree(mainQueue.getHead());
+        Assert.assertNotNull(mainQueue.getHead());
+        Assert.assertSame(mainQueue.getHead(), mainQueue.getTail());
+
+//        TODO check the left branch in the convertToLocalTree
+
     }
 
     @Ignore
@@ -99,14 +115,14 @@ public class TypicalTest {
 
         pushTheButton(15);
         Assert.assertEquals(0, Memory.parserCache.length());
-        Assert.assertEquals(VALUE, ((Enqueued) Memory.mainQueue.getHead()).getType());
-        Assert.assertEquals(seqVal[1], ((Enqueued) Memory.mainQueue.getHead()).getNode().getValue(), 0.);
+        Assert.assertEquals(VALUE, ((Enqueued) mainQueue.getHead()).getType());
+        Assert.assertEquals(seqVal[1], ((Enqueued) mainQueue.getHead()).getNode().getValue(), 0.);
 
         buttonCombo(seq1);
         pushTheButton(19);
 
         Nodeable
-                cache = ((Enqueued) Memory.mainQueue.getHead()).getNode();
+                cache = ((Enqueued) mainQueue.getHead()).getNode();
 
         Assert.assertEquals(seqVal[1], cache.getLocalLeft().getValue(), 0.);    // !
         Assert.assertEquals(seqVal[1], cache.getLocalRite().getValue(), 0.);    // !

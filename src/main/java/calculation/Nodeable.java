@@ -5,6 +5,7 @@ import static calculation.NodeType.*;
 
 import calculation.otherExpressions.Value;
 import input.*;
+import memory.Memory;
 
 public interface Nodeable {
 
@@ -30,7 +31,8 @@ public interface Nodeable {
     //  @formatter:on
 
     static void dumpParserCache() {
-        System.out.println("dupa");
+        Memory.dumpParserCache();
+        /*System.out.println("dupa");
         if (isParserCacheAValue()) {
             double
                     val = clearCache();
@@ -41,6 +43,6 @@ public interface Nodeable {
             mainQueue.updateQueue(queuer);
 
             System.out.println("dumpParserCache() : the value added to the mainQueue");
-        } else System.out.println("dumpParserCache() : no value to add to the mainQueue");
+        } else System.out.println("dumpParserCache() : no value to add to the mainQueue");*/
     }
 }

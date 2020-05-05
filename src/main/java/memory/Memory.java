@@ -1,6 +1,10 @@
 package memory;
 
+import calculation.Nodeable;
+import calculation.otherExpressions.Value;
 import input.*;
+
+import static calculation.NodeType.VALUE;
 
 public abstract class Memory implements Parsable {
 
@@ -35,6 +39,21 @@ public abstract class Memory implements Parsable {
                 addCharToCache(c);
             } catch (NumberFormatException ignored) {
             }
+    }
+
+    public static void dumpParserCache() {
+        System.out.println("dupa");
+        if (isParserCacheAValue()) {
+            double
+                    val = clearCache();
+            Nodeable
+                    nod = new Value(VALUE, val);
+            Queueable
+                    queuer = new Queuer(nod);
+            mainQueue.updateQueue(queuer);
+
+            System.out.println("dumpParserCache() : the value added to the mainQueue");
+        } else System.out.println("dumpParserCache() : no value to add to the mainQueue");
     }
 
     //    @formatter:off
