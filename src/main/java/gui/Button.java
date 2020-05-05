@@ -13,7 +13,7 @@ public class Button extends JButton implements KeyListener {
     private Typical type;
     private char symbol;
 
-    public Button(char symbol, NodeType type) {
+    public Button(NodeType type, char symbol) {
         setName("button_" + symbol);
         setText(symbol);
         setType(type);

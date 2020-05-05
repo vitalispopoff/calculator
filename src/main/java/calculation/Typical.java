@@ -1,12 +1,12 @@
 package calculation;
 
-import gui.Button;
-import gui.MainPanel;
-import input.*;
-import memory.Memory;
-
-import static calculation.NodeType.*;
 import static memory.Memory.*;
+import static calculation.NodeType.*;
+
+import input.*;
+import gui.Button;
+import memory.Memory;
+import calculation.otherExpressions.*;
 
 /**
  * <!---->
@@ -30,7 +30,8 @@ public interface Typical {
 
     void interact(Button button);
 
-    /*static void interact(Typical type, char symbol) {
+
+    static void interact(Typical type, char symbol) {
         double
                 val;
         Nodeable
@@ -50,11 +51,11 @@ public interface Typical {
             }
 //                node = type.interact();
 
-                if (type != EVALUATE) {
+            if (type != EVALUATE) {
 //                    queuer = new Queuer(node);
 //                    mainQueue.updateQueue(queuer);
 //                mainQueue.updateQueue(new Queuer(type.interact()));
-                }
             }
-        }*/
+        }
     }
+}

@@ -1,5 +1,6 @@
 package input;
 
+import calculation.otherExpressions.Value;
 import org.junit.*;
 import calculation.*;
 import calculation.calculations.*;
@@ -17,7 +18,7 @@ public class QueueabilityTest {
 
     @Before
     public void initial() {
-        nod1 = new Value (typVal);
+        nod1 = new Value(typVal);
         nod2 = new Calculation_Exponentiation(typ2);
         nod3 = new Value(typVal);
         que1 = new Queuer(nod1);

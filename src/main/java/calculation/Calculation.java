@@ -1,6 +1,7 @@
 package calculation;
 
 import gui.Button;
+import memory.Memory;
 
 public abstract class Calculation extends Node {
 
@@ -25,4 +26,5 @@ public abstract class Calculation extends Node {
     }
 
     protected abstract double perform(double leftValue, double riteValue);
+
 }

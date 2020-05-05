@@ -1,7 +1,5 @@
 package input;
 
-import calculation.Value;
-
 public interface Queueable {
 
     //    @formatter:off

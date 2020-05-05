@@ -1,5 +1,11 @@
 package calculation;
 
+import static memory.Memory.*;
+import static calculation.NodeType.*;
+
+import calculation.otherExpressions.Value;
+import input.*;
+
 public interface Nodeable {
 
 //    @formatter:off
@@ -21,5 +27,19 @@ public interface Nodeable {
     void setValue(Double value);
     void setValue();
 
-//  @formatter:on
+    //  @formatter:on
+
+    static void dumpParserCache() {
+        if (isParserCacheAValue()) {
+            double
+                    val = clearCache();
+            Nodeable
+                    nod = new Value(VALUE, val);
+            Queueable
+                    queuer = new Queuer(nod);
+            mainQueue.updateQueue(queuer);
+
+            System.out.println("dumpParserCache() : the value added to the mainQueue");
+        } else System.out.println("dumpParserCache() : no value to add to the mainQueue");
+    }
 }

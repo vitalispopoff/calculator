@@ -1,5 +1,6 @@
 package calculation;
 
+import calculation.otherExpressions.Value;
 import org.junit.*;
 
 public class NodeableTest {

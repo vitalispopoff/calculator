@@ -10,9 +10,9 @@ public abstract class Node implements Nodeable {
             localLeft = null,
             localRoot = null,
             localRite = null;
-    Typical
+    protected Typical
             type;
-    Double
+    protected Double
             value = NaN;
 
     public Node(){}
