@@ -1,5 +1,7 @@
 package calculation;
 
+import gui.Button;
+
 import static java.lang.Double.NaN;
 
 public abstract class Node implements Nodeable {
@@ -17,6 +19,7 @@ public abstract class Node implements Nodeable {
     public Node(Typical type) {
         setType(type);
     }
+    public Node(Button button){this(button.getType());}
 
     @Override
     public void setValue() {

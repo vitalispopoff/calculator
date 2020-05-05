@@ -13,11 +13,10 @@ public class Button extends JButton implements KeyListener {
     private Typical type;
     private char symbol;
 
-    Button(char symbol, NodeType type) {
+    public Button(char symbol, NodeType type) {
         setName("button_" + symbol);
-        setSymbol(symbol);
+        setText(symbol);
         setType(type);
-        setText(Character.toString(symbol));
         addInteraction();
     }
 
@@ -34,17 +33,24 @@ public class Button extends JButton implements KeyListener {
         addActionListener(e -> type.interact(this));
     }
 
+    void setText(char symbol){
+    setText(Character.toString(symbol));
+    }
+
+    char getSymbol(){
+        String
+                cache = getText();
+        return cache.charAt(cache.length()-1);
+    }
+
     //    @formatter:off
 
-    @Override public void keyTyped(KeyEvent e) {
-    }
-    @Override public void keyPressed(KeyEvent e) {
-    }
-    @Override public void keyReleased(KeyEvent e) {
-    }
+    @Override public void keyTyped(KeyEvent e) { }
+    @Override public void keyPressed(KeyEvent e) { }
+    @Override public void keyReleased(KeyEvent e) { }
 
-    void setSymbol(char symbol){this.symbol= symbol;}
     void setType(Typical type){this.type = type;}
+    public Typical getType(){return type;}
 
     //    @formatter:on
 }

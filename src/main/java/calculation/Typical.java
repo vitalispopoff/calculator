@@ -30,7 +30,7 @@ public interface Typical {
 
     void interact(Button button);
 
-    static void interact(Typical type, char symbol) {
+    /*static void interact(Typical type, char symbol) {
         double
                 val;
         Nodeable
@@ -56,5 +56,5 @@ public interface Typical {
 //                mainQueue.updateQueue(new Queuer(type.interact()));
                 }
             }
-        }
+        }*/
     }

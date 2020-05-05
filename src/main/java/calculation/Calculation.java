@@ -1,12 +1,19 @@
 package calculation;
 
+import gui.Button;
+
 public abstract class Calculation extends Node {
 
-    public Calculation(){super();}
+    public Calculation() {
+        super();
+    }
 
     public Calculation(Typical type) {
         super(type);
-/*        Value.resetCurrent();*/
+    }
+
+    public Calculation(Button button) {
+        super(button);
     }
 
     @Override

@@ -1,11 +1,6 @@
 package calculation;
 
-import calculation.calculations.*;
 import gui.Button;
-import gui.MainDisplay;
-import gui.MainPanel;
-
-import static memory.Memory.mainQueue;
 
 public enum NodeType implements Typical {
 

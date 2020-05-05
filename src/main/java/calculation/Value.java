@@ -1,16 +1,14 @@
 package calculation;
 
+import gui.Button;
+
 public class Value extends Node {
 
-/*    public Value() {
-        super();
-    }*/
-
     public Value(Typical type, Double value){
-        super();
-        this.type = type;
+        super(type);
         this.value = value;
     }
+    public Value(Button button){super(button);}
 
     public Value(Typical type) {
         super(type);
@@ -19,5 +17,10 @@ public class Value extends Node {
     @Override
     protected Double calculate(Nodeable localLeft, Nodeable localRite) {
         return value;
+    }
+
+    public static void main(String[] args) {
+        Button button = new Button('1', NodeType.VALUE);
+        Value val = new Value(button);
     }
 }
