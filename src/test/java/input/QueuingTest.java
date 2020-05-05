@@ -1,12 +1,12 @@
 package input;
 
-import _notes._QueuingTest_Notes;
-import calculation.*;
 import org.junit.*;
+import calculation.*;
+import calculation.calculations.*;
 
 import static memory.Memory.mainQueue;
 
-public class QueuingTest implements _QueuingTest_Notes {
+public class QueuingTest implements _notes._QueuingTest_Notes {
 
     static Typical
             typVal, typ2, typ4, typ6;
@@ -22,18 +22,14 @@ public class QueuingTest implements _QueuingTest_Notes {
         typ2 = NodeType.SUBTRACT;
         typ4 = NodeType.EXPONENT;
         typ6 = NodeType.ADD;
-        nod1 = typVal.interact();
-        nod2 = typ2.interact();
-        nod3 = typVal.interact();
-        nod4 = typ4.interact();
-        nod5 = typVal.interact();
-        nod6 = typ6.interact();
-        nod7 = typVal.interact();
+        nod1 = new Value(typVal, 2.);
+        nod2 = new Calculation_Subtraction(typ2);
+        nod3 = new Value(typVal, 2.);
+        nod4 = new Calculation_Exponentiation(typ4);
+        nod5 = new Value(typVal, 0.);
+        nod6 = new Calculation_Addition(typ6);
+        nod7 = new Value(typVal, 1.);
         ord1 = typVal.getTypePriority();
-        nod1.setValue(2.);
-        nod3.setValue(2.);
-        nod5.setValue(0.);
-        nod7.setValue(1.);
     }
 
 //\\ support methods /\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -56,7 +52,7 @@ public class QueuingTest implements _QueuingTest_Notes {
     }
 
     @Test
-    public void initial_test(){
+    public void initial_test() {
         Assert.assertSame(typ4.getTypePriority(), NodeType.EXPONENT.getTypePriority());
     }
 

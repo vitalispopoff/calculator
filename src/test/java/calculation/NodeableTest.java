@@ -5,7 +5,7 @@ import org.junit.*;
 public class NodeableTest {
 
     static Typical
-            typ1 = NodeType.VALUE,
+            typVal = NodeType.VALUE,
             typ2 = NodeType.BRACKET_IN;
     static Nodeable
             node;
@@ -14,7 +14,7 @@ public class NodeableTest {
 
     @Before
     public void initial() {
-        node = typ1.interact();
+        node = new Value(typVal);
     }
 
     @After
@@ -47,7 +47,7 @@ public class NodeableTest {
 
     @Test
     public void setLocalType_01() {
-        Assert.assertEquals(typ1, node.getType());
+        Assert.assertEquals(typVal, node.getType());
         node.setType(typ2);
         Assert.assertEquals(typ2, node.getType());
     }
@@ -74,6 +74,6 @@ public class NodeableTest {
 
     @Test
     public void getType_01() {
-        Assert.assertEquals(typ1, node.getType());
+        Assert.assertEquals(typVal, node.getType());
     }
 }

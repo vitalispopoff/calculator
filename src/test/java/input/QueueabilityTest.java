@@ -17,9 +17,9 @@ public class QueueabilityTest {
 
     @Before
     public void initial() {
-        nod1 = typVal.interact();
-        nod2 = typ2.interact();
-        nod3 = typVal.interact();
+        nod1 = new Value (typVal);
+        nod2 = new Calculation_Exponentiation(typ2);
+        nod3 = new Value(typVal);
         que1 = new Queuer(nod1);
     }
 

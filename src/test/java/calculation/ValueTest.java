@@ -2,6 +2,7 @@ package calculation;
 
 import org.junit.*;
 
+
 public class ValueTest {
 
     static Typical
@@ -13,7 +14,7 @@ public class ValueTest {
 
     @Before
     public void initial() {
-        val = (Value) type.interact();
+        val = new Value(type);
     }
 
     @After

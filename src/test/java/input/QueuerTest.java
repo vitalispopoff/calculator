@@ -7,13 +7,12 @@ import calculation.calculations.*;
 public class QueuerTest {
 
     static Typical
-            typ1 = NodeType.VALUE,
-            typ2 = NodeType.EXPONENT,
-            typ3 = NodeType.VALUE;
+            typVal = NodeType.VALUE,
+            typ2 = NodeType.EXPONENT;
     static Nodeable
-            nod1 = typ1.interact(),
-            nod2 = typ2.interact(),
-            nod3 = typ3.interact();
+            nod1 = new Value(typVal),
+            nod2 = new Calculation_Exponentiation(typ2),
+            nod3 = new Value(typVal);
     static int
             ord1, ord2, ord3;
     static Queuer que1;
@@ -22,7 +21,7 @@ public class QueuerTest {
 
     @Before
     public void initial() {
-        ord1 = typ1.getTypePriority();
+        ord1 = typVal.getTypePriority();
         que1 = new Queuer(nod1);
     }
 
@@ -57,7 +56,7 @@ public class QueuerTest {
 
     @Test
     public void Queuer_Type() {
-        Assert.assertSame(typ1, que1.getType());
+        Assert.assertSame(typVal, que1.getType());
     }
 
     @Test

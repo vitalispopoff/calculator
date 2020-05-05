@@ -2,9 +2,9 @@ package memory;
 
 import static memory.Memory.*;
 
-import _notes._MemoryTest_Notes;
-import input.NodeQueue;
 import org.junit.*;
+import input.NodeQueue;
+import _notes._MemoryTest_Notes;
 
 public class MemoryTest implements _MemoryTest_Notes {
 
@@ -81,24 +81,24 @@ public class MemoryTest implements _MemoryTest_Notes {
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
-    public void isParserCacheAValue_01(){
+    public void isParserCacheAValue_01() {
         Assert.assertNull(parserCache);
     }
 
     @Test
-    public void isParserCacheAValue_02(){
+    public void isParserCacheAValue_02() {
         parserCache = ".";
         Assert.assertTrue(isParserCacheAValue());
     }
 
     @Test
-    public void isParserCacheAValue_03(){
+    public void isParserCacheAValue_03() {
         isValueNegative = true;
         Assert.assertTrue(isParserCacheAValue());
     }
 
     @Test
-    public void isParserCacheAValue_04(){
+    public void isParserCacheAValue_04() {
         parserCache = "";
         Assert.assertFalse(isParserCacheAValue());
     }
