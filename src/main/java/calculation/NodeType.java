@@ -1,6 +1,7 @@
 package calculation;
 
 import calculation.calculations.*;
+import gui.Button;
 import gui.MainDisplay;
 import gui.MainPanel;
 
@@ -11,83 +12,81 @@ public enum NodeType implements Typical {
 
     BRACKET_IN {
         @Override
-        public Nodeable interact() {
-            return null;
+        public void interact(Button button) {
         }
     },
     BRACKET_OUT {
         @Override
-        public Nodeable interact() {
-            return null;
+        public void interact(Button button) {
         }
     },
     EXPONENT {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Exponentiation(this);
+        public void interact(Button button) {
+//            return new Calculation_Exponentiation(this);
         }
     },
     ROOT {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Rooting(this);
+        public void interact(Button button) {
+//            return new Calculation_Rooting(this);
         }
     },
     MULTIPLY {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Multiplication(this);
+        public void interact(Button button) {
+//            return new Calculation_Multiplication(this);
         }
     },
     DIVIDE {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Division(this);
+        public void interact(Button button) {
+//            return new Calculation_Division(this);
         }
     },
     ADD {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Addition(this);
+        public void interact(Button button) {
+//            return new Calculation_Addition(this);
         }
     },
     SUBTRACT {
         @Override
-        public Nodeable interact() {
-            return new Calculation_Subtraction(this);
+        public void interact(Button button) {
+//            return new Calculation_Subtraction(this);
         }
     },
     VALUE {
         @Override
-        public Nodeable interact() {
-            return new Value(this);
+        public void interact(Button button) {
+//            return new Value(this);
         }
     },
     SPIN {
         @Override
-        public Nodeable interact() {
-            return new Value(this);
+        public void interact(Button button) {
+//            return new Value(this);
         }
     },
     EVALUATE {
         @Override
-//        public Nodeable interact() { return new Value(this/*::interact*/); } // !TODO this::interact calls for closer inspection !
-        public Nodeable interact() {
+//        public void interact(Button button) { return new Value(this/*::interact*/); } // !TODO this::interact calls for closer inspection !
+        public void interact(Button button) {
 //            Nodeable cache = new Value(this, mainQueue.convertToTree());
-            MainPanel.display.setText(mainQueue.convertToTree().toString());
-            return null;
+//            MainPanel.display.setText(mainQueue.convertToTree().toString());
+//            return null;
         }
     },
     CLEAR {
         @Override
-        public Nodeable interact() {
-            return null;
+        public void interact(Button button) {
+//            return null;
         }
     },
     UNDO {
         @Override
-        public Nodeable interact() {
-            return null;
+        public void interact(Button button) {
+//            return null;
         }
     }
 

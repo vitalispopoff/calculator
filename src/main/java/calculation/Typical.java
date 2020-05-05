@@ -1,5 +1,6 @@
 package calculation;
 
+import gui.Button;
 import gui.MainPanel;
 import input.*;
 import memory.Memory;
@@ -19,33 +20,18 @@ import static memory.Memory.*;
  */
 public interface Typical {
 
-    /**
-     * <!---->
-     * <p>delivers an ordinal() method from the Enum class
-     * to the interface<br>
-     * accepts enum only.</p>
-     */
     default int ordinal() throws NullPointerException {
-        return (((Enum) this).ordinal()) + 1;
+        return (((Enum) this).ordinal())/* + 1*/;
     }
 
     default int getTypePriority() throws NullPointerException {
         return ordinal() >> 1;
     }
 
-    /**
-     * <!---->
-     * <p>Links contracted interaction with calculation types defined by Nodeable</p>
-     */
-    Nodeable interact();
+    void interact(Button button);
 
-    /**
-     * <!---->
-     * <p>Provides contract for the implementation of the button action.
-     * Delivers additional logic for the action context.</p>
-     */
     static void interact(Typical type, char symbol) {
-        Double
+        double
                 val;
         Nodeable
                 node;
@@ -62,11 +48,11 @@ public interface Typical {
 
                 mainQueue.updateQueue(queuer);
             }
-                node = type.interact();
+//                node = type.interact();
 
                 if (type != EVALUATE) {
-                    queuer = new Queuer(node);
-                    mainQueue.updateQueue(queuer);
+//                    queuer = new Queuer(node);
+//                    mainQueue.updateQueue(queuer);
 //                mainQueue.updateQueue(new Queuer(type.interact()));
                 }
             }

@@ -31,7 +31,7 @@ public class Button extends JButton implements KeyListener {
     }
 
     private void addInteraction() {
-        addActionListener(e -> Typical.interact(type, symbol));
+        addActionListener(e -> type.interact(this));
     }
 
     //    @formatter:off

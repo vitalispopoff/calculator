@@ -53,6 +53,7 @@ public class TypicalTest {
         interact(VALUE, '1');
     }
 
+    @Ignore
     @Test
     public void static_interact_01() {
         Assert.assertEquals(0, Memory.parserCache.length());
@@ -61,6 +62,7 @@ public class TypicalTest {
         Assert.assertTrue(Memory.isParserCacheAValue());
     }
 
+    @Ignore
     @Test
     public void static_interact_02() {
         static_interact_init();
@@ -70,6 +72,7 @@ public class TypicalTest {
         Assert.assertEquals(ADD, ((Enqueued) Memory.mainQueue.getTail()).getType());
     }
 
+    @Ignore
     @Test
     public void static_interact_03() {
         static_interact_init();
@@ -83,6 +86,7 @@ public class TypicalTest {
         );
     }
 
+    @Ignore
     @Test
     public void static_interact_04() {
         static_interact_init_1();
