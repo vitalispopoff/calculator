@@ -12,27 +12,27 @@ public class Settings implements Serializable {
 
     private static final String
             fileAddress = "src\\main\\resources\\settings.txt";
-    static Button[] basicCalculator = {
-            new Button( CLEAR, 'C'),
-            new Button( EXPONENT, '^'),
-            new Button( ROOT, '√'),
-            new Button( MULTIPLY, '*'),
-            new Button( VALUE, '7'),
-            new Button( VALUE, '8'),
-            new Button( VALUE, '9'),
-            new Button( DIVIDE, '/'),
-            new Button( VALUE, '4'),
-            new Button( VALUE, '5'),
-            new Button( VALUE, '6'),
-            new Button( ADD, '+'),
-            new Button( VALUE, '1'),
-            new Button( VALUE, '2'),
-            new Button( VALUE,'3'),
-            new Button( SUBTRACT, '-'),
-            new Button( SPIN, '∓'),
-            new Button( VALUE, '0'),
-            new Button( VALUE, '.'),
-            new Button( EVALUATE, '='),
+    public static Button[] basicCalculator = {
+            new Button( CLEAR, 'C'),        //   0
+            new Button( EXPONENT, '^'),     //   1
+            new Button( ROOT, '√'),         //   2
+            new Button( MULTIPLY, '*'),     //   3
+            new Button( VALUE, '7'),        //   4
+            new Button( VALUE, '8'),        //   5
+            new Button( VALUE, '9'),        //   6
+            new Button( DIVIDE, '/'),       //   7
+            new Button( VALUE, '4'),        //   8
+            new Button( VALUE, '5'),        //   9
+            new Button( VALUE, '6'),        //  10
+            new Button( ADD, '+'),          //  11
+            new Button( VALUE, '1'),        //  12
+            new Button( VALUE, '2'),        //  13
+            new Button( VALUE,'3'),         //  14
+            new Button( SUBTRACT, '-'),     //  15
+            new Button( SPIN, '∓'),         //  16
+            new Button( VALUE, '0'),        //  17
+            new Button( VALUE, '.'),        //  18
+            new Button( EVALUATE, '='),     //  19
     };
     public Point
             windowAnchor = new Point(200, 200);

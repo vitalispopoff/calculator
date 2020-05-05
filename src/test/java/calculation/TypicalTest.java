@@ -1,9 +1,9 @@
 package calculation;
 
+import static gui.Settings.basicCalculator;
 import static memory.Memory.*;
 import static calculation.NodeType.*;
 import static calculation.Typical.interact;
-
 
 import input.*;
 import memory.Memory;
@@ -28,6 +28,16 @@ public class TypicalTest {
         type = null;
     }
 
+    private void pushTheButton(int buttonIndex){
+        basicCalculator[buttonIndex].getType().interact(basicCalculator[buttonIndex]);
+    }
+
+    private void buttonSequencing(int[] sequence) {
+        for (int buttonIndex : sequence) {
+            pushTheButton(buttonIndex);
+        }
+    }
+
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Test
@@ -39,18 +49,13 @@ public class TypicalTest {
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     void static_interact_init() {
-        interact(VALUE, '1');
-        interact(SPIN, '∓');
-        interact(VALUE, '.');
-        interact(VALUE, '0');
-        interact(VALUE, '1');
+        int[] sequence = {12, 16, 18, 17, 12};
+        buttonSequencing(sequence);
     }
 
     void static_interact_init_1() {
-        interact(VALUE, '1');
-        interact(VALUE, '.');
-        interact(VALUE, '0');
-        interact(VALUE, '1');
+        int[] sequence = {12, 18, 17, 12};
+        buttonSequencing(sequence);
     }
 
     @Ignore
@@ -66,7 +71,7 @@ public class TypicalTest {
     @Test
     public void static_interact_02() {
         static_interact_init();
-        interact(ADD, '+');
+        pushTheButton(11);
         Assert.assertEquals(VALUE, ((Enqueued) Memory.mainQueue.getHead()).getType());
         Assert.assertEquals(-1.01, ((Enqueued) Memory.mainQueue.getHead()).getNode().getValue(), 0.);
         Assert.assertEquals(ADD, ((Enqueued) Memory.mainQueue.getTail()).getType());
@@ -76,9 +81,9 @@ public class TypicalTest {
     @Test
     public void static_interact_03() {
         static_interact_init();
-        interact(SUBTRACT, '-');
+        pushTheButton(15);
         static_interact_init();
-        interact(EVALUATE, '=');
+        pushTheButton(19);
         Assert.assertEquals(SUBTRACT, ((Enqueued) Memory.mainQueue.getHead()).getType());
         Assert.assertEquals(
                 ((Enqueued) Memory.mainQueue.getHead()).getType(),
@@ -91,12 +96,12 @@ public class TypicalTest {
     public void static_interact_04() {
         static_interact_init_1();
         Assert.assertTrue(Memory.parserCache.length() > 0);
-        interact(SUBTRACT, '-');
+        pushTheButton(15);
         Assert.assertEquals(0, Memory.parserCache.length());
         Assert.assertEquals(VALUE, ((Enqueued) Memory.mainQueue.getHead()).getType());
         Assert.assertEquals(1.01, ((Enqueued) Memory.mainQueue.getHead()).getNode().getValue(), 0.);
         static_interact_init_1();
-        interact(EVALUATE, '=');
+        pushTheButton(19);
         Nodeable cache = ((Enqueued) Memory.mainQueue.getHead()).getNode();
         Assert.assertEquals(1.01, cache.getLocalLeft().getValue(), 0.);
         Assert.assertEquals(1.01, cache.getLocalRite().getValue(), 0.);
