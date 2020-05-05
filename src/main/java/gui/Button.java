@@ -37,7 +37,7 @@ public class Button extends JButton implements KeyListener {
     setText(Character.toString(symbol));
     }
 
-    char getSymbol(){
+    public char getSymbol(){
         String
                 cache = getText();
         return cache.charAt(cache.length()-1);

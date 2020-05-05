@@ -30,6 +30,7 @@ public interface Nodeable {
     //  @formatter:on
 
     static void dumpParserCache() {
+        System.out.println("dupa");
         if (isParserCacheAValue()) {
             double
                     val = clearCache();

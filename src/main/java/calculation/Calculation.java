@@ -1,7 +1,9 @@
 package calculation;
 
+import static memory.Memory.*;
+
 import gui.Button;
-import memory.Memory;
+import input.Queuer;
 
 public abstract class Calculation extends Node {
 
@@ -15,6 +17,8 @@ public abstract class Calculation extends Node {
 
     public Calculation(Button button) {
         super(button);
+        Nodeable.dumpParserCache();
+        mainQueue.updateQueue(new Queuer(this));
     }
 
     @Override
@@ -26,5 +30,6 @@ public abstract class Calculation extends Node {
     }
 
     protected abstract double perform(double leftValue, double riteValue);
+
 
 }
