@@ -13,8 +13,17 @@ Current status of development: <a href = "https://github.com/vitalispopoff/calcu
 
 # versions:
 
-0.1.1
-+ GUI display results
+
+0.0.1 
++ restart
+
+* * *
+
+before the commit 160
+
+0.1.1 (version)
++ GUI connected with the memory  
++ code refactoring
 
 0.1.0
 + restructured input package

@@ -1,0 +1,40 @@
+@startuml
+
++interface Queueable{
+    ..
+        +   {method} Queueable updateQueueable ()
+        +   {method} Queueable getHead ()
+        +   {method} Queueable getTail ()
+        +   {method} void updateQueueable (Queueable)
+        +   {method} void setHead (Queueable)
+        +   {method} void setTail (Queueable)
+}
++class Node {
+        ~   {field} {static} Queueable main
+        ~   {field} Queueable setHead
+        ~   {field} Queueable tail
+    -- @Overrides--
+}
+
+Queueable <|-- Node : impl
+
++interface Parseable{
+    ..
+        +   {method} void addToValueCache()
+        +   {method} void toggleValueSign()
+        +   {method} double dumpValueCache()
+}
+
++class Parser{
+        ~   {field} {static} ArrayList<Character> parserCache
+    --@Overrides--
+}
+
+Parseable <|-- Parser : impl
+
++interface Solvable{
+    ..
+        +{method} void Solve (Queueable)
+}
+
+@enduml
