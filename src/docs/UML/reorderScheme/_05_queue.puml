@@ -10,6 +10,7 @@ package " " <<Rectangle>>{
     object que1{
         ~ Double value
     }
+
         null ()- "left" que1
         que1 "rite" -() null
         que1 "root" *--* "left" que2

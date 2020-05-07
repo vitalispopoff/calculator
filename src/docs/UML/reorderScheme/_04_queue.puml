@@ -18,7 +18,7 @@ package " " <<Rectangle>>{
         ~ Double value = NaN
     }
         que2 "rite" -() null
-        que2 "root" --*  que3
+        que2 "root" *--*  "left" que3
 
     object que3{
         ~ Double value
