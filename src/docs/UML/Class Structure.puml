@@ -9,14 +9,14 @@
         +   {method} void setHead (Queueable)
         +   {method} void setTail (Queueable)
 }
-+class Node {
++class Node implements Queueable{
         ~   {field} {static} Queueable main
         ~   {field} Queueable setHead
         ~   {field} Queueable tail
     -- @Overrides--
 }
 
-Queueable <|-- Node : impl
+
 
 +interface Parseable{
     ..
@@ -25,12 +25,13 @@ Queueable <|-- Node : impl
         +   {method} double dumpValueCache()
 }
 
-+class Parser{
++class Parser implements Parseable{
         ~   {field} {static} ArrayList<Character> parserCache
     --@Overrides--
 }
 
-Parseable <|-- Parser : impl
+'Parseable <|-- Parser : impl
+
 
 +interface Solvable{
     ..

@@ -1,0 +1,29 @@
+@startuml
+
+package "move que2 left" <<Rectangle>>{
+
+    object que1{
+        ~ Double value
+    }
+        null ()- "left" que1
+        que1 "rite" -() null
+
+    object que2{
+        ~ Double value = NaN
+    }
+        que2 "rite" -() null
+
+    object que3{
+        ~ Double value
+    }
+        null ()- "left" que3
+        que3 "rite" -() null
+        que3 "root" --() null
+
+    que1 "root" *--* "left" que2
+    que2 "root" --*  que3
+
+}
+     head ()-- que2
+     que3 --() tail
+@enduml

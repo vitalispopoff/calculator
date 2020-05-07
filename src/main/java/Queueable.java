@@ -1,12 +1,12 @@
 public interface Queueable {
 
-    Queueable updateQueueable();
+    Queueable updateQueue();
     Queueable getLeft();
     Queueable getRite();
-    Queueable getFollower();
+    Queueable getRoot();
 
-    void updateQueueable (Queueable queueable);
+    void updateQueue(Queueable queueable);
     void setLeft(Queueable queueable);
     void setRite(Queueable queueable);
-    void setFollower(Queueable queueable);
+    void setRoot(Queueable queueable);
 }

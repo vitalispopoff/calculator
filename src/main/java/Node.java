@@ -5,26 +5,27 @@ public class Node implements Queueable {
     Queueable
             left,
             rite,
-            follower;
+            root;
+    Double value = Double.NaN;
 
     Node(Queueable queueable) {
-        setFollower(queueable);
+        setRoot(queueable);
     }
 
     @Override
-    public Queueable updateQueueable() {
+    public Queueable updateQueue() {
         Queueable
                 cache = mainQueue.getLeft();
 
-        mainQueue.setLeft(cache.getFollower());
-        cache.setFollower(null);
+        mainQueue.setLeft(cache.getRoot());
+        cache.setRoot(null);
 
         return cache;
     }
 
     @Override
-    public void updateQueueable(Queueable queueable) {
-        mainQueue.getRite().setFollower(queueable);
+    public void updateQueue(Queueable queueable) {
+        mainQueue.getRite().setRoot(queueable);
         mainQueue.setRite(queueable);
     }
 
@@ -39,8 +40,8 @@ public class Node implements Queueable {
     }
 
     @Override
-    public Queueable getFollower() {
-        return follower;
+    public Queueable getRoot() {
+        return root;
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Node implements Queueable {
     }
 
     @Override
-    public void setFollower(Queueable queueable) {
-        follower = queueable;
+    public void setRoot(Queueable queueable) {
+        root = queueable;
     }
 }
