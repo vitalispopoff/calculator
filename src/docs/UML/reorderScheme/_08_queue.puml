@@ -1,19 +1,25 @@
 @startuml
 
-package "move queue tail" <<Rectangle>>{
+() head
+() tail
+
+package " " <<Rectangle>>{
+
+    head --*  que2
 
     object que1{
         ~ Double value
     }
         null ()- "left" que1
         que1 "rite" -() null
+        que1 "root" *--* "left" que2
 
     object que2{
         ~ Double value = NaN
     }
-        que1 "root" *--* "left" que2
-        que2 "rite"--* que3
+        que2 "rite" --* que3
         que2 "root" --() null
+        que2 *-- tail
 
     object que3{
         ~ Double value
@@ -23,8 +29,6 @@ package "move queue tail" <<Rectangle>>{
         que3 "root" --() null
 
 
-}
-    que2 --() tail
-    head ()-- que2
 
+}
 @enduml
