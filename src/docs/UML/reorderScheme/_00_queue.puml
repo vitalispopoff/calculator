@@ -5,30 +5,28 @@
 
 package " " <<Rectangle>>{
 
-    head --*  que2
+         head --* que1
 
     object que1{
         ~ Double value
     }
-        null ()- "left" que1
+    null ()- "left" que1
         que1 "rite" -() null
-        que1 "root" *--* "left" que2
+        que1 "root" --* que2
 
     object que2{
         ~ Double value = NaN
     }
-        que2 "rite" --* que3
-        que2 "root" --() null
-        que2 *-- tail
+        null ()- "left" que2
+        que2 "rite" -() null
+        que2 "root" --* que3
 
     object que3{
         ~ Double value
     }
         null ()- "left" que3
         que3 "rite" -() null
-        que3 "root" --() null
-
-
-
+        que3 "root" *--* tail
 }
+
 @enduml
