@@ -18,7 +18,7 @@ package " " <<Rectangle>>{
         ~ Double value = NaN
     }
         null ()- "left" que2
-        que2 "rite" --* que3
+
         que2 "root" *--* tail
 
     object que3{
@@ -26,7 +26,8 @@ package " " <<Rectangle>>{
     }
         null ()- "left" que3
         que3 "rite" -() null
-        que3 "root" --() null
+        que3 "root" *--* "rite" que2
+'        que3 "root" --* tail
 }
 
 @enduml

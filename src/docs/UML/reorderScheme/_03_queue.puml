@@ -18,7 +18,7 @@ package " " <<Rectangle>>{
         ~ Double value = NaN
     }
         null ()- "left" que2
-        que2 "rite" -() null
+        que2 "rite" --* que3
         que2 "root" --* que3
         que2 *-- tail
 
