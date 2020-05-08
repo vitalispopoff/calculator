@@ -2,11 +2,13 @@ public class Node implements Queueable {
 
     static Queueable
             mainQueue = new Node(null);
+    static int[] priorityIndex;
     Queueable
             left,
             rite,
             root;
     Double value = Double.NaN;
+    String priority;
 
     Node(Queueable queueable) {
         setRoot(queueable);

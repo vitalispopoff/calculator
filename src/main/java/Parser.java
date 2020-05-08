@@ -1,31 +1,42 @@
-import java.util.ArrayList;
-
 public class Parser implements Parseable {
 
-    static ArrayList<Character> parserCache;
+    static boolean isValueNegative = false;
+    private static String parserCache = "";
 
-    static {
-        parserCache = new ArrayList<>();
-        parserCache.add('+');
+    public static void addToParserCache(char c) {
+        if (c == 8723) isValueNegative = !isValueNegative;
+        else if (isParserAValue(c)) parserCache += c;
     }
 
-    @Override
-    public void addToValueCache(char c) {
+    public static double dumpParserCache() {
+        if (parserCache.length() == 0) return Double.NaN;
+        double cache
+                = isValueNegative
+                ? -1. * Double.parseDouble(parserCache)
+                : Double.parseDouble(parserCache);
+        resetParser();
+        return cache;
+    }
+
+    public static boolean isParserAValue() {
+        return isParserAValue('\u0000');
+    }
+
+    static boolean isParserAValue(char c) {
         try {
-            Double.parseDouble(parserCache.toString() + c);
-            parserCache.add(c);
-        } catch (Exception e) {
-            System.out.println("Character \"" + c + "\" doesn't fit to the number format.");
+            Double.parseDouble(parserCache + c);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
-    @Override
-    public void toggleValueSign() {
-        parserCache.set(0, parserCache.get(0) == '+' ? '-' : '+');
+    public static void resetParser() {
+        isValueNegative = false;
+        parserCache = "";
     }
 
-    @Override
-    public double dumpValueCache() {
-        return Double.parseDouble(parserCache.toString());
+    static String getParserCache() {
+        return parserCache;
     }
 }
