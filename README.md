@@ -7,6 +7,8 @@ Move along.
 
 * * *
 
+Curret documentation : <a href ="https://github.com/vitalispopoff/calculator/wiki"> Wiki</a>.
+
 Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues closed</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues opened</a>.
 
 * * *
