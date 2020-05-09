@@ -37,18 +37,28 @@
 }
 
 +class Parser implements Parseable{
-        ~   {field} {static} boolean isValueNegative
-        ~   {field} {static} ArrayList<Character> parserCache
+        ~    {field} {static} boolean isValueNegative
+        -   {field} {static} ArrayList<Character> parserCache
     --
-        +   {method} {static} void addToParserCache
+        +   {method} {static} void addToParserCache (char)
+        +   {method} {static} dumpParserCache ()
+        +   {method} {static} boolean isParserAValue ()
+        +   {method} {static} void resetParser ()
+        ~   {method} {static} String getParserCache ()
 }
 
-'Parseable <|-- Parser : impl
-
-
-+interface Solvable{
+enum Priority{
+        EXPONENT,
+        ROOT,
+        MULTIPLY,
+        DIVIDE,
+        ADD,
+        SUBTRACT,
+        EVALUATE,
+        VALUE
     ..
-        +{method} void Solve (Nodeable)
 }
+
+Node --|> Priority
 
 @enduml

@@ -30,7 +30,7 @@ public class Node implements Nodeable {
 
     void takeFromPriorityIndex(Nodeable nodeable) {
         int
-                index = ((Node)nodeable).priorityType.ordinal() >> 1;
+                index = ((Node) nodeable).priorityType.ordinal() >> 1;
         if (priorityIndex[index] > 0) priorityIndex[index]--;
     }
 
