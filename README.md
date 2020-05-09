@@ -7,14 +7,17 @@ Move along.
 
 * * *
 
-Curret documentation : <a href ="https://github.com/vitalispopoff/calculator/wiki"> Wiki</a>.
+* Current documentation : <a href ="https://github.com/vitalispopoff/calculator/wiki"> Wiki</a>.
 
-Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues closed</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues opened</a>.
+* Current status of development: <a href = "https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aclosed">Issues closed</a> / <a href="https://github.com/vitalispopoff/calculator/issues?q=is%3Aissue+is%3Aopen">Issues opened</a>.
 
 * * *
 
 # versions:
 
+0.0.2
++ main data structure available
++ tests available
 
 0.0.1 
 + restart

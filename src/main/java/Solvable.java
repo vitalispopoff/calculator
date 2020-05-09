@@ -1,8 +1,8 @@
 public interface Solvable {
 
-    static void solve(Nodeable nodeable){
+	static void solve(Nodeable nodeable) {
 
-    }
+	}
 
-    void convertToTree(Nodeable queue);
+	void convertToTree(Nodeable queue);
 }
