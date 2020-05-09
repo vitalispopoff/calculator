@@ -3,7 +3,7 @@ public class Parser implements Parseable {
     static boolean isValueNegative = false;
     private static String parserCache = "";
 
-    public static void addToParserCache(char c) {
+    static public void addToParserCache(char c) {
         if (c == 8723) isValueNegative = !isValueNegative;
         else if (isParserAValue(c)) parserCache += c;
     }

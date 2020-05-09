@@ -1,5 +1,5 @@
 public interface Solvable {
 
-    void solve(Queueable queueable);
+    void solve(Nodeable nodeable);
     void convertToTree();
 }

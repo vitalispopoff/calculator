@@ -1,11 +1,11 @@
-public class Node implements Queueable {
+public class Node implements Nodeable {
 
-    static Queueable
+    static Nodeable
             mainQueue = new Node(null),
             cache;
 
     static int[] priorityIndex = new int[Priority.values().length];
-    Queueable
+    Nodeable
             left,
             rite,
             root;
@@ -16,23 +16,22 @@ public class Node implements Queueable {
 
 //\\ constructors \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-    Node(Queueable queueable) {
-        setRoot(queueable);
+    Node(Nodeable nodeable) {
+        setRoot(nodeable);
     }
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-    static void updatePriorityIndex(Queueable queueable) {
+    void addToPriorityIndex(Nodeable nodeable) {
         int
-                index = ((Node)queueable).priorityType.ordinal() >> 1;
-
+                index = ((Node) nodeable).priorityType.ordinal() >> 1;
         priorityIndex[index]++;
     }
 
-    void updatePriorityIndex(){
+    void takeFromPriorityIndex(Nodeable nodeable) {
         int
-                index = priorityType.ordinal()>>1;
-        priorityIndex[index]--;
+                index = ((Node)nodeable).priorityType.ordinal() >> 1;
+        if (priorityIndex[index] > 0) priorityIndex[index]--;
     }
 
     static int getPriorityIndex() {
@@ -57,53 +56,53 @@ public class Node implements Queueable {
 //\\ @Overrides //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
     @Override
-    public Queueable updateQueue() {
-        Queueable
+    public Nodeable takeFromQueue() {
+        Nodeable
                 cache = mainQueue.getLeft();
 
         mainQueue.setLeft(cache.getRoot());
-        if(mainQueue.getLeft()==null)mainQueue.setRite(null);
+        if (mainQueue.getLeft() == null) mainQueue.setRite(null);
         cache.setRoot(null);
+        ((Node) mainQueue).takeFromPriorityIndex(cache);
 
         return cache;
     }
 
     @Override
-    public void updateQueue(Queueable queueable) {
-        if (getLeft() == null) setLeft(queueable);
-        if (getRite() != null) getRite().setRoot(queueable);
-        setRite(queueable);
-        updatePriorityIndex();
-        ((Node)queueable).updatePriorityIndex();
+    public void addToQueue(Nodeable nodeable) {
+        if (getLeft() == null) setLeft(nodeable);
+        if (getRite() != null) getRite().setRoot(nodeable);
+        setRite(nodeable);
+        ((Node) mainQueue).addToPriorityIndex(nodeable);
     }
 
     @Override
-    public Queueable getLeft() {
+    public Nodeable getLeft() {
         return left;
     }
 
     @Override
-    public Queueable getRite() {
+    public Nodeable getRite() {
         return rite;
     }
 
     @Override
-    public Queueable getRoot() {
+    public Nodeable getRoot() {
         return root;
     }
 
     @Override
-    public void setLeft(Queueable queueable) {
-        left = queueable;
+    public void setLeft(Nodeable nodeable) {
+        left = nodeable;
     }
 
     @Override
-    public void setRite(Queueable queueable) {
-        rite = queueable;
+    public void setRite(Nodeable nodeable) {
+        rite = nodeable;
     }
 
     @Override
-    public void setRoot(Queueable queueable) {
-        root = queueable;
+    public void setRoot(Nodeable nodeable) {
+        root = nodeable;
     }
 }

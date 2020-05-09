@@ -1,33 +1,46 @@
 @startuml
 
-+interface Queueable{
++interface Nodeable{
     ..
-        +   {method} Queueable updateQueueable ()
-        +   {method} Queueable getHead ()
-        +   {method} Queueable getTail ()
-        +   {method} void updateQueueable (Queueable)
-        +   {method} void setHead (Queueable)
-        +   {method} void setTail (Queueable)
-}
-+class Node implements Queueable{
-        ~   {field} {static} Queueable main
-        ~   {field} Queueable setHead
-        ~   {field} Queueable tail
-    -- @Overrides--
+        +   {method} Nodeable takeFromQueue ()
+        +   {method} Nodeable getLeft ()
+        +   {method} Nodeable getRite ()
+        +   {method} Nodeable getRoot ()
+        +   {method} void addToQueue (Nodeable)
+        +   {method} void setLeft (Nodeable)
+        +   {method} void setRite (Nodeable)
+        +   {method} void setRoot (Nodeable)
 }
 
-
++class Node implements Nodeable{
+        ~   {field} {static} Nodeable mainQueue
+        ~   {field} {static} Nodeable cache ?
+        ~   {field} {static} int[] priorityIndex
+        ~   {field} Nodeable left
+        ~   {field} Nodeable getRite
+        ~   {field} Nodeable root
+        ~   {field} Double value
+        ~   {field} Priority priorityType
+    --
+        ~   {method} void addToPriorityIndex (Nodeable)
+        ~   {method} void takeFromPriorityIndex (Nodeable)
+        ~   {method} int getPriorityIndex ()
+        ~   {method} void setValue (Double)
+        ~   {method} Double getValue ()
+    .. @Overrides..
+}
 
 +interface Parseable{
     ..
-        +   {method} void addToValueCache()
-        +   {method} void toggleValueSign()
-        +   {method} double dumpValueCache()
+        +   {method} {static} void addToValueCache (char)
+        +   {method} {static} double dumpValueCache()
 }
 
 +class Parser implements Parseable{
+        ~   {field} {static} boolean isValueNegative
         ~   {field} {static} ArrayList<Character> parserCache
-    --@Overrides--
+    --
+        +   {method} {static} void addToParserCache
 }
 
 'Parseable <|-- Parser : impl
@@ -35,7 +48,7 @@
 
 +interface Solvable{
     ..
-        +{method} void Solve (Queueable)
+        +{method} void Solve (Nodeable)
 }
 
 @enduml

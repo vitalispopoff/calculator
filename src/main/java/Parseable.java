@@ -1,5 +1,5 @@
 public interface Parseable {
 
-    static void addToValueCache(char c){}
-    static double dumpValueCache(){return Double.NaN;}
+    static void addToParserCache(char c){}
+    static double dumpParserCache(){return Double.NaN;}
 }
