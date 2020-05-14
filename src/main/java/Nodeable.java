@@ -1,12 +1,34 @@
-public interface Nodeable {
+public interface Nodeable extends Enqueued{
 
-    Nodeable takeFromQueue();
-    Nodeable getLeft();
-    Nodeable getRite();
-    Nodeable getRoot();
+	void setLeft(Nodeable node);
 
-    void addToQueue(Nodeable nodeable);
-    void setLeft(Nodeable nodeable);
-    void setRite(Nodeable nodeable);
-    void setRoot(Nodeable nodeable);
+	void setRite(Nodeable node);
+
+	void setRoot(Nodeable node);
+
+	Nodeable getLeft();
+
+	Nodeable getRite();
+
+	Nodeable getRoot();
+
+//	@Overrides  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+	@Override
+	default void setPrev(Enqueued queuer){
+		Nodeable node = (Nodeable)queuer;
+		setLeft(node);
+		setRite(node);
+	}
+
+	@Override
+	default void setPost(Enqueued queuer){setRoot((Nodeable)queuer);}
+
+	@Override
+	default Enqueued getPrev(){
+		return getLeft()==getRite()?(Enqueued) getLeft() : null;
+	}
+
+	@Override
+	default Enqueued getPost(){return (Enqueued)getRoot();}
 }
