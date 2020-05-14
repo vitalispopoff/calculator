@@ -24,7 +24,7 @@
     --
         ~   {method} void addToPriorityIndex (Nodeable)
         ~   {method} void takeFromPriorityIndex (Nodeable)
-        ~   {method} int getPriorityIndex ()
+'        ~   {method} int getPriorityIndex ()
         ~   {method} void setValue (Double)
         ~   {method} Double getValue ()
     .. @Overrides..
