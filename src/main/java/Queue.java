@@ -1,4 +1,4 @@
-public class Queue implements Queueable {
+public class Queue implements Solvable {
 
 //	@formatter:off
 

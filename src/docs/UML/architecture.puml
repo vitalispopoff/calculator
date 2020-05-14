@@ -1,0 +1,31 @@
+@startuml
+
+package GUI {
+    component output
+    component input
+}
+
+package logic {
+    component Solvable
+    component Parsable
+}
+
+package data {
+    component memory
+    component Queueable
+    component Treeable
+    component Nodeable
+}
+
+[input]     -right-o     logic
+[output]    *-up-      [input]
+[output]    -right-o     [memory]
+[memory]    -right-*    [Queueable]
+
+[Solvable]  <|-down-    [Queueable]
+[Queueable] <|-down-    [Treeable]
+
+[Treeable]  <|-right-    [Nodeable]
+[Parsable]  <|-down-     [Nodeable]
+
+@enduml
