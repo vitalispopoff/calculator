@@ -1,34 +1,25 @@
-public interface Nodeable extends Enqueued{
+public interface Nodeable extends Enqueued {
 
-	void setLeft(Nodeable node);
+//	@formatter:off
 
-	void setRite(Nodeable node);
+	void setLeft (Nodeable nodeable);
+	void setRite (Nodeable nodeable);
+	void setRoot (Nodeable nodeable);
 
-	void setRoot(Nodeable node);
-
-	Nodeable getLeft();
-
-	Nodeable getRite();
-
-	Nodeable getRoot();
+	Nodeable getLeft ();
+	Nodeable getRite ();
+	Nodeable getRoot ();
 
 //	@Overrides  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override
-	default void setPrev(Enqueued queuer){
-		Nodeable node = (Nodeable)queuer;
-		setLeft(node);
-		setRite(node);
+	@Override default void setPrev (Enqueued enqueued) {
+		setLeft ( (Nodeable) enqueued);
+		setRite ( (Nodeable) enqueued);
 	}
+	@Override default void setPost (Enqueued enqueued) { setRoot ( (Nodeable) enqueued); }
 
-	@Override
-	default void setPost(Enqueued queuer){setRoot((Nodeable)queuer);}
+	@Override default Enqueued getPrev () { return getLeft() == getRite () ? (Enqueued) getLeft () : null; }
+	@Override default Enqueued getPost () { return (Enqueued) getRoot (); }
 
-	@Override
-	default Enqueued getPrev(){
-		return getLeft()==getRite()?(Enqueued) getLeft() : null;
-	}
-
-	@Override
-	default Enqueued getPost(){return (Enqueued)getRoot();}
+//	@formatter:on
 }

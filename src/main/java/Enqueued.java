@@ -1,24 +1,20 @@
 public interface Enqueued extends Queueable {
 
-	void setPrev(Enqueued queuer);
+//	@formatter:off
 
-	void setPost(Enqueued queuer);
+	void setPrev (Enqueued enqueued);
+	void setPost (Enqueued enqueued);
 
-	Enqueued getPrev();
+	Enqueued getPrev ();
+	Enqueued getPost ();
 
-	Enqueued getPost();
+//	Overrides \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-//	@Overrides  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+	@Override default void setHead (Queueable queueable) { setPrev( (Enqueued) queueable); }
+	@Override default void setTail (Queueable queueable) { setPost( (Enqueued) queueable); }
 
-	@Override
-	default void setHead(Queueable queuer) {setPrev((Enqueued) queuer);}
+	@Override default Queueable getHead () { return (Queueable) getPrev (); }
+	@Override default Queueable getTail () { return (Queueable) getPost (); }
 
-	@Override
-	default void setTail(Queueable queuer) {setPost((Enqueued) queuer);}
-
-	@Override
-	default Queueable getHead() {return (Queueable) getPrev();}
-
-	@Override
-	default Queueable getTail() {return (Queueable) getPost();}
+//	@formatter:on
 }
