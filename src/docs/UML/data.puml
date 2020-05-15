@@ -1,0 +1,43 @@
+@startuml
+
+package data {
+
+    +interface Queueable {
+
+    }
+
+    +interface Treeable extends Queueable{
+
+    }
+
+    +interface Nodeable extends Treeable{
+
+    }
+
+    +class Queue {
+
+    }
+
+    +class Node {
+
+    }
+
+'    Queueable   *-left      Queue
+'    Nodeable    *-left      Node
+
+    Queue       -right-*    Queueable
+    Node        -right-*    Nodeable
+
+    'Queueable   <|-down-    Treeable
+    'Treeable    <|-down-    Nodeable
+
+}
+
+    () Solvable
+    () Parsable
+
+    Queue       -right-|>   Solvable
+    Node        -right-|>   Parsable
+    Queue       ---*     Node
+
+@enduml
