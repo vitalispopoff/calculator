@@ -2,12 +2,20 @@ package logic;
 
 public interface Parsable {
 
-//	@formatter:off
+	static final ParsableCache cacheWrapper = new ParsableCache();
 
-	static void addToParserCache (char c) { }
+	void addToParserCache(char c);
 
-	static double dumpParserCache () {return Double.NaN;}
+	double dumpParserCache();
 
-//	@formatter:on
+	class ParsableCache {
 
+		static String mainCache = "";
+
+		static public String getMainCache() {
+			return mainCache;
+		}
+
+		static public void setMainCache(String string) { mainCache = string; }
+	}
 }
