@@ -1,18 +1,9 @@
 package logic;
 
-public /*abstract */class Parser implements Parsable {
-
-//	@formatter:off
-
-	static private String
-			parserCache = "";
-	static boolean
-			isValueNegative = false;
-
-//	reimplementations \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
+public class Parser /*extends ParsableCache implements Parsable */{
+/*
 	@Override
-	/*static*/ public void addToParserCache (char c) {
+	public void addToParserCache (char c) {
 		if (c == 8723)
 			isValueNegative = ! isValueNegative;
 		else if (isParserAValue (c))
@@ -20,7 +11,7 @@ public /*abstract */class Parser implements Parsable {
 	}
 
 	@Override
-	/*static*/ public double dumpParserCache () {
+	public double dumpParserCache () {
 		if (parserCache.length () == 0)
 			return Double.NaN;
 
@@ -31,9 +22,8 @@ public /*abstract */class Parser implements Parsable {
 		return cache;
 	}
 
-//	static  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
 	static boolean isParserAValue () { return isParserAValue ('\u0000'); }
+
 	static boolean isParserAValue (char c) {
 		try {
 			Double.parseDouble (parserCache + c);
@@ -43,12 +33,12 @@ public /*abstract */class Parser implements Parsable {
 			return false;
 		}
 	}
+
 	static String getParserCacheString () { return isValueNegative? "-"+parserCache : parserCache; }
+
 	static void resetParser () {
 		isValueNegative = false;
 		parserCache = "";
-	}
-
-//	@formatter:on
+	}*/
 
 }
