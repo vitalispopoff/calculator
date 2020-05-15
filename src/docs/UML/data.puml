@@ -22,15 +22,8 @@ package data {
 
     }
 
-'    Queueable   *-left      Queue
-'    Nodeable    *-left      Node
-
     Queue       -right-*    Queueable
     Node        -right-*    Nodeable
-
-    'Queueable   <|-down-    Treeable
-    'Treeable    <|-down-    Nodeable
-
 }
 
     () Solvable

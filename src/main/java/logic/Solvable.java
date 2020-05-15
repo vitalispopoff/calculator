@@ -1,11 +1,6 @@
 package logic;
 
-public interface Solvable /*extends Queueable*/ {
+public interface Solvable {
 
-//	@formatter:off
-
-	String solve ();
-
-//	@formatter:on
-
+	String solve();
 }

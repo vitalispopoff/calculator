@@ -1,6 +1,6 @@
 import logic.Solvable;
 
-public class Queue implements Solvable {
+public class Queue implements Queueable, Solvable {
 
 //	@formatter:off
 
@@ -21,6 +21,8 @@ public class Queue implements Solvable {
 
 	@Override public Queueable getHead () { return head; }
 	@Override public Queueable getTail () { return tail; }
+
+	@Override public String solve(){return "";}
 
 //	@formatter:on
 

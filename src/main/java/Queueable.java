@@ -1,6 +1,4 @@
-import logic.Solvable;
-
-public interface Queueable extends Solvable {
+public interface Queueable {
 
 //	@formatter:off
 
