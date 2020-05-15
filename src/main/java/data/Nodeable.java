@@ -1,3 +1,5 @@
+package data;
+
 public interface Nodeable extends Enqueued {
 
 //	@formatter:off

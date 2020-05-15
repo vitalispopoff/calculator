@@ -1,3 +1,5 @@
+package data;
+
 import logic.Solvable;
 
 public class Queue implements Queueable, Solvable {

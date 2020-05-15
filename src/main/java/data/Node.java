@@ -1,3 +1,5 @@
+package data;
+
 public class Node implements Nodeable {
 
 //	@formatter:off

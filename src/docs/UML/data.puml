@@ -2,35 +2,35 @@
 
 package data {
 
-    +interface Queueable {
+    +interface data.Queueable {
 
     }
 
-    +interface Treeable extends Queueable{
+    +interface Treeable extends data.Queueable{
 
     }
 
-    +interface Nodeable extends Treeable{
+    +interface data.Nodeable extends Treeable{
 
     }
 
-    +class Queue {
+    +class data.Queue {
 
     }
 
-    +class Node {
+    +class data.Node {
 
     }
 
-    Queue       -right-*    Queueable
-    Node        -right-*    Nodeable
+    data.Queue       -right-*    data.Queueable
+    data.Node        -right-*    data.Nodeable
 }
 
     () Solvable
     () Parsable
 
-    Queue       -right-|>   Solvable
-    Node        -right-|>   Parsable
-    Queue       ---*     Node
+    data.Queue       -right-|>   Solvable
+    data.Node        -right-|>   Parsable
+    data.Queue       ---*     data.Node
 
 @enduml

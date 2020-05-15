@@ -12,20 +12,20 @@ package logic {
 
 package data {
     component memory
-    component Queueable
+    component data.Queueable
     component Treeable
-    component Nodeable
+    component data.Nodeable
 }
 
 [input]     -right-o     logic
 [output]    *-up-      [input]
 [output]    -right-o     [memory]
-[memory]    -right-*    [Queueable]
+[memory]    -right-*    [data.Queueable]
 
-[logic.Solvable]  <|-down-    [Queueable]
-[Queueable] <|-down-    [Treeable]
+[logic.Solvable]  <|-down-    [data.Queueable]
+[data.Queueable] <|-down-    [Treeable]
 
-[Treeable]  <|-right-    [Nodeable]
-[logic.Parsable]  <|-down-     [Nodeable]
+[Treeable]  <|-right-    [data.Nodeable]
+[logic.Parsable]  <|-down-     [data.Nodeable]
 
 @enduml

@@ -1,3 +1,5 @@
+package data;
+
 import org.junit.*;
 
 public class QueueableTest {
@@ -69,10 +71,12 @@ public class QueueableTest {
 	}
 	@Test public void remove_04 () {
 		add_initial_2();
+		Q3.remove ();
 		Assert.assertSame(Q2, Q3.getHead());
 	}
 	@Test public void remove_05 () {
 		add_initial_2();
+		Q3.remove ();
 		Assert.assertSame(Q2, Q3.getTail());
 	}
 

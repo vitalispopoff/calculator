@@ -1,3 +1,5 @@
+package data;
+
 public interface Enqueued extends Queueable {
 
 //	@formatter:off

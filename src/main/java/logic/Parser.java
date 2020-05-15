@@ -6,24 +6,23 @@ public abstract class Parser implements Parsable {
 
 	static boolean
 			isValueNegative = false;
-	static private String
+	static /*private*/ String
 			parserCache = "";
 
 //	Overrides \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override
-	public void addToParserCache (char c) {
+	static public void addToParserCache (char c) {
 		if (c == 8723) isValueNegative = ! isValueNegative;
 		else if (isParserAValue (c)) parserCache += c;
 	}
 
-	@Override
-	public double dumpParserCache () {
+	static public double dumpParserCache () {
 		if (parserCache.length () == 0) return Double.NaN;
 		double cache
-				= isValueNegative
+				/*= isValueNegative
 				? -1. * Double.parseDouble (parserCache)
-				: Double.parseDouble (parserCache);
+				: Double.parseDouble (parserCache);*/
+		= Double.parseDouble(getParserCacheString());
 		resetParser ();
 		return cache;
 	}
@@ -49,8 +48,8 @@ public abstract class Parser implements Parsable {
 		parserCache = "";
 	}
 
-	static String getParserCache () {
-		return parserCache;
+	static String getParserCacheString () {
+		return isValueNegative? "-"+parserCache : parserCache;
 	}
 
 //	@formatter:on

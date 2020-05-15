@@ -2,7 +2,12 @@ package logic;
 
 public interface Parsable {
 
-	void addToParserCache(char c);
+//	@formatter:off
 
-	double dumpParserCache();
+	static void addToParserCache (char c) { }
+
+	static double dumpParserCache () {return Double.NaN;}
+
+//	@formatter:on
+
 }
