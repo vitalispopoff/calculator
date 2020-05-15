@@ -1,3 +1,5 @@
+import logic.Solvable;
+
 public class Queue implements Solvable {
 
 //	@formatter:off

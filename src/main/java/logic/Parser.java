@@ -1,3 +1,5 @@
+package logic;
+
 public abstract class Parser implements Parsable {
 
 //	@formatter:off

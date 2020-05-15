@@ -6,8 +6,8 @@ package GUI {
 }
 
 package logic {
-    component Solvable
-    component Parsable
+    component logic.Solvable
+    component logic.Parsable
 }
 
 package data {
@@ -22,10 +22,10 @@ package data {
 [output]    -right-o     [memory]
 [memory]    -right-*    [Queueable]
 
-[Solvable]  <|-down-    [Queueable]
+[logic.Solvable]  <|-down-    [Queueable]
 [Queueable] <|-down-    [Treeable]
 
 [Treeable]  <|-right-    [Nodeable]
-[Parsable]  <|-down-     [Nodeable]
+[logic.Parsable]  <|-down-     [Nodeable]
 
 @enduml

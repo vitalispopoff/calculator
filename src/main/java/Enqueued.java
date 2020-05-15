@@ -17,4 +17,5 @@ public interface Enqueued extends Queueable {
 	@Override default Queueable getTail () { return (Queueable) getPost (); }
 
 //	@formatter:on
+
 }
