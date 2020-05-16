@@ -6,26 +6,26 @@ package GUI {
 }
 
 package logic {
-    component logic.Solvable
-    component logic.Parsable
+    component Solvable
+    component Parsable
 }
 
 package data {
     component memory
-    component data.Queueable
+    component Queueable
     component Treeable
-    component data.Nodeable
+    component Nodeable
 }
 
-[input]     -right-o     logic
-[output]    *-up-      [input]
-[output]    -right-o     [memory]
-[memory]    -right-*    [data.Queueable]
+[input]     -right-o    logic
+[output]    *-up-       [input]
+[output]    -right-o    [memory]
+[memory]    -right-*    [Queueable]
 
-[logic.Solvable]  <|-down-    [data.Queueable]
-[data.Queueable] <|-down-    [Treeable]
+[Solvable]  <|-down-    [Queueable]
+[Queueable] <|-down-    [Treeable]
 
-[Treeable]  <|-right-    [data.Nodeable]
-[logic.Parsable]  <|-down-     [data.Nodeable]
+[Treeable]  <|-right-   [Nodeable]
+[Parsable]  <|-down-    [Nodeable]
 
 @enduml

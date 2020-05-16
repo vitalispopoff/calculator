@@ -4,36 +4,30 @@ import static logic.Parsable.ParsableCache.*;
 
 public interface Parsable {
 
-/*	static final ParsableCache
-			cacheWrapper = ParsableCache.InstanceOf();*/
+//	@formatter:off
 
-	static void addToParserCache(char c) {
+	static void addToParserCache (char c) {
 		if (c == 8723)
-			toggleSign();
-		else if (isParserAValue(c) || getParserCache() == "" && c == '.')
-			setParserCache(parserCache += c);
+			toggleSign	();
+		else if (isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
+			setParserCache (parserCache += c);
 	}
-
+	static void resetParsableCache () {
+		parserCache = "";
+		isValuePositive = true;
+	}
 	static double dumpParserCache() {
-		if (parserCache.length() == 0)
+		if (parserCache.length () == 0)
 			return Double.NaN;
 
 		double cache
-				= Double.parseDouble(getParserCacheString());
+				= Double.parseDouble (getParserCacheString ());
 
-		Parsable.resetParsableCache();
+		Parsable.resetParsableCache ();
 		return cache;
 	}
 
-	static void resetParsableCache() {
-		/*cacheWrapper.*/parserCache = "";
-		/*cacheWrapper.*/isValuePositive = true;
-
-
-	}
-
-
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	Parsable implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	class ParsableCache implements Parsable {
 
@@ -42,38 +36,24 @@ public interface Parsable {
 		static String
 				parserCache = "";
 
-		private ParsableCache() { }
+		static public String getParserCache () { return parserCache; }
+		static public void setParserCache (String string) { parserCache = string; }
 
-/*		static ParsableCache InstanceOf() {
-			return Parsable.cacheWrapper
-					== null
-					? new ParsableCache()
-					: Parsable.cacheWrapper;
-		}*/
-
-		static void toggleSign() {
-			isValuePositive = !isValuePositive;
-		}
-
-		static public String getParserCache() {
-			return parserCache;
-		}
-
-		static public void setParserCache(String string) { parserCache = string; }
-
-		static boolean isParserAValue() { return isParserAValue('\u0000'); }
-
-		static boolean isParserAValue(char c) {
+		static boolean isParserAValue (char c) {
 			try {
-				Double.parseDouble(parserCache + c);
+				Double.parseDouble (parserCache + c);
 				return true;
 			}
 			catch (NumberFormatException e) {
 				return false;
 			}
-
 		}
+		/*static boolean isParserAValue () { return isParserAValue ('\u0000'); }*/	// ? dispoable ?
 
-		static String getParserCacheString() { return isValuePositive ? parserCache : "-" + parserCache; }
+		static String getParserCacheString () { return isValuePositive ? parserCache : "-" + parserCache; }
+		static void toggleSign () { isValuePositive = ! isValuePositive; }
 	}
+
+//	@formatter:on
+
 }
