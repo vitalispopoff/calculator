@@ -1,27 +1,27 @@
 package data;
 
-public interface Nodeable extends Enqueued {
+public interface Nodeable extends Enqueued{
 
 //	@formatter:off
 
-	void setLeft (Nodeable nodeable);
-	void setRite (Nodeable nodeable);
-	void setRoot (Nodeable nodeable);
+	void setLeft (Queueable queueable);
+	void setRite (Queueable queueable);
+	void setRoot (Queueable queueable);
 
-	Nodeable getLeft ();
-	Nodeable getRite ();
-	Nodeable getRoot ();
+	Queueable getLeft ();
+	Queueable getRite ();
+	Queueable getRoot ();
 
 //	@Overrides  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override default void setPrev (Enqueued enqueued) {
-		setLeft ( (Nodeable) enqueued);
-		setRite ( (Nodeable) enqueued);
+	@Override default void setPrev (Queueable queueable) {
+		setLeft ( queueable);
+		setRite ( queueable);
 	}
-	@Override default void setPost (Enqueued enqueued) { setRoot ( (Nodeable) enqueued); }
+	@Override default void setPost (Queueable queueable) { setRoot ( queueable); }
 
-	@Override default Enqueued getPrev () { return getLeft() == getRite () ? (Enqueued) getLeft () : null; }
-	@Override default Enqueued getPost () { return (Enqueued) getRoot (); }
+	@Override default Queueable getPrev () { return getLeft() == getRite () ? getLeft () : null; }
+	@Override default Queueable getPost () { return getRoot (); }
 
 //	@formatter:on
 }

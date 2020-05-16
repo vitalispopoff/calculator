@@ -1,8 +1,8 @@
 package data;
 
-import logic.Solvable;
+public class Queue2 implements Queueable {
 
-public class Queue implements Queueable, Solvable {
+	static Queueable mainQueue = new Queue2();
 
 //	@formatter:off
 
@@ -10,8 +10,8 @@ public class Queue implements Queueable, Solvable {
 			head = null,
 			tail = null;
 
-	Queue () { }
-	Queue (Queueable queueable) {
+	Queue2 () { }
+	Queue2 (Queueable queueable) {
 			setHead (queueable);
 			setTail (queueable);
 	}
@@ -24,7 +24,7 @@ public class Queue implements Queueable, Solvable {
 	@Override public Queueable getHead () { return head; }
 	@Override public Queueable getTail () { return tail; }
 
-	@Override public String solve(){return "";}
+//	@Override public String solve(){return "";}
 
 //	@formatter:on
 

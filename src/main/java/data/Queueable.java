@@ -2,6 +2,9 @@ package data;
 
 public interface Queueable {
 
+	static final Queueable mainQueueable = new Queue1();
+
+
 //	@formatter:off
 
 	void setHead (Queueable queueable);
@@ -50,6 +53,23 @@ public interface Queueable {
 	}
 	default boolean isSingle () {
 		return getHead () == getTail () && ! isHollow ();
+	}
+
+	class Queue1 implements Queueable {
+
+		Queueable
+				head = null,
+				tail = null;
+
+		@Override public void setHead (Queueable queueable) { head = queueable; }
+		@Override public void setTail (Queueable queueable) { tail = queueable; }
+
+		@Override public Queueable getHead() {
+			return null;
+		}
+		@Override public Queueable getTail() {
+			return null;
+		}
 	}
 
 //	@formatter:on

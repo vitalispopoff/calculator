@@ -20,7 +20,6 @@ public class Calculation_Addition extends Calculation {
         return leftValue + riteValue;
     }
 
-
     public static void main(String[] args) {
         new Calculation_Addition(Settings.basicCalculator[11]);
     }

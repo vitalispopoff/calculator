@@ -2,5 +2,5 @@ package logic;
 
 public interface Solvable {
 
-	String solve();
+	double solve (double operand1, double operand2);
 }

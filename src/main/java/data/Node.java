@@ -4,26 +4,38 @@ public class Node implements Nodeable {
 
 //	@formatter:off
 
-	Nodeable
+	Queueable
 			left = null,
 			rite = null,
 			root = null;
+	Type
+			type = null;
+	Double
+			value = Double.NaN;
 
-	Node () { }
-	Node (Nodeable node) {
-		setLeft (node);
-		setRite (node);
+	Node (Queueable queueable) {
+		setLeft (queueable);
+		setRite (queueable);
 	}
 
-//	Overrides ////\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	getters & setters \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override public void setLeft (Nodeable nodeable) { left = nodeable; }
-	@Override public void setRite (Nodeable nodeable) { rite = nodeable; }
-	@Override public void setRoot (Nodeable nodeable) { root = nodeable; }
+	public Type getType () { return type; }
+	public Double getValue () { return value; }
 
-	@Override public Nodeable getLeft () { return left; }
-	@Override public Nodeable getRite () { return rite; }
-	@Override public Nodeable getRoot () { return root; }
+	public void setType (Type type) { this.type = type; }
+	public void setValue (Double value) { this.value = value; }
 
-//	@formatter:on
+//	Overrides \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+	@Override public void setLeft (Queueable queueable) { left = queueable; }
+	@Override public void setRite (Queueable queueable) { rite = queueable; }
+	@Override public void setRoot (Queueable queueable) { root = queueable; }
+
+	@Override public Queueable getLeft () { return left; }
+	@Override public Queueable getRite () { return rite; }
+	@Override public Queueable getRoot () { return root; }
+
+	//	@formatter:on
+
 }

@@ -14,7 +14,7 @@ package data {
 
     }
 
-    +class data.Queue {
+    +class data.Queue2 {
 
     }
 
@@ -22,15 +22,15 @@ package data {
 
     }
 
-    data.Queue       -right-*    data.Queueable
+    data.Queue2       -right-*    data.Queueable
     data.Node        -right-*    data.Nodeable
 }
 
     () Solvable
     () Parsable
 
-    data.Queue       -right-|>   Solvable
+    data.Queue2       -right-|>   Solvable
     data.Node        -right-|>   Parsable
-    data.Queue       ---*     data.Node
+    data.Queue2       ---*     data.Node
 
 @enduml
