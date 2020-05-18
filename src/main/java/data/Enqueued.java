@@ -1,14 +1,16 @@
 package data;
 
-public interface Enqueued extends Queueable, Treeable {
+public interface Enqueued extends Queueable{
 
 //	@formatter:off
 
-	@Override void setPrev (Queueable queueable);
-	@Override void setPost (Queueable queueable);
+	void setPrev (Queueable queueable);
+	void setPost (Queueable queueable);
 
-	@Override Queueable getPrev ();
-	@Override Queueable getPost ();
+	Queueable getPrev ();
+	Queueable getPost ();
+
+	static void deQueue (Queueable queueable){}
 
 	@Override default void setHead (Queueable queueable) { setPrev (queueable); }
 	@Override default void setTail (Queueable queueable) { setPost (queueable); }

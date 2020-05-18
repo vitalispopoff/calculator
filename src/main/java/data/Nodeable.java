@@ -1,27 +1,32 @@
 package data;
 
-public interface Nodeable extends Enqueued{
+public interface Nodeable extends Enqueued, Treeable{
 
 //	@formatter:off
 
-	void setLeft (Queueable queueable);
-	void setRite (Queueable queueable);
-	void setRoot (Queueable queueable);
+	static  void convertToLocalTree(Queueable queueable){}
 
-	Queueable getLeft ();
-	Queueable getRite ();
-	Queueable getRoot ();
+//	Treeable implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-//	@Overrides  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+	@Override void setLeft (Queueable queueable);
+	@Override void setRite (Queueable queueable);
+	@Override void setRoot (Queueable queueable);
+
+	@Override Queueable getLeft ();
+	@Override Queueable getRite ();
+	@Override Queueable getRoot ();
+
+//	Enqueued implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override default void setPrev (Queueable queueable) {
-		setLeft ( queueable);
-		setRite ( queueable);
+		setLeft (queueable);
+		setRite (queueable);
 	}
-	@Override default void setPost (Queueable queueable) { setRoot ( queueable); }
+	@Override default void setPost (Queueable queueable) { setRoot (queueable); }
 
 	@Override default Queueable getPrev () { return getLeft() == getRite () ? getLeft () : null; }
 	@Override default Queueable getPost () { return getRoot (); }
 
 //	@formatter:on
+
 }

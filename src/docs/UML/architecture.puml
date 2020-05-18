@@ -6,8 +6,9 @@ package GUI {
 }
 
 package logic {
-    component Solvable
     component Parsable
+    component Solvable
+
 }
 
 package data {
@@ -18,14 +19,13 @@ package data {
 }
 
 [input]     -right-o    logic
-[output]    *-up-       [input]
+[output]    *-up--      [input]
 [output]    -right-o    [memory]
-[memory]    -right-*    [Queueable]
 
+[Queueable] *-down-     [memory]
 [Solvable]  <|-down-    [Queueable]
-[Queueable] <|-down-    [Treeable]
-
-[Treeable]  <|-right-   [Nodeable]
+[Nodeable]  -left-|>    [Queueable]
+[Nodeable]  -down-|>    [Treeable]
 [Parsable]  <|-down-    [Nodeable]
 
 @enduml

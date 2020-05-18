@@ -2,14 +2,20 @@ package data;
 
 public interface Treeable{
 
+	static final Queueable mainQueueable = Queueable.mainQueueable;
+
 //	@formatter:off
 
-	void setPrev (Queueable queueable);
-	void setPost (Queueable queueable);
+	void setLeft (Queueable queueable);
+	void setRite (Queueable queueable);
+	void setRoot (Queueable queueable);
 
-	Queueable getPrev ();
-	Queueable getPost ();
+	Queueable getLeft ();
+	Queueable getRite ();
+	Queueable getRoot ();
 
 //	@formatter:on
+
+	 void convertToTree();
 
 }

@@ -9,7 +9,7 @@ public class QueueableTest {
 	static Queueable Q1, Q2, Q3;
 
 	@Before public void initial () {
-		Q1 = new Queue2();
+		Q1 = new Queue();
 	}
 
 	@Test public void Queueable_01 () { Assert.assertNull (Q1.getHead()); }
@@ -18,7 +18,7 @@ public class QueueableTest {
 //	defaults  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	private void add_initial_1 () {
-		Q2 = new Queue2 ();
+		Q2 = new Queue ();
 		Q2.add (Q1);
 	}
 
@@ -32,8 +32,8 @@ public class QueueableTest {
 	}
 
 	private void add_initial_2(){
-		Q2 = new Queue2 ();
-		Q3 = new Queue2 (Q1);
+		Q2 = new Queue ();
+		Q3 = new Queue (Q1);
 		Q3.add (Q2);
 	}
 
@@ -82,13 +82,13 @@ public class QueueableTest {
 
 	@Test public void isHollow_01 () { Assert.assertTrue (Q1.isHollow ()); }
 	@Test public void isHollow_02 () {
-		Q2 = new Queue2 (Q1);
+		Q2 = new Queue (Q1);
 		Assert.assertFalse (Q2.isHollow( ));
 	}
 
 	@Test public void isSingle_01 () { Assert.assertFalse (Q1.isSingle ()); }
 	@Test public void isSingle_02 () {
-		Q2 = new Queue2 (Q1);
+		Q2 = new Queue (Q1);
 		Assert.assertTrue (Q2.isSingle ());
 	}
 

@@ -2,7 +2,7 @@ package data;
 
 public interface Queueable {
 
-	static final Queueable mainQueueable = new Queue1();
+	static final Queueable mainQueueable = new MainQueue();
 
 
 //	@formatter:off
@@ -12,6 +12,11 @@ public interface Queueable {
 
 	Queueable getHead ();
 	Queueable getTail ();
+
+//	static  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+	static boolean isMainQueueableEmpty(){return true;}
+	static void addToMainQueueable(Queueable queueable){ mainQueueable.add(queueable);}
 
 //	defaults  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -48,14 +53,12 @@ public interface Queueable {
 		return cache;
 	}
 
-	default boolean isHollow () {
-		return getHead () == null;
-	}
-	default boolean isSingle () {
-		return getHead () == getTail () && ! isHollow ();
-	}
+	default boolean isHollow () { return getHead () == null; }
+	default boolean isSingle () { return getHead () == getTail () && ! isHollow (); }
 
-	class Queue1 implements Queueable {
+//	Queueable implementation  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+	class MainQueue implements Queueable {
 
 		Queueable
 				head = null,
@@ -65,10 +68,10 @@ public interface Queueable {
 		@Override public void setTail (Queueable queueable) { tail = queueable; }
 
 		@Override public Queueable getHead() {
-			return null;
+			return head;
 		}
 		@Override public Queueable getTail() {
-			return null;
+			return tail;
 		}
 	}
 

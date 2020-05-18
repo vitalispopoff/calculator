@@ -1,36 +1,88 @@
 @startuml
 
-package data {
-
-    +interface data.Queueable {
-
-    }
-
-    +interface Treeable extends data.Queueable{
-
-    }
-
-    +interface data.Nodeable extends Treeable{
-
-    }
-
-    +class data.Queue2 {
-
-    }
-
-    +class data.Node {
-
-    }
-
-    data.Queue2       -right-*    data.Queueable
-    data.Node        -right-*    data.Nodeable
-}
-
     () Solvable
     () Parsable
 
-    data.Queue2       -right-|>   Solvable
-    data.Node        -right-|>   Parsable
-    data.Queue2       ---*     data.Node
+package data {
+
+    +interface Queueable {
+            +{field}{static}final Queueable
+        ..
+            +{method} void setHead (Queueable)
+            +{method} void setTail (Queueable)
+            +{method} Queueable getHead
+            +{method} Queueable getTail
+        ..default..
+            +{method} void add (Queueable)
+            +{method} Queueable remove
+            +{method} boolean isHollow
+            +{method} boolean isSingle
+    }
+
+    +interface Treeable {
+            +{field}{static} final Queueable
+        ..
+            +{method} void setLeft (Queueable)
+            +{method} void setRite (Queueable)
+            +{method} void setRoot (Queueable)
+            +{method} Queueable getLeft
+            +{method} Queueable getRite
+            +{method} Queueable getRoot
+            +{method} void convertToTree
+    }
+
+    +interface Enqueued extends Queueable{
+        ..
+            +{method} void setPrev (Queueable)
+            +{method} void setPost (Queueable)
+            +{method} Queueable getPrev
+            +{method} Queueable getPost
+            +{method}{static} void deQueue (Queueable)
+        ..Overrides..
+            +{method} default setHead
+            +{method} default setTail
+            +{method} default getHead
+            +{method} default getTail
+    }
+
+    +interface Nodeable extends Enqueued {
+        ..static..
+            +{method}{static} void convertToLocalTree (Queueable)
+        .. Treeable Overrides..
+            +{method} getLeft
+            +{method} getRite
+            +{method} getRoot
+            +{method} setLeft
+            +{method} setRite
+            +{method} setRoot
+        ..Enqueued Overrides..
+            +{method} default setPrev
+            +{method} default setPost
+            +{method} default getPrev
+            +{method} default getPost
+    }
+
+    ~class MainQueue {
+    }
+
+    +class Queue {
+    }
+
+    +class Node {
+    }
+}
+
+        Queueable   *.down.     Treeable
+        Treeable    <|--        Nodeable
+
+        Queueable   <|-o   MainQueue
+        Node        -right-*    Nodeable
+
+        MainQueue   <|--        Queue
+        Queueable   *---        Node
+
+    MainQueue   -right-|>   Solvable
+    Node        -right-|>   Parsable
+
 
 @enduml
