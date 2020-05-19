@@ -1,10 +1,10 @@
 package data;
 
-public interface Nodeable extends Enqueued, Treeable{
+public interface Nodeable extends Enqueued, Treeable/*, Solvable*/ {
 
 //	@formatter:off
 
-	static  void convertToLocalTree(Queueable queueable){}
+	static void convertToLocalTree(Queueable queueable){}
 
 //	Treeable implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -28,5 +28,7 @@ public interface Nodeable extends Enqueued, Treeable{
 	@Override default Queueable getPost () { return getRoot (); }
 
 //	@formatter:on
+
+//	@Override public double solve(double operand1, double operand2);
 
 }

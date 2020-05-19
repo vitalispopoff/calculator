@@ -1,5 +1,7 @@
 package data;
 
+import logic.Type;
+
 public class Node implements Nodeable {
 
 //	@formatter:off
@@ -18,15 +20,14 @@ public class Node implements Nodeable {
 		setRite (queueable);
 	}
 
-//	getters & setters \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-	public Type getType () { return type; }
 	public Double getValue () { return value; }
 
 	public void setType (Type type) { this.type = type; }
 	public void setValue (Double value) { this.value = value; }
 
-//	Overrides \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+	@Override public Type getType() { return type; }
+	@Override public void addType(Queueable queueable) {}
+	@Override public void removeType(Queueable queueable) {}
 
 	@Override public void setLeft (Queueable queueable) { left = queueable; }
 	@Override public void setRite (Queueable queueable) { rite = queueable; }
@@ -38,4 +39,13 @@ public class Node implements Nodeable {
 
 	//	@formatter:on
 
+	@Override
+	public double solve(/*double operand1, double operand2*/) {
+		double
+				operand1 = ((Node) getLeft()).getValue(),
+				operand2 = ((Node) getRite()).getValue();
+
+
+		return 0;
+	}
 }

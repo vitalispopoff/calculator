@@ -19,13 +19,13 @@ package data {
 }
 
 [input]     -right-o    logic
+logic       <|-down-    [Nodeable]
 [output]    *-up--      [input]
 [output]    -right-o    [memory]
 
 [Queueable] *-down-     [memory]
-[Solvable]  <|-down-    [Queueable]
+
 [Nodeable]  -left-|>    [Queueable]
 [Nodeable]  -down-|>    [Treeable]
-[Parsable]  <|-down-    [Nodeable]
 
 @enduml

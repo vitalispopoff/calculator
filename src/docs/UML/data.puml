@@ -7,7 +7,7 @@ package data {
 
     +interface Queueable {
             +{field}{static}final Queueable
-        ..
+        --
             +{method} void setHead (Queueable)
             +{method} void setTail (Queueable)
             +{method} Queueable getHead
@@ -21,7 +21,7 @@ package data {
 
     +interface Treeable {
             +{field}{static} final Queueable
-        ..
+        --
             +{method} void setLeft (Queueable)
             +{method} void setRite (Queueable)
             +{method} void setRoot (Queueable)
@@ -32,7 +32,7 @@ package data {
     }
 
     +interface Enqueued extends Queueable{
-        ..
+        --
             +{method} void setPrev (Queueable)
             +{method} void setPost (Queueable)
             +{method} Queueable getPrev
@@ -46,7 +46,7 @@ package data {
     }
 
     +interface Nodeable extends Enqueued {
-        ..static..
+        --static--
             +{method}{static} void convertToLocalTree (Queueable)
         .. Treeable Overrides..
             +{method} getLeft
@@ -62,27 +62,53 @@ package data {
             +{method} default getPost
     }
 
-    ~class MainQueue {
+    ~class MainQueue implements Queueable{
+            +{field} Queueable head
+            +{field} Queueable tail
+        -- Queueable Overrides--
+            +{method} setHead
+            +{method} setTail
+            +{method} getHead
+            +{method} getTail
+
     }
 
     +class Queue {
+        ..
     }
 
     +class Node {
+            ~{field} Queueable left
+            ~{field} Queueable rite
+            ~{field} Queueable root
+            ~{field} Type type
+            ~{field} Double value
+        --
+            +{method} Type getType
+            +{method} Double getValue
+            +{method} void setType (Type)
+            +{method} void setValue
+        ..Nodeable Overrides..
+            +{method} setLeft
+            +{method} setRite
+            +{method} setRoot
+            +{method} getLeft
+            +{method} getRite
+            +{method} getRoot
     }
 }
 
         Queueable   *.down.     Treeable
         Treeable    <|--        Nodeable
 
-        Queueable   <|-o   MainQueue
-        Node        -right-*    Nodeable
+        Queueable   *-left-*        MainQueue
+        Node        .left.|>    Nodeable
 
         MainQueue   <|--        Queue
         Queueable   *---        Node
 
-    MainQueue   -right-|>   Solvable
-    Node        -right-|>   Parsable
+        MainQueue   -right-|>   Solvable
+        Node        -right-|>   Parsable
 
 
 @enduml

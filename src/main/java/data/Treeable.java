@@ -16,6 +16,6 @@ public interface Treeable{
 
 //	@formatter:on
 
-	 void convertToTree();
+	 default void convertToTree(){}
 
 }
