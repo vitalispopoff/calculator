@@ -1,6 +1,6 @@
 package data;
 
-public interface Enqueued extends Queueable{
+public interface Enqueued extends Queueable {
 
 //	@formatter:off
 
@@ -12,13 +12,13 @@ public interface Enqueued extends Queueable{
 
 //	Queueable implementation  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
+	@Override int getTypeIndex();
+
 	@Override default void setHead (Queueable queueable) { setPrev (queueable); }
 	@Override default void setTail (Queueable queueable) { setPost (queueable); }
 
 	@Override default Queueable getHead () { return getPrev (); }
 	@Override default Queueable getTail () { return getPost (); }
-
-	@Override /*default*/ int getTypeIndex()/*{return logic.Type.values().length;}*/;
 
 //	@formatter:on
 

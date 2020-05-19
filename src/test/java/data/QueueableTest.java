@@ -83,10 +83,10 @@ public class QueueableTest {
 		Assert.assertSame( Q2, mainQueueable.getTail() );
 	}
 
-	@Test public void isHollow_01() { Assert.assertTrue( mainQueueable.isHollow() ); }
+	@Test public void isHollow_01() { Assert.assertTrue( mainQueueable.isEmpty() ); }
 	@Test public void isHollow_02() {
 		mainQueueable.add( Q1 );
-		Assert.assertFalse( mainQueueable.isHollow() );
+		Assert.assertFalse( mainQueueable.isEmpty() );
 	}
 
 	@Test public void isSingle_01() { Assert.assertFalse( mainQueueable.isSingle() ); }

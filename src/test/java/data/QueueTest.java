@@ -80,10 +80,10 @@ public class QueueTest {
 		Assert.assertSame(Q2, Q3.getTail());
 	}
 
-	@Test public void isHollow_01 () { Assert.assertTrue (Q1.isHollow ()); }
+	@Test public void isHollow_01 () { Assert.assertTrue (Q1.isEmpty ()); }
 	@Test public void isHollow_02 () {
 		Q2 = new Queue (Q1);
-		Assert.assertFalse (Q2.isHollow( ));
+		Assert.assertFalse (Q2.isEmpty( ));
 	}
 
 	@Test public void isSingle_01 () { Assert.assertFalse (Q1.isSingle ()); }

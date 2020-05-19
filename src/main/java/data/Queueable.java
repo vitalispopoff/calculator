@@ -27,7 +27,7 @@ public interface Queueable {
 
 	default void add (Queueable queueable) {
 
-		if (isHollow ()) {
+		if (isEmpty ()) {
 			setHead (queueable);
 		}
 		else {
@@ -42,7 +42,7 @@ public interface Queueable {
 		Queueable
 				cache = null;
 
-		if (! isHollow ()) {
+		if (! isEmpty ()) {
 			cache = getHead();
 
 			if (isSingle ()) {
@@ -58,8 +58,8 @@ public interface Queueable {
 		return cache;
 	}
 
-	default boolean isHollow () { return getHead () == null; }
-	default boolean isSingle () { return getHead () == getTail () && ! isHollow (); }
+	default boolean isEmpty () { return getHead () == null; }
+	default boolean isSingle () { return getHead () == getTail () && ! isEmpty (); }
 
 //	Queueable implementation  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

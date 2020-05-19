@@ -1,6 +1,6 @@
 package data;
 
-public interface Treeable{
+public interface Treeable extends Enqueued {
 
 	static final Queueable
 			mainQueueable = Queueable.mainQueueable;
@@ -19,7 +19,22 @@ public interface Treeable{
 
 //	@formatter:on
 
-	 default void convertToTree(){}
+	static void convertToTree() {
 
+		Queueable
+				localHead = mainQueueable.getHead(),
+				localCache = null;
 
+		for (; mainQueueable.isSingle(); ) {
+			if (localHead.getTypeIndex() > mainQueueable.getTypeIndex()) {
+				localCache = localHead;
+				localHead = localHead.getTail();
+			}
+			else {
+				localHead = ((Treeable) localHead).convertToLocalTree();
+				((Nodeable) localCache).setRoot(localHead);
+			}
+		}
+
+	}
 }
