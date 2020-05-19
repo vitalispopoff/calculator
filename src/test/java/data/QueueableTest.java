@@ -106,7 +106,7 @@ public class QueueableTest {
 		Assert.assertEquals(9>>1, mainQueueable.getTypeIndex());
 	}
 	@Test public void typeIndex_02(){
-		Node node = new Node(null);
+		Node node = new Node();
 		node.setType(Type.VALUE);
 		mainQueueable.addType(mainQueueable);
 		mainQueueable.addType(node);

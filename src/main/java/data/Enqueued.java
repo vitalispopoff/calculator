@@ -1,7 +1,5 @@
 package data;
 
-import logic.Type;
-
 public interface Enqueued extends Queueable{
 
 //	@formatter:off
@@ -12,7 +10,7 @@ public interface Enqueued extends Queueable{
 	Queueable getPrev ();
 	Queueable getPost ();
 
-	static void deQueue (Queueable queueable){}
+//	Queueable implementation  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override default void setHead (Queueable queueable) { setPrev (queueable); }
 	@Override default void setTail (Queueable queueable) { setPost (queueable); }
@@ -20,7 +18,7 @@ public interface Enqueued extends Queueable{
 	@Override default Queueable getHead () { return getPrev (); }
 	@Override default Queueable getTail () { return getPost (); }
 
-	@Override default int getTypeIndex(){return Type.values().length;}
+	@Override default int getTypeIndex(){return logic.Type.values().length;}
 
 //	@formatter:on
 

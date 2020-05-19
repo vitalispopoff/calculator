@@ -2,7 +2,8 @@ package data;
 
 public interface Treeable{
 
-	static final Queueable mainQueueable = Queueable.mainQueueable;
+	static final Queueable
+			mainQueueable = Queueable.mainQueueable;
 
 //	@formatter:off
 
@@ -14,8 +15,11 @@ public interface Treeable{
 	Queueable getRite ();
 	Queueable getRoot ();
 
+	void convertToLocalTree(/*Queueable queueable*/);
+
 //	@formatter:on
 
 	 default void convertToTree(){}
+
 
 }

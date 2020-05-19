@@ -1,12 +1,10 @@
 package data;
 
-public interface Nodeable extends Enqueued, Treeable/*, Solvable*/ {
-
 //	@formatter:off
 
-	static void convertToLocalTree(Queueable queueable){}
+public interface Nodeable extends Enqueued, Treeable {
 
-//	Treeable implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override void setLeft (Queueable queueable);
 	@Override void setRite (Queueable queueable);
@@ -16,19 +14,21 @@ public interface Nodeable extends Enqueued, Treeable/*, Solvable*/ {
 	@Override Queueable getRite ();
 	@Override Queueable getRoot ();
 
+	@Override void convertToLocalTree();
+
 //	Enqueued implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override default void setPrev (Queueable queueable) {
-		setLeft (queueable);
-		setRite (queueable);
-	}
 	@Override default void setPost (Queueable queueable) { setRoot (queueable); }
 
 	@Override default Queueable getPrev () { return getLeft() == getRite () ? getLeft () : null; }
 	@Override default Queueable getPost () { return getRoot (); }
 
-//	@formatter:on
+//	empty overrides //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-//	@Override public double solve(double operand1, double operand2);
+	@Override default void setPrev (Queueable queueable) {}
+	@Override default void addType (Queueable queueable) {}
+	@Override default void removeType (Queueable queueable) {}
+
+//	@formatter:on
 
 }

@@ -6,28 +6,24 @@ public class Node implements Nodeable {
 
 //	@formatter:off
 
-	Queueable
-			left = null,
-			rite = null,
-			root = null;
+	Queueable left,rite, root;
 	Type
 			type = null;
 	Double
 			value = Double.NaN;
 
-	Node (Queueable queueable) {
-		setLeft (queueable);
-		setRite (queueable);
+	Node() { left = rite = root = null; }
+
+	public void setType (Type type) { this.type = type; }
+	public void setValue (Double value) {this.value = value;}
+	public void setValue () {
+		if (((Node) left).getValue() != null && ((Node) rite).getValue() != null)
+			setValue(solve());
 	}
 
 	public Double getValue () { return value; }
 
-	public void setType (Type type) { this.type = type; }
-	public void setValue (Double value) { this.value = value; }
-
-	@Override public Type getType() { return type; }
-	@Override public void addType(Queueable queueable) {}
-	@Override public void removeType(Queueable queueable) {}
+	@Override public Type getType () { return type; }
 
 	@Override public void setLeft (Queueable queueable) { left = queueable; }
 	@Override public void setRite (Queueable queueable) { rite = queueable; }
@@ -39,13 +35,16 @@ public class Node implements Nodeable {
 
 	//	@formatter:on
 
-	@Override
-	public double solve(/*double operand1, double operand2*/) {
+	public double solve() {
 		double
 				operand1 = ((Node) getLeft()).getValue(),
 				operand2 = ((Node) getRite()).getValue();
+		return type.solve(operand1, operand2);
+	}
+
+	@Override
+	public void convertToLocalTree() {
 
 
-		return 0;
 	}
 }

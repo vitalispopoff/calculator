@@ -14,17 +14,17 @@ public enum Type implements logic.Solvable {
 	EXPONENT	{ @Override public double solve (double operand1, double operand2) { return Math.pow(operand1, operand2); } },
 	ROOT		{ @Override public double solve (double operand1, double operand2) { return Math.pow(operand1, 1. / operand2); } },
 
-//	multiplication  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	2: multiplication  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	MULTIPLY 	{ @Override public double solve (double operand1, double operand2) { return operand1 * operand2; } },
 	DIVIDE 		{ @Override public double solve (double operand1, double operand2) { return operand1 / operand2; } },
 
-//	addition  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	3 : addition  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	ADD 		{ @Override public double solve (double operand1, double operand2) { return operand1 + operand2; } },
 	SUBTRACT 	{ @Override public double solve (double operand1, double operand2) { return operand1 - operand2; } },
 
-//	evaluation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	4 : evaluation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	VALUE 		{ @Override public double solve (double operand1, double operand2) { return Double.NaN; } },
 	EVALUATE 	{ @Override public double solve (double operand1, double operand2) { return Double.NaN; } }
