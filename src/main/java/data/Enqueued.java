@@ -1,6 +1,8 @@
 package data;
 
-public interface Enqueued extends Queueable {
+public interface Enqueued /*extends Queueable*/ {
+
+	/*
 
 //	@formatter:off
 
@@ -33,5 +35,6 @@ public interface Enqueued extends Queueable {
 	@Override default Queueable getTail () { return getPost (); }
 
 //	@formatter:on
+*/
 
 }

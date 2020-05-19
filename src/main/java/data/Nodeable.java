@@ -2,8 +2,9 @@ package data;
 
 //	@formatter:off
 
-public interface Nodeable extends Enqueued, Treeable {
+public interface Nodeable /*extends Enqueued, Treeable*/ {
 
+	/*
 //	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override void setLeft (Queueable queueable);
@@ -30,5 +31,6 @@ public interface Nodeable extends Enqueued, Treeable {
 	@Override default void removeType (Queueable queueable) {}
 
 //	@formatter:on
+*/
 
 }

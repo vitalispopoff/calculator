@@ -4,19 +4,45 @@ import logic.Type;
 
 public interface Queueable {
 
+	Queueable getHead();
+	Queueable getTail();
+	Queueable getPrev();
+	Queueable getNext();
+
+	void setHead(Queueable q);
+	void setTail(Queueable q);
+	void setPrev(Queueable q);
+	void setNext(Queueable q);
+
+	Type getType();
+	double getValue();
+
+	void setType(Type t);
+	void setValue(double v);
+
+	void setValue();
+
+	void addType(Type type);
+	void removeType(Type type);
+
+	boolean isEmpty();
+	boolean isOnePiece();
+
+/*
+
 	static final Queueable mainQueueable = new MainQueue();
 
 //	@formatter:off
 
-	void setHead (Queueable queueable);
-	void setTail (Queueable queueable);
-	void addType (Queueable queueable);
-	void removeType(Queueable queueable);
+	void setHead (Queueable queueable);		done
+	void setTail (Queueable queueable);		done
+	void addType (Queueable queueable);		done
+	void removeType(Queueable queueable);	done
 
-	Queueable getHead ();
-	Queueable getTail ();
-	Type getType();
-	int getTypeIndex();
+	Queueable getHead ();					done
+	Queueable getTail ();					done
+	Type getType();							done
+	int getTypeIndex();						nope
 
 //	static  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -102,5 +128,6 @@ public interface Queueable {
 	}
 
 	//	@formatter:on
+*/
 
 }

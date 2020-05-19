@@ -1,7 +1,8 @@
 package data;
 
-public interface Treeable extends Enqueued {
+public interface Treeable /*extends Enqueued*/ {
 
+/*
 	static final Queueable
 			mainQueueable = Queueable.mainQueueable;
 
@@ -36,5 +37,6 @@ public interface Treeable extends Enqueued {
 			}
 		}
 
-	}
+	}*/
+
 }

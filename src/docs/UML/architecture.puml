@@ -15,17 +15,17 @@ package data {
     component memory
     component Queueable
     component Treeable
-    component Nodeable
+    component node
 }
 
 [input]     -right-o    logic
-logic       <|-down-    [Nodeable]
+logic       <|-down-    [node]
 [output]    *-up--      [input]
 [output]    -right-o    [memory]
 
 [Queueable] *-down-     [memory]
 
-[Nodeable]  -left-|>    [Queueable]
-[Nodeable]  -down-|>    [Treeable]
+[node]  -left-|>    [Queueable]
+[node]  -down-|>    [Treeable]
 
 @enduml
