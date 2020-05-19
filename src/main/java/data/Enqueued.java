@@ -18,7 +18,7 @@ public interface Enqueued extends Queueable{
 	@Override default Queueable getHead () { return getPrev (); }
 	@Override default Queueable getTail () { return getPost (); }
 
-	@Override default int getTypeIndex(){return logic.Type.values().length;}
+	@Override /*default*/ int getTypeIndex()/*{return logic.Type.values().length;}*/;
 
 //	@formatter:on
 

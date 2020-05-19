@@ -33,6 +33,8 @@ public class Node implements Nodeable {
 	@Override public Queueable getRite () { return rite; }
 	@Override public Queueable getRoot () { return root; }
 
+	@Override public int getTypeIndex(){return getType().ordinal()>>1;}
+
 	//	@formatter:on
 
 	public double solve() {
@@ -43,8 +45,20 @@ public class Node implements Nodeable {
 	}
 
 	@Override
-	public void convertToLocalTree() {
+	public Queueable convertToLocalTree() {
+		Nodeable
+				localRoot = (Nodeable) getRoot(),
+				localRite = (Nodeable) localRoot.getRoot(),
+				localLeft = this;
 
+		localRoot.setLeft(localLeft);
+		localRoot.setRite(localRite);
+		localRoot.setRoot(localRite.getRoot());
+		localRite.setRoot(null);	// ? it may also be localRoot - what's better ?
+
+		return localRoot;
 
 	}
+
+
 }

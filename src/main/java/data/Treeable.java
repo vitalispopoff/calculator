@@ -15,7 +15,7 @@ public interface Treeable{
 	Queueable getRite ();
 	Queueable getRoot ();
 
-	void convertToLocalTree(/*Queueable queueable*/);
+	Queueable convertToLocalTree();
 
 //	@formatter:on
 

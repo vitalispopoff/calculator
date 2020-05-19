@@ -14,7 +14,7 @@ public interface Nodeable extends Enqueued, Treeable {
 	@Override Queueable getRite ();
 	@Override Queueable getRoot ();
 
-	@Override void convertToLocalTree();
+	@Override Queueable convertToLocalTree();
 
 //	Enqueued implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
