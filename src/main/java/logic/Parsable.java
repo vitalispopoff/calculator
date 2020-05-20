@@ -48,7 +48,7 @@ public interface Parsable {
 				return false;
 			}
 		}
-		/*static boolean isParserAValue () { return isParserAValue ('\u0000'); }*/	// ? dispoable ?
+		/*static boolean isParserAValue () { return isParserAValue ('\u0000'); }*/	// ? disposable ?
 
 		static String getParserCacheString () { return isValuePositive ? parserCache : "-" + parserCache; }
 		static void toggleSign () { isValuePositive = ! isValuePositive; }

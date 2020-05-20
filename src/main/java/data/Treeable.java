@@ -1,6 +1,10 @@
 package data;
 
-public interface Treeable /*extends Enqueued*/ {
+public interface Treeable extends Queueable{
+
+	void convertToTree();
+	Queueable convertToLocalTree();
+
 
 /*
 	static final Queueable

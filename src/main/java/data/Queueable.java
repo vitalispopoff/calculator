@@ -4,130 +4,57 @@ import logic.Type;
 
 public interface Queueable {
 
+	default void addQueueable(Queueable q){
+		getTail().setNext(q);
+		q.setPrev(getTail());
+		setTail(q);
+		addType(q.getType());
+	}
+	default void removeQueueable(Queueable q){
+		if (getHead() == q ){
+			setHead(q.getNext());
+			getHead().setPrev(null);
+			q.setNext(null);
+
+		}
+		else if (getTail() == q){
+			setTail(q.getPrev());
+			getTail().setNext(null);
+			q.setPrev(null);
+		}
+		else {
+			q.getPrev().setNext(q.getNext());
+			q.getNext().setPrev(q.getPrev());
+			q.setPrev(null);
+			q.setNext(null);
+		}
+		removeType(q.getType());
+
+	}
+	default boolean isEmpty(){
+		return getHead() == getTail() && getHead() == null;}
+	default boolean isOnePiece(){
+		return getHead() == getTail() && getHead() != null;
+	}
+
 	Queueable getHead();
 	Queueable getTail();
 	Queueable getPrev();
 	Queueable getNext();
+
+	double getValue();
+	Type getType();
 
 	void setHead(Queueable q);
 	void setTail(Queueable q);
 	void setPrev(Queueable q);
 	void setNext(Queueable q);
 
-	Type getType();
-	double getValue();
-
-	void setType(Type t);
 	void setValue(double v);
-
 	void setValue();
+	void setType(Type t);
 
 	void addType(Type type);
 	void removeType(Type type);
-
-	boolean isEmpty();
-	boolean isOnePiece();
-
-/*
-
-	static final Queueable mainQueueable = new MainQueue();
-
-//	@formatter:off
-
-	void setHead (Queueable queueable);		done
-	void setTail (Queueable queueable);		done
-	void addType (Queueable queueable);		done
-	void removeType(Queueable queueable);	done
-
-	Queueable getHead ();					done
-	Queueable getTail ();					done
-	Type getType();							done
-	int getTypeIndex();						nope
-
-//	static  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-	static boolean isMainQueueableEmpty(){return true;}
-	static void addToMainQueueable(Queueable queueable){ mainQueueable.add(queueable);}
-
-//	defaults  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-	default void add (Queueable queueable) {
-
-		if (isEmpty ()) {
-			setHead (queueable);
-		}
-		else {
-			queueable.setHead (getTail ());
-			getTail ().setTail (queueable);
-		}
-		setTail (queueable);
-	}
-
-	default Queueable remove () {
-
-		Queueable
-				cache = null;
-
-		if (! isEmpty ()) {
-			cache = getHead();
-
-			if (isSingle ()) {
-				setHead (null);
-				setTail (null);
-			}
-			else {
-				setHead (getHead ().getTail () );
-				getHead ().setHead (null);
-				cache.setTail (null);
-			}
-		}
-		return cache;
-	}
-
-	default boolean isEmpty () { return getHead () == null; }
-	default boolean isSingle () { return getHead () == getTail () && ! isEmpty (); }
-
-//	Queueable implementation  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-	class MainQueue implements Queueable {
-
-		int[]
-				typeIndex = new int[Type.values().length>>1];
-		Queueable
-				head = null,
-				tail = null;
-
-		@Override public void setHead (Queueable queueable) { head = queueable; }
-		@Override public void setTail (Queueable queueable) { tail = queueable; }
-
-		@Override public Queueable getHead() {
-			return head;
-		}
-		@Override public Queueable getTail() {
-			return tail;
-		}
-
-		@Override public void addType(Queueable queueable) {
-			if (queueable.getType() != null)
-				typeIndex[queueable.getType().ordinal() >> 1]++;
-		}
-		@Override public void removeType(Queueable queueable) {
-			if (queueable.getType() != null && typeIndex[queueable.getType().ordinal() >> 1] > 0)
-				typeIndex[queueable.getType().ordinal() >> 1]--;
-		}
-
-		@Override public Type getType(){ return Type.EVALUATE;}
-		@Override public int getTypeIndex() {
-			int index = 0;
-			for (int slot : this.typeIndex) {
-				if (slot == 0) index++;
-				else return index;
-			}
-			return Type.values().length;
-		}
-	}
-
-	//	@formatter:on
-*/
 
 }

@@ -1,109 +1,100 @@
 package data;
 
+import logic.Solvable;
 import logic.Type;
 
-public class Node /*implements Nodeable*/ implements Queueable {
+public class Node implements Queueable, Solvable, Treeable {
 
+//	@formatter:off
+
+	static Queueable mainQueue = new Node();
+
+	int[]
+			typeIndex = new int[Type.values().length >> 1];
+	Double
+			value = Double.NaN;
+	Type
+			type = null;
 	Queueable
 			head = null,
 			tail = null,
 			prev = null,
 			next = null;
-	Type type = null;
-	Double value = Double.NaN;
 
-//	@formatter:off
+//	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override public void setHead(Queueable q) { head = q; }
 	@Override public void setTail(Queueable q) { tail = q; }
 	@Override public void setPrev(Queueable q) { prev = q; }
 	@Override public void setNext(Queueable q) { next = q; }
 
+	@Override public double getValue() { return value; }
+	@Override public Type getType() { return type; }
+
 	@Override public Queueable getHead() { return head; }
 	@Override public Queueable getTail() { return tail; }
 	@Override public Queueable getPrev() { return prev; }
 	@Override public Queueable getNext() { return next; }
 
-	@Override public Type getType() { return type; }
-	@Override public double getValue() { return value; }
-
-	@Override public void setType(Type t) {type = t;}
 	@Override public void setValue(double v) { value = v; }
-
 	@Override public void setValue() {
+		int
+				thisIndexNumber = getType().ordinal()>>1,
+				valueIndexNumber = Type.VALUE.ordinal()>>1,
+				bracketIndexNumber = Type.BRACKET_OUT.ordinal()>>1;
+
+		if (thisIndexNumber < valueIndexNumber && thisIndexNumber > bracketIndexNumber
+				&& getHead().getType() == Type.VALUE && getTail().getType() == Type.VALUE)
+			setValue(solve(getHead().getValue(), getTail().getValue()));
 
 	}
+	@Override public void setType(Type t) {type = t;}
 
-	@Override public void addType(Type t) {
-
-	}
-
+	@Override public void addType(Type t) { typeIndex[t.ordinal()>>1]++; }
 	@Override public void removeType(Type t) {
+		if(typeIndex[t.ordinal()>>1]>0)
+			typeIndex[t.ordinal()>>1]--;;
 
 	}
 
-	@Override public boolean isEmpty() {
-		return false;
-	}
+//	Solvable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override public boolean isOnePiece() {
-		return false;
-	}
+	@Override
+	public double solve(double leftValue, double riteValue) { return type.solve(leftValue, riteValue); }
+
+//	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	//	@formatter:on
 
 
-/*
-//	@formatter:off
+	@Override
+	public void convertToTree() {
 
-	Queueable left,rite, root;
-	Type
-			type = null;
-	Double
-			value = Double.NaN;
-
-	Node() { left = rite = root = null; }
-
-	public void setType (Type type) { this.type = type; }
-	public void setValue (Double value) {this.value = value;}
-	public void setValue () {
-		if (((Node) left).getValue() != null && ((Node) rite).getValue() != null)
-			setValue(solve());
 	}
 
-	public Double getValue () { return value; }
+	@Override
+	public Queueable convertToLocalTree() {
 
-	@Override public Type getType () { return type; }
+		Queueable
+				left = this,
+				root = getNext(),
+				rite = getNext().getNext();
 
-	@Override public void setLeft (Queueable queueable) { left = queueable; }
-	@Override public void setRite (Queueable queueable) { rite = queueable; }
-	@Override public void setRoot (Queueable queueable) { root = queueable; }
+		left.getPrev().setNext(root);	// 1
+		rite.getNext().setPrev(root);	// 2
 
-	@Override public Queueable getLeft () { return left; }
-	@Override public Queueable getRite () { return rite; }
-	@Override public Queueable getRoot () { return root; }
+		root.setTail(rite);				// 3
 
-	@Override public int getTypeIndex(){return getType().ordinal()>>1;}
+		root.setNext(rite.getNext());	// 4
 
-	@Override public Queueable convertToLocalTree() {
-		Nodeable
-				localRoot = (Nodeable) getRoot(),
-				localRite = (Nodeable) localRoot.getRoot();
+		rite.setNext(null);				// 5
+		left.setPrev(null);				// 6
 
-		localRoot.setLeft(this);
-		localRoot.setRite(localRite);
-		localRoot.setRoot(localRite.getRoot());
-		localRite.setRoot(null);	// ? it may also be localRoot - what's better ?
+		root.setPrev(left.getPrev());	// 7
 
-		return localRoot;
+		root.setHead(left);				// 8
+
+		return root;
 	}
 
-	//	@formatter:on
-
-	public double solve() {
-		double
-				operand1 = ((Node) getLeft()).getValue(),
-				operand2 = ((Node) getRite()).getValue();
-		return type.solve(operand1, operand2);
-	}*/
 }

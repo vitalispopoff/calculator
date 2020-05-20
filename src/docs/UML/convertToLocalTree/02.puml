@@ -1,0 +1,31 @@
+@startuml
+
+rectangle Q0
+
+rectangle Q1
+rectangle Q2
+rectangle Q3
+
+rectangle QN
+
+Q0 <-up- "Q1:prev" Q1
+
+Q1  -up-() null2:tail
+Q1  -up-() null1:head
+
+Q0 "Q0:next" -up-> Q2
+Q1 "Q1:next" <--right--> "Q2:prev" Q2
+
+Q2  -up-() null3:head
+Q2  -up-() null4:tail
+
+Q2 "Q2:next" <-right-> "Q3:prev" Q3
+
+Q2 <-down- "QN:prev" QN
+Q3  -up-() null6:tail
+Q3  -up-() null5:head
+
+Q3  -down-> "Q3:next" QN
+
+
+@enduml
