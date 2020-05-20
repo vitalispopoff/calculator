@@ -21,8 +21,6 @@ public class Node implements /*Queueable,*/ Solvable, Treeable {
 			prev = null,
 			next = null;
 
-
-
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override public void setHead(Queueable q) { setLeft(q); }

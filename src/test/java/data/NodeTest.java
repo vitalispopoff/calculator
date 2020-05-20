@@ -39,41 +39,40 @@ public class NodeTest {
 
 	@Test public void convertToLocalTree_01(){
 		initial_01();
-		Assert.assertSame(n2, ((Node)Node.mainQueue.getHead()).convertToLocalTree());
+//		(Treeable)Node.mainQueue.getHead()).convertToLocalTree());
+
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
+
+
+		Assert.assertSame(n2, expect);
 	}
 	@Test public void convertToLocalTree_02(){
 		initial_01();
-		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
 		Assert.assertSame(n1, expect.getHead());
 	}
 	@Test public void convertToLocalTree_03(){
 		initial_01();
-		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
 		Assert.assertSame(n3, expect.getTail());
 	}
 	@Test public void convertToLocalTree_04(){
 		initial_01();
-		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
 		Assert.assertSame(n2, expect.getHead().getNext());
 	}
 	@Test public void convertToLocalTree_05(){
 		initial_01();
-		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
 		Assert.assertSame(n2, expect.getTail().getPrev());
 	}
-
-//	@formatter:on
-
-//	@Ignore
-	@Test
-	public void convertToLocalTree_06(){
+	@Test public void convertToLocalTree_06(){
 		initial_02();
-
-		((Node)n3).convertToLocalTree();
-		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
+		((Treeable)Node.mainQueue).convertToLocalTree(n3);
+		Queueable expect = ((Treeable)Node.mainQueue).convertToLocalTree(Node.mainQueue.getHead());
 		Assert.assertSame(n3, expect.getTail().getHead());
 	}
 
-
+//	@formatter:on
 
 }
