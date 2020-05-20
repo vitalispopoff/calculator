@@ -64,13 +64,13 @@ public class NodeTest {
 
 //	@formatter:on
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void convertToLocalTree_06(){
 		initial_02();
 
-		((Node)n4).convertToLocalTree();
-		Queueable expect = ((Node)Node.mainQueue).convertToLocalTree();
+		((Node)n3).convertToLocalTree();
+		Queueable expect = ((Node)Node.mainQueue.getHead()).convertToLocalTree();
 		Assert.assertSame(n3, expect.getTail().getHead());
 	}
 
