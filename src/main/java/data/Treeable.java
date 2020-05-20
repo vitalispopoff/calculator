@@ -2,9 +2,42 @@ package data;
 
 public interface Treeable extends Queueable{
 
-	void convertToTree();
-	Queueable convertToLocalTree();
 
+
+	void setLeft(Queueable q);
+	void setRite(Queueable q);
+
+	Queueable getLeft();
+	Queueable getRite();
+
+	void convertToTree();
+
+	/*Queueable convertToLocalTree();*/ // ? disposable ?
+
+	default public Queueable convertToLocalTree(Queueable q) {
+
+		Queueable
+				localLeft = q,
+				localRoot = q.getNext(),
+				localRite = q.getNext().getNext();
+
+		if (localLeft.getPrev() != null)
+			localLeft.getPrev().setNext(localRoot);
+
+		if (localRite.getNext() != null)
+			localRite.getNext().setPrev(localRoot);
+
+		localRoot.setTail(localRite);
+		localRoot.setNext(localRite.getNext());
+
+		localRite.setNext(null);
+		localLeft.setPrev(null);
+
+		localRoot.setPrev(localLeft.getPrev());
+		localRoot.setHead(localLeft);
+
+		return localRoot;
+	}
 
 /*
 	static final Queueable

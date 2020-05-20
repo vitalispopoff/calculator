@@ -3,7 +3,7 @@ package data;
 import logic.Solvable;
 import logic.Type;
 
-public class Node implements Queueable, Solvable, Treeable {
+public class Node implements /*Queueable,*/ Solvable, Treeable {
 
 //	@formatter:off
 
@@ -21,10 +21,7 @@ public class Node implements Queueable, Solvable, Treeable {
 			prev = null,
 			next = null;
 
-	void setLeft(Queueable q){left = q;}
-	void setRite(Queueable q){rite = q;}
-	Queueable getLeft(){return left;}
-	Queueable getRite(){return rite;}
+
 
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -58,8 +55,7 @@ public class Node implements Queueable, Solvable, Treeable {
 	@Override public void addType(Type t) { typeIndex[t.ordinal()>>1]++; }
 	@Override public void removeType(Type t) {
 		if(typeIndex[t.ordinal()>>1]>0)
-			typeIndex[t.ordinal()>>1]--;;
-
+			typeIndex[t.ordinal()>>1]--;
 	}
 
 //	Solvable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -69,15 +65,17 @@ public class Node implements Queueable, Solvable, Treeable {
 
 //	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	//	@formatter:on
-
+	@Override public void setLeft(Queueable q){left = q;}
+	@Override public void setRite(Queueable q){rite = q;}
+	@Override public Queueable getLeft(){return left;}
+	@Override public Queueable getRite(){return rite;}
 
 	@Override
 	public void convertToTree() {
 
 	}
 
-	@Override
+/*	@Override
 	public Queueable convertToLocalTree() {
 
 		Queueable
@@ -101,6 +99,8 @@ public class Node implements Queueable, Solvable, Treeable {
 		localRoot.setHead(localLeft);
 
 		return localRoot;
-	}
+	}*/	// ? disposable ?
+
+	//	@formatter:on
 
 }
