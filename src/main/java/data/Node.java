@@ -16,23 +16,28 @@ public class Node implements Queueable, Solvable, Treeable {
 	Type
 			type = null;
 	Queueable
-			head = null,
-			tail = null,
+			left = null,
+			rite = null,
 			prev = null,
 			next = null;
 
+	void setLeft(Queueable q){left = q;}
+	void setRite(Queueable q){rite = q;}
+	Queueable getLeft(){return left;}
+	Queueable getRite(){return rite;}
+
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override public void setHead(Queueable q) { head = q; }
-	@Override public void setTail(Queueable q) { tail = q; }
+	@Override public void setHead(Queueable q) { setLeft(q); }
+	@Override public void setTail(Queueable q) { setRite(q); }
 	@Override public void setPrev(Queueable q) { prev = q; }
 	@Override public void setNext(Queueable q) { next = q; }
 
 	@Override public double getValue() { return value; }
 	@Override public Type getType() { return type; }
 
-	@Override public Queueable getHead() { return head; }
-	@Override public Queueable getTail() { return tail; }
+	@Override public Queueable getHead() { return getLeft(); }
+	@Override public Queueable getTail() { return getRite(); }
 	@Override public Queueable getPrev() { return prev; }
 	@Override public Queueable getNext() { return next; }
 
@@ -44,8 +49,8 @@ public class Node implements Queueable, Solvable, Treeable {
 				bracketIndexNumber = Type.BRACKET_OUT.ordinal()>>1;
 
 		if (thisIndexNumber < valueIndexNumber && thisIndexNumber > bracketIndexNumber
-				&& getHead().getType() == Type.VALUE && getTail().getType() == Type.VALUE)
-			setValue(solve(getHead().getValue(), getTail().getValue()));
+				&& this.getHead().getType() == Type.VALUE && this.getTail().getType() == Type.VALUE)
+			setValue(solve(this.getHead().getValue(), this.getTail().getValue()));
 
 	}
 	@Override public void setType(Type t) {type = t;}
@@ -76,25 +81,26 @@ public class Node implements Queueable, Solvable, Treeable {
 	public Queueable convertToLocalTree() {
 
 		Queueable
-				left = this,
-				root = getNext(),
-				rite = getNext().getNext();
+				localLeft = this,
+				localRoot = getNext(),
+				localRite = getNext().getNext();
 
-		left.getPrev().setNext(root);	// 1
-		rite.getNext().setPrev(root);	// 2
+		if (localLeft.getPrev() != null)
+			localLeft.getPrev().setNext(localRoot);
 
-		root.setTail(rite);				// 3
+		if (localRite.getNext() != null)
+			localRite.getNext().setPrev(localRoot);
 
-		root.setNext(rite.getNext());	// 4
+		localRoot.setTail(localRite);
+		localRoot.setNext(localRite.getNext());
 
-		rite.setNext(null);				// 5
-		left.setPrev(null);				// 6
+		localRite.setNext(null);
+		localLeft.setPrev(null);
 
-		root.setPrev(left.getPrev());	// 7
+		localRoot.setPrev(localLeft.getPrev());
+		localRoot.setHead(localLeft);
 
-		root.setHead(left);				// 8
-
-		return root;
+		return localRoot;
 	}
 
 }

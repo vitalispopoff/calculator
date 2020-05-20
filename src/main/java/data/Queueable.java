@@ -37,6 +37,17 @@ public interface Queueable {
 		return getHead() == getTail() && getHead() != null;
 	}
 
+	default void add(Queueable q){
+		if(isEmpty()){
+			setHead(q);
+//			setTail(q);
+		} else {
+			q.setPrev(getTail());
+			q.getPrev().setNext(q);
+		}
+		setTail(q);
+	}
+
 	Queueable getHead();
 	Queueable getTail();
 	Queueable getPrev();

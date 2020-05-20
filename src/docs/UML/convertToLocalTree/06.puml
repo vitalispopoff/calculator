@@ -10,22 +10,26 @@ rectangle QN
 
 Q1 -left-() null0:prev
 
-Q1  -up-() null2:tail
-Q1  -up-() null1:head
 
-Q0 "Q0:next" -up-> Q2
-Q1 "Q1:next" <--right--> "Q2:prev" Q2
-
-Q2  -up-() null3:head
-
-Q2 "Q2:tail" <-right-> "Q3:prev" Q3
-
-Q2 "Q2:next" <-down-> "QN:prev" QN
-
-Q3  -up-() null6:tail
-Q3  -up-() null5:head
-
-Q3  -right-() nullN:next
+Q1  -up-() null1:"left"
+Q1  -up-() null2:"rite"
 
 
+Q0 "next0" -right-> Q2
+
+Q1 "next1" <-down-> "prev2" Q2
+
+Q2  --up-() null3:"left"
+
+Q2 "tail2" <-up-> "prev3" Q3
+
+Q2 "next2" <-right-> "prevN" QN
+
+Q3  -up-() null5:"left"
+Q3  -up-() null6:"rite"
+
+Q3  -right-() nullN:next3
+
+Q1 -[hidden]- Q0
+Q3 -[hidden]- QN
 @enduml
