@@ -3,12 +3,12 @@ package data;
 import logic.Solvable;
 import logic.Type;
 
-public class Node implements /*Queueable,*/ Solvable, Treeable {
+public class Node implements Solvable, Treeable {
 
 //	@formatter:off
 
-	static Queueable mainQueue = new Node();
-
+	static Queueable
+			mainQueue = new Node();
 	int[]
 			typeIndex = new int[Type.values().length >> 1];
 	Double
@@ -55,6 +55,15 @@ public class Node implements /*Queueable,*/ Solvable, Treeable {
 		if(typeIndex[t.ordinal()>>1]>0)
 			typeIndex[t.ordinal()>>1]--;
 	}
+	@Override public int getCurrentType(){
+		int result = 0;
+
+		for (int index : typeIndex) {
+			if (index == 0) result++;
+			else return result;
+		}
+		return typeIndex.length;
+	}
 
 //	Solvable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -70,7 +79,12 @@ public class Node implements /*Queueable,*/ Solvable, Treeable {
 
 	@Override
 	public void convertToTree() {
-//		getHead();
+		Queueable localCache = ((Treeable)mainQueue).priorityCheck(mainQueue.getHead());
+
+		for( ; mainQueue.isMultiPiece();){
+			localCache = convertToLocalTree(localCache);
+
+		}
 
 
 	}

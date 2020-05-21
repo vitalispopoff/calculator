@@ -4,13 +4,20 @@ import logic.Type;
 
 public interface Queueable {
 
-	default void addQueueable(Queueable q){
-		getTail().setNext(q);
-		q.setPrev(getTail());
+//	@formatter:off
+
+	default void add(Queueable q){
+		if(isEmpty()){
+			setHead(q);
+//			setTail(q);
+		} else {
+			q.setPrev(getTail());
+			q.getPrev().setNext(q);
+		}
 		setTail(q);
 		addType(q.getType());
 	}
-	default void removeQueueable(Queueable q){
+	default void remove(Queueable q){
 		if (getHead() == q ){
 			setHead(q.getNext());
 			getHead().setPrev(null);
@@ -31,22 +38,13 @@ public interface Queueable {
 		removeType(q.getType());
 
 	}
+
 	default boolean isEmpty(){
 		return getHead() == getTail() && getHead() == null;}
 	default boolean isOnePiece(){
 		return getHead() == getTail() && getHead() != null;
 	}
-
-	default void add(Queueable q){
-		if(isEmpty()){
-			setHead(q);
-//			setTail(q);
-		} else {
-			q.setPrev(getTail());
-			q.getPrev().setNext(q);
-		}
-		setTail(q);
-	}
+	default boolean isMultiPiece(){return !isEmpty() && !isOnePiece();}
 
 	Queueable getHead();
 	Queueable getTail();
@@ -67,5 +65,8 @@ public interface Queueable {
 
 	void addType(Type type);
 	void removeType(Type type);
+	int getCurrentType();
+
+//	@formatter:on
 
 }

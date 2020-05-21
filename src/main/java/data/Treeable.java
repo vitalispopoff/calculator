@@ -1,13 +1,14 @@
 package data;
 
-public interface Treeable extends Queueable{
-
+public interface Treeable extends Queueable {
 
 
 	void setLeft(Queueable q);
+
 	void setRite(Queueable q);
 
 	Queueable getLeft();
+
 	Queueable getRite();
 
 	void convertToTree();
@@ -37,5 +38,23 @@ public interface Treeable extends Queueable{
 		localRoot.setHead(localLeft);
 
 		return localRoot;
+	}
+
+	default public Queueable priorityCheck(Queueable q) {
+
+		if (q == getTail()) return q.getHead();
+
+		Queueable
+				localLeft = q,
+				localRite = q.getNext().getNext();
+
+		if (!Double.isNaN(localLeft.getValue())) {
+			Queueable localRoot = localLeft.getNext();
+			int localRootPriority = localRoot.getType().ordinal() >> 1;
+
+			if (localRootPriority > 0 && localRootPriority <= Node.mainQueue.getCurrentType())
+				return localLeft;
+		}
+		return localRite;
 	}
 }
