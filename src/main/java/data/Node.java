@@ -70,34 +70,10 @@ public class Node implements /*Queueable,*/ Solvable, Treeable {
 
 	@Override
 	public void convertToTree() {
+//		getHead();
+
 
 	}
-
-/*	@Override
-	public Queueable convertToLocalTree() {
-
-		Queueable
-				localLeft = this,
-				localRoot = getNext(),
-				localRite = getNext().getNext();
-
-		if (localLeft.getPrev() != null)
-			localLeft.getPrev().setNext(localRoot);
-
-		if (localRite.getNext() != null)
-			localRite.getNext().setPrev(localRoot);
-
-		localRoot.setTail(localRite);
-		localRoot.setNext(localRite.getNext());
-
-		localRite.setNext(null);
-		localLeft.setPrev(null);
-
-		localRoot.setPrev(localLeft.getPrev());
-		localRoot.setHead(localLeft);
-
-		return localRoot;
-	}*/	// ? disposable ?
 
 	//	@formatter:on
 

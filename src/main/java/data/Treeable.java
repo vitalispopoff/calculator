@@ -12,8 +12,6 @@ public interface Treeable extends Queueable{
 
 	void convertToTree();
 
-	/*Queueable convertToLocalTree();*/ // ? disposable ?
-
 	default public Queueable convertToLocalTree(Queueable q) {
 
 		Queueable
@@ -23,9 +21,11 @@ public interface Treeable extends Queueable{
 
 		if (localLeft.getPrev() != null)
 			localLeft.getPrev().setNext(localRoot);
+		else setHead(localRoot);
 
 		if (localRite.getNext() != null)
 			localRite.getNext().setPrev(localRoot);
+		else setTail(localRoot);
 
 		localRoot.setTail(localRite);
 		localRoot.setNext(localRite.getNext());
@@ -38,42 +38,4 @@ public interface Treeable extends Queueable{
 
 		return localRoot;
 	}
-
-/*
-	static final Queueable
-			mainQueueable = Queueable.mainQueueable;
-
-//	@formatter:off
-
-	void setLeft (Queueable queueable);
-	void setRite (Queueable queueable);
-	void setRoot (Queueable queueable);
-
-	Queueable getLeft ();
-	Queueable getRite ();
-	Queueable getRoot ();
-
-	Queueable convertToLocalTree();
-
-//	@formatter:on
-
-	static void convertToTree() {
-
-		Queueable
-				localHead = mainQueueable.getHead(),
-				localCache = null;
-
-		for (; mainQueueable.isSingle(); ) {
-			if (localHead.getTypeIndex() > mainQueueable.getTypeIndex()) {
-				localCache = localHead;
-				localHead = localHead.getTail();
-			}
-			else {
-				localHead = ((Treeable) localHead).convertToLocalTree();
-				((Nodeable) localCache).setRoot(localHead);
-			}
-		}
-
-	}*/
-
 }
