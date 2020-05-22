@@ -2,59 +2,55 @@ package data;
 
 public interface Treeable extends Queueable {
 
+//	@formatter:off
 
 	void setLeft(Queueable q);
-
 	void setRite(Queueable q);
 
 	Queueable getLeft();
-
 	Queueable getRite();
 
 	void convertToTree();
-
-	default public Queueable convertToLocalTree(Queueable q) {
+	default Queueable convertToLocalTree(Queueable cache) {
 
 		Queueable
-				localLeft = q,
-				localRoot = q.getNext(),
-				localRite = q.getNext().getNext();
+				Q0 = cache.getPrev() == getHead() ? null : cache.getPrev(),
+				Q1 = cache,
+				Q2 = cache.getNext(),
+				Q3 = Q2.getNext(),
+				QN = Q3.getNext() == getTail() ? null : Q3.getNext();
 
-		if (localLeft.getPrev() != null)
-			localLeft.getPrev().setNext(localRoot);
-		else setHead(localRoot);
+		if (Q0 != null) Q0.setNext(Q2);
+		else setHead(Q2);
 
-		if (localRite.getNext() != null)
-			localRite.getNext().setPrev(localRoot);
-		else setTail(localRoot);
+		if (QN != null) QN.setPrev(Q2);
+		else setTail(Q2);
 
-		localRoot.setTail(localRite);
-		localRoot.setNext(localRite.getNext());
+		Q2.setTail(Q3);
+		Q2.setNext(QN);
 
-		localRite.setNext(null);
-		localLeft.setPrev(null);
+		if (QN != null) Q3.setNext(null);
+		if (Q0 != null) Q1.setPrev(null);
 
-		localRoot.setPrev(localLeft.getPrev());
-		localRoot.setHead(localLeft);
+		Q2.setPrev(Q0);
+		Q2.setHead(Q1);
 
-		return localRoot;
+		return Q2;
 	}
 
-	default public Queueable priorityCheck(Queueable q) {
-
-		if (q == getTail()) return q.getHead();
+	default Queueable priorityCheck(Queueable q) {
 
 		Queueable
-				localLeft = q,
-				localRite = q.getNext().getNext();
+				Q1 = q == getTail() ? getHead() : q,
+				Q2 = Q1.getNext(),
+				Q3 = Q2.getNext();
 
-		if (!Double.isNaN(localLeft.getValue())) {
-			Queueable localRoot = localLeft.getNext();
-			int localRootPriority = localRoot.getType().ordinal() >> 1;
+		if (!Double.isNaN(Q1.getValue()) && !Double.isNaN(Q3.getValue())) {
+			int Q2Priority = Q2.getType().ordinal() >> 1;
 
-			if (localRootPriority > 0 && localRootPriority <= Node.mainQueue.getCurrentType())
-				return localLeft;
+			if (Q2Priority > 0 && Q2Priority <= Node.mainQueue.getCurrentType())
+				return Q1;
 		}
-		return localRite;
+		return Q3;
 	}
 }

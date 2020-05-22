@@ -37,16 +37,22 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getNext() { return next; }
 
 	@Override public void setValue(double v) { value = v; }
-	@Override public void setValue() {
+	@Override public void setValue(Queueable q) {
 		int
-				thisIndexNumber = getType().ordinal()>>1,
-				valueIndexNumber = Type.VALUE.ordinal()>>1,
-				bracketIndexNumber = Type.BRACKET_OUT.ordinal()>>1;
+				qIndex = q.getType().ordinal()>>1,
+				valueIndex = Type.VALUE.ordinal()>>1,
+				bracketIndex = Type.BRACKET_OUT.ordinal()>>1;
 
-		if (thisIndexNumber < valueIndexNumber && thisIndexNumber > bracketIndexNumber
-				&& this.getHead().getType() == Type.VALUE && this.getTail().getType() == Type.VALUE)
-			setValue(solve(this.getHead().getValue(), this.getTail().getValue()));
-
+		if (qIndex < valueIndex && qIndex > bracketIndex) {
+			double
+					leftValue = q.getHead().getValue(),
+					riteValue = q.getTail().getValue(),
+					thisValue = ((Node) q).solve(leftValue, riteValue);
+			q.setValue(thisValue);
+		}
+		removeType(q.getType());
+		q.setType(Type.VALUE);
+		addType(q.getType());
 	}
 	@Override public void setType(Type t) {type = t;}
 
@@ -77,18 +83,18 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getLeft(){return left;}
 	@Override public Queueable getRite(){return rite;}
 
-	@Override
-	public void convertToTree() {
-		Queueable localCache = ((Treeable)mainQueue).priorityCheck(mainQueue.getHead());
+	@Override public void convertToTree() {
+		Queueable
+				localCache = mainQueue.getHead();
 
-		for( ; mainQueue.isMultiPiece();){
+		while (mainQueue.isMultiPiece()) {
+			localCache = priorityCheck(localCache);
 			localCache = convertToLocalTree(localCache);
-
+			setValue(localCache);
+			// ! dispatch the local tree
 		}
-
-
+		setValue(getHead().getValue());
 	}
 
 	//	@formatter:on
-
 }

@@ -9,7 +9,6 @@ public interface Queueable {
 	default void add(Queueable q){
 		if(isEmpty()){
 			setHead(q);
-//			setTail(q);
 		} else {
 			q.setPrev(getTail());
 			q.getPrev().setNext(q);
@@ -17,7 +16,7 @@ public interface Queueable {
 		setTail(q);
 		addType(q.getType());
 	}
-	default void remove(Queueable q){
+	/*default void remove(Queueable q){
 		if (getHead() == q ){
 			setHead(q.getNext());
 			getHead().setPrev(null);
@@ -37,7 +36,7 @@ public interface Queueable {
 		}
 		removeType(q.getType());
 
-	}
+	}*/	// ? disposable ?
 
 	default boolean isEmpty(){
 		return getHead() == getTail() && getHead() == null;}
@@ -60,7 +59,7 @@ public interface Queueable {
 	void setNext(Queueable q);
 
 	void setValue(double v);
-	void setValue();
+	void setValue(Queueable q);
 	void setType(Type t);
 
 	void addType(Type type);

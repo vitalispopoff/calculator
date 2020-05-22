@@ -15,6 +15,12 @@ Move along.
 
 # versions:
 
+0.1.0 : consistent with "0.1.0 before commit 160"
++ simplified architecture
++ main functionality available
++ ready for the bracket implementation
+ 
+
 0.0.2
 + main data structure available
 + tests available
