@@ -8,18 +8,16 @@ package data {
     +interface Queueable {
     }
 
-    +interface Treeable {
+    +interface Treeable extends Queueable{
     }
 
-    +class Node {
+    +class Node implements Treeable{
     }
 }
 
         Queueable   *..     Queueable
-        Treeable    .*     Queueable
-        Treeable    <|--   Node
-        Queueable   <|--    Node
-        Parsable    <|-    Node
-        Node        -left-|>  Solvable
+
+        Parsable    <|-right-    Node
+        Node        -right-|>  Solvable
 
 @enduml
