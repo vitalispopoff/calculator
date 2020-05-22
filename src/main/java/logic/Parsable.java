@@ -9,9 +9,10 @@ public interface Parsable {
 //	@formatter:off
 
 	static void addToParserCache (char c) {
-		if (c == 8723)
-			toggleSign	();
-		else if (isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
+/*		if (c == 8723)
+			toggleSign();
+		else*/
+	if (ParsableCache.isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
 			setParserCache (parsableCache.parserCache += c);
 	}
 	static void resetParsableCache () {
@@ -27,6 +28,17 @@ public interface Parsable {
 
 		Parsable.resetParsableCache ();
 		return cache;
+	}
+	static void toggleSign () { parsableCache.isValuePositive = ! parsableCache.isValuePositive; }
+
+	static boolean isParserAValue() {
+		try {
+			Double.parseDouble (Parsable.parsableCache.parserCache);
+			return true;
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 //	Parsable implementation //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -56,11 +68,10 @@ public interface Parsable {
 					? Parsable.parsableCache.parserCache
 					: "-" + Parsable.parsableCache.parserCache;
 		}
-		static void toggleSign () {
-			Parsable.parsableCache.isValuePositive
-					= ! Parsable.parsableCache.isValuePositive;
-		}
+
 	}
+
+
 
 //	@formatter:on
 

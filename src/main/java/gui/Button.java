@@ -10,34 +10,38 @@ import static gui.Settings.*;
 
 public class Button extends JButton implements KeyListener {
 
-//	@formatter:off
 
-	static boolean valueSequence = true;
-	private Type type = null;
-//	private Interactive action = null;
-	private char symbol;
 
+	static boolean
+			valueSequence = true;
+	private Type
+			type = null;
+	Interactive
+			action;
+	private char
+			symbol;
 
 	public Button(Type type, char symbol) {
 		setNameAndText(symbol);
-//		setAction(Interaction.SOLVE);
 		setType(type);
-		addInteraction(Interaction.SOLVE);
+		setAction(Interaction.ADD_TO_QUEUE);
+		addInteraction(this);
 	}
 	public Button(Interactive action, char symbol) {
 		setNameAndText(symbol);
-//		setAction(action);
-		addInteraction(action);
+		setAction(action);
+		addInteraction(this);
 	}
-
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
-//		setAction(action);
 		setType(type);
-		addInteraction(action);
+		setAction(action);
+		addInteraction(this);
 	}
 
-	private void addInteraction(Interactive action) { addActionListener(e -> action.interact());}
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+	private void addInteraction(Button button) { addActionListener(e -> button.action.interact(button));}
 
 	void setButtonBounds(int i, int tile) {
 		setBounds(
@@ -48,16 +52,17 @@ public class Button extends JButton implements KeyListener {
 		);
 	}
 
-/*	void setAction(Interactive action) {
-		this.action = action;
-	}*/
+	//	@formatter:off
 
-	/*void setName(char symbol) { }*/		// ? disposable ?
 	void setNameAndText(char symbol) {
 		setName("button_" + symbol);
 		setText(Character.toString(symbol));
 	}
 	void setType(Type type) { this.type = type; }
+	void setAction(Interactive action){this.action = action;}
+
+	char getSymbol() { return symbol; }
+	Type getType() { return type; }
 
 //	KeyListener implementation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

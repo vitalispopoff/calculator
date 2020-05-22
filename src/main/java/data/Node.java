@@ -7,7 +7,7 @@ public class Node implements Solvable, Treeable {
 
 //	@formatter:off
 
-	static Queueable
+	public static Queueable
 			mainQueue = new Node();
 	int[]
 			typeIndex = new int[Type.values().length >> 1];
@@ -20,6 +20,15 @@ public class Node implements Solvable, Treeable {
 			rite = null,
 			prev = null,
 			next = null;
+
+	Node(){}
+	public Node(Double value){
+		setType(Type.VALUE);
+		setValue(value);
+	}
+	public Node(Type type){
+		setType(type);
+	}
 
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

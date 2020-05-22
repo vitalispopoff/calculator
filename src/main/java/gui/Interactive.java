@@ -2,5 +2,5 @@ package gui;
 
 public interface Interactive {
 
-	void interact();
+	void interact(Button button);
 }
