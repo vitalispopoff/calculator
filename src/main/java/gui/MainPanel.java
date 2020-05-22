@@ -1,0 +1,31 @@
+package gui;
+
+import javax.swing.*;
+import java.awt.*;
+
+import static gui.Settings.basicCalculator;
+
+public class MainPanel extends JPanel {
+
+	private int tile = 60;
+	public static MainDisplay display = new MainDisplay();
+
+	public MainPanel(Settings settings) {
+		int i = 0;
+
+		tile = tile == 0 ? settings.tile : tile;
+
+		setLayout(null);
+		add(display);
+
+		for (Button b : basicCalculator) {
+			b.setButtonBounds(i++, tile);
+			add(b);
+		}
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(4 * tile, 6 * tile);
+	}
+}
