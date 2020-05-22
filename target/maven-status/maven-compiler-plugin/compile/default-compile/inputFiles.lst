@@ -1,7 +1,6 @@
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Parser.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Parseable.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Nodeable.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Priority.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Solver.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Solvable.java
-E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\Node.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\data\Node.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\logic\Type.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\logic\Solvable.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\logic\Parsable.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\data\Queueable.java
+E:\_LAB\pl\popoff\programator\junitExcercises\src\main\java\data\Treeable.java

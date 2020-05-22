@@ -94,32 +94,22 @@ public class TreeableTest {
 		Assert.assertSame(Node.mainQueue.getHead(), Node.mainQueue.getTail());
 	}
 
-//	@formatter:on
-
-	@Test
-	public void priorityCheck_01() {
+	@Test public void priorityCheck_01() {
 		initial_01();
-		System.out.println("priorityCheck_01 : " + Node.mainQueue.getCurrentType());
-
 		result = ((Treeable) Node.mainQueue).priorityCheck(Node.mainQueue.getHead());
-
 		Assert.assertSame(n1, result);
 	}
-
-	@Test
-	public void priorityCheck_02() {
+	@Test public void priorityCheck_02() {
 		initial_02();
-		System.out.println("priorityCheck_02 : " + Node.mainQueue.getCurrentType());
-
 		result = ((Treeable) Node.mainQueue).priorityCheck(Node.mainQueue.getHead());
-
 		Assert.assertSame(n3, result);
 	}
-
-	@Test
-	public void priorityCheck_03() {
+	@Test public void priorityCheck_03() {
 		initial_02();
 		result = ((Treeable) Node.mainQueue).priorityCheck(n3);
 		Assert.assertSame(n3, result);
 	}
+
+	//	@formatter:on
+
 }
