@@ -4,20 +4,22 @@ import static logic.Parsable.ParsableCache.*;
 
 public interface Parsable {
 
+	static final ParsableCache parsableCache = new ParsableCache();
+
 //	@formatter:off
 
 	static void addToParserCache (char c) {
 		if (c == 8723)
 			toggleSign	();
 		else if (isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
-			setParserCache (parserCache += c);
+			setParserCache (parsableCache.parserCache += c);
 	}
 	static void resetParsableCache () {
-		parserCache = "";
-		isValuePositive = true;
+		parsableCache.parserCache = "";
+		parsableCache.isValuePositive = true;
 	}
 	static double dumpParserCache() {
-		if (parserCache.length () == 0)
+		if (parsableCache.parserCache.length () == 0)
 			return Double.NaN;
 
 		double cache
@@ -31,27 +33,33 @@ public interface Parsable {
 
 	class ParsableCache implements Parsable {
 
-		static boolean
+		boolean
 				isValuePositive = true;
-		static String
+		String
 				parserCache = "";
 
-		static public String getParserCache () { return parserCache; }
-		static public void setParserCache (String string) { parserCache = string; }
+		static public String getParserCache () { return Parsable.parsableCache.parserCache; }
+		static public void setParserCache (String string) { Parsable.parsableCache.parserCache = string; }
 
 		static boolean isParserAValue (char c) {
 			try {
-				Double.parseDouble (parserCache + c);
+				Double.parseDouble (Parsable.parsableCache.parserCache + c);
 				return true;
 			}
 			catch (NumberFormatException e) {
 				return false;
 			}
 		}
-		/*static boolean isParserAValue () { return isParserAValue ('\u0000'); }*/	// ? disposable ?
 
-		static String getParserCacheString () { return isValuePositive ? parserCache : "-" + parserCache; }
-		static void toggleSign () { isValuePositive = ! isValuePositive; }
+		static String getParserCacheString () {
+			return Parsable.parsableCache.isValuePositive
+					? Parsable.parsableCache.parserCache
+					: "-" + Parsable.parsableCache.parserCache;
+		}
+		static void toggleSign () {
+			Parsable.parsableCache.isValuePositive
+					= ! Parsable.parsableCache.isValuePositive;
+		}
 	}
 
 //	@formatter:on

@@ -1,8 +1,8 @@
 package logic;
 
-public enum Type implements logic.Solvable {
-
 //	@formatter:off
+
+public enum Type implements /*logic.*/Solvable {
 
 //	0 : brackets  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

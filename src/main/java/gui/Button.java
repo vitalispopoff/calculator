@@ -10,44 +10,61 @@ import static gui.Settings.*;
 
 public class Button extends JButton implements KeyListener {
 
+//	@formatter:off
+
 	static boolean valueSequence = true;
-	private Type type;
+	private Type type = null;
+//	private Interactive action = null;
 	private char symbol;
 
-	public Button(Type type, char symbol){
-		setName("button_"+symbol);
-		setText(symbol);
+
+	public Button(Type type, char symbol) {
+		setNameAndText(symbol);
+//		setAction(Interaction.SOLVE);
 		setType(type);
-//		addInteraction();
+		addInteraction(Interaction.SOLVE);
+	}
+	public Button(Interactive action, char symbol) {
+		setNameAndText(symbol);
+//		setAction(action);
+		addInteraction(action);
 	}
 
-	void setButtonBounds(int i, int tile){
+	public Button(Interactive action, Type type, char symbol) {
+		setNameAndText(symbol);
+//		setAction(action);
+		setType(type);
+		addInteraction(action);
+	}
+
+	private void addInteraction(Interactive action) { addActionListener(e -> action.interact());}
+
+	void setButtonBounds(int i, int tile) {
 		setBounds(
-				(i % buttonRowLength)* tile,
+				(i % buttonRowLength) * tile,
 				(1 + (i / buttonRowLength)) * tile,
 				tile,
 				tile
 		);
 	}
 
-//	private void addInteraction() { addActionListener(e -> type.interact(this));}
-	void setText(char symbol){setText(Character.toString(symbol));}
+/*	void setAction(Interactive action) {
+		this.action = action;
+	}*/
 
-	public char getSymbol(){
-		String
-				cache = getText();
-		return cache.charAt(cache.length()-1);
+	/*void setName(char symbol) { }*/		// ? disposable ?
+	void setNameAndText(char symbol) {
+		setName("button_" + symbol);
+		setText(Character.toString(symbol));
 	}
+	void setType(Type type) { this.type = type; }
 
-	@Override
-	public void keyTyped(KeyEvent e) { }
+//	KeyListener implementation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override
-	public void keyPressed(KeyEvent e){ }
+	@Override public void keyTyped(KeyEvent e) { }
+	@Override public void keyPressed(KeyEvent e) { }
+	@Override public void keyReleased(KeyEvent e) { }
 
-	@Override
-	public void keyReleased(KeyEvent e) { }
+//	@formatter:on
 
-	void setType (Type type) {this.type = type;}
-	public Type getType(){return type;}
 }

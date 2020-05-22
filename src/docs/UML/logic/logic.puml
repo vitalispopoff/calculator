@@ -1,0 +1,19 @@
+@startuml
+
++interface Solvable {
+}
+
++interface Parsable {
+}
+
++enum Type implements Solvable{
+}
+
+class ParsableCache implements Parsable {
+}
+
+
+
+
+
+@enduml
