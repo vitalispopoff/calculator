@@ -3,7 +3,7 @@ package gui;
 import data.Node;
 import logic.Parsable;
 
-public enum Interaction  implements Interactive {
+public enum Interaction implements Interactive {
 
 	BRACKET_IN {
 		@Override
@@ -22,7 +22,8 @@ public enum Interaction  implements Interactive {
 	ADD_TO_PARSER {
 		@Override
 		public void interact(Button button) {
-			Parsable.addToParserCache(button.getSymbol());
+			System.out.println(button.getSymbol());
+//			Parsable.addToParserCache(button.getSymbol());
 		}
 	},
 
@@ -35,7 +36,7 @@ public enum Interaction  implements Interactive {
 
 	ADD_TO_QUEUE {
 		@Override
-		public void interact(Button button){
+		public void interact(Button button) {
 			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
 			Node.mainQueue.add(new Node(button.getType()));
 		}
@@ -44,7 +45,9 @@ public enum Interaction  implements Interactive {
 	SOLVE {
 		@Override
 		public void interact(Button button) {
-			((Node)Node.mainQueue).convertToTree();
+			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
+			if (!Node.mainQueue.isEmpty())
+				((Node) Node.mainQueue).convertToTree();
 		}
 	},
 	UNDO {

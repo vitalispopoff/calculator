@@ -30,6 +30,14 @@ public class Node implements Solvable, Treeable {
 		setType(type);
 	}
 
+	static public void resetMainQueue(){
+		mainQueue.setHead(null);
+		mainQueue.setTail(null);
+		((Node)mainQueue).typeIndex = new int[Type.values().length >> 1];
+		mainQueue.setValue(Double.NaN);
+		mainQueue.setType(null);
+	}
+
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override public void setHead(Queueable q) { setLeft(q); }
@@ -82,8 +90,7 @@ public class Node implements Solvable, Treeable {
 
 //	Solvable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override
-	public double solve(double leftValue, double riteValue) { return type.solve(leftValue, riteValue); }
+	@Override public double solve(double leftValue, double riteValue) { return type.solve(leftValue, riteValue); }
 
 //	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -92,18 +99,24 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getLeft(){return left;}
 	@Override public Queueable getRite(){return rite;}
 
-	@Override public void convertToTree() {
+	//	@formatter:on
+
+	@Override
+	public void convertToTree() {
 		Queueable
 				localCache = mainQueue.getHead();
 
 		while (mainQueue.isMultiPiece()) {
 			localCache = priorityCheck(localCache);
-			localCache = convertToLocalTree(localCache);
-			setValue(localCache);
+			if (localCache == null) break;
+			else {
+				localCache = convertToLocalTree(localCache);
+				setValue(localCache);
+			}
 			// ! dispatch the local tree
 		}
 		setValue(getHead().getValue());
 	}
 
-	//	@formatter:on
+
 }

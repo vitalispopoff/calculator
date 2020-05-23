@@ -25,23 +25,25 @@ public class Button extends JButton implements KeyListener {
 		setNameAndText(symbol);
 		setType(type);
 		setAction(Interaction.ADD_TO_QUEUE);
-		addInteraction(this);
+		addInteraction(/*this*/);
 	}
 	public Button(Interactive action, char symbol) {
 		setNameAndText(symbol);
 		setAction(action);
-		addInteraction(this);
+		addInteraction(/*this*/);
 	}
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
 		setType(type);
 		setAction(action);
-		addInteraction(this);
+		addInteraction(/*this*/);
 	}
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	private void addInteraction(Button button) { addActionListener(e -> button.action.interact(button));}
+	private void addInteraction() {
+		addActionListener(e -> System.out.println(symbol));
+				/*this.action.interact(this))*/;}
 
 	void setButtonBounds(int i, int tile) {
 		setBounds(

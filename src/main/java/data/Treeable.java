@@ -50,7 +50,7 @@ public interface Treeable extends Queueable {
 
 			if (Q2Priority > 0 && Q2Priority <= Node.mainQueue.getCurrentType())
 				return Q1;
-		}
-		return Q3;
+		} else return Q3;
+		return null;	// !!!
 	}
 }

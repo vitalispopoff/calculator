@@ -47,7 +47,7 @@ public interface Parsable {
 
 		boolean
 				isValuePositive = true;
-		String
+		public String
 				parserCache = "";
 
 		static public String getParserCache () { return Parsable.parsableCache.parserCache; }
