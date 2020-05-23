@@ -1,31 +1,34 @@
 @startuml
 
+
 package GUI {
+
     component output
     component input
 }
 
 package logic {
-
+    component Parsable
     component Solvable
-
 }
 
 package data {
-'    component memory
     component Queueable
     component Treeable
     component node
 }
 
-component Parsable
+component Interactive
 
-[input]     -right-o    [Parsable]
-[Parsable] -down-* [node]
-logic       <|-down-    [node]
-[output]    *-up-      [input]
-[output]    -right-o    [node]
 
+[input]     -up-o    [Interactive]
+
+[Interactive] -up-o     [Parsable]
+[Interactive] -right-o   [node]
+[Solvable]  <|-down-    [node]
+
+[output]    *-up-       [input]
+[output]    -up-o    [node]
 
 [Queueable] <|-left- [Treeable]
 
