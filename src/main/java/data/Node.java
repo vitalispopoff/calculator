@@ -53,6 +53,7 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getPrev() { return prev; }
 	@Override public Queueable getNext() { return next; }
 
+	@Override public void setType(Type t) {type = t;}
 	@Override public void setValue(double v) { value = v; }
 	@Override public void setValue(Queueable q) {
 		int
@@ -70,8 +71,9 @@ public class Node implements Solvable, Treeable {
 		removeType(q.getType());
 		q.setType(Type.VALUE);
 		addType(q.getType());
+		System.out.println(q.getValue());
 	}
-	@Override public void setType(Type t) {type = t;}
+
 
 	@Override public void addType(Type t) { typeIndex[t.ordinal()>>1]++; }
 	@Override public void removeType(Type t) {
@@ -117,6 +119,5 @@ public class Node implements Solvable, Treeable {
 		}
 		setValue(getHead().getValue());
 	}
-
 
 }

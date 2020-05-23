@@ -45,7 +45,7 @@ public interface Parsable {
 
 	class ParsableCache implements Parsable {
 
-		boolean
+		public boolean
 				isValuePositive = true;
 		public String
 				parserCache = "";
@@ -68,7 +68,6 @@ public interface Parsable {
 					? Parsable.parsableCache.parserCache
 					: "-" + Parsable.parsableCache.parserCache;
 		}
-
 	}
 
 

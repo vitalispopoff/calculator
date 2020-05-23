@@ -19,7 +19,7 @@ class Main {
 				b1 = new Button(Interaction.ADD_TO_PARSER, VALUE, '1'),
 				b2 = new Button(Interaction.SWITCH_SIGN, VALUE, '.'),
 				b3 = new Button(Interaction.ADD_TO_PARSER, VALUE, '0'),
-				b4 = new Button(ADD, '+'),
+				b4 = new Button(Interaction.ADD_TO_QUEUE, ADD, '+'),
 				b5 = b3,
 				b6 = b2,
 				b7 = b1,

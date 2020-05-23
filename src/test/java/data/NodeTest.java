@@ -33,10 +33,14 @@ public class NodeTest {
 
 		n2.setType(Type.ADD);
 		n4.setType(Type.DIVIDE);
-
+	}
+	private void initial_01(){
 		Node.mainQueue.add(n1);
 		Node.mainQueue.add(n2);
 		Node.mainQueue.add(n3);
+	}
+	private void initial_02(){
+		initial_01();
 		Node.mainQueue.add(n4);
 		Node.mainQueue.add(n5);
 	}
@@ -44,19 +48,21 @@ public class NodeTest {
 	//	@Ignore
 	@Test
 	public void convertToTree_01() {
+		initial_01();
 		((Node) Node.mainQueue).convertToTree();
 		Assert.assertSame(n2, Node.mainQueue.getHead());
 	}
 
-//	@formatter:on
-
+//	@Ignore
 	@Test
 	public void convertToTree_02() {
+		initial_02();
 		((Node)Node.mainQueue).convertToTree();
 		Assert.assertEquals(1., Node.mainQueue.getHead().getValue(), 0.);
 
 
 	}
 
+	//	@formatter:on
 
 }

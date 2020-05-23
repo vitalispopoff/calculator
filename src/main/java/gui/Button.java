@@ -3,47 +3,29 @@ package gui;
 import logic.Type;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import static gui.Settings.*;
+import static gui.Settings.buttonRowLength;
 
-public class Button extends JButton implements KeyListener {
+public class Button extends JButton /*implements KeyListener*/ {
 
-
-
-	static boolean
-			valueSequence = true;
-	private Type
+	public Type
 			type = null;
-	Interactive
-			action;
-	private char
+	public char
 			symbol;
 
-	public Button(Type type, char symbol) {
-		setNameAndText(symbol);
-		setType(type);
-		setAction(Interaction.ADD_TO_QUEUE);
-		addInteraction(/*this*/);
-	}
 	public Button(Interactive action, char symbol) {
 		setNameAndText(symbol);
-		setAction(action);
-		addInteraction(/*this*/);
+		addActionListener(e ->action.interact(this));
+		System.out.println("button "+symbol);
 	}
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
 		setType(type);
-		setAction(action);
-		addInteraction(/*this*/);
+		addActionListener(e ->action.interact(this));
+		System.out.println("button "+symbol);
 	}
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-	private void addInteraction() {
-		addActionListener(e -> System.out.println(symbol));
-				/*this.action.interact(this))*/;}
 
 	void setButtonBounds(int i, int tile) {
 		setBounds(
@@ -61,16 +43,16 @@ public class Button extends JButton implements KeyListener {
 		setText(Character.toString(symbol));
 	}
 	void setType(Type type) { this.type = type; }
-	void setAction(Interactive action){this.action = action;}
+//	void setAction(Interactive action){this.action = action;}
 
-	char getSymbol() { return symbol; }
-	Type getType() { return type; }
+	public char getSymbol() { return symbol; }
+	public Type getType() { return type; }
 
 //	KeyListener implementation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override public void keyTyped(KeyEvent e) { }
-	@Override public void keyPressed(KeyEvent e) { }
-	@Override public void keyReleased(KeyEvent e) { }
+//	@Override public void keyTyped(KeyEvent e) { }
+//	@Override public void keyPressed(KeyEvent e) { }
+//	@Override public void keyReleased(KeyEvent e) { }
 
 //	@formatter:on
 

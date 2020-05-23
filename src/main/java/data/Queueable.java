@@ -39,7 +39,8 @@ public interface Queueable {
 	}*/	// ? disposable ?
 
 	default boolean isEmpty(){
-		return getHead() == getTail() && getHead() == null;}
+		return getHead() == getTail() && getHead() == null;
+	}
 	default boolean isOnePiece(){
 		return getHead() == getTail() && getHead() != null;
 	}

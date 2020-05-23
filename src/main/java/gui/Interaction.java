@@ -1,6 +1,5 @@
 package gui;
 
-import data.Node;
 import logic.Parsable;
 
 public enum Interaction implements Interactive {
@@ -22,8 +21,7 @@ public enum Interaction implements Interactive {
 	ADD_TO_PARSER {
 		@Override
 		public void interact(Button button) {
-			System.out.println(button.getSymbol());
-//			Parsable.addToParserCache(button.getSymbol());
+			System.out.println(button.symbol);
 		}
 	},
 
@@ -31,23 +29,24 @@ public enum Interaction implements Interactive {
 		@Override
 		public void interact(Button button) {
 			Parsable.toggleSign();
+			System.out.println(Parsable.parsableCache.isValuePositive);
 		}
 	},
 
 	ADD_TO_QUEUE {
 		@Override
 		public void interact(Button button) {
-			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
-			Node.mainQueue.add(new Node(button.getType()));
+//			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
+//			Node.mainQueue.add(new Node(button.getType()));
 		}
 	},
 
 	SOLVE {
 		@Override
 		public void interact(Button button) {
-			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
+/*			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
 			if (!Node.mainQueue.isEmpty())
-				((Node) Node.mainQueue).convertToTree();
+				((Node) Node.mainQueue).convertToTree();*/
 		}
 	},
 	UNDO {

@@ -26,17 +26,19 @@ public class TreeableTest {
 		n3.setType(Type.VALUE);
 		n5.setType(Type.VALUE);
 
+		n1.setValue(1.);
+		n3.setValue(1.);
+		n5.setValue(2.);
+
 		n2.setType(Type.ADD);
 		n4.setType(Type.DIVIDE);
-
 	}
 
 	private void initial_01(){
 		Node.mainQueue.add(n1);
 		Node.mainQueue.add(n2);
 		Node.mainQueue.add(n3);
-		n1.setValue(1.);
-		n3.setValue(1.);
+
 	}
 
 	@Test public void convertToLocalTree_01(){
@@ -69,7 +71,6 @@ public class TreeableTest {
 		initial_01();
 		Node.mainQueue.add(n4);
 		Node.mainQueue.add(n5);
-		n5.setValue(2.);
 	}
 
 	@Test public void convertToLocalTree_06(){
