@@ -15,6 +15,10 @@ Move along.
 
 # versions:
 
+0.1.1 : 
++ input connected and operational
++ interaction is now a separated interface, and connects the GUI with the business logic 
+
 0.1.0 : consistent with "0.1.0 before commit 160"
 + simplified architecture
 + main functionality available

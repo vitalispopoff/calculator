@@ -14,6 +14,7 @@ public interface Parsable {
 		else*/
 	if (ParsableCache.isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
 			setParserCache (parsableCache.parserCache += c);
+	System.out.println(getParserCacheString());
 	}
 	static void resetParsableCache () {
 		parsableCache.parserCache = "";

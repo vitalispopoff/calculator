@@ -1,27 +1,23 @@
 package gui;
 
+import gui.Interactive.Whatevah;
 import logic.Type;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 import static gui.Settings.buttonRowLength;
 
 public class Button extends JButton /*implements KeyListener*/ {
 
-	public Type
-			type = null;
-	public char
-			symbol;
+	Whatevah whatevah;
+	ActionEvent event;
 
-	public Button(Interactive action, char symbol) {
-		setNameAndText(symbol);
-		addActionListener(e ->action.interact(this));
-		System.out.println("button "+symbol);
-	}
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
-		setType(type);
-		addActionListener(e ->action.interact(this));
+		setWhatevah(type,symbol);
+
+		addActionListener(e ->action.interact(whatevah));
 		System.out.println("button "+symbol);
 	}
 
@@ -38,15 +34,17 @@ public class Button extends JButton /*implements KeyListener*/ {
 
 	//	@formatter:off
 
+	void setWhatevah(Type type, char symbol){
+		whatevah = new Whatevah(type, symbol);
+	}
+
 	void setNameAndText(char symbol) {
 		setName("button_" + symbol);
 		setText(Character.toString(symbol));
 	}
-	void setType(Type type) { this.type = type; }
+
 //	void setAction(Interactive action){this.action = action;}
 
-	public char getSymbol() { return symbol; }
-	public Type getType() { return type; }
 
 //	KeyListener implementation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

@@ -1,33 +1,34 @@
 package gui;
 
+import data.Node;
 import logic.Parsable;
 
 public enum Interaction implements Interactive {
 
 	BRACKET_IN {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 
 		}
 	},
 
 	BRACKET_OUT {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 
 		}
 	},
 
 	ADD_TO_PARSER {
 		@Override
-		public void interact(Button button) {
-			System.out.println(button.symbol);
+		public void interact(Whatevah whatevah) {
+			Parsable.addToParserCache(whatevah.getSymbol());
 		}
 	},
 
 	SWITCH_SIGN {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 			Parsable.toggleSign();
 			System.out.println(Parsable.parsableCache.isValuePositive);
 		}
@@ -35,41 +36,42 @@ public enum Interaction implements Interactive {
 
 	ADD_TO_QUEUE {
 		@Override
-		public void interact(Button button) {
-//			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
-//			Node.mainQueue.add(new Node(button.getType()));
+		public void interact(Whatevah whatevah) {
+			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
+			Node.mainQueue.add(new Node(whatevah.getType()));
 		}
 	},
 
 	SOLVE {
 		@Override
-		public void interact(Button button) {
-/*			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
+		public void interact(Whatevah whatevah) {
+			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
 			if (!Node.mainQueue.isEmpty())
-				((Node) Node.mainQueue).convertToTree();*/
+				((Node) Node.mainQueue).convertToTree();
+			System.out.println(Node.mainQueue.getValue());
 		}
 	},
 	UNDO {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 		}
 	},
 
 	CLEAR {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 
 		}
 	},
 	RESET {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 
 		}
 	},
 	EMPTY {
 		@Override
-		public void interact(Button button) {
+		public void interact(Whatevah whatevah) {
 
 		}
 	}

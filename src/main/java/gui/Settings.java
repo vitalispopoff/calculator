@@ -11,7 +11,7 @@ public class Settings implements Serializable {
     private static final String
             fileAddress = "src\\main\\resources\\settings.txt";
     public static Button[] basicCalculator = {
-            new Button( Interaction.CLEAR,'C'),                        //   0
+            new Button( Interaction.CLEAR, null,'C'),                        //   0
 
             new Button( Interaction.ADD_TO_QUEUE, EXPONENT, '^'),                                 //   1
             new Button( Interaction.ADD_TO_QUEUE, ROOT, '√'),                                     //   2
@@ -35,7 +35,7 @@ public class Settings implements Serializable {
 
             new Button( Interaction.ADD_TO_QUEUE, SUBTRACT, '-'),                                 //  15
 
-            new Button( Interaction.SWITCH_SIGN, '∓'),                  //  16
+            new Button( Interaction.SWITCH_SIGN, null, '∓'),                  //  16
 
             new Button( Interaction.ADD_TO_PARSER,VALUE, '0'),          //  17
             new Button( Interaction.ADD_TO_PARSER,VALUE, '.'),          //  18
