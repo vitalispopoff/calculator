@@ -1,19 +1,46 @@
 @startuml
 
-+interface Solvable {
+package logic {
+
+    +interface Solvable {
+        ..
+            +{method} solve (double) : double
+    }
+
+    +interface Parsable {
+            +{field}{static}final parsableCache : ParsableCache
+        ..
+            +{method} {static} addToParserCache (char)
+            +{method} {static} resetParserCache
+            +{method} {static} dumpParserCache : double
+            +{method} {static} toggleSign
+            +{method} {static} isParserAValue : boolean
+    }
+
+    +enum Type implements Solvable{
+            BRACKET_IN,
+            BRACKET_OUT,
+            EXPONENT,
+            ROOT,
+            MULTIPLY,
+            DIVIDE,
+            ADD,
+            SUBTRACT,
+            VALUE,
+            EVALUATE
+    }
+
+    class ParsableCache {
+            +{field} isValuePositive : boolean
+            +{field} parserCache : String
+        ..
+            +{method} {static} getParserCache : String
+            +{method} {static} setParserCache (String)
+            ~{method} {static} isParserAValue (char) boolean
+            ~{method} {static} getParserCacheString() : String
+    }
+
+    Parsable <|-up.o ParsableCache
 }
-
-+interface Parsable {
-}
-
-+enum Type implements Solvable{
-}
-
-class ParsableCache implements Parsable {
-}
-
-
-
-
 
 @enduml

@@ -1,5 +1,7 @@
 package gui;
 
+import interaction.Interaction;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;

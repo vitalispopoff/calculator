@@ -4,13 +4,6 @@ public interface Treeable extends Queueable {
 
 //	@formatter:off
 
-	void setLeft(Queueable q);
-	void setRite(Queueable q);
-
-	Queueable getLeft();
-	Queueable getRite();
-
-	void convertToTree();
 	default Queueable convertToLocalTree(Queueable cache) {
 
 		Queueable
@@ -37,7 +30,6 @@ public interface Treeable extends Queueable {
 
 		return Q2;
 	}
-
 	default Queueable priorityCheck(Queueable q) {
 
 		Queueable
@@ -52,4 +44,14 @@ public interface Treeable extends Queueable {
 			else return Q3;
 		} else return null;
 	}
+
+	void convertToTree();
+	void setLeft(Queueable q);
+	void setRite(Queueable q);
+
+	Queueable getLeft();
+	Queueable getRite();
+
+//	@formatter:on
+
 }

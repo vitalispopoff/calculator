@@ -71,7 +71,6 @@ public class Node implements Solvable, Treeable {
 		removeType(q.getType());
 		q.setType(Type.VALUE);
 		addType(q.getType());
-		System.out.println(q.getValue());
 	}
 
 

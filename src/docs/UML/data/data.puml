@@ -1,23 +1,65 @@
 @startuml
 
     () Solvable
-    () Parsable
+'    () Parsable
 
 package data {
 
     +interface Queueable {
+        ..
+            +{method} add (Queueable)
+            +{method} default isEmpty () : boolean
+            +{method} default isOnePiece () : boolean
+            +{method} default isMultiPiece () : boolean
+            +{method} getHead () : Queueable
+            +{method} getTail () : Queueable
+            +{method} getPrev () : Queueable
+            +{method} getNext () : Queueable
+            +{method} getValue () : double
+            +{method} getType () : Type
+
+            +{method} setHead (Queueable)
+            +{method} setTail (Queueable)
+            +{method} setPrev (Queueable)
+            +{method} setNext (Queueable)
+            +{method} setValue (double)
+            +{method} setValue (Queueable)
+            +{method} setType (Type)
+            +{method} addType (Type)
+            +{method} removeType (Type)
+            +{method} getCurrentType() : int
     }
 
     +interface Treeable extends Queueable{
+        ..
+            + {method} default convertToLocalTree (Queueable) Queueable
+            + {method} default priorityCheck (Queueable) Queueable
+
+            + {method} convertToTree ()
+            + {method} setLeft (Queueable)
+            + {method} setRite (Queueable
+
+            + {method} getLeft () : Queueable
+            + {method} getRite () : Queueable
     }
 
     +class Node implements Treeable{
+
+            + {field} {static} mainQueue : Queueable
+            ~ {field} typeIndex : int[]
+            ~ {field} value : Double
+            ~ {field} type : Type
+            ~ {field} left : Queueable
+            ~ {field} rite : Queueable
+            ~ {field} prev : Queueable
+            ~ {field} next : Queueable
+            + {method} {static} resetMainQueue()
+            + {method} overrides
     }
 }
 
-        Queueable   *..     Queueable
+        Queueable   *..    Queueable
 
-        Parsable    <|-right-    Node
-        Node        -right-|>  Solvable
+        Node        .right.|>  Solvable
 
 @enduml

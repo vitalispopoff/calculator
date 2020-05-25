@@ -1,4 +1,4 @@
-package gui;
+package interaction;
 
 import logic.Type;
 

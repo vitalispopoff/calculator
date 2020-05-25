@@ -1,6 +1,7 @@
 package gui;
 
 import data.Node;
+import interaction.Interaction;
 import logic.Parsable;
 
 import static logic.Type.*;

@@ -18,8 +18,9 @@ package data {
     component node
 }
 
+package interaction{
 component Interactive
-
+}
 
 [input]     -up-o    [Interactive]
 
@@ -27,7 +28,7 @@ component Interactive
 [Interactive] -right-o   [node]
 [Solvable]  <|-down-    [node]
 
-[output]    *-up-       [input]
+[output]    *-right-       [input]
 [output]    -up-o    [node]
 
 [Queueable] <|-left- [Treeable]

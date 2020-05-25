@@ -1,4 +1,4 @@
-package gui;
+package interaction;
 
 import data.Node;
 import logic.Parsable;
@@ -8,14 +8,12 @@ public enum Interaction implements Interactive {
 	BRACKET_IN {
 		@Override
 		public void interact(Whatevah whatevah) {
-
 		}
 	},
 
 	BRACKET_OUT {
 		@Override
 		public void interact(Whatevah whatevah) {
-
 		}
 	},
 
@@ -30,7 +28,6 @@ public enum Interaction implements Interactive {
 		@Override
 		public void interact(Whatevah whatevah) {
 			Parsable.toggleSign();
-			System.out.println(Parsable.parsableCache.isValuePositive);
 		}
 	},
 
@@ -48,7 +45,6 @@ public enum Interaction implements Interactive {
 			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
 			if (!Node.mainQueue.isEmpty())
 				((Node) Node.mainQueue).convertToTree();
-			System.out.println(Node.mainQueue.getValue());
 		}
 	},
 	UNDO {

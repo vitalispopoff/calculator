@@ -4,17 +4,14 @@ import static logic.Parsable.ParsableCache.*;
 
 public interface Parsable {
 
-	static final ParsableCache parsableCache = new ParsableCache();
-
 //	@formatter:off
 
+	static final ParsableCache
+			parsableCache = new ParsableCache();
+
 	static void addToParserCache (char c) {
-/*		if (c == 8723)
-			toggleSign();
-		else*/
 	if (ParsableCache.isParserAValue	(c) || getParserCache ().equals ("") && c == '.')
 			setParserCache (parsableCache.parserCache += c);
-	System.out.println(getParserCacheString());
 	}
 	static void resetParsableCache () {
 		parsableCache.parserCache = "";
@@ -70,8 +67,6 @@ public interface Parsable {
 					: "-" + Parsable.parsableCache.parserCache;
 		}
 	}
-
-
 
 //	@formatter:on
 

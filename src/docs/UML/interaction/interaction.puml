@@ -1,0 +1,41 @@
+@startuml
+
+package interaction {
+
+    +interface Interactive{
+        ..
+            + {method} interact (Whatevah)
+    }
+
+    +class Whatevah {
+            + {field} type : Type
+            + {field} symbol : char
+        ..get/set..
+    }
+
+    +enum Interaction implements Interactive{
+            BRACKET_IN,
+            BRACKET_OUT,
+            ADD_TO_PARSER,
+            SWITCH_SIGN,
+            ADD_TO_QUEUE,
+            SOLVE,
+            UNDO,
+            CLEAR,
+            RESET,
+            EMPTY
+        ..
+    }
+
+Interactive ..right..* Whatevah
+
+}
+
+() Parsable
+() Node
+
+
+Interaction ..left* Node
+Interaction ..left* Parsable
+
+@enduml
