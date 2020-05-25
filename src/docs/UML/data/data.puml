@@ -30,7 +30,7 @@ package data {
             +{method} getCurrentType() : int
     }
 
-    +interface Treeable extends Queueable{
+    +interface Treeable {
         ..
             + {method} default convertToLocalTree (Queueable) Queueable
             + {method} default priorityCheck (Queueable) Queueable
@@ -43,7 +43,7 @@ package data {
             + {method} getRite () : Queueable
     }
 
-    +class Node implements Treeable{
+    +class Node {
 
             + {field} {static} mainQueue : Queueable
             ~ {field} typeIndex : int[]
@@ -58,8 +58,10 @@ package data {
     }
 }
 
-        Queueable   *..    Queueable
+        Queueable   .up.*    Queueable
+        Queueable <|-left- Treeable
+        Treeable .left.|> Node
 
-        Node        .right.|>  Solvable
+        Node .left.|>  Solvable
 
 @enduml
