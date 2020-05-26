@@ -1,5 +1,6 @@
 package gui;
 
+import data.Node;
 import interaction.Interactive;
 import interaction.Interactive.Whatevah;
 import logic.Type;
@@ -17,7 +18,10 @@ public class Button extends JButton implements KeyListener {
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
 		setWhatevah(type,symbol);
-		addActionListener(e ->action.interact(whatevah));
+		addActionListener(e -> {
+			action.interact(whatevah);
+			MainPanel.topDisplay.setText(Node.content);
+		});
 	}
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\

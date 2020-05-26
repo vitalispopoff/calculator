@@ -37,7 +37,7 @@ public interface Treeable extends Queueable {
 				Q2 = Q1.getNext(),
 				Q3 = Q2.getNext();
 
-		if (!Double.isNaN(Q1.getValue()) && !Double.isNaN(Q3.getValue())) {
+		if (!Double.isNaN(Q1.getNumberValue()) && !Double.isNaN(Q3.getNumberValue())) {
 			int Q2Priority = Q2.getType().ordinal() >> 1;
 
 			if (Q2Priority > 0 && Q2Priority <= Node.mainQueue.getCurrentType()) return Q1;

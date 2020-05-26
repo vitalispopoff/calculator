@@ -51,7 +51,7 @@ public interface Queueable {
 	Queueable getPrev();
 	Queueable getNext();
 
-	double getValue();
+	double getNumberValue();
 	Type getType();
 
 	void setHead(Queueable q);
@@ -59,7 +59,7 @@ public interface Queueable {
 	void setPrev(Queueable q);
 	void setNext(Queueable q);
 
-	void setValue(double v);
+	void setNumberValue(double v);
 	void setValue(Queueable q);
 	void setType(Type t);
 

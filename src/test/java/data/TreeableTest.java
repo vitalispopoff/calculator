@@ -26,9 +26,9 @@ public class TreeableTest {
 		n3.setType(Type.VALUE);
 		n5.setType(Type.VALUE);
 
-		n1.setValue(1.);
-		n3.setValue(1.);
-		n5.setValue(2.);
+		n1.setNumberValue(1.);
+		n3.setNumberValue(1.);
+		n5.setNumberValue(2.);
 
 		n2.setType(Type.ADD);
 		n4.setType(Type.DIVIDE);

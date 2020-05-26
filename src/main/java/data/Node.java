@@ -3,7 +3,7 @@ package data;
 import logic.Solvable;
 import logic.Type;
 
-public class Node implements Solvable, Treeable {
+public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 
 //	@formatter:off
 
@@ -16,7 +16,7 @@ public class Node implements Solvable, Treeable {
 			typeIndex = new int[Type.values().length >> 1];
 
 	Double
-			value = Double.NaN;
+			numberValue = Double.NaN;
 	Type
 			type = null;
 	Queueable
@@ -26,10 +26,10 @@ public class Node implements Solvable, Treeable {
 			next = null;
 
 	Node(){}
-	public Node(Double value){
+	public Node(Double numberValue){
 		setType(Type.VALUE);
-		setValue(value);
-		content += value.toString();
+		setNumberValue(numberValue);
+		content += numberValue.toString();
 	}
 	public Node(Type type, char symbol){
 		setType(type);
@@ -40,7 +40,7 @@ public class Node implements Solvable, Treeable {
 		mainQueue.setHead(null);
 		mainQueue.setTail(null);
 		((Node)mainQueue).typeIndex = new int[Type.values().length >> 1];
-		mainQueue.setValue(Double.NaN);
+		mainQueue.setNumberValue(Double.NaN);
 		mainQueue.setType(null);
 	}
 
@@ -53,7 +53,9 @@ public class Node implements Solvable, Treeable {
 	@Override public void setPrev(Queueable q) { prev = q; }
 	@Override public void setNext(Queueable q) { next = q; }
 
-	@Override public double getValue() { return value; }
+
+
+	@Override public double getNumberValue() { return numberValue; }
 	@Override public Type getType() { return type; }
 
 	@Override public Queueable getHead() { return getLeft(); }
@@ -62,7 +64,7 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getNext() { return next; }
 
 	@Override public void setType(Type t) {type = t;}
-	@Override public void setValue(double v) { value = v; }
+	@Override public void setNumberValue(double v) { numberValue = v; }
 	@Override public void setValue(Queueable q) {
 		int
 				qIndex = q.getType().ordinal()>>1,
@@ -71,10 +73,10 @@ public class Node implements Solvable, Treeable {
 
 		if (qIndex < valueIndex && qIndex > bracketIndex) {
 			double
-					leftValue = q.getHead().getValue(),
-					riteValue = q.getTail().getValue(),
+					leftValue = q.getHead().getNumberValue(),
+					riteValue = q.getTail().getNumberValue(),
 					thisValue = ((Node) q).solve(leftValue, riteValue);
-			q.setValue(thisValue);
+			q.setNumberValue(thisValue);
 		}
 		removeType(q.getType());
 		q.setType(Type.VALUE);
@@ -108,10 +110,7 @@ public class Node implements Solvable, Treeable {
 	@Override public Queueable getLeft(){return left;}
 	@Override public Queueable getRite(){return rite;}
 
-	//	@formatter:on
-
-	@Override
-	public void convertToTree() {
+	@Override public void convertToTree() {
 		Queueable
 				localCache = mainQueue.getHead();
 
@@ -124,7 +123,42 @@ public class Node implements Solvable, Treeable {
 			}
 			// ! dispatch the local tree
 		}
-		setValue(getHead().getValue());
+		setNumberValue(getHead().getNumberValue());
 	}
 
+	//	@formatter:on
+
+	{ /*temporal*/ }    // ? neat trick
+
+//	? ObservableStringValue //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+/*
+	@Override
+	public String get() {
+		return content;
+	}
+
+	@Override
+	public void addListener(InvalidationListener listener) {
+
+	}
+
+	@Override
+	public void removeListener(InvalidationListener listener) {
+	}
+
+	@Override
+	public void addListener(ChangeListener<? super String> listener) {
+
+	}
+
+	@Override
+	public void removeListener(ChangeListener<? super String> listener) {
+	}
+
+	@Override
+	public String getValue() {
+		return null;
+	}
+*/		// ? disposable ?
 }

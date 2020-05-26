@@ -1,19 +1,17 @@
 package gui;
 
-import data.Node;
-
 import javax.swing.*;
 import java.awt.*;
 
 import static gui.Settings.basicCalculator;
 
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel /*implements Observer*/ {
 
 //	@formatter:off
 
-	static String
+/*	static String
 			topDisplayContent =  Node.content,
-			bottomDisplayContent;
+			bottomDisplayContent;*/		// ? disposable ?
 
 	private int
 			tile = 60;
@@ -30,38 +28,11 @@ public class MainPanel extends JPanel {
 //	@formatter:on
 
 	public MainPanel(Settings settings) {
-//		tile = tile == 0 ? settings.tile : tile;
-
-		int
-				i = 0/*,
-				width = (Settings.tile << 2) - (Settings.tile >> 2)*/;
+		int i = 0;
 
 		setLayout(null);
-
-		add(topDisplay
-				/*new MainDisplay(
-						new Font("Sans-Serif", Font.PLAIN, 10),
-						new Rectangle(
-								0,
-								0,
-								width,
-								Settings.tile / 3),
-						SwingConstants.CENTER
-				)*/
-		);
-
-		add(bottomDisplay
-				/*new MainDisplay(
-						new Font("Sans-Serif", Font.PLAIN, 14),
-						new Rectangle(
-								0,
-								Settings.tile / 3,
-								width,
-								(Settings.tile / 3) << 1),
-						SwingConstants.CENTER
-				)*/
-		);
-
+		add(topDisplay);
+		add(bottomDisplay);
 
 		for (Button b : basicCalculator) {
 			b.setButtonBounds(i++, tile);
@@ -73,4 +44,8 @@ public class MainPanel extends JPanel {
 	public Dimension getPreferredSize() {
 		return new Dimension(4 * tile, 6 * tile);
 	}
+
+/*	@Override
+	public void update(Observable o, Object arg) {
+	}*/		// ? disposable ?
 }

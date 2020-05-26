@@ -27,9 +27,9 @@ public class NodeTest {
 		n3.setType(Type.VALUE);
 		n5.setType(Type.VALUE);
 
-		n1.setValue(0.5);
-		n3.setValue(1.);
-		n5.setValue(2.);
+		n1.setNumberValue(0.5);
+		n3.setNumberValue(1.);
+		n5.setNumberValue(2.);
 
 		n2.setType(Type.ADD);
 		n4.setType(Type.DIVIDE);
@@ -58,7 +58,7 @@ public class NodeTest {
 	public void convertToTree_02() {
 		initial_02();
 		((Node)Node.mainQueue).convertToTree();
-		Assert.assertEquals(1., Node.mainQueue.getHead().getValue(), 0.);
+		Assert.assertEquals(1., Node.mainQueue.getHead().getNumberValue(), 0.);
 
 
 	}
