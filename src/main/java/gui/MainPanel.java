@@ -7,37 +7,54 @@ import static gui.Settings.basicCalculator;
 
 public class MainPanel extends JPanel {
 
-	private int tile = 60;
-//	public static MainDisplay secondaryDisplay = /*new MainDisplay(0)*/ Settings.displays[0];
-//	public static MainDisplay mainDisplay = /*new MainDisplay(1)*/Settings.displays[1];
+//	@formatter:off
+
+	private int
+			tile = 60;
+	static public MainDisplay
+			topDisplay = new MainDisplay(
+				new Font("Sans-Serif", Font.PLAIN, 10),
+				new Rectangle(Settings.tile >> 3, 0, (Settings.tile << 2) - (Settings.tile >> 2), Settings.tile / 3),
+				SwingConstants.CENTER),
+			bottomDisplay = new MainDisplay(
+				new Font("Sans-Serif", Font.PLAIN, 14),
+				new Rectangle(Settings.tile >> 3, Settings.tile / 3, (Settings.tile << 2) - (Settings.tile >> 2), (Settings.tile / 3) << 1),
+				SwingConstants.CENTER);
+
+//	@formatter:on
 
 	public MainPanel(Settings settings) {
-		int i = 0;
+//		tile = tile == 0 ? settings.tile : tile;
 
-		tile = tile == 0 ? settings.tile : tile;
+		int
+				i = 0/*,
+				width = (Settings.tile << 2) - (Settings.tile >> 2)*/;
 
 		setLayout(null);
-//		add(secondaryDisplay);
-//		add(mainDisplay);
 
+		add(topDisplay
+				/*new MainDisplay(
+						new Font("Sans-Serif", Font.PLAIN, 10),
+						new Rectangle(
+								0,
+								0,
+								width,
+								Settings.tile / 3),
+						SwingConstants.CENTER
+				)*/
+		);
 
-		add(new MainDisplay(
-				new Font("Sans-Serif", Font.PLAIN, 10),
-				new Rectangle(
-						0,
-						Settings.tile >> 2,
-						(Settings.tile << 2) - (Settings.tile >> 2),
-						Settings.tile >> 2)
-		));
-		add(new MainDisplay(
-				new Font("Sans-Serif", Font.PLAIN, 14),
-				new Rectangle(
-						0,
-						Settings.tile >> 2,
-						(Settings.tile << 2) - (Settings.tile >> 2),
-						(Settings.tile >> 2) + (Settings.tile >> 1)
-				)
-		));
+		add(bottomDisplay
+				/*new MainDisplay(
+						new Font("Sans-Serif", Font.PLAIN, 14),
+						new Rectangle(
+								0,
+								Settings.tile / 3,
+								width,
+								(Settings.tile / 3) << 1),
+						SwingConstants.CENTER
+				)*/
+		);
 
 
 		for (Button b : basicCalculator) {
