@@ -1,5 +1,7 @@
 package gui;
 
+import data.Node;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,6 +10,10 @@ import static gui.Settings.basicCalculator;
 public class MainPanel extends JPanel {
 
 //	@formatter:off
+
+	static String
+			topDisplayContent =  Node.content,
+			bottomDisplayContent;
 
 	private int
 			tile = 60;

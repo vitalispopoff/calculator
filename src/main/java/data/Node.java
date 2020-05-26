@@ -7,10 +7,14 @@ public class Node implements Solvable, Treeable {
 
 //	@formatter:off
 
+	static public String
+			content = "";
+
 	public static Queueable
 			mainQueue = new Node();
 	int[]
 			typeIndex = new int[Type.values().length >> 1];
+
 	Double
 			value = Double.NaN;
 	Type
@@ -25,9 +29,11 @@ public class Node implements Solvable, Treeable {
 	public Node(Double value){
 		setType(Type.VALUE);
 		setValue(value);
+		content += value.toString();
 	}
-	public Node(Type type){
+	public Node(Type type, char symbol){
 		setType(type);
+		content += symbol;
 	}
 
 	static public void resetMainQueue(){
@@ -37,6 +43,8 @@ public class Node implements Solvable, Treeable {
 		mainQueue.setValue(Double.NaN);
 		mainQueue.setType(null);
 	}
+
+
 
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

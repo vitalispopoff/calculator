@@ -13,6 +13,5 @@ public class MainDisplay extends JLabel{
 		setHorizontalAlignment(SwingConstants.RIGHT);
 
 		setBounds(bounds);
-//		setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 	}
 }

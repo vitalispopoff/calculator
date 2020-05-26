@@ -35,7 +35,7 @@ public enum Interaction implements Interactive {
 		@Override
 		public void interact(Whatevah whatevah) {
 			Node.mainQueue.add(new Node(Parsable.dumpParserCache()));
-			Node.mainQueue.add(new Node(whatevah.getType()));
+			Node.mainQueue.add(new Node(whatevah.getType(), whatevah.getSymbol()));
 		}
 	},
 
