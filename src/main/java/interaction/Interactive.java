@@ -6,15 +6,15 @@ import logic.Type;
 public interface Interactive {
 
 	static void interactWithOutput(Interactive action) {
-		MainPanel.displayUpdate();
+		MainPanel.topDisplayUpdate();
 		action.interactWithOutput();
+
 	}
 
 	default void interactWithOutput(){}
-	default void interactWithData(Whatevah whatevah){}
+	default void interactWithData(ButtonDetails buttonDetails){}
 
-
-	class Whatevah {
+	class ButtonDetails {
 
 //		@formatter:off
 
@@ -23,7 +23,7 @@ public interface Interactive {
 		public char
 				symbol;
 
-		public Whatevah(Type type, char symbol) {
+		public ButtonDetails(Type type, char symbol) {
 			this.type = type;
 			this.symbol = symbol;
 		}

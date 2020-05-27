@@ -4,7 +4,7 @@ package logic {
 
     +interface Solvable {
         ..
-            +{method} solve (double) : double
+            +{method} default solve (double) : double
     }
 
     +interface Parsable {
@@ -31,8 +31,8 @@ package logic {
     }
 
     class ParsableCache {
-            +{field} isValuePositive : boolean
-            +{field} parserCache : String
+            ~{field} isValuePositive : boolean
+            ~{field} parserCache : String
         ..
             +{method} {static} getParserCache : String
             +{method} {static} setParserCache (String)

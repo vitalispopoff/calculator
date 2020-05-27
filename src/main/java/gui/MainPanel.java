@@ -37,7 +37,8 @@ public class MainPanel extends JPanel /*implements Displayable */{
 		}
 	}
 
-	public static void displayUpdate(){ topDisplay.setText(Node.content+Parsable.ParsableCache.getParserCache()); }
+	public static void topDisplayUpdate(){ topDisplay.setText(Node.content+Parsable.ParsableCache.getParserCache()); }
+	public static void bottomDisplayUpdate(String string){bottomDisplay.setText(string);}
 
 	@Override
 	public Dimension getPreferredSize() {

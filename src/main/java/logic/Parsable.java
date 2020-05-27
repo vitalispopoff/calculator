@@ -6,7 +6,7 @@ public interface Parsable {
 
 //	@formatter:off
 
-	static final ParsableCache
+	ParsableCache
 			parsableCache = new ParsableCache();
 
 	static void addToParserCache (char c) {
@@ -43,9 +43,9 @@ public interface Parsable {
 
 	class ParsableCache implements Parsable {
 
-		public boolean
+		/*public*/ boolean
 				isValuePositive = true;
-		public String
+		/*public*/ String
 				parserCache = "";
 
 		static public String getParserCache () { return Parsable.parsableCache.parserCache; }
@@ -60,7 +60,6 @@ public interface Parsable {
 				return false;
 			}
 		}
-
 		static String getParserCacheString () {
 			return Parsable.parsableCache.isValuePositive
 					? Parsable.parsableCache.parserCache

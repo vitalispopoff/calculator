@@ -15,7 +15,7 @@ package data {
             +{method} getTail () : Queueable
             +{method} getPrev () : Queueable
             +{method} getNext () : Queueable
-            +{method} getValue () : double
+            +{method} getNumberValue () : double
             +{method} getType () : Type
 
             +{method} setHead (Queueable)
@@ -23,7 +23,7 @@ package data {
             +{method} setPrev (Queueable)
             +{method} setNext (Queueable)
             +{method} setValue (double)
-            +{method} setValue (Queueable)
+            +{method} setNumberValue (Queueable)
             +{method} setType (Type)
             +{method} addType (Type)
             +{method} removeType (Type)
@@ -44,7 +44,7 @@ package data {
     }
 
     +class Node {
-
+            + {field} {static} content : String
             + {field} {static} mainQueue : Queueable
             ~ {field} typeIndex : int[]
             ~ {field} value : Double
@@ -53,8 +53,13 @@ package data {
             ~ {field} rite : Queueable
             ~ {field} prev : Queueable
             ~ {field} next : Queueable
-            + {method} {static} resetMainQueue()
-            + {method} overrides
+        --
+            + {method} {static} resetMainQueue ()
+            + {method} {static} encloseContent ()
+            + {method} {static} resetContent ()
+            - {method} {static} updateContent (Double)
+
+        ..overrides..
     }
 }
 

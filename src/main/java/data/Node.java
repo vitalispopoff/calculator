@@ -1,9 +1,8 @@
 package data;
 
-import logic.Solvable;
-import logic.Type;
+import logic.*;
 
-public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
+public class Node implements Solvable, Treeable {
 
 //	@formatter:off
 
@@ -14,7 +13,6 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 			mainQueue = new Node();
 	int[]
 			typeIndex = new int[Type.values().length >> 1];
-
 	Double
 			numberValue = Double.NaN;
 	Type
@@ -43,7 +41,10 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 		mainQueue.setNumberValue(Double.NaN);
 		mainQueue.setType(null);
 	}
-
+	static public void encloseContent(){
+		content = '('+content+')';
+	}
+	static public void resetContent(){ content = "";}
 	static private void updateContent(Double numberValue){
 		String s
 				= numberValue % 1. == 0.
@@ -52,20 +53,12 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 		content += s;
 	}
 
-	static public void encloseContent(){
-		content = '('+content+')';
-	}
-
-	static public void resetContent(){ content = "";}
-
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 	@Override public void setHead(Queueable q) { setLeft(q); }
 	@Override public void setTail(Queueable q) { setRite(q); }
 	@Override public void setPrev(Queueable q) { prev = q; }
 	@Override public void setNext(Queueable q) { next = q; }
-
-
 
 	@Override public double getNumberValue() { return numberValue; }
 	@Override public Type getType() { return type; }
@@ -95,7 +88,6 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 		addType(q.getType());
 	}
 
-
 	@Override public void addType(Type t) { typeIndex[t.ordinal()>>1]++; }
 	@Override public void removeType(Type t) {
 		if(typeIndex[t.ordinal()>>1]>0)
@@ -113,7 +105,7 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 
 //	Solvable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-	@Override public double solve(double leftValue, double riteValue) { return type.solve(leftValue, riteValue); }
+	@Override public double solve(double op1, double op2) { return type.solve(op1, op2); }
 
 //	Treeable  \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -140,37 +132,4 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 
 	//	@formatter:on
 
-	{ /*temporal*/ }    // ? neat trick
-
-//	? ObservableStringValue //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-
-/*
-	@Override
-	public String get() {
-		return content;
-	}
-
-	@Override
-	public void addListener(InvalidationListener listener) {
-
-	}
-
-	@Override
-	public void removeListener(InvalidationListener listener) {
-	}
-
-	@Override
-	public void addListener(ChangeListener<? super String> listener) {
-
-	}
-
-	@Override
-	public void removeListener(ChangeListener<? super String> listener) {
-	}
-
-	@Override
-	public String getValue() {
-		return null;
-	}
-*/		// ? disposable ?
 }

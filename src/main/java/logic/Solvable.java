@@ -2,5 +2,5 @@ package logic;
 
 public interface Solvable {
 
-	double solve (double operand1, double operand2);
+	default double solve (double op1, double op2){return Double.NaN;}
 }

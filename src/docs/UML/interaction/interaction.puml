@@ -4,10 +4,12 @@ package interaction {
 
     +interface Interactive{
         ..
-            + {method} interact (Whatevah)
+            + {method} {static} interactWithOutput (Interactive)
+            + {method} default interactWithOutput ()
+            + {method} default interact (ButtonDetails)
     }
 
-    +class Whatevah {
+    +class ButtonDetails {
             + {field} type : Type
             + {field} symbol : char
         ..get/set..
@@ -27,7 +29,7 @@ package interaction {
         ..
     }
 
-Interactive ..right..* Whatevah
+Interactive ..right..* ButtonDetails
 
 }
 
