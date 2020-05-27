@@ -1,6 +1,7 @@
 package interaction;
 
 import data.Node;
+import gui.MainPanel;
 import logic.Parsable;
 
 public enum Interaction implements Interactive {
@@ -24,7 +25,9 @@ public enum Interaction implements Interactive {
 		public void interact(Whatevah whatevah) {
 			Parsable.addToParserCache(whatevah.getSymbol());
 		}
-		public void dupa(){System.out.println(this);}
+		public void dupa(){
+			MainPanel.displayUpdate();
+		}
 	},
 
 	SWITCH_SIGN {

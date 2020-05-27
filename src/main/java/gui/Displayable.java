@@ -16,9 +16,7 @@ public interface Displayable {
 				SwingConstants.CENTER
 			);*/
 
-	static public final Displayable
-			topDisplay = Settings.topDisplay,
-			bottomDisplay = Settings.bottomDisplay;
+
 
 //	static void displayUpdate(){ topDisplay.setText(Node.content); }
 

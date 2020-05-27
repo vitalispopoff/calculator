@@ -5,9 +5,7 @@ import interaction.Interactive.Whatevah;
 import logic.Type;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
 import static gui.Settings.buttonRowLength;
 

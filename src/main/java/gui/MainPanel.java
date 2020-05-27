@@ -1,6 +1,7 @@
 package gui;
 
 import data.Node;
+import logic.Parsable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class MainPanel extends JPanel /*implements Displayable */{
 		}
 	}
 
-	static void displayUpdate(){ topDisplay.setText(Node.content); }
+	public static void displayUpdate(){ topDisplay.setText(Node.content+Parsable.ParsableCache.getParserCache()); }
 
 	@Override
 	public Dimension getPreferredSize() {

@@ -29,7 +29,12 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 	public Node(Double numberValue){
 		setType(Type.VALUE);
 		setNumberValue(numberValue);
-		content += numberValue.toString();
+
+		String s
+				= numberValue % 1. == 0.
+				? Integer.toString(numberValue.intValue())
+				: Double.toString(numberValue);
+		content += s;
 	}
 	public Node(Type type, char symbol){
 		setType(type);
