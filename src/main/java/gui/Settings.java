@@ -12,17 +12,16 @@ public class Settings implements Serializable {
 
 	private static final String
 			fileAddress = "src\\main\\resources\\settings.txt";
-	public static MainDisplay[] displays ={
-			new MainDisplay(
+
+	static public Displayable
+			topDisplay = new MainDisplay(
 					new Font("Sans-Serif", Font.PLAIN, 10),
 					new Rectangle(0, 0, (Settings.tile << 2) - (Settings.tile >> 2), Settings.tile / 3),
 					SwingConstants.CENTER),
-			new MainDisplay(
+			bottomDisplay = new MainDisplay(
 					new Font("Sans-Serif", Font.PLAIN, 14),
 					new Rectangle(0, Settings.tile / 3, (Settings.tile << 2) - (Settings.tile >> 2), (Settings.tile / 3) << 1),
-					SwingConstants.CENTER)
-	};
-
+					SwingConstants.CENTER);
 
 	public static Button[]
 			basicCalculator = {

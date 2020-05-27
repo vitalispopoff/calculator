@@ -3,7 +3,7 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainDisplay extends JLabel{
+public class MainDisplay extends JLabel implements Displayable{
 
 	public MainDisplay(Font font, Rectangle bounds, int constant){
 		setFont(font);

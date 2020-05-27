@@ -1,17 +1,15 @@
 package gui;
 
+import data.Node;
+
 import javax.swing.*;
 import java.awt.*;
 
 import static gui.Settings.basicCalculator;
 
-public class MainPanel extends JPanel /*implements Observer*/ {
+public class MainPanel extends JPanel /*implements Displayable */{
 
 //	@formatter:off
-
-/*	static String
-			topDisplayContent =  Node.content,
-			bottomDisplayContent;*/		// ? disposable ?
 
 	private int
 			tile = 60;
@@ -24,8 +22,6 @@ public class MainPanel extends JPanel /*implements Observer*/ {
 				new Font("Sans-Serif", Font.PLAIN, 14),
 				new Rectangle(Settings.tile >> 3, Settings.tile / 3, (Settings.tile << 2) - (Settings.tile >> 2), (Settings.tile / 3) << 1),
 				SwingConstants.CENTER);
-
-//	@formatter:on
 
 	public MainPanel(Settings settings) {
 		int i = 0;
@@ -40,12 +36,12 @@ public class MainPanel extends JPanel /*implements Observer*/ {
 		}
 	}
 
+	static void displayUpdate(){ topDisplay.setText(Node.content); }
+
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(4 * tile, 6 * tile);
 	}
 
-/*	@Override
-	public void update(Observable o, Object arg) {
-	}*/		// ? disposable ?
+//	@formatter:on
 }

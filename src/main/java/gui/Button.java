@@ -1,12 +1,13 @@
 package gui;
 
-import data.Node;
 import interaction.Interactive;
 import interaction.Interactive.Whatevah;
 import logic.Type;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import static gui.Settings.buttonRowLength;
 
@@ -20,7 +21,8 @@ public class Button extends JButton implements KeyListener {
 		setWhatevah(type,symbol);
 		addActionListener(e -> {
 			action.interact(whatevah);
-			MainPanel.topDisplay.setText(Node.content);
+			MainPanel.displayUpdate();
+			Interactive.dupa(action);
 		});
 	}
 

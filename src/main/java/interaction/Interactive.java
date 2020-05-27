@@ -5,6 +5,8 @@ import logic.Type;
 public interface Interactive {
 
 	void interact(Whatevah whatevah);
+	static void dupa(Interactive action){action.dupa();}
+	void dupa();
 
 	class Whatevah {
 
