@@ -29,12 +29,7 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 	public Node(Double numberValue){
 		setType(Type.VALUE);
 		setNumberValue(numberValue);
-
-		String s
-				= numberValue % 1. == 0.
-				? Integer.toString(numberValue.intValue())
-				: Double.toString(numberValue);
-		content += s;
+		updateContent(numberValue);
 	}
 	public Node(Type type, char symbol){
 		setType(type);
@@ -49,7 +44,19 @@ public class Node implements Solvable, Treeable/*, ObservableStringValue*/ {
 		mainQueue.setType(null);
 	}
 
+	static private void updateContent(Double numberValue){
+		String s
+				= numberValue % 1. == 0.
+				? Integer.toString(numberValue.intValue())
+				: Double.toString(numberValue);
+		content += s;
+	}
 
+	static public void encloseContent(){
+		content = '('+content+')';
+	}
+
+	static public void resetContent(){ content = "";}
 
 //	Queueable \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 

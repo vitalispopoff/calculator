@@ -18,9 +18,9 @@ public class Button extends JButton implements KeyListener {
 		setNameAndText(symbol);
 		setWhatevah(type,symbol);
 		addActionListener(e -> {
-			action.interact(whatevah);
-			MainPanel.displayUpdate();
-			Interactive.dupa(action);
+			action.interactWithData(whatevah);
+//			MainPanel.displayUpdate();
+			Interactive.interactWithOutput(action);
 		});
 	}
 

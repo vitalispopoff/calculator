@@ -1,12 +1,18 @@
 package interaction;
 
+import gui.MainPanel;
 import logic.Type;
 
 public interface Interactive {
 
-	void interact(Whatevah whatevah);
-	static void dupa(Interactive action){action.dupa();}
-	void dupa();
+	static void interactWithOutput(Interactive action) {
+		MainPanel.displayUpdate();
+		action.interactWithOutput();
+	}
+
+	default void interactWithOutput(){}
+	default void interactWithData(Whatevah whatevah){}
+
 
 	class Whatevah {
 
