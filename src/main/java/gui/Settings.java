@@ -10,10 +10,10 @@ import static logic.Type.*;
 
 public class Settings implements Serializable {
 
-	private static final String
+	static private final String
 			fileAddress = "src\\main\\resources\\settings.txt";
 
-	static public Displayable
+	static public MainDisplay
 			topDisplay = new MainDisplay(
 					new Font("Sans-Serif", Font.PLAIN, 10),
 					new Rectangle(0, 0, (Settings.tile << 2) - (Settings.tile >> 2), Settings.tile / 3),
@@ -23,7 +23,7 @@ public class Settings implements Serializable {
 					new Rectangle(0, Settings.tile / 3, (Settings.tile << 2) - (Settings.tile >> 2), (Settings.tile / 3) << 1),
 					SwingConstants.CENTER);
 
-	public static Button[]
+	static public Button[]
 			basicCalculator = {
 			new Button(Interaction.CLEAR, null, 'C'),                        //   0
 
@@ -56,19 +56,19 @@ public class Settings implements Serializable {
 
 			new Button(Interaction.SOLVE, EVALUATE, '='),              //  19
 	};
-	public Point
-			windowAnchor = new Point(200, 200);
 	static public int
 			tile = 60,
 			buttonRowLength = 4,
 			windowDefaultCloseOperation = JFrame.DO_NOTHING_ON_CLOSE;
+	public Point
+			windowAnchor = new Point(200, 200);
 	public boolean
 			windowResizable = false;
 
 	public Settings() {
 	}
 
-	public static Settings readSettings() {
+	static public Settings readSettings() {
 		Settings cache = new Settings();
 		try {
 			FileInputStream
@@ -82,7 +82,6 @@ public class Settings implements Serializable {
 		}
 		return cache;
 	}
-
 	public void writeSettings(Point windowNewAnchor) {
 		setWindowAnchor(windowNewAnchor);
 		try {
@@ -98,7 +97,6 @@ public class Settings implements Serializable {
 			f.printStackTrace();
 		}
 	}
-
 	void setWindowAnchor(Point windowNewAnchor) {
 		this.windowAnchor = windowNewAnchor;
 	}

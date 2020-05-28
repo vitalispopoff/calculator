@@ -8,7 +8,7 @@ import java.awt.*;
 
 import static gui.Settings.basicCalculator;
 
-public class MainPanel extends JPanel /*implements Displayable */{
+public class MainPanel extends JPanel {
 
 //	@formatter:off
 

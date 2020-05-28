@@ -34,11 +34,11 @@ package data {
         ..
             + {method} default convertToLocalTree (Queueable) Queueable
             + {method} default priorityCheck (Queueable) Queueable
-
+        ..
             + {method} convertToTree ()
+        ..
             + {method} setLeft (Queueable)
-            + {method} setRite (Queueable
-
+            + {method} setRite (Queueable)
             + {method} getLeft () : Queueable
             + {method} getRite () : Queueable
     }
@@ -58,7 +58,6 @@ package data {
             + {method} {static} encloseContent ()
             + {method} {static} resetContent ()
             - {method} {static} updateContent (Double)
-
         ..overrides..
     }
 }

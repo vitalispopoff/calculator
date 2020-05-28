@@ -1,0 +1,8 @@
+gui\InteractiveTest.class
+logic\SolvableTest.class
+logic\ParsableTest.class
+data\NodeTest.class
+data\TreeableTest.class
+gui\Main.class
+logic\ParserTest.class
+data\QueueableTest.class

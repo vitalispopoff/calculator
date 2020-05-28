@@ -3,15 +3,17 @@
 package interaction {
 
     +interface Interactive{
-        ..
+        --
             + {method} {static} interactWithOutput (Interactive)
             + {method} default interactWithOutput ()
             + {method} default interact (ButtonDetails)
+
     }
 
     +class ButtonDetails {
             + {field} type : Type
             + {field} symbol : char
+        --
         ..get/set..
     }
 
@@ -29,15 +31,20 @@ package interaction {
         ..
     }
 
-Interactive ..right..* ButtonDetails
-
+    Interactive ..left..* ButtonDetails
 }
 
 () Parsable
 () Node
+() MainPanel
+() Type
 
+Interactive ..left.* MainPanel
+Interaction .down.* MainPanel
 
-Interaction ..left* Node
-Interaction ..left* Parsable
+Interaction ..up* Node
+Interaction ..up* Parsable
+
+ButtonDetails -left-o Type
 
 @enduml
