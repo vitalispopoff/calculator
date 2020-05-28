@@ -1,7 +1,6 @@
 package gui;
 
-import interaction.Interactive;
-import interaction.Interactive.ButtonDetails;
+import interaction.*;
 import logic.Type;
 
 import javax.swing.*;
@@ -16,7 +15,7 @@ public class Button extends JButton implements KeyListener {
 
 	public Button(Interactive action, Type type, char symbol) {
 		setNameAndText(symbol);
-		setWhatevah(type,symbol);
+		setButtonDetails(type,symbol);
 		addActionListener(e -> {
 			action.interactWithData(buttonDetails);
 			Interactive.interactWithOutput(action);
@@ -36,7 +35,7 @@ public class Button extends JButton implements KeyListener {
 
 	//	@formatter:off
 
-	void setWhatevah(Type type, char symbol){
+	void setButtonDetails(Type type, char symbol){
 		buttonDetails = new ButtonDetails(type, symbol);
 	}
 

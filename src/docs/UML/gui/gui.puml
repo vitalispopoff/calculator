@@ -1,0 +1,93 @@
+@startuml
+
+() JLabel
+() JFrame
+() JPanel
+
+() JButton
+() KeyListener
+
+() Serializable
+
+() Interactive
+() ButtonDetails
+
+package gui {
+
+'    interface Displayable {}
+
+    class MainFrame {
+            +{field} {static} settings : Settings
+        --
+            ~{method} getWindowAnchorLocation () : Point
+            ~{method} setWindowAnchor (Point)
+            ~{method} setMainPanel ()
+    }
+
+    class MainPanel extends JPanel {
+            +{field} {static} topDisplay : MainDisplay
+            +{field} {static} bottomDisplay : MainDisplay
+        ..
+            -{field} tile : int
+        --
+            +{method}{static} topDisplayUpdate ()
+            +{method}{static} bottomDisplayUpdate (String)
+        ..overrides..
+            +{method} getPreferredSize () : Dimension
+    }
+
+    class MainDisplay {
+        ..
+    }
+
+    class Button extends JButton{
+            ~{field} buttonDetails : ButtonDetails
+            ~{field} event : ActionEvent
+        --
+            ~{method} setButtonBounds (int, int)
+            ~{method} setButtonDetails (Type, char)
+        ..KeyListener overrides..
+
+    }
+
+    class Settings {
+            -{field} {static} final fileAddress : String
+            +{field} {static} topDisplay : MainDisplay
+            +{field} {static} bottomDisplay : MainDisplay
+            +{field} {static} basicCalculator : Button[]
+            +{field} {static} tile : int
+            +{field} {static} buttonRawLength : int
+            +{field} {static} windowDefaultClosedOperation : int
+        ..
+            +{field} windowAnchor : Point
+            +{field} windowResizable : boolean
+        --
+            +{method} {static} readSettings () : Settings
+        ..
+            +{method} writeSettings (Point)
+            ~{method} setWindowAnchor (Point)
+    }
+
+    MainFrame -up-|> JFrame
+    MainFrame -up--o Settings
+
+    MainFrame .right.* MainPanel
+    MainPanel .up.* Button
+    MainPanel -up-o MainDisplay
+
+    MainDisplay -left-|> JLabel
+
+    Settings -right-o MainDisplay
+    Settings .down.|> Serializable
+
+    Button .right.|> KeyListener
+    Button .up.* Interactive
+    Button o-right.* Settings
+    Button --o ButtonDetails
+
+
+
+
+}
+
+@enduml
