@@ -15,6 +15,11 @@ Move along.
 
 # versions:
 
+0.1.2 :
++ basic calculator operational
++ gui connected to the inner logic via interaction package
+
+
 0.1.1 : 
 + input connected and operational
 + interaction is now a separated interface, and connects the GUI with the business logic 
