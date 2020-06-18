@@ -40,7 +40,8 @@ package logic {
             ~{method} {static} getParserCacheString() : String
     }
 
-    Parsable <|-up.o ParsableCache
+    Parsable <|-down. ParsableCache
+    Parsable o-down-> ParsableCache
 }
 
 @enduml

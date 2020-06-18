@@ -69,25 +69,32 @@ package gui {
     }
 
     MainFrame -up-|> JFrame
-    MainFrame -up--o Settings
+'    MainFrame -up--o Settings
+    Settings <--down-o MainFrame
 
-    MainFrame .right.* MainPanel
-    MainPanel .up.* Button
-    MainPanel -up-o MainDisplay
+'    MainFrame .right.* MainPanel
+    MainPanel <.left.* MainFrame
+
+'    MainPanel .up.* Button
+    Button <.up.* MainPanel
+
+'    MainPanel -up-o MainDisplay
+    MainDisplay <-down-o MainPanel
 
     MainDisplay -left-|> JLabel
 
-    Settings -right-o MainDisplay
+'    Settings -right-o MainDisplay
+    MainDisplay <-left-o Settings
+
     Settings .down.|> Serializable
 
     Button .right.|> KeyListener
-    Button .up.* Interactive
-    Button o-right.* Settings
-    Button --o ButtonDetails
+'    Button .up.* Interactive
+    Interactive <.down.* Button
 
+    Button <-right.o Settings
 
-
-
+    Button o--> ButtonDetails
 }
 
 @enduml

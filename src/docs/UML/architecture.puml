@@ -22,14 +22,14 @@ package interaction{
 component Interactive
 }
 
-[input]     -up-o    [Interactive]
+[input]     o-up->    [Interactive]
 
-[Interactive] -up-o     [Parsable]
+[Interactive] o-up->     [Parsable]
 [Interactive] -right-o   [node]
 [Solvable]  <|-down-    [node]
 
-[output]    *-right-       [input]
-[output]    -up-o    [node]
+[output]    <-right-*       [input]
+[output]    o-up->    [node]
 
 [Queueable] <|-left- [Treeable]
 

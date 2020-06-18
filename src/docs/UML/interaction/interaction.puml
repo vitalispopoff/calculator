@@ -31,20 +31,29 @@ package interaction {
         ..
     }
 
-    Interactive ..left..* ButtonDetails
+'    Interactive ..left..* ButtonDetails
+    Interactive *..right..> ButtonDetails
 }
+
 
 () Parsable
 () Node
 () MainPanel
 () Type
 
-Interactive ..left.* MainPanel
-Interaction .down.* MainPanel
+'Interactive ..left.* MainPanel
+Interactive *..right.> MainPanel
 
-Interaction ..up* Node
-Interaction ..up* Parsable
+'Interaction .down.* MainPanel
+Interaction *.up.> MainPanel
 
-ButtonDetails -left-o Type
+'Interaction ..up* Node
+Interaction *..down> Node
+
+'Interaction ..up* Parsable
+Interaction *..down> Parsable
+
+'ButtonDetails -left-o Type
+ButtonDetails o-right-> Type
 
 @enduml
