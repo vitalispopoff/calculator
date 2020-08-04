@@ -63,9 +63,9 @@ package data {
 }
 
         Queueable   .up.*    Queueable
-        Queueable <|-left- Treeable
-        Treeable .left.|> Node
+        Queueable <|-left- Treeable : extends
+        Treeable <|.left. Node : implements
 
-        Node .left.|>  Solvable
+        Node .left.|>  Solvable : implements
 
 @enduml

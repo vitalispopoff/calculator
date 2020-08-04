@@ -1,5 +1,4 @@
-import gui.MainFrame;
-import gui.Settings;
+import gui.*;
 
 import java.awt.*;
 
@@ -9,8 +8,12 @@ public class Main {
 
 		EventQueue.invokeLater(()->{
 
-			Settings settings = Settings.readSettings();
-			MainFrame mainWindow = new MainFrame(settings);
+			Settings
+				settings = Settings.readSettings();
+
+			MainFrame
+				mainWindow = new MainFrame(settings);
+
 			mainWindow.setVisible(true);
 		});
 	}

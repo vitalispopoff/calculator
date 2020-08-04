@@ -1,3 +1,5 @@
+//	@formatter:off
+
 package gui;
 
 import interaction.*;
@@ -10,41 +12,42 @@ import static gui.Settings.buttonRowLength;
 
 public class Button extends JButton implements KeyListener {
 
-	ButtonDetails buttonDetails;
-	ActionEvent event;
+	ButtonDetails
+		buttonDetails;
+	ActionEvent
+		event;
 
 	public Button(Interactive action, Type type, char symbol) {
+
 		setNameAndText(symbol);
 		setButtonDetails(type,symbol);
+
 		addActionListener(e -> {
+
 			action.interactWithData(buttonDetails);
 			Interactive.interactWithOutput(action);
 		});
 	}
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	--------------------------------------------------------------------------------------------------------------------
 
 	void setButtonBounds(int i, int tile) {
-		setBounds(
-				(i % buttonRowLength) * tile,
-				(1 + (i / buttonRowLength)) * tile,
-				tile,
-				tile
-		);
+
+		setBounds( (i % buttonRowLength) * tile, (1 + (i / buttonRowLength)) * tile, tile, tile);
 	}
 
-	//	@formatter:off
-
 	void setButtonDetails(Type type, char symbol){
+
 		buttonDetails = new ButtonDetails(type, symbol);
 	}
 
 	void setNameAndText(char symbol) {
+
 		setName("button_" + symbol);
 		setText(Character.toString(symbol));
 	}
 
-//	KeyListener implementation  //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//	KeyListener implementation  ----------------------------------------------------------------------------------------
 
 	@Override public void keyTyped(KeyEvent e) { }
 	@Override public void keyPressed(KeyEvent e) { }
